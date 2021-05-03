@@ -6,11 +6,11 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 23:19:23 by sehattor          #+#    #+#             */
-/*   Updated: 2020/10/30 23:21:59 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/05/03 21:26:25 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 char	*save_free(char *save)
 {

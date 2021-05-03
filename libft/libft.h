@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 01:16:23 by sehattor          #+#    #+#             */
-/*   Updated: 2020/10/14 22:32:57 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/05/03 21:39:09 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,22 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include <fcntl.h>
 
 typedef struct		s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
 
+char	*save_free(char *save);
+char	*read_fd(int fd, char *save);
+char	*save_line(char *save, char *line, int *ret);
+char	*get_line(char *line);
+int		get_next_line(int fd, char **line);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t len);
 void				*ft_memcpy(void *dst, const void *src, size_t n);

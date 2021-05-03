@@ -21,7 +21,6 @@ void sig_quit_input();
 int launch(char *line, char **envp);
 void sig_input();
 void sig_ign();
-int launch(char *line, char **envp);
 
 int main(int argc, char **argv, char **envp)
 {
@@ -39,7 +38,7 @@ void minishell(char **envp)
 	{
 		ft_putstr_fd(MINISHELL, STDERR);
 		sig_input();
-		if ((get_next_line(0, &line) == 0))
+		if (get_next_line(0, &line) == 0)
 		{
 			ft_putstr_fd("exit\n", STDERR);
 			exit(ret);
@@ -48,6 +47,17 @@ void minishell(char **envp)
 		ret = launch(line, envp);
 		free(line);
 	}
+}
+
+void	sig_int_input()
+{
+	ft_putstr_fd("\b\b  \b\n", STDERR);
+	ft_putstr_fd(MINISHELL, STDERR);
+}
+
+void	sig_quit_input()
+{
+	ft_putstr_fd("\b\b  \b\b", STDERR);
 }
 
 void sig_input()
@@ -71,7 +81,7 @@ void sig_ign()
 		ft_putstr_fd(strerror(errno), STDERR);
 		exit(1);
 	}
-	if (signal(SIGQUIT, SIG_IGN == SIG_ERR))
+	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
 	{
 		ft_putstr_fd(strerror(errno), STDERR);
 		exit(1);
@@ -83,14 +93,14 @@ int launch(char *line, char **envp)
 	char *argv[] = {NULL, NULL};
 	int pid;
 	int status;
-	char *tmp;
+	//char *tmp;
 	char *path;
 
 	argv[0] = line;
 
   // builtinコマンドか判定
-  if (builtin_table(line))
-    return (builtin_function(argv, envp))
+  //if (builtin_table(line))
+  //  return (builtin_function(argv, envp))
 	pid = fork();
 	// forkエラー処理。
 	if (pid < 0)
@@ -99,7 +109,7 @@ int launch(char *line, char **envp)
 		exit(1);
 	}
 	// 子プロセスの処理
-	if ((pid == 0)
+	if (pid == 0)
 	{
 		errno = 0;
 		path = ft_strjoin("/bin/", line);
@@ -122,7 +132,7 @@ int launch(char *line, char **envp)
 	}
 	return (WEXITSTATUS(status));
 }
-
+/*
 bool builtin_table(char *line)
 {
 	if (!ft_strncmp(line, "echo", 5))
@@ -138,4 +148,4 @@ int builtin_function(char **argv, char **envp)
 		return (msh_echo());
 	if (!ft_strncmp(argv[0], "exit", 5))
 		return (msh_exit());
-}
+}*/
