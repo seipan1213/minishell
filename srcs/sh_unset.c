@@ -3,6 +3,13 @@
 
 
 
+void	env_delone(t_env *prev, t_env *delEnv)
+{
+	if (!prev)
+	{
+		
+	}
+}
 
 
 int		del_env(char *delKey, t_env *env)
