@@ -67,3 +67,33 @@ t_env	*create_env(char *environ)
 		return (NULL);
 	return (env);
 }
+
+void	free_env(t_env *env)
+{
+	free(env->name);
+	free(env->value);
+}
+
+void	free_envs(t_env *env)
+{
+	while (env != NULL)
+	{
+		free(env->name);
+		free(env->value);
+		env = env->next;
+	}
+}
+
+t_env	*envlast(t_env *env)
+{
+	t_env	*last;
+
+	if (!env)
+		return (NULL);
+	last = env;
+	while (last->next != NULL)
+	{
+		last = last->next;
+	}
+	return (last);
+}
