@@ -1,37 +1,41 @@
 
 #include "../includes/env.h"
 
-
-
-void	env_delone(t_env *prev, t_env *delEnv)
+void	env_delone(t_env **envs, t_env *prev, t_env *delEnv)
 {
+	t_env	*tmp;
+
 	if (!prev)
 	{
-		
+		tmp = (*envs)->next;
+		free_env(*envs);
+		*envs = tmp;
+		printf("\nenv->name: %s\n", (*envs)->name);
+	}
+	else
+	{
+		prev->next = delEnv->next;
+		free_env(delEnv);
 	}
 }
 
-
-int		del_env(char *delKey, t_env *env)
+int		del_env(char *delKey, t_env **envs)
 {
-	t_env *delEnv;
-	t_env *tmp;	
-	t_env *end;
-	t_env *prev;
-	t_env *now;
+	t_env	*prev;
+	t_env	*delEnv;
 
 	prev = NULL;
-	now = env;
+	delEnv = *envs;
 
-	while (now)
+	while (delEnv)
 	{
-		if (!(ft_strcmp(delKey, now->name)))
+		if (!(ft_strcmp(delKey, delEnv->name)))
 		{
-			delone;
+			env_delone(envs, prev, delEnv);
+			return(1);
 		}
-		prev = now;
-		now = now->next;
+		prev = delEnv;
+		delEnv = delEnv->next;
 	}
-
-	return(1);
+	return(0);
 }
