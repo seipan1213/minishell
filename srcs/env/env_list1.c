@@ -1,6 +1,6 @@
 #include "../../includes/env.h"
 
-t_env *envs_init(void)
+t_env	*envs_init(void)
 {
     extern char **environ;
 		t_env *envs;
@@ -20,12 +20,16 @@ t_env *envs_init(void)
 
 void	print_envs(t_env *envs)
 {
+	int i = 1;
 	while (envs)
 	{
+		ft_putnbr_fd(i, 1);
+		write(1, ": ", 2);
 		ft_putstr_fd(envs->name, STDERR_FILENO);
 		ft_putstr_fd("  =  ", STDERR_FILENO);
 		ft_putendl_fd(envs->value, STDERR_FILENO);
 		envs = envs->next;
+		i++;
 	}
 }
 
@@ -71,7 +75,11 @@ t_env	*create_env(char *environ)
 void	free_env(t_env *env)
 {
 	free(env->name);
+	env->name = NULL;
 	free(env->value);
+	env->value = NULL;
+	free(env);
+	env = NULL;
 }
 
 void	free_envs(t_env *env)
