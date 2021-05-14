@@ -33,7 +33,7 @@ void	addb_env(t_env **envs, t_env *env)
 {
 	t_env	*back;
 
-	if (!env || !env)
+	if (!envs || !env)
 		return ;
 	if (!*envs)
 		*envs = env;
