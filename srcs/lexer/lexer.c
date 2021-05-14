@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lexer.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/14 19:55:18 by sehattor          #+#    #+#             */
+/*   Updated: 2021/05/14 19:55:18 by sehattor         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/lexer.h"
 
 void	exit_error(char *str, int ex_num)
@@ -239,6 +251,8 @@ t_token	*tokenise(char *line)
 	tokenise_init(&d, &tokens, &line);
 	while (line[++d.i])
 	{
+		if (ft_isspace(line[d.i]))
+			set_token(&tokens, line + d.i, 1, SPACE);
 		while (ft_isspace(line[d.i]))
 			d.i++;
 		d.j = d.i;
@@ -248,6 +262,7 @@ t_token	*tokenise(char *line)
 				token_meta(&d, &tokens);
 		if (d.j != d.i)
 			set_token(&tokens, line + d.j, d.i - d.j, STR);
+		d.i--;
 	}
 	return (tokens);
 }
@@ -259,14 +274,4 @@ void	print_tokens(t_token *t)
 		printf("%s %d\n", t->str, t->type);
 		t = t->next;
 	}
-}
-
-int main()
-{
-	char *line;
-	t_token *t;
-
-	get_next_line(0, &line);
-	t = tokenise(line);
-	print_tokens(t);
 }
