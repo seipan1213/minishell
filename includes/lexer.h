@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lexer.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/15 21:08:09 by sehattor          #+#    #+#             */
+/*   Updated: 2021/05/15 21:08:09 by sehattor         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LEXER_H
 # define LEXER_H
 # include <stdio.h>
@@ -54,22 +66,24 @@ void	addb_token(t_token **tokens, t_token *token);
 void	set_token(t_token **t, char *line, int len, t_ttype type);
 void	token_squote(t_tdata *d, t_token **t);
 void	token_dquote(t_tdata *d, t_token **t);
-
 void	token_and(t_tdata *d, t_token **t);
 void	token_pipe(t_tdata *d, t_token **t);
 void	token_lrdct(t_tdata *d, t_token **t);
 void	token_rrdct(t_tdata *d, t_token **t);
-
 void	token_esc(t_tdata *d, t_token **t);
 void	token_semi(t_tdata *d, t_token **t);
-
 void	token_meta(t_tdata *d, t_token **t);
 int		is_meta(char c);
-
 void	tokenise_init(t_tdata *data, t_token **t, char **line);
-
 t_token	*tokenise(char *line);
-
 void	print_tokens(t_token *t);
+int	put_error(char *str, int ret);
+int	is_metatype(int i);
+int	is_rdcttype(int i);
+void	check_qoute(int *flag, int type);
+int	check_syntax(t_token *t);
+int	check_avoid(t_token *t);
+
+int	check_tokens(t_token *t);
 
 #endif
