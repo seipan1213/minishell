@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/14 19:55:18 by sehattor          #+#    #+#             */
-/*   Updated: 2021/05/14 19:55:18 by sehattor         ###   ########.fr       */
+/*   Created: 2021/05/15 21:16:48 by sehattor          #+#    #+#             */
+/*   Updated: 2021/05/15 21:16:48 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/lexer.h"
 
-int		main()
+int	put_error(char *str, int ret)
 {
-	char *line;
-	t_token *t;
-
 	ft_putstr_fd(MINISHELL, STDERR_FILENO);
-	get_next_line(0, &line);
-	t = tokenise(line);
-	print_tokens(t);
-	check_tokens(t);
+	ft_putendl_fd(str, STDERR_FILENO);
+	return (ret);
+}
+
+void	exit_error(char *str, int ex_num)
+{
+	ft_putstr_fd(MINISHELL, STDERR_FILENO);
+	ft_putendl_fd(str, STDERR_FILENO);
+	exit(ex_num);
 }

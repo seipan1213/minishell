@@ -12,70 +12,55 @@
 
 #include "../../includes/lexer.h"
 
-int	put_error(char *str, int ret)
+void	check_qoute(int *flag, int type)
 {
-	ft_putstr_fd(MINISHELL, STDERR_FILENO);
-	ft_putendl_fd(str, STDERR_FILENO);
-	return (ret);
+	if (type == SQUOTE)
+		*flag ^= 1;
+	else if (type == DQUOTE)
+		*flag ^= 2;
 }
 
-int	is_metatype(int i)
-{
-	if (i == PIPE || i == DPIPE || i == AND || i == DAND
-		|| i == SCOLON || i == DSCOLON)
-		return (1);
-	return (0);
-}
-
-int	is_rdcttype(int i)
-{
-	if (i == RDIR || i == RRDIR || i == LDIR || i == LLDIR || i == LLLDIR)
-		return (1);
-	return (0);
-}
-
-int	check_tokens(t_token *t)
+int		check_syntax(t_token *t)
 {
 	t_ttype	pre_type;
-	int		status;
+	int		quote_flag;
 
-	status = 0;
 	pre_type = -1;
-	if (t->type == SPACE)
-		t = t->next;
-	if (is_metatype(t->type))
-		return (put_error(SYNTAXERR, -1));
-	while (t->next)
+	quote_flag = 0;
+	while (t)
 	{
 		while (t->type == SPACE && t->next)
 			t = t->next;
-		if (is_metatype(t->type) && is_rdcttype(pre_type))
-			return (put_error(SYNTAXERR, -1));
-		if (is_metatype(pre_type) && is_rdcttype(t->type))
-			return (put_error(SYNTAXERR, -1));
-		if (is_metatype(t->type) && is_metatype(pre_type))
-			return (put_error(SYNTAXERR, -1));
-		if (is_rdcttype(t->type) && is_rdcttype(pre_type))
-			return (put_error(SYNTAXERR, -1));
-		if (t->type == DSCOLON)
+		check_qoute(&quote_flag, t->type);
+		if ((is_metatype(t->type) && is_rdcttype(pre_type))
+			|| (is_metatype(pre_type) && is_rdcttype(t->type))
+			|| (is_metatype(t->type) && is_metatype(pre_type))
+			|| (is_rdcttype(t->type) && is_rdcttype(pre_type))
+			|| (is_metatype(t->type) && pre_type == -1)
+			|| t->type == DSCOLON)
 			return (put_error(SYNTAXERR, -1));
 		pre_type = t->type;
-		if (t->next)
+		if (t)
 			t = t->next;
 	}
-	if (is_rdcttype(t->type))
+	if (quote_flag != 0 || (t &&
+		(is_rdcttype(t->type) || t->type == PIPE || t->type == ESC)))
 		return (put_error(SYNTAXERR, -1));
 	return (0);
 }
 
-int	main()
+int		check_avoid(t_token *t)
 {
-	char *line;
-	t_token *t;
+	while (t)
+	{
+		if (t->type == DAND || t->type == DPIPE || t->type == LLLDIR)
+			return (put_error(SYNTAXERR, -1));
+		t = t->next;
+	}
 
-	ft_putstr_fd(MINISHELL, STDERR_FILENO);
-	get_next_line(0, &line);
-	t = tokenise(line);
-	print_tokens(t);
-	check_tokens(t);
+}
+
+int		check_tokens(t_token *t)
+{
+	return (check_syntax(t) || check_avoid(t));
 }
