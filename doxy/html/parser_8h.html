@@ -1,0 +1,642 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Ast Tree: includes/parser.h ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Ast Tree
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_09e761304027c904456130627fd4dcf5.html">includes</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">データ構造</a> &#124;
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#typedef-members">型定義</a> &#124;
+<a href="#func-members">関数</a>  </div>
+  <div class="headertitle">
+<div class="title">parser.h ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>This is API for Sate machine  
+<a href="#details">[詳解]</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="libft_8h_source.html">../libft/libft.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+parser.h の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="parser_8h__incl.png" border="0" usemap="#aincludes_2parser_8h" alt=""/></div>
+<map name="aincludes_2parser_8h" id="aincludes_2parser_8h">
+<area shape="rect" title="This is API for Sate machine" alt="" coords="95,5,215,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,67,107"/>
+<area shape="rect" title=" " alt="" coords="52,155,116,181"/>
+<area shape="rect" title=" " alt="" coords="141,155,209,181"/>
+<area shape="rect" title=" " alt="" coords="307,80,381,107"/>
+<area shape="rect" href="libft_8h.html" title=" " alt="" coords="192,80,283,107"/>
+<area shape="rect" title=" " alt="" coords="233,155,298,181"/>
+<area shape="rect" title=" " alt="" coords="323,155,381,181"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="parser_8h__dep__incl.png" border="0" usemap="#aincludes_2parser_8hdep" alt=""/></div>
+<map name="aincludes_2parser_8hdep" id="aincludes_2parser_8hdep">
+<area shape="rect" title="This is API for Sate machine" alt="" coords="199,5,319,32"/>
+<area shape="rect" href="init__parser_8c.html" title="This is API for Sate machine" alt="" coords="5,87,167,114"/>
+<area shape="rect" href="parser_8c.html" title="parser" alt="" coords="191,87,328,114"/>
+<area shape="rect" href="parser__free_8c.html" title=" " alt="" coords="352,80,479,121"/>
+</map>
+</div>
+</div>
+<p><a href="parser_8h_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+データ構造</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__command.html">s_command</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structast_node.html">astNode</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__token.html">s_token</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a87f23f9d76e3a2d5658da8dae25f38c4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a87f23f9d76e3a2d5658da8dae25f38c4">STR</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a87f23f9d76e3a2d5658da8dae25f38c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87b72a06d4f475065639f00fba02d5e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a87b72a06d4f475065639f00fba02d5e7">RDIR</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a87b72a06d4f475065639f00fba02d5e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43c000ec240b43b40482b09832ddedeb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a43c000ec240b43b40482b09832ddedeb">RRDIR</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a43c000ec240b43b40482b09832ddedeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96f4c6a0617a0cd2672503e08d207ce4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a96f4c6a0617a0cd2672503e08d207ce4">LDIR</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a96f4c6a0617a0cd2672503e08d207ce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b08537d216774db2ecb5e15d92c2a56"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a3b08537d216774db2ecb5e15d92c2a56">LLDIR</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a3b08537d216774db2ecb5e15d92c2a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95c990c0d84bb2aa42ec46969d1fa0ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a95c990c0d84bb2aa42ec46969d1fa0ca">LLLDIR</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a95c990c0d84bb2aa42ec46969d1fa0ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ff6e798033f03e74730e99f01936f84"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a5ff6e798033f03e74730e99f01936f84">SPACE</a>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:a5ff6e798033f03e74730e99f01936f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a601616d3f3cd0d3dba1d3149232dbfaf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a601616d3f3cd0d3dba1d3149232dbfaf">SQUOTE</a>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:a601616d3f3cd0d3dba1d3149232dbfaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44a9fd35b74885ac82584c7927214c7a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a44a9fd35b74885ac82584c7927214c7a">DQUOTE</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:a44a9fd35b74885ac82584c7927214c7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67bc87cdcc5724cf8e8e4ae278d0133f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a67bc87cdcc5724cf8e8e4ae278d0133f">PIPE</a>&#160;&#160;&#160;9</td></tr>
+<tr class="separator:a67bc87cdcc5724cf8e8e4ae278d0133f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43a3279ca40b65ac4ca71bf0d941d32d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a43a3279ca40b65ac4ca71bf0d941d32d">DPIPE</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:a43a3279ca40b65ac4ca71bf0d941d32d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd1b97556dfbbac61063a63031d2f91d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#acd1b97556dfbbac61063a63031d2f91d">AND</a>&#160;&#160;&#160;11</td></tr>
+<tr class="separator:acd1b97556dfbbac61063a63031d2f91d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee329b045c469f7ec623c608afff390c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#aee329b045c469f7ec623c608afff390c">DAND</a>&#160;&#160;&#160;12</td></tr>
+<tr class="separator:aee329b045c469f7ec623c608afff390c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19d20b359daf6731e7f7afa7e870fe75"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a19d20b359daf6731e7f7afa7e870fe75">SCOLON</a>&#160;&#160;&#160;13</td></tr>
+<tr class="separator:a19d20b359daf6731e7f7afa7e870fe75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac00c0ce3126e96b62bfed023d9628fc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#aac00c0ce3126e96b62bfed023d9628fc">DSCOLON</a>&#160;&#160;&#160;14</td></tr>
+<tr class="separator:aac00c0ce3126e96b62bfed023d9628fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a97d3a44376e94a3bc5f5e613be9bd0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a6a97d3a44376e94a3bc5f5e613be9bd0">DOLL</a>&#160;&#160;&#160;15</td></tr>
+<tr class="separator:a6a97d3a44376e94a3bc5f5e613be9bd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4af1b6159e447ba72652bb7fcdfa726e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a4af1b6159e447ba72652bb7fcdfa726e">ESC</a>&#160;&#160;&#160;16</td></tr>
+<tr class="separator:a4af1b6159e447ba72652bb7fcdfa726e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13f4eb5ea5f2c6596fc35c2fa5832640"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a13f4eb5ea5f2c6596fc35c2fa5832640">SSTR</a>&#160;&#160;&#160;17</td></tr>
+<tr class="separator:a13f4eb5ea5f2c6596fc35c2fa5832640"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4810d8325791be718f1bcb2a92fd3a0f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a4810d8325791be718f1bcb2a92fd3a0f">RINT</a>&#160;&#160;&#160;18</td></tr>
+<tr class="separator:a4810d8325791be718f1bcb2a92fd3a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:a343be1e180affa75a4a3b4bb5b2225e3"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structs__command.html">s_command</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a343be1e180affa75a4a3b4bb5b2225e3">t_command</a></td></tr>
+<tr class="separator:a343be1e180affa75a4a3b4bb5b2225e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2ff7b3206336b6b4a5d55de3d6b6a32"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structast_node.html">astNode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#af2ff7b3206336b6b4a5d55de3d6b6a32">astNode</a></td></tr>
+<tr class="separator:af2ff7b3206336b6b4a5d55de3d6b6a32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aead06bc7a81ebdd60cbdcf6b3b8e51d4"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structs__token.html">s_token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#aead06bc7a81ebdd60cbdcf6b3b8e51d4">t_token</a></td></tr>
+<tr class="separator:aead06bc7a81ebdd60cbdcf6b3b8e51d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a121bf5efc05207ec5290c18a39114747"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a121bf5efc05207ec5290c18a39114747">del_token</a> (void *ptr)</td></tr>
+<tr class="separator:a121bf5efc05207ec5290c18a39114747"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2338a10cb0627b4ac70eaa361c092d93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a2338a10cb0627b4ac70eaa361c092d93">exit_token</a> (<a class="el" href="parser_8h.html#aead06bc7a81ebdd60cbdcf6b3b8e51d4">t_token</a> *t)</td></tr>
+<tr class="separator:a2338a10cb0627b4ac70eaa361c092d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cdcaa2bee43b1c4553548fe02de3710"><td class="memItemLeft" align="right" valign="top"><a class="el" href="parser_8h.html#aead06bc7a81ebdd60cbdcf6b3b8e51d4">t_token</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a9cdcaa2bee43b1c4553548fe02de3710">token_init</a> ()</td></tr>
+<tr class="memdesc:a9cdcaa2bee43b1c4553548fe02de3710"><td class="mdescLeft">&#160;</td><td class="mdescRight">簡単な説明（～する関数）  <a href="parser_8h.html#a9cdcaa2bee43b1c4553548fe02de3710">[詳解]</a><br /></td></tr>
+<tr class="separator:a9cdcaa2bee43b1c4553548fe02de3710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c319d91ae15797b85bd5ec185aa068d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a2c319d91ae15797b85bd5ec185aa068d">print_token</a> (<a class="el" href="parser_8h.html#aead06bc7a81ebdd60cbdcf6b3b8e51d4">t_token</a> *t)</td></tr>
+<tr class="memdesc:a2c319d91ae15797b85bd5ec185aa068d"><td class="mdescLeft">&#160;</td><td class="mdescRight">簡単な説明（～する関数）  <a href="parser_8h.html#a2c319d91ae15797b85bd5ec185aa068d">[詳解]</a><br /></td></tr>
+<tr class="separator:a2c319d91ae15797b85bd5ec185aa068d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>This is API for Sate machine </p>
+</div><h2 class="groupheader">マクロ定義詳解</h2>
+<a id="acd1b97556dfbbac61063a63031d2f91d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd1b97556dfbbac61063a63031d2f91d">&#9670;&nbsp;</a></span>AND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AND&#160;&#160;&#160;11</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aee329b045c469f7ec623c608afff390c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee329b045c469f7ec623c608afff390c">&#9670;&nbsp;</a></span>DAND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DAND&#160;&#160;&#160;12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6a97d3a44376e94a3bc5f5e613be9bd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a97d3a44376e94a3bc5f5e613be9bd0">&#9670;&nbsp;</a></span>DOLL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DOLL&#160;&#160;&#160;15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a43a3279ca40b65ac4ca71bf0d941d32d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43a3279ca40b65ac4ca71bf0d941d32d">&#9670;&nbsp;</a></span>DPIPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DPIPE&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a44a9fd35b74885ac82584c7927214c7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44a9fd35b74885ac82584c7927214c7a">&#9670;&nbsp;</a></span>DQUOTE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DQUOTE&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aac00c0ce3126e96b62bfed023d9628fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac00c0ce3126e96b62bfed023d9628fc">&#9670;&nbsp;</a></span>DSCOLON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DSCOLON&#160;&#160;&#160;14</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4af1b6159e447ba72652bb7fcdfa726e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4af1b6159e447ba72652bb7fcdfa726e">&#9670;&nbsp;</a></span>ESC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ESC&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a96f4c6a0617a0cd2672503e08d207ce4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96f4c6a0617a0cd2672503e08d207ce4">&#9670;&nbsp;</a></span>LDIR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LDIR&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3b08537d216774db2ecb5e15d92c2a56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b08537d216774db2ecb5e15d92c2a56">&#9670;&nbsp;</a></span>LLDIR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LLDIR&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a95c990c0d84bb2aa42ec46969d1fa0ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95c990c0d84bb2aa42ec46969d1fa0ca">&#9670;&nbsp;</a></span>LLLDIR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LLLDIR&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a67bc87cdcc5724cf8e8e4ae278d0133f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67bc87cdcc5724cf8e8e4ae278d0133f">&#9670;&nbsp;</a></span>PIPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PIPE&#160;&#160;&#160;9</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a87b72a06d4f475065639f00fba02d5e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87b72a06d4f475065639f00fba02d5e7">&#9670;&nbsp;</a></span>RDIR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RDIR&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4810d8325791be718f1bcb2a92fd3a0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4810d8325791be718f1bcb2a92fd3a0f">&#9670;&nbsp;</a></span>RINT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RINT&#160;&#160;&#160;18</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a43c000ec240b43b40482b09832ddedeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43c000ec240b43b40482b09832ddedeb">&#9670;&nbsp;</a></span>RRDIR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RRDIR&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a19d20b359daf6731e7f7afa7e870fe75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19d20b359daf6731e7f7afa7e870fe75">&#9670;&nbsp;</a></span>SCOLON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SCOLON&#160;&#160;&#160;13</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5ff6e798033f03e74730e99f01936f84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ff6e798033f03e74730e99f01936f84">&#9670;&nbsp;</a></span>SPACE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SPACE&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a601616d3f3cd0d3dba1d3149232dbfaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a601616d3f3cd0d3dba1d3149232dbfaf">&#9670;&nbsp;</a></span>SQUOTE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SQUOTE&#160;&#160;&#160;7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a13f4eb5ea5f2c6596fc35c2fa5832640"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13f4eb5ea5f2c6596fc35c2fa5832640">&#9670;&nbsp;</a></span>SSTR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SSTR&#160;&#160;&#160;17</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a87f23f9d76e3a2d5658da8dae25f38c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87f23f9d76e3a2d5658da8dae25f38c4">&#9670;&nbsp;</a></span>STR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">型定義詳解</h2>
+<a id="af2ff7b3206336b6b4a5d55de3d6b6a32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2ff7b3206336b6b4a5d55de3d6b6a32">&#9670;&nbsp;</a></span>astNode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structast_node.html">astNode</a> <a class="el" href="structast_node.html">astNode</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a343be1e180affa75a4a3b4bb5b2225e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a343be1e180affa75a4a3b4bb5b2225e3">&#9670;&nbsp;</a></span>t_command</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structs__command.html">s_command</a> <a class="el" href="parser_8h.html#a343be1e180affa75a4a3b4bb5b2225e3">t_command</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>&lt;command line&gt; ::= &lt;job&gt; | &lt;job&gt; '&amp;' | &lt;job&gt; '&amp;' &lt;command line&gt; | &lt;job&gt; ';' | &lt;job&gt; ';' &lt;command line&gt; &lt;job&gt; ::= &lt;command&gt; | &lt; job &gt; '|' &lt; command &gt; &lt;command&gt; ::= &lt;simple command&gt; | &lt;simple command&gt; '&lt;' &lt;filename&gt; | &lt;simple command&gt; '&gt;' &lt;filename&gt; &lt;simple command&gt;::= &lt;pathname&gt; | &lt;simple command&gt; &lt;token&gt; </p>
+
+</div>
+</div>
+<a id="aead06bc7a81ebdd60cbdcf6b3b8e51d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aead06bc7a81ebdd60cbdcf6b3b8e51d4">&#9670;&nbsp;</a></span>t_token</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structs__token.html">s_token</a> <a class="el" href="parser_8h.html#aead06bc7a81ebdd60cbdcf6b3b8e51d4">t_token</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>t_token </p>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a121bf5efc05207ec5290c18a39114747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a121bf5efc05207ec5290c18a39114747">&#9670;&nbsp;</a></span>del_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void del_token </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="parser_8h_a121bf5efc05207ec5290c18a39114747_icgraph.png" border="0" usemap="#aparser_8h_a121bf5efc05207ec5290c18a39114747_icgraph" alt=""/></div>
+<map name="aparser_8h_a121bf5efc05207ec5290c18a39114747_icgraph" id="aparser_8h_a121bf5efc05207ec5290c18a39114747_icgraph">
+<area shape="rect" title=" " alt="" coords="136,5,215,32"/>
+<area shape="rect" href="parser_8h.html#a2338a10cb0627b4ac70eaa361c092d93" title=" " alt="" coords="5,5,88,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2338a10cb0627b4ac70eaa361c092d93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2338a10cb0627b4ac70eaa361c092d93">&#9670;&nbsp;</a></span>exit_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void exit_token </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="parser_8h.html#aead06bc7a81ebdd60cbdcf6b3b8e51d4">t_token</a> *&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="parser_8h_a2338a10cb0627b4ac70eaa361c092d93_cgraph.png" border="0" usemap="#aparser_8h_a2338a10cb0627b4ac70eaa361c092d93_cgraph" alt=""/></div>
+<map name="aparser_8h_a2338a10cb0627b4ac70eaa361c092d93_cgraph" id="aparser_8h_a2338a10cb0627b4ac70eaa361c092d93_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,88,57"/>
+<area shape="rect" href="parser__free_8c.html#a121bf5efc05207ec5290c18a39114747" title=" " alt="" coords="141,5,220,32"/>
+<area shape="rect" href="ft__lstdelone_8c.html#ac2b881501f9ee2f3ed5718f6d9ebee7c" title=" " alt="" coords="136,56,225,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2c319d91ae15797b85bd5ec185aa068d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c319d91ae15797b85bd5ec185aa068d">&#9670;&nbsp;</a></span>print_token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_token </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="parser_8h.html#aead06bc7a81ebdd60cbdcf6b3b8e51d4">t_token</a> *&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>簡単な説明（～する関数） </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">t(引数名)</td><td>引数の説明 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void 戻り値の説明</dd></dl>
+<p>詳細な説明 </p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="parser_8h_a2c319d91ae15797b85bd5ec185aa068d_icgraph.png" border="0" usemap="#aparser_8h_a2c319d91ae15797b85bd5ec185aa068d_icgraph" alt=""/></div>
+<map name="aparser_8h_a2c319d91ae15797b85bd5ec185aa068d_icgraph" id="aparser_8h_a2c319d91ae15797b85bd5ec185aa068d_icgraph">
+<area shape="rect" title="簡単な説明（～する関数）" alt="" coords="104,5,191,32"/>
+<area shape="rect" href="init__parser_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9cdcaa2bee43b1c4553548fe02de3710"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cdcaa2bee43b1c4553548fe02de3710">&#9670;&nbsp;</a></span>token_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="parser_8h.html#aead06bc7a81ebdd60cbdcf6b3b8e51d4">t_token</a>* token_init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>簡単な説明（～する関数） </p>
+<dl class="section return"><dt>戻り値</dt><dd>t_token* 戻り値の説明</dd></dl>
+<p>詳細な説明 </p>
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="parser_8h_a9cdcaa2bee43b1c4553548fe02de3710_cgraph.png" border="0" usemap="#aparser_8h_a9cdcaa2bee43b1c4553548fe02de3710_cgraph" alt=""/></div>
+<map name="aparser_8h_a9cdcaa2bee43b1c4553548fe02de3710_cgraph" id="aparser_8h_a9cdcaa2bee43b1c4553548fe02de3710_cgraph">
+<area shape="rect" title="簡単な説明（～する関数）" alt="" coords="5,31,84,57"/>
+<area shape="rect" href="init__parser_8c.html#a2f248518682fd5e9651fcf2a49bca6c7" title="簡単な説明（～する関数）" alt="" coords="139,5,222,32"/>
+<area shape="rect" href="init__parser_8c.html#a1d61e03cd29ce06eb3701434192c1f95" title="簡単な説明（～する関数）" alt="" coords="132,56,229,83"/>
+<area shape="rect" href="init__parser_8c.html#a9664066fc5a613287a73d01976f81993" title=" " alt="" coords="277,5,360,32"/>
+<area shape="rect" href="init__parser_8c.html#aa0dcac6867cc3e80a775b45c0cbbe1d2" title=" " alt="" coords="279,56,358,83"/>
+<area shape="rect" href="ft__strdup_8c.html#aada5f5ba69c0c2c97a1322b4e2554709" title=" " alt="" coords="408,56,481,83"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="parser_8h_a9cdcaa2bee43b1c4553548fe02de3710_icgraph.png" border="0" usemap="#aparser_8h_a9cdcaa2bee43b1c4553548fe02de3710_icgraph" alt=""/></div>
+<map name="aparser_8h_a9cdcaa2bee43b1c4553548fe02de3710_icgraph" id="aparser_8h_a9cdcaa2bee43b1c4553548fe02de3710_icgraph">
+<area shape="rect" title="簡単な説明（～する関数）" alt="" coords="104,5,183,32"/>
+<area shape="rect" href="parser_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

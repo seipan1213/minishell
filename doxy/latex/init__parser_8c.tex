@@ -1,0 +1,206 @@
+\hypertarget{init__parser_8c}{}\doxysection{srcs/parser/init\+\_\+parser.c ファイル}
+\label{init__parser_8c}\index{srcs/parser/init\_parser.c@{srcs/parser/init\_parser.c}}
+
+
+This is API for Sate machine  
+
+
+{\ttfamily \#include \char`\"{}../../includes/parser.\+h\char`\"{}}\newline
+init\+\_\+parser.\+c の依存先関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init__parser_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{init__parser_8c_aa0dcac6867cc3e80a775b45c0cbbe1d2}{put\+\_\+token}} (\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$t, char $\ast$val, int type)
+\item 
+\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$ \mbox{\hyperlink{init__parser_8c_a1d61e03cd29ce06eb3701434192c1f95}{create\+\_\+token}} (char $\ast$val, int type)
+\begin{DoxyCompactList}\small\item\em 簡単な説明（～する関数） \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{init__parser_8c_a2c319d91ae15797b85bd5ec185aa068d}{print\+\_\+token}} (\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$t)
+\begin{DoxyCompactList}\small\item\em 簡単な説明（～する関数） \end{DoxyCompactList}\item 
+\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$ \mbox{\hyperlink{init__parser_8c_a9664066fc5a613287a73d01976f81993}{last\+\_\+token}} (\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$t)
+\item 
+int \mbox{\hyperlink{init__parser_8c_a2f248518682fd5e9651fcf2a49bca6c7}{adb\+\_\+token}} (\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$$\ast$lst, \mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$new)
+\begin{DoxyCompactList}\small\item\em 簡単な説明（～する関数） \end{DoxyCompactList}\item 
+\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$ \mbox{\hyperlink{init__parser_8c_a9cdcaa2bee43b1c4553548fe02de3710}{token\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em 簡単な説明（～する関数） \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{init__parser_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+This is API for Sate machine 
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{init__parser_8c_a2f248518682fd5e9651fcf2a49bca6c7}\label{init__parser_8c_a2f248518682fd5e9651fcf2a49bca6c7}} 
+\index{init\_parser.c@{init\_parser.c}!adb\_token@{adb\_token}}
+\index{adb\_token@{adb\_token}!init\_parser.c@{init\_parser.c}}
+\doxysubsubsection{\texorpdfstring{adb\_token()}{adb\_token()}}
+{\footnotesize\ttfamily int adb\+\_\+token (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$$\ast$}]{lst,  }\item[{\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$}]{new }\end{DoxyParamCaption})}
+
+
+
+簡単な説明（～する関数） 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em lst(引数名)} & 引数の説明 \\
+\hline
+\mbox{\texttt{ out}}  & {\em new(引数名)} & 引数の説明 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+int 戻り値の説明
+\end{DoxyReturn}
+詳細な説明 呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{init__parser_8c_a2f248518682fd5e9651fcf2a49bca6c7_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{init__parser_8c_a2f248518682fd5e9651fcf2a49bca6c7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{init__parser_8c_a1d61e03cd29ce06eb3701434192c1f95}\label{init__parser_8c_a1d61e03cd29ce06eb3701434192c1f95}} 
+\index{init\_parser.c@{init\_parser.c}!create\_token@{create\_token}}
+\index{create\_token@{create\_token}!init\_parser.c@{init\_parser.c}}
+\doxysubsubsection{\texorpdfstring{create\_token()}{create\_token()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}}$\ast$ create\+\_\+token (\begin{DoxyParamCaption}\item[{char $\ast$}]{val,  }\item[{int}]{type }\end{DoxyParamCaption})}
+
+
+
+簡単な説明（～する関数） 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em val(引数名)} & 引数の説明 \\
+\hline
+\mbox{\texttt{ in}}  & {\em type(引数名)} & 引数の説明 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+t\+\_\+token$\ast$ 戻り値の説明
+\end{DoxyReturn}
+詳細な説明 呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{init__parser_8c_a1d61e03cd29ce06eb3701434192c1f95_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{init__parser_8c_a1d61e03cd29ce06eb3701434192c1f95_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{init__parser_8c_a9664066fc5a613287a73d01976f81993}\label{init__parser_8c_a9664066fc5a613287a73d01976f81993}} 
+\index{init\_parser.c@{init\_parser.c}!last\_token@{last\_token}}
+\index{last\_token@{last\_token}!init\_parser.c@{init\_parser.c}}
+\doxysubsubsection{\texorpdfstring{last\_token()}{last\_token()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}}$\ast$ last\+\_\+token (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$}]{t }\end{DoxyParamCaption})}
+
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init__parser_8c_a9664066fc5a613287a73d01976f81993_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{init__parser_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{init__parser_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{init\_parser.c@{init\_parser.c}!main@{main}}
+\index{main@{main}!init\_parser.c@{init\_parser.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{init__parser_8c_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{init__parser_8c_a2c319d91ae15797b85bd5ec185aa068d}\label{init__parser_8c_a2c319d91ae15797b85bd5ec185aa068d}} 
+\index{init\_parser.c@{init\_parser.c}!print\_token@{print\_token}}
+\index{print\_token@{print\_token}!init\_parser.c@{init\_parser.c}}
+\doxysubsubsection{\texorpdfstring{print\_token()}{print\_token()}}
+{\footnotesize\ttfamily void print\+\_\+token (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+簡単な説明（～する関数） 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em t(引数名)} & 引数の説明 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+void 戻り値の説明
+\end{DoxyReturn}
+詳細な説明 被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{init__parser_8c_a2c319d91ae15797b85bd5ec185aa068d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{init__parser_8c_aa0dcac6867cc3e80a775b45c0cbbe1d2}\label{init__parser_8c_aa0dcac6867cc3e80a775b45c0cbbe1d2}} 
+\index{init\_parser.c@{init\_parser.c}!put\_token@{put\_token}}
+\index{put\_token@{put\_token}!init\_parser.c@{init\_parser.c}}
+\doxysubsubsection{\texorpdfstring{put\_token()}{put\_token()}}
+{\footnotesize\ttfamily void put\+\_\+token (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$}]{t,  }\item[{char $\ast$}]{val,  }\item[{int}]{type }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{init__parser_8c_aa0dcac6867cc3e80a775b45c0cbbe1d2_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init__parser_8c_aa0dcac6867cc3e80a775b45c0cbbe1d2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{init__parser_8c_a9cdcaa2bee43b1c4553548fe02de3710}\label{init__parser_8c_a9cdcaa2bee43b1c4553548fe02de3710}} 
+\index{init\_parser.c@{init\_parser.c}!token\_init@{token\_init}}
+\index{token\_init@{token\_init}!init\_parser.c@{init\_parser.c}}
+\doxysubsubsection{\texorpdfstring{token\_init()}{token\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}}$\ast$ token\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+簡単な説明（～する関数） 
+
+\begin{DoxyReturn}{戻り値}
+t\+\_\+token$\ast$ 戻り値の説明
+\end{DoxyReturn}
+詳細な説明 呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init__parser_8c_a9cdcaa2bee43b1c4553548fe02de3710_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{init__parser_8c_a9cdcaa2bee43b1c4553548fe02de3710_icgraph}
+\end{center}
+\end{figure}

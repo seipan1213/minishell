@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Ast Tree: includes/env.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Ast Tree
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_09e761304027c904456130627fd4dcf5.html">includes</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">env.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="env_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef ENV_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"># define ENV_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"># include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor"># include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor"># include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor"># include &quot;../libft/libft.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structs__env.html">    8</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__env.html">s_env</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structs__env.html#a5ac083a645d964373f022d03df4849c8">   10</a></span>&#160;    <span class="keywordtype">char</span>            *<a class="code" href="structs__env.html#a5ac083a645d964373f022d03df4849c8">name</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structs__env.html#a4e9aec275e566b978a3ccb4e043d8c61">   11</a></span>&#160;    <span class="keywordtype">char</span>            *<a class="code" href="structs__env.html#a4e9aec275e566b978a3ccb4e043d8c61">value</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structs__env.html#a47ea7cf03657a560d0dbbd486538b422">   12</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structs__env.html">s_env</a>    *<a class="code" href="structs__env.html#a47ea7cf03657a560d0dbbd486538b422">next</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="env_8h.html#aa3d21e1567b21e23ec928b1eb405fe4b">   13</a></span>&#160;}           <a class="code" href="env_8h.html#aa3d21e1567b21e23ec928b1eb405fe4b">t_env</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span>    <a class="code" href="env_8h.html#aa4822339a4ade6f566d1b49052c8f874">print_envs</a>(<a class="code" href="structs__env.html">t_env</a> *envs);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">void</span>    <a class="code" href="env_8h.html#a9ce0ae53f9b058a3c4e05d502aa3ef57">addb_env</a>(<a class="code" href="structs__env.html">t_env</a> **envs, <a class="code" href="structs__env.html">t_env</a> *env);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<a class="code" href="structs__env.html">t_env</a>   *<a class="code" href="env_8h.html#a510556cc3b025b49bd0418b85417ffdd">create_env</a>(<span class="keywordtype">char</span> *environ);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<a class="code" href="structs__env.html">t_env</a>   *<a class="code" href="env_8h.html#ad4e736fa001326adbe2e037ea66b3b63">envs_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span>    <a class="code" href="env_8h.html#a209643edfe16d3151bfb3427de57a98f">free_env</a>(<a class="code" href="structs__env.html">t_env</a> *env);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span>    <a class="code" href="env_8h.html#a1b4609d53080c7cd4ffc5effdb4b2f90">free_envs</a>(<a class="code" href="structs__env.html">t_env</a> *env);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<a class="code" href="structs__env.html">t_env</a>   *<a class="code" href="env_8h.html#a9dcbc199b876946dc1fb85aea14c068c">envlast</a>(<a class="code" href="structs__env.html">t_env</a> *env);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<a class="code" href="structs__env.html">t_env</a>   *<a class="code" href="env_8h.html#a8ed2a0b355a1ff9709a4ed5759ef3330">search_env</a>(<span class="keywordtype">char</span> *key, <a class="code" href="structs__env.html">t_env</a> *env);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">int</span>     <a class="code" href="env_8h.html#abd118f33a5a0fe00b6cbbfb0eeae25a5">ft_strcmp</a>(<span class="keywordtype">char</span> *s1, <span class="keywordtype">char</span> *s2);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">int</span>     <a class="code" href="env_8h.html#ad2529779412cf0d65272b228f8e7ba90">del_env</a>(<span class="keywordtype">char</span> *delKey, <a class="code" href="structs__env.html">t_env</a> **env);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aenv_8h_html_a1b4609d53080c7cd4ffc5effdb4b2f90"><div class="ttname"><a href="env_8h.html#a1b4609d53080c7cd4ffc5effdb4b2f90">free_envs</a></div><div class="ttdeci">void free_envs(t_env *env)</div><div class="ttdef"><b>Definition:</b> env_list1.c:85</div></div>
+<div class="ttc" id="aenv_8h_html_a209643edfe16d3151bfb3427de57a98f"><div class="ttname"><a href="env_8h.html#a209643edfe16d3151bfb3427de57a98f">free_env</a></div><div class="ttdeci">void free_env(t_env *env)</div><div class="ttdef"><b>Definition:</b> env_list1.c:75</div></div>
+<div class="ttc" id="aenv_8h_html_a510556cc3b025b49bd0418b85417ffdd"><div class="ttname"><a href="env_8h.html#a510556cc3b025b49bd0418b85417ffdd">create_env</a></div><div class="ttdeci">t_env * create_env(char *environ)</div><div class="ttdef"><b>Definition:</b> env_list1.c:53</div></div>
+<div class="ttc" id="aenv_8h_html_a8ed2a0b355a1ff9709a4ed5759ef3330"><div class="ttname"><a href="env_8h.html#a8ed2a0b355a1ff9709a4ed5759ef3330">search_env</a></div><div class="ttdeci">t_env * search_env(char *key, t_env *env)</div><div class="ttdef"><b>Definition:</b> env_list2.c:5</div></div>
+<div class="ttc" id="aenv_8h_html_a9ce0ae53f9b058a3c4e05d502aa3ef57"><div class="ttname"><a href="env_8h.html#a9ce0ae53f9b058a3c4e05d502aa3ef57">addb_env</a></div><div class="ttdeci">void addb_env(t_env **envs, t_env *env)</div><div class="ttdef"><b>Definition:</b> env_list1.c:36</div></div>
+<div class="ttc" id="aenv_8h_html_a9dcbc199b876946dc1fb85aea14c068c"><div class="ttname"><a href="env_8h.html#a9dcbc199b876946dc1fb85aea14c068c">envlast</a></div><div class="ttdeci">t_env * envlast(t_env *env)</div><div class="ttdef"><b>Definition:</b> env_list1.c:95</div></div>
+<div class="ttc" id="aenv_8h_html_aa3d21e1567b21e23ec928b1eb405fe4b"><div class="ttname"><a href="env_8h.html#aa3d21e1567b21e23ec928b1eb405fe4b">t_env</a></div><div class="ttdeci">struct s_env t_env</div></div>
+<div class="ttc" id="aenv_8h_html_aa4822339a4ade6f566d1b49052c8f874"><div class="ttname"><a href="env_8h.html#aa4822339a4ade6f566d1b49052c8f874">print_envs</a></div><div class="ttdeci">void print_envs(t_env *envs)</div><div class="ttdef"><b>Definition:</b> env_list1.c:21</div></div>
+<div class="ttc" id="aenv_8h_html_abd118f33a5a0fe00b6cbbfb0eeae25a5"><div class="ttname"><a href="env_8h.html#abd118f33a5a0fe00b6cbbfb0eeae25a5">ft_strcmp</a></div><div class="ttdeci">int ft_strcmp(char *s1, char *s2)</div><div class="ttdef"><b>Definition:</b> ft_strcmp.c:13</div></div>
+<div class="ttc" id="aenv_8h_html_ad2529779412cf0d65272b228f8e7ba90"><div class="ttname"><a href="env_8h.html#ad2529779412cf0d65272b228f8e7ba90">del_env</a></div><div class="ttdeci">int del_env(char *delKey, t_env **env)</div><div class="ttdef"><b>Definition:</b> sh_unset.c:22</div></div>
+<div class="ttc" id="aenv_8h_html_ad4e736fa001326adbe2e037ea66b3b63"><div class="ttname"><a href="env_8h.html#ad4e736fa001326adbe2e037ea66b3b63">envs_init</a></div><div class="ttdeci">t_env * envs_init(void)</div><div class="ttdef"><b>Definition:</b> env_list1.c:3</div></div>
+<div class="ttc" id="astructs__env_html"><div class="ttname"><a href="structs__env.html">s_env</a></div><div class="ttdef"><b>Definition:</b> env.h:9</div></div>
+<div class="ttc" id="astructs__env_html_a47ea7cf03657a560d0dbbd486538b422"><div class="ttname"><a href="structs__env.html#a47ea7cf03657a560d0dbbd486538b422">s_env::next</a></div><div class="ttdeci">struct s_env * next</div><div class="ttdef"><b>Definition:</b> env.h:12</div></div>
+<div class="ttc" id="astructs__env_html_a4e9aec275e566b978a3ccb4e043d8c61"><div class="ttname"><a href="structs__env.html#a4e9aec275e566b978a3ccb4e043d8c61">s_env::value</a></div><div class="ttdeci">char * value</div><div class="ttdef"><b>Definition:</b> env.h:11</div></div>
+<div class="ttc" id="astructs__env_html_a5ac083a645d964373f022d03df4849c8"><div class="ttname"><a href="structs__env.html#a5ac083a645d964373f022d03df4849c8">s_env::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> env.h:10</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

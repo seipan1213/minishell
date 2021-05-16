@@ -1,0 +1,196 @@
+\hypertarget{minishell_8c}{}\doxysection{srcs/minishell.c ファイル}
+\label{minishell_8c}\index{srcs/minishell.c@{srcs/minishell.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../libft/libft.\+h\char`\"{}}\newline
+minishell.\+c の依存先関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{minishell_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{マクロ定義}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{minishell_8c_a3a540e3eef339eec06aff31c4ba1eb25}{STDERR}}~2
+\item 
+\#define \mbox{\hyperlink{minishell_8c_a7444078444de783119eb8365c3a17bae}{MINISHELL}}~\char`\"{}MINISHELL\$ \char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{minishell_8c_a092578fcfb31c540cb4af1dda8238c70}{minishell}} (char $\ast$$\ast$envp)
+\item 
+void \mbox{\hyperlink{minishell_8c_a9e3dc0b77fc445bb64825d8ace433615}{sig\+\_\+int\+\_\+input}} ()
+\item 
+void \mbox{\hyperlink{minishell_8c_a5a09a60bad7286b3db6e77cbae963f67}{sig\+\_\+quit\+\_\+input}} ()
+\item 
+int \mbox{\hyperlink{minishell_8c_a8ff4edfb4c20f0d8ecd825053daf86cb}{launch}} (char $\ast$line, char $\ast$$\ast$envp)
+\item 
+void \mbox{\hyperlink{minishell_8c_a48c190bea281bc2dbd51a57aaf50d2b2}{sig\+\_\+input}} ()
+\item 
+void \mbox{\hyperlink{minishell_8c_a8c41363ed965c61debb268b71e4b94e3}{sig\+\_\+ign}} ()
+\item 
+int \mbox{\hyperlink{minishell_8c_a647f21a28344e1d9c643f4115516d7c9}{main}} (int argc, char $\ast$$\ast$argv, char $\ast$$\ast$envp)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{マクロ定義詳解}
+\mbox{\Hypertarget{minishell_8c_a7444078444de783119eb8365c3a17bae}\label{minishell_8c_a7444078444de783119eb8365c3a17bae}} 
+\index{minishell.c@{minishell.c}!MINISHELL@{MINISHELL}}
+\index{MINISHELL@{MINISHELL}!minishell.c@{minishell.c}}
+\doxysubsubsection{\texorpdfstring{MINISHELL}{MINISHELL}}
+{\footnotesize\ttfamily \#define MINISHELL~\char`\"{}MINISHELL\$ \char`\"{}}
+
+\mbox{\Hypertarget{minishell_8c_a3a540e3eef339eec06aff31c4ba1eb25}\label{minishell_8c_a3a540e3eef339eec06aff31c4ba1eb25}} 
+\index{minishell.c@{minishell.c}!STDERR@{STDERR}}
+\index{STDERR@{STDERR}!minishell.c@{minishell.c}}
+\doxysubsubsection{\texorpdfstring{STDERR}{STDERR}}
+{\footnotesize\ttfamily \#define STDERR~2}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{minishell_8c_a8ff4edfb4c20f0d8ecd825053daf86cb}\label{minishell_8c_a8ff4edfb4c20f0d8ecd825053daf86cb}} 
+\index{minishell.c@{minishell.c}!launch@{launch}}
+\index{launch@{launch}!minishell.c@{minishell.c}}
+\doxysubsubsection{\texorpdfstring{launch()}{launch()}}
+{\footnotesize\ttfamily int launch (\begin{DoxyParamCaption}\item[{char $\ast$}]{line,  }\item[{char $\ast$$\ast$}]{envp }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{minishell_8c_a8ff4edfb4c20f0d8ecd825053daf86cb_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{minishell_8c_a8ff4edfb4c20f0d8ecd825053daf86cb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{minishell_8c_a647f21a28344e1d9c643f4115516d7c9}\label{minishell_8c_a647f21a28344e1d9c643f4115516d7c9}} 
+\index{minishell.c@{minishell.c}!main@{main}}
+\index{main@{main}!minishell.c@{minishell.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv,  }\item[{char $\ast$$\ast$}]{envp }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{minishell_8c_a647f21a28344e1d9c643f4115516d7c9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{minishell_8c_a092578fcfb31c540cb4af1dda8238c70}\label{minishell_8c_a092578fcfb31c540cb4af1dda8238c70}} 
+\index{minishell.c@{minishell.c}!minishell@{minishell}}
+\index{minishell@{minishell}!minishell.c@{minishell.c}}
+\doxysubsubsection{\texorpdfstring{minishell()}{minishell()}}
+{\footnotesize\ttfamily void minishell (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{envp }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{minishell_8c_a092578fcfb31c540cb4af1dda8238c70_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{minishell_8c_a092578fcfb31c540cb4af1dda8238c70_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{minishell_8c_a8c41363ed965c61debb268b71e4b94e3}\label{minishell_8c_a8c41363ed965c61debb268b71e4b94e3}} 
+\index{minishell.c@{minishell.c}!sig\_ign@{sig\_ign}}
+\index{sig\_ign@{sig\_ign}!minishell.c@{minishell.c}}
+\doxysubsubsection{\texorpdfstring{sig\_ign()}{sig\_ign()}}
+{\footnotesize\ttfamily void sig\+\_\+ign (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{minishell_8c_a8c41363ed965c61debb268b71e4b94e3_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{minishell_8c_a8c41363ed965c61debb268b71e4b94e3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{minishell_8c_a48c190bea281bc2dbd51a57aaf50d2b2}\label{minishell_8c_a48c190bea281bc2dbd51a57aaf50d2b2}} 
+\index{minishell.c@{minishell.c}!sig\_input@{sig\_input}}
+\index{sig\_input@{sig\_input}!minishell.c@{minishell.c}}
+\doxysubsubsection{\texorpdfstring{sig\_input()}{sig\_input()}}
+{\footnotesize\ttfamily void sig\+\_\+input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{minishell_8c_a48c190bea281bc2dbd51a57aaf50d2b2_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{minishell_8c_a48c190bea281bc2dbd51a57aaf50d2b2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{minishell_8c_a9e3dc0b77fc445bb64825d8ace433615}\label{minishell_8c_a9e3dc0b77fc445bb64825d8ace433615}} 
+\index{minishell.c@{minishell.c}!sig\_int\_input@{sig\_int\_input}}
+\index{sig\_int\_input@{sig\_int\_input}!minishell.c@{minishell.c}}
+\doxysubsubsection{\texorpdfstring{sig\_int\_input()}{sig\_int\_input()}}
+{\footnotesize\ttfamily void sig\+\_\+int\+\_\+input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{minishell_8c_a9e3dc0b77fc445bb64825d8ace433615_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{minishell_8c_a9e3dc0b77fc445bb64825d8ace433615_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{minishell_8c_a5a09a60bad7286b3db6e77cbae963f67}\label{minishell_8c_a5a09a60bad7286b3db6e77cbae963f67}} 
+\index{minishell.c@{minishell.c}!sig\_quit\_input@{sig\_quit\_input}}
+\index{sig\_quit\_input@{sig\_quit\_input}!minishell.c@{minishell.c}}
+\doxysubsubsection{\texorpdfstring{sig\_quit\_input()}{sig\_quit\_input()}}
+{\footnotesize\ttfamily void sig\+\_\+quit\+\_\+input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=259pt]{minishell_8c_a5a09a60bad7286b3db6e77cbae963f67_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{minishell_8c_a5a09a60bad7286b3db6e77cbae963f67_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,320 @@
+\hypertarget{parser_8h}{}\doxysection{includes/parser.h ファイル}
+\label{parser_8h}\index{includes/parser.h@{includes/parser.h}}
+
+
+This is API for Sate machine  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../libft/libft.\+h\char`\"{}}\newline
+parser.\+h の依存先関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8h__incl}
+\end{center}
+\end{figure}
+被依存関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{データ構造}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__command}{s\+\_\+command}}
+\item 
+struct \mbox{\hyperlink{structast_node}{ast\+Node}}
+\item 
+struct \mbox{\hyperlink{structs__token}{s\+\_\+token}}
+\end{DoxyCompactItemize}
+\doxysubsection*{マクロ定義}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{parser_8h_a87f23f9d76e3a2d5658da8dae25f38c4}{STR}}~0
+\item 
+\#define \mbox{\hyperlink{parser_8h_a87b72a06d4f475065639f00fba02d5e7}{RDIR}}~1
+\item 
+\#define \mbox{\hyperlink{parser_8h_a43c000ec240b43b40482b09832ddedeb}{RRDIR}}~2
+\item 
+\#define \mbox{\hyperlink{parser_8h_a96f4c6a0617a0cd2672503e08d207ce4}{LDIR}}~3
+\item 
+\#define \mbox{\hyperlink{parser_8h_a3b08537d216774db2ecb5e15d92c2a56}{LLDIR}}~4
+\item 
+\#define \mbox{\hyperlink{parser_8h_a95c990c0d84bb2aa42ec46969d1fa0ca}{LLLDIR}}~5
+\item 
+\#define \mbox{\hyperlink{parser_8h_a5ff6e798033f03e74730e99f01936f84}{SPACE}}~6
+\item 
+\#define \mbox{\hyperlink{parser_8h_a601616d3f3cd0d3dba1d3149232dbfaf}{SQUOTE}}~7
+\item 
+\#define \mbox{\hyperlink{parser_8h_a44a9fd35b74885ac82584c7927214c7a}{DQUOTE}}~8
+\item 
+\#define \mbox{\hyperlink{parser_8h_a67bc87cdcc5724cf8e8e4ae278d0133f}{PIPE}}~9
+\item 
+\#define \mbox{\hyperlink{parser_8h_a43a3279ca40b65ac4ca71bf0d941d32d}{DPIPE}}~10
+\item 
+\#define \mbox{\hyperlink{parser_8h_acd1b97556dfbbac61063a63031d2f91d}{AND}}~11
+\item 
+\#define \mbox{\hyperlink{parser_8h_aee329b045c469f7ec623c608afff390c}{DAND}}~12
+\item 
+\#define \mbox{\hyperlink{parser_8h_a19d20b359daf6731e7f7afa7e870fe75}{SCOLON}}~13
+\item 
+\#define \mbox{\hyperlink{parser_8h_aac00c0ce3126e96b62bfed023d9628fc}{DSCOLON}}~14
+\item 
+\#define \mbox{\hyperlink{parser_8h_a6a97d3a44376e94a3bc5f5e613be9bd0}{DOLL}}~15
+\item 
+\#define \mbox{\hyperlink{parser_8h_a4af1b6159e447ba72652bb7fcdfa726e}{ESC}}~16
+\item 
+\#define \mbox{\hyperlink{parser_8h_a13f4eb5ea5f2c6596fc35c2fa5832640}{SSTR}}~17
+\item 
+\#define \mbox{\hyperlink{parser_8h_a4810d8325791be718f1bcb2a92fd3a0f}{RINT}}~18
+\end{DoxyCompactItemize}
+\doxysubsection*{型定義}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structs__command}{s\+\_\+command}} \mbox{\hyperlink{parser_8h_a343be1e180affa75a4a3b4bb5b2225e3}{t\+\_\+command}}
+\item 
+typedef struct \mbox{\hyperlink{structast_node}{ast\+Node}} \mbox{\hyperlink{parser_8h_af2ff7b3206336b6b4a5d55de3d6b6a32}{ast\+Node}}
+\item 
+typedef struct \mbox{\hyperlink{structs__token}{s\+\_\+token}} \mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}}
+\end{DoxyCompactItemize}
+\doxysubsection*{関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{parser_8h_a121bf5efc05207ec5290c18a39114747}{del\+\_\+token}} (void $\ast$ptr)
+\item 
+void \mbox{\hyperlink{parser_8h_a2338a10cb0627b4ac70eaa361c092d93}{exit\+\_\+token}} (\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$t)
+\item 
+\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$ \mbox{\hyperlink{parser_8h_a9cdcaa2bee43b1c4553548fe02de3710}{token\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em 簡単な説明（～する関数） \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parser_8h_a2c319d91ae15797b85bd5ec185aa068d}{print\+\_\+token}} (\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$t)
+\begin{DoxyCompactList}\small\item\em 簡単な説明（～する関数） \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+This is API for Sate machine 
+
+
+
+\doxysubsection{マクロ定義詳解}
+\mbox{\Hypertarget{parser_8h_acd1b97556dfbbac61063a63031d2f91d}\label{parser_8h_acd1b97556dfbbac61063a63031d2f91d}} 
+\index{parser.h@{parser.h}!AND@{AND}}
+\index{AND@{AND}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{AND}{AND}}
+{\footnotesize\ttfamily \#define AND~11}
+
+\mbox{\Hypertarget{parser_8h_aee329b045c469f7ec623c608afff390c}\label{parser_8h_aee329b045c469f7ec623c608afff390c}} 
+\index{parser.h@{parser.h}!DAND@{DAND}}
+\index{DAND@{DAND}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{DAND}{DAND}}
+{\footnotesize\ttfamily \#define DAND~12}
+
+\mbox{\Hypertarget{parser_8h_a6a97d3a44376e94a3bc5f5e613be9bd0}\label{parser_8h_a6a97d3a44376e94a3bc5f5e613be9bd0}} 
+\index{parser.h@{parser.h}!DOLL@{DOLL}}
+\index{DOLL@{DOLL}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{DOLL}{DOLL}}
+{\footnotesize\ttfamily \#define DOLL~15}
+
+\mbox{\Hypertarget{parser_8h_a43a3279ca40b65ac4ca71bf0d941d32d}\label{parser_8h_a43a3279ca40b65ac4ca71bf0d941d32d}} 
+\index{parser.h@{parser.h}!DPIPE@{DPIPE}}
+\index{DPIPE@{DPIPE}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{DPIPE}{DPIPE}}
+{\footnotesize\ttfamily \#define DPIPE~10}
+
+\mbox{\Hypertarget{parser_8h_a44a9fd35b74885ac82584c7927214c7a}\label{parser_8h_a44a9fd35b74885ac82584c7927214c7a}} 
+\index{parser.h@{parser.h}!DQUOTE@{DQUOTE}}
+\index{DQUOTE@{DQUOTE}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{DQUOTE}{DQUOTE}}
+{\footnotesize\ttfamily \#define DQUOTE~8}
+
+\mbox{\Hypertarget{parser_8h_aac00c0ce3126e96b62bfed023d9628fc}\label{parser_8h_aac00c0ce3126e96b62bfed023d9628fc}} 
+\index{parser.h@{parser.h}!DSCOLON@{DSCOLON}}
+\index{DSCOLON@{DSCOLON}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{DSCOLON}{DSCOLON}}
+{\footnotesize\ttfamily \#define DSCOLON~14}
+
+\mbox{\Hypertarget{parser_8h_a4af1b6159e447ba72652bb7fcdfa726e}\label{parser_8h_a4af1b6159e447ba72652bb7fcdfa726e}} 
+\index{parser.h@{parser.h}!ESC@{ESC}}
+\index{ESC@{ESC}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{ESC}{ESC}}
+{\footnotesize\ttfamily \#define ESC~16}
+
+\mbox{\Hypertarget{parser_8h_a96f4c6a0617a0cd2672503e08d207ce4}\label{parser_8h_a96f4c6a0617a0cd2672503e08d207ce4}} 
+\index{parser.h@{parser.h}!LDIR@{LDIR}}
+\index{LDIR@{LDIR}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{LDIR}{LDIR}}
+{\footnotesize\ttfamily \#define LDIR~3}
+
+\mbox{\Hypertarget{parser_8h_a3b08537d216774db2ecb5e15d92c2a56}\label{parser_8h_a3b08537d216774db2ecb5e15d92c2a56}} 
+\index{parser.h@{parser.h}!LLDIR@{LLDIR}}
+\index{LLDIR@{LLDIR}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{LLDIR}{LLDIR}}
+{\footnotesize\ttfamily \#define LLDIR~4}
+
+\mbox{\Hypertarget{parser_8h_a95c990c0d84bb2aa42ec46969d1fa0ca}\label{parser_8h_a95c990c0d84bb2aa42ec46969d1fa0ca}} 
+\index{parser.h@{parser.h}!LLLDIR@{LLLDIR}}
+\index{LLLDIR@{LLLDIR}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{LLLDIR}{LLLDIR}}
+{\footnotesize\ttfamily \#define LLLDIR~5}
+
+\mbox{\Hypertarget{parser_8h_a67bc87cdcc5724cf8e8e4ae278d0133f}\label{parser_8h_a67bc87cdcc5724cf8e8e4ae278d0133f}} 
+\index{parser.h@{parser.h}!PIPE@{PIPE}}
+\index{PIPE@{PIPE}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{PIPE}{PIPE}}
+{\footnotesize\ttfamily \#define PIPE~9}
+
+\mbox{\Hypertarget{parser_8h_a87b72a06d4f475065639f00fba02d5e7}\label{parser_8h_a87b72a06d4f475065639f00fba02d5e7}} 
+\index{parser.h@{parser.h}!RDIR@{RDIR}}
+\index{RDIR@{RDIR}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{RDIR}{RDIR}}
+{\footnotesize\ttfamily \#define RDIR~1}
+
+\mbox{\Hypertarget{parser_8h_a4810d8325791be718f1bcb2a92fd3a0f}\label{parser_8h_a4810d8325791be718f1bcb2a92fd3a0f}} 
+\index{parser.h@{parser.h}!RINT@{RINT}}
+\index{RINT@{RINT}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{RINT}{RINT}}
+{\footnotesize\ttfamily \#define RINT~18}
+
+\mbox{\Hypertarget{parser_8h_a43c000ec240b43b40482b09832ddedeb}\label{parser_8h_a43c000ec240b43b40482b09832ddedeb}} 
+\index{parser.h@{parser.h}!RRDIR@{RRDIR}}
+\index{RRDIR@{RRDIR}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{RRDIR}{RRDIR}}
+{\footnotesize\ttfamily \#define RRDIR~2}
+
+\mbox{\Hypertarget{parser_8h_a19d20b359daf6731e7f7afa7e870fe75}\label{parser_8h_a19d20b359daf6731e7f7afa7e870fe75}} 
+\index{parser.h@{parser.h}!SCOLON@{SCOLON}}
+\index{SCOLON@{SCOLON}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{SCOLON}{SCOLON}}
+{\footnotesize\ttfamily \#define SCOLON~13}
+
+\mbox{\Hypertarget{parser_8h_a5ff6e798033f03e74730e99f01936f84}\label{parser_8h_a5ff6e798033f03e74730e99f01936f84}} 
+\index{parser.h@{parser.h}!SPACE@{SPACE}}
+\index{SPACE@{SPACE}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{SPACE}{SPACE}}
+{\footnotesize\ttfamily \#define SPACE~6}
+
+\mbox{\Hypertarget{parser_8h_a601616d3f3cd0d3dba1d3149232dbfaf}\label{parser_8h_a601616d3f3cd0d3dba1d3149232dbfaf}} 
+\index{parser.h@{parser.h}!SQUOTE@{SQUOTE}}
+\index{SQUOTE@{SQUOTE}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{SQUOTE}{SQUOTE}}
+{\footnotesize\ttfamily \#define SQUOTE~7}
+
+\mbox{\Hypertarget{parser_8h_a13f4eb5ea5f2c6596fc35c2fa5832640}\label{parser_8h_a13f4eb5ea5f2c6596fc35c2fa5832640}} 
+\index{parser.h@{parser.h}!SSTR@{SSTR}}
+\index{SSTR@{SSTR}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{SSTR}{SSTR}}
+{\footnotesize\ttfamily \#define SSTR~17}
+
+\mbox{\Hypertarget{parser_8h_a87f23f9d76e3a2d5658da8dae25f38c4}\label{parser_8h_a87f23f9d76e3a2d5658da8dae25f38c4}} 
+\index{parser.h@{parser.h}!STR@{STR}}
+\index{STR@{STR}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{STR}{STR}}
+{\footnotesize\ttfamily \#define STR~0}
+
+
+
+\doxysubsection{型定義詳解}
+\mbox{\Hypertarget{parser_8h_af2ff7b3206336b6b4a5d55de3d6b6a32}\label{parser_8h_af2ff7b3206336b6b4a5d55de3d6b6a32}} 
+\index{parser.h@{parser.h}!astNode@{astNode}}
+\index{astNode@{astNode}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{astNode}{astNode}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structast_node}{ast\+Node}} \mbox{\hyperlink{structast_node}{ast\+Node}}}
+
+\mbox{\Hypertarget{parser_8h_a343be1e180affa75a4a3b4bb5b2225e3}\label{parser_8h_a343be1e180affa75a4a3b4bb5b2225e3}} 
+\index{parser.h@{parser.h}!t\_command@{t\_command}}
+\index{t\_command@{t\_command}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{t\_command}{t\_command}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structs__command}{s\+\_\+command}} \mbox{\hyperlink{parser_8h_a343be1e180affa75a4a3b4bb5b2225e3}{t\+\_\+command}}}
+
+$<$command line$>$ \+::= $<$job$>$ $\vert$ $<$job$>$ \textquotesingle{}\&\textquotesingle{} $\vert$ $<$job$>$ \textquotesingle{}\&\textquotesingle{} $<$command line$>$ $\vert$ $<$job$>$ \textquotesingle{};\textquotesingle{} $\vert$ $<$job$>$ \textquotesingle{};\textquotesingle{} $<$command line$>$ $<$job$>$ \+::= $<$command$>$ $\vert$ $<$ job $>$ \textquotesingle{}$\vert$\textquotesingle{} $<$ command $>$ $<$command$>$ \+::= $<$simple command$>$ $\vert$ $<$simple command$>$ \textquotesingle{}$<$\textquotesingle{} $<$filename$>$ $\vert$ $<$simple command$>$ \textquotesingle{}$>$\textquotesingle{} $<$filename$>$ $<$simple command$>$\+::= $<$pathname$>$ $\vert$ $<$simple command$>$ $<$token$>$ \mbox{\Hypertarget{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}\label{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}} 
+\index{parser.h@{parser.h}!t\_token@{t\_token}}
+\index{t\_token@{t\_token}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{t\_token}{t\_token}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structs__token}{s\+\_\+token}} \mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}}}
+
+t\+\_\+token 
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{parser_8h_a121bf5efc05207ec5290c18a39114747}\label{parser_8h_a121bf5efc05207ec5290c18a39114747}} 
+\index{parser.h@{parser.h}!del\_token@{del\_token}}
+\index{del\_token@{del\_token}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{del\_token()}{del\_token()}}
+{\footnotesize\ttfamily void del\+\_\+token (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{parser_8h_a121bf5efc05207ec5290c18a39114747_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parser_8h_a2338a10cb0627b4ac70eaa361c092d93}\label{parser_8h_a2338a10cb0627b4ac70eaa361c092d93}} 
+\index{parser.h@{parser.h}!exit\_token@{exit\_token}}
+\index{exit\_token@{exit\_token}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{exit\_token()}{exit\_token()}}
+{\footnotesize\ttfamily void exit\+\_\+token (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$}]{t }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{parser_8h_a2338a10cb0627b4ac70eaa361c092d93_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parser_8h_a2c319d91ae15797b85bd5ec185aa068d}\label{parser_8h_a2c319d91ae15797b85bd5ec185aa068d}} 
+\index{parser.h@{parser.h}!print\_token@{print\_token}}
+\index{print\_token@{print\_token}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{print\_token()}{print\_token()}}
+{\footnotesize\ttfamily void print\+\_\+token (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}} $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+簡単な説明（～する関数） 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em t(引数名)} & 引数の説明 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+void 戻り値の説明
+\end{DoxyReturn}
+詳細な説明 被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{parser_8h_a2c319d91ae15797b85bd5ec185aa068d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parser_8h_a9cdcaa2bee43b1c4553548fe02de3710}\label{parser_8h_a9cdcaa2bee43b1c4553548fe02de3710}} 
+\index{parser.h@{parser.h}!token\_init@{token\_init}}
+\index{token\_init@{token\_init}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{token\_init()}{token\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{parser_8h_aead06bc7a81ebdd60cbdcf6b3b8e51d4}{t\+\_\+token}}$\ast$ token\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+簡単な説明（～する関数） 
+
+\begin{DoxyReturn}{戻り値}
+t\+\_\+token$\ast$ 戻り値の説明
+\end{DoxyReturn}
+詳細な説明 呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8h_a9cdcaa2bee43b1c4553548fe02de3710_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{parser_8h_a9cdcaa2bee43b1c4553548fe02de3710_icgraph}
+\end{center}
+\end{figure}

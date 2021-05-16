@@ -1,0 +1,135 @@
+\hypertarget{env__list1_8c}{}\doxysection{srcs/env/env\+\_\+list1.c ファイル}
+\label{env__list1_8c}\index{srcs/env/env\_list1.c@{srcs/env/env\_list1.c}}
+{\ttfamily \#include \char`\"{}../../includes/env.\+h\char`\"{}}\newline
+env\+\_\+list1.\+c の依存先関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{env__list1_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}} $\ast$ \mbox{\hyperlink{env__list1_8c_ad4e736fa001326adbe2e037ea66b3b63}{envs\+\_\+init}} (void)
+\item 
+void \mbox{\hyperlink{env__list1_8c_aa4822339a4ade6f566d1b49052c8f874}{print\+\_\+envs}} (\mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}} $\ast$envs)
+\item 
+void \mbox{\hyperlink{env__list1_8c_a9ce0ae53f9b058a3c4e05d502aa3ef57}{addb\+\_\+env}} (\mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}} $\ast$$\ast$envs, \mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}} $\ast$env)
+\item 
+\mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}} $\ast$ \mbox{\hyperlink{env__list1_8c_a510556cc3b025b49bd0418b85417ffdd}{create\+\_\+env}} (char $\ast$environ)
+\item 
+void \mbox{\hyperlink{env__list1_8c_a209643edfe16d3151bfb3427de57a98f}{free\+\_\+env}} (\mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}} $\ast$env)
+\item 
+void \mbox{\hyperlink{env__list1_8c_a1b4609d53080c7cd4ffc5effdb4b2f90}{free\+\_\+envs}} (\mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}} $\ast$env)
+\item 
+\mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}} $\ast$ \mbox{\hyperlink{env__list1_8c_a9dcbc199b876946dc1fb85aea14c068c}{envlast}} (\mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}} $\ast$env)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{env__list1_8c_a9ce0ae53f9b058a3c4e05d502aa3ef57}\label{env__list1_8c_a9ce0ae53f9b058a3c4e05d502aa3ef57}} 
+\index{env\_list1.c@{env\_list1.c}!addb\_env@{addb\_env}}
+\index{addb\_env@{addb\_env}!env\_list1.c@{env\_list1.c}}
+\doxysubsubsection{\texorpdfstring{addb\_env()}{addb\_env()}}
+{\footnotesize\ttfamily void addb\+\_\+env (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}} $\ast$$\ast$}]{envs,  }\item[{\mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}} $\ast$}]{env }\end{DoxyParamCaption})}
+
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{env__list1_8c_a9ce0ae53f9b058a3c4e05d502aa3ef57_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{env__list1_8c_a510556cc3b025b49bd0418b85417ffdd}\label{env__list1_8c_a510556cc3b025b49bd0418b85417ffdd}} 
+\index{env\_list1.c@{env\_list1.c}!create\_env@{create\_env}}
+\index{create\_env@{create\_env}!env\_list1.c@{env\_list1.c}}
+\doxysubsubsection{\texorpdfstring{create\_env()}{create\_env()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}}$\ast$ create\+\_\+env (\begin{DoxyParamCaption}\item[{char $\ast$}]{environ }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{env__list1_8c_a510556cc3b025b49bd0418b85417ffdd_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{env__list1_8c_a510556cc3b025b49bd0418b85417ffdd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{env__list1_8c_a9dcbc199b876946dc1fb85aea14c068c}\label{env__list1_8c_a9dcbc199b876946dc1fb85aea14c068c}} 
+\index{env\_list1.c@{env\_list1.c}!envlast@{envlast}}
+\index{envlast@{envlast}!env\_list1.c@{env\_list1.c}}
+\doxysubsubsection{\texorpdfstring{envlast()}{envlast()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}}$\ast$ envlast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}} $\ast$}]{env }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{env__list1_8c_ad4e736fa001326adbe2e037ea66b3b63}\label{env__list1_8c_ad4e736fa001326adbe2e037ea66b3b63}} 
+\index{env\_list1.c@{env\_list1.c}!envs\_init@{envs\_init}}
+\index{envs\_init@{envs\_init}!env\_list1.c@{env\_list1.c}}
+\doxysubsubsection{\texorpdfstring{envs\_init()}{envs\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}}$\ast$ envs\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{env__list1_8c_ad4e736fa001326adbe2e037ea66b3b63_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{env__list1_8c_ad4e736fa001326adbe2e037ea66b3b63_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{env__list1_8c_a209643edfe16d3151bfb3427de57a98f}\label{env__list1_8c_a209643edfe16d3151bfb3427de57a98f}} 
+\index{env\_list1.c@{env\_list1.c}!free\_env@{free\_env}}
+\index{free\_env@{free\_env}!env\_list1.c@{env\_list1.c}}
+\doxysubsubsection{\texorpdfstring{free\_env()}{free\_env()}}
+{\footnotesize\ttfamily void free\+\_\+env (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}} $\ast$}]{env }\end{DoxyParamCaption})}
+
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{env__list1_8c_a209643edfe16d3151bfb3427de57a98f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{env__list1_8c_a1b4609d53080c7cd4ffc5effdb4b2f90}\label{env__list1_8c_a1b4609d53080c7cd4ffc5effdb4b2f90}} 
+\index{env\_list1.c@{env\_list1.c}!free\_envs@{free\_envs}}
+\index{free\_envs@{free\_envs}!env\_list1.c@{env\_list1.c}}
+\doxysubsubsection{\texorpdfstring{free\_envs()}{free\_envs()}}
+{\footnotesize\ttfamily void free\+\_\+envs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}} $\ast$}]{env }\end{DoxyParamCaption})}
+
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{env__list1_8c_a1b4609d53080c7cd4ffc5effdb4b2f90_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{env__list1_8c_aa4822339a4ade6f566d1b49052c8f874}\label{env__list1_8c_aa4822339a4ade6f566d1b49052c8f874}} 
+\index{env\_list1.c@{env\_list1.c}!print\_envs@{print\_envs}}
+\index{print\_envs@{print\_envs}!env\_list1.c@{env\_list1.c}}
+\doxysubsubsection{\texorpdfstring{print\_envs()}{print\_envs()}}
+{\footnotesize\ttfamily void print\+\_\+envs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{env_8h_aa3d21e1567b21e23ec928b1eb405fe4b}{t\+\_\+env}} $\ast$}]{envs }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{env__list1_8c_aa4822339a4ade6f566d1b49052c8f874_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{env__list1_8c_aa4822339a4ade6f566d1b49052c8f874_icgraph}
+\end{center}
+\end{figure}

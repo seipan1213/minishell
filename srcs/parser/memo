@@ -1,0 +1,28 @@
+int			p_cmd(t_token **tokens, astNode **node)
+{
+	// create new node
+	// put cmd (args & rd) in node
+	// return
+}
+
+int			p_job(t_token **tokens, astNode **node)
+{
+	// pass it to cmd to get new node
+	// check "|" or not
+}
+
+int			p_cmdline(t_token **tokens, astNode **node)
+{
+	// pass it to job to get new node
+	// check ";" or not
+	// if ";"
+	// 		child = get right node
+	//		new left = cur node, new right = child
+}
+
+int			parser(t_token **tokens, astNode **node)
+{
+	int		result;
+	result = p_cmdline(tokens, node);
+	return (result);
+}
