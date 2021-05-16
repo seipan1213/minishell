@@ -6,19 +6,19 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 23:19:23 by sehattor          #+#    #+#             */
-/*   Updated: 2021/05/03 21:26:25 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/05/11 23:44:11 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*save_free(char *save)
+static char	*save_free(char *save)
 {
 	free(save);
 	return (NULL);
 }
 
-char	*read_fd(int fd, char *save)
+static char	*read_fd(int fd, char *save)
 {
 	char	*tmp;
 	char	*buf;
@@ -47,7 +47,7 @@ char	*read_fd(int fd, char *save)
 	return (save);
 }
 
-char	*save_line(char *save, char *line, int *ret)
+static char	*save_line(char *save, char *line, int *ret)
 {
 	char	*tmp;
 
@@ -62,7 +62,7 @@ char	*save_line(char *save, char *line, int *ret)
 	return (ft_strdup(tmp + 1));
 }
 
-char	*get_line(char *line)
+static char	*get_line(char *line)
 {
 	char	*tmp;
 
