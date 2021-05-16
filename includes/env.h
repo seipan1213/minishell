@@ -21,5 +21,6 @@ void 	free_envs(t_env *env);
 t_env	*envlast(t_env *env);
 t_env	*search_env(char *key, t_env *env);
 int		ft_strcmp(char *s1, char *s2);
+int		del_env(char *delKey, t_env **env);
 
 #endif
