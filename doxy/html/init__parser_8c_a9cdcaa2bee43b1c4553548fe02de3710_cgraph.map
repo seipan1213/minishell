@@ -1,8 +1,0 @@
-<map id="token_init" name="token_init">
-<area shape="rect" id="node1" title="簡単な説明（～する関数）" alt="" coords="5,31,84,57"/>
-<area shape="rect" id="node2" href="$init__parser_8c.html#a2f248518682fd5e9651fcf2a49bca6c7" title="簡単な説明（～する関数）" alt="" coords="139,5,222,32"/>
-<area shape="rect" id="node4" href="$init__parser_8c.html#a1d61e03cd29ce06eb3701434192c1f95" title="簡単な説明（～する関数）" alt="" coords="132,56,229,83"/>
-<area shape="rect" id="node3" href="$init__parser_8c.html#a9664066fc5a613287a73d01976f81993" title=" " alt="" coords="277,5,360,32"/>
-<area shape="rect" id="node5" href="$init__parser_8c.html#aa0dcac6867cc3e80a775b45c0cbbe1d2" title=" " alt="" coords="279,56,358,83"/>
-<area shape="rect" id="node6" href="$ft__strdup_8c.html#aada5f5ba69c0c2c97a1322b4e2554709" title=" " alt="" coords="408,56,481,83"/>
-</map>

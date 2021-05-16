@@ -1,7 +1,0 @@
-<map id="envs_init" name="envs_init">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,80,57"/>
-<area shape="rect" id="node2" href="$env__list1_8c.html#a9ce0ae53f9b058a3c4e05d502aa3ef57" title=" " alt="" coords="132,5,211,32"/>
-<area shape="rect" id="node3" href="$env__list1_8c.html#a510556cc3b025b49bd0418b85417ffdd" title=" " alt="" coords="128,56,215,83"/>
-<area shape="rect" id="node4" href="$ft__strchr_8c.html#a8d986b0243eb93d15d9361e341877688" title=" " alt="" coords="264,31,335,57"/>
-<area shape="rect" id="node5" href="$ft__strdup_8c.html#aada5f5ba69c0c2c97a1322b4e2554709" title=" " alt="" coords="263,81,336,108"/>
-</map>
