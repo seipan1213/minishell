@@ -10,8 +10,9 @@ astNode		*new_cmd_node()
 {
 	astNode		*new;
 
-	new = malloc(sizeof(astNode *));
-	new->cmd = malloc(sizeof(t_command *));
+	new = (astNode *)malloc(sizeof(astNode));
+	new->cmd = (t_command *)malloc(sizeof(t_command));
+	new->type = STR;
 	new->left = NULL;
 	new->right = NULL;
 	new->cmd->arg = NULL;
@@ -24,7 +25,7 @@ astNode		*new_parent_node(int type, astNode *left, astNode *right)
 {
 	astNode		*new;
 
-	new = malloc(sizeof(astNode *));
+	new = (astNode *)malloc(sizeof(astNode));
 	if (!new)
 		return (NULL);
 	new->type = type;

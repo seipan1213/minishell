@@ -38,6 +38,7 @@ bool	parse_job(t_token **tokens, astNode **node)
 {
 	astNode		*right;
 
+	right = NULL;
 	if (!(parse_cmd(tokens, node)))
 		return (FALSE);
 	while (*tokens)
@@ -68,7 +69,7 @@ bool	parse_cmdline(t_token **tokens, astNode **node)
 			*tokens = (*tokens)->next;
 			if (!(parse_job(tokens, &right))) // get right node
 				return(FALSE);
-			*node = new_parent_node(PIPE, *node, right);
+			*node = new_parent_node(SCOLON, *node, right);
 		}
 		else
 			break ;
