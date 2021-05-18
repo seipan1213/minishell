@@ -33,6 +33,7 @@ void		print_token(t_token *t)
 		printf("TOKEN | type: %-2d  name:[%s] \n", t->type, t->val);
 		t = t->next;
 	}
+	printf("last token: %p\n", t);
 }
 
 t_token		*last_token(t_token *t)
@@ -79,7 +80,7 @@ t_token		*token_init()
 	tmp = create_token("aaa", STR);
 	adb_token(&lst, tmp);
 
-	tmp = create_token(";", SCOLON);
+	tmp = create_token("|", PIPE);
 	adb_token(&lst, tmp);
 
 	tmp = create_token("echo", STR);
@@ -88,7 +89,7 @@ t_token		*token_init()
 	tmp = create_token("bbb", STR);
 	adb_token(&lst, tmp);
 
-	tmp = create_token(";", SCOLON);
+	tmp = create_token("|", PIPE);
 	adb_token(&lst, tmp);
 
 	tmp = create_token("echo", STR);

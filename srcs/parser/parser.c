@@ -6,52 +6,81 @@
 
 #include "../../includes/parser.h"
 
-astNode		*new_node(int type, astNode *left, astNode *right)
+bool	set_cmd_rd(t_token **tokens, t_command *cmd)
 {
-	astNode		*new;
-
-	new = malloc(sizeof(astNode *));
-	if (!new)
-		return (NULL);
-	new->type = type;
-	new->left = left;
-	new->right = right;
-	new->cmd = NULL;
-	return(new);
+	set_cmd_token(*tokens, &cmd->rd);
+	*tokens = (*tokens)->next;
+	set_cmd_token(*tokens, &cmd->rd);
+	*tokens = (*tokens)->next;
+	return (TRUE);
 }
 
-
-int			p_cmd(t_token **tokens, astNode **node)
+bool	parse_cmd(t_token **tokens, astNode **node)
 {
-	// create new node
-	// put cmd (args & rd) in node
-	// return
+	*node = new_cmd_node(); 	// create new node
+	while (*tokens)				// put t_command (args & rd) in node
+	{
+		if (is_type(tokens, STR))
+		{
+			set_cmd_args(tokens, (*node)->cmd);
+		}
+		else if (is_rd((*tokens)->type))
+		{
+			set_cmd_rd(tokens, (*node)->cmd);
+		}
+		else
+			break ;
+	}
+	return(TRUE);
 }
 
-int			p_job(t_token **tokens, astNode **node)
+bool	parse_job(t_token **tokens, astNode **node)
 {
-	// pass it to cmd to get new node
-	p_cmd(tokens, node);
-	// check "|" or not
-	// if "|"
-	// 		child = get right node
-	//		new left = cur node, new right = child
+	astNode		*right;
+
+	right = NULL;
+	if (!(parse_cmd(tokens, node)))
+		return (FALSE);
+	while (*tokens)
+	{
+		if (is_type(tokens, PIPE)) 	//	check "|" or not
+		{
+			*tokens = (*tokens)->next;
+			if (!(parse_cmd(tokens, &right))) // get right node
+				return(FALSE);
+			*node = new_parent_node(PIPE, *node, right);
+		}
+		else
+			break ;
+	}
+	return (TRUE);
 }
 
-int			p_cmdline(t_token **tokens, astNode **node)
+bool	parse_cmdline(t_token **tokens, astNode **node)
 {
-	// pass it to job to get new node
-	p_job(tokens, node);
-	// check ";" or not
-	// if ";"
-	// 		child = get right node
-	//		new left = cur node, new right = child
+	astNode		*right;
+
+	if (!(parse_job(tokens, node)))
+		return (FALSE);
+	while (*tokens)
+	{
+		if (is_type(tokens, SCOLON)) //	check ";" or not
+		{
+			*tokens = (*tokens)->next;
+			if (!(parse_job(tokens, &right))) // get right node
+				return(FALSE);
+			*node = new_parent_node(SCOLON, *node, right);
+		}
+		else
+			break ;
+	}
+	return (TRUE);
 }
 
-int			parser(t_token **tokens, astNode **node)
+bool	parser(t_token **tokens, astNode **node)
 {
 	int		result;
-	result = p_cmdline(tokens, node);
+	result = parse_cmdline(tokens, node);
 	return (result);
 }
 
