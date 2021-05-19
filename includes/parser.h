@@ -12,6 +12,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include "../libft/libft.h"
+#include "lexer.h"
 
 /**
  *
@@ -30,36 +31,27 @@
  *
 **/
 
+// typedef struct	s_token {
+// 	char				*val;
+// 	int					type;
+// 	struct s_token		*next;
+// }				t_token;
+
 typedef struct	s_command{
-	char				*arg;
-	char				*rd;
+	t_token				*arg;
+	t_token				*rd;
 	struct s_command	*next;
 }				t_command;
 
 typedef struct	astNode {
 	int					type;
 	t_command			*cmd;
-	struct astNode	*left;
-	struct astNode	*right;
+	struct astNode		*left;
+	struct astNode		*right;
 }				astNode;
 
-/*
-	t_list	*cmdline;
-	t_pipe	*job;
-
-	cmdline->content = job;
-
-	((t_pipe *)cmdline->content)->argv = "echo" "aaa"
-	((t_pipe *)cmdline->content)->rd = ">" "file1"
-*/
-
-/** t_token */
-
-typedef struct	s_token {
-	char			*val;
-	int				type;
-	struct s_token	*next;
-}				t_token;
+# define TRUE 1
+# define FALSE 0
 
 # define STR 0      // 文字列
 # define RDIR 1     // >
@@ -85,6 +77,14 @@ void		del_token(void *ptr);
 void		exit_token(t_token *t);
 t_token		*token_init();
 void		print_token(t_token *t);
-t_command	*new_cmd_node(t_token **tokens, astNode **node);
+t_token		*gen_token(char *val, int type);
+void		set_cmd_args(t_token **tokens, t_command *cmd);
+astNode		*new_cmd_node();
+astNode		*new_parent_node(int type, astNode *left, astNode *right);
+bool		is_type(t_token **tokens, int type);
+bool		is_rd(int type);
+void		set_cmd_token(t_token *src, t_token **args);
+bool		set_cmd_rd(t_token **tokens, t_command *cmd);
+bool		parser(t_token **tokens, astNode **node);
 
 #endif
