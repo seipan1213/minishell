@@ -37,36 +37,50 @@ void	token_meta(t_tdata *d, t_token **t)
 void	token_squote(t_tdata *d, t_token **t)
 {
 	t_token	*token;
+	char		*str;
+	char		*tmp;
 
-	token = create_token(SQUOTE, "\'");
-	addb_token(t, token);
-	d->j = d->i + 1;
+	d->j = d->i;
 	while (d->line[++d->i] != '\'' && d->line[d->i])
 		;
-	set_token(t, d->line + d->j, d->i - d->j, STR);
+	str = ft_substr(d->line, d->j, d->i - d->j);
 	if (d->line[d->i] == '\'')
 	{
-		token = create_token(SQUOTE, "\'");
-		addb_token(t, token);
+		tmp = ft_strjoin(str, "\'");
+		free(str);
 	}
+	else
+	{
+		free(str);
+		exit_error(SYNTAXERR, 1);
+	}
+	token = create_token(STR, tmp);
+	addb_token(t, token);
 	d->j = d->i + 1;
 }
 
 void	token_dquote(t_tdata *d, t_token **t)
 {
 	t_token	*token;
+	char		*str;
+	char		*tmp;
 
-	token = create_token(DQUOTE, "\"");
-	addb_token(t, token);
-	d->j = d->i + 1;
+	d->j = d->i;
 	while (d->line[++d->i] != '\"' && d->line[d->i])
 		;
-	set_token(t, d->line + d->j, d->i - d->j, STR);
+	str = ft_substr(d->line, d->j, d->i - d->j);
 	if (d->line[d->i] == '\"')
 	{
-		token = create_token(DQUOTE, "\"");
-		addb_token(t, token);
+		tmp = ft_strjoin(str, "\"");
+		free(str);
 	}
+	else
+	{
+		free(str);
+		exit_error(SYNTAXERR, 1);
+	}
+	token = create_token(STR, tmp);
+	addb_token(t, token);
 	d->j = d->i + 1;
 }
 
