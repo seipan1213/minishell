@@ -121,7 +121,7 @@ int main()
 	tokens = lexer(line);
 	ft_putstr_fd("qqqqqq\n", 1);
 	// print_tokens(tokens);
-
+	return (0);
 	printf("\n======= new_node =======\n");
 	if (!(parser(&tokens, &node)))
 		perror("Failure\n");

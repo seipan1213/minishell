@@ -73,10 +73,10 @@ typedef struct	astNode {
 # define SSTR 17    // single_quote内の文字列。 使わなかった。
 # define RINT 18    // 2>file の[2]
 
-void		del_token(void *ptr);
-void		exit_token(t_token *t);
-t_token		*token_init();
-void		print_token(t_token *t);
+// void		del_token(void *ptr);
+// void		exit_token(t_token *t);
+// t_token		*token_init();
+// void		print_token(t_token *t);
 t_token		*gen_token(char *val, int type);
 void		set_cmd_args(t_token **tokens, t_command *cmd);
 astNode		*new_cmd_node();
