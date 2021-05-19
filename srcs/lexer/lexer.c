@@ -12,14 +12,67 @@
 
 #include "../../includes/lexer.h"
 
-int		main()
+int		lexer_str(t_token *t)
 {
-	char *line;
-	t_token *t;
+	t_token	*tmp;
+	char		*str;
 
-	ft_putstr_fd(MINISHELL, STDERR_FILENO);
-	get_next_line(0, &line);
+	while(t && t->next)
+	{
+		while (t->next && t->type == t->next->type && t->type == STR)
+		{
+			if (!(str = ft_strjoin(t->str, t->next->str)))
+				return (put_error(MALLOCERR, 0));
+			free(t->str);
+			t->str = str;
+			tmp = t->next;
+			t->next = t->next->next;
+			free(tmp->str);
+			free(tmp);
+		}
+		t = t->next;
+	}
+	return (1);
+}
+
+void		lexer_space(t_token *t)
+{
+	t_token	*tmp;
+
+	while(t && t->next)
+	{
+		if (t->next->type == SPACE)
+		{
+			tmp = t->next;
+			t->next = tmp->next;
+			free(tmp->str);
+			free(tmp);
+		}
+		else
+			t = t->next;
+	}
+}
+
+int		lexer_tokens(t_token *t)
+{
+	int	ret;
+
+	ret = lexer_str(t);
+	lexer_space(t);
+	return (ret);
+}
+
+t_token		*lexer(char *line)
+{
+	t_token	*t;
+	int			ret;
+
+	ret = 0;
 	t = tokenise(line);
-	print_tokens(t);
-	check_tokens(t);
+	ret = check_tokens(t);
+	ret &= lexer_tokens(t);
+	//print_tokens(t);
+	if (ret == 0)
+		return (NULL);
+	return (t);
 }

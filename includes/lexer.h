@@ -61,7 +61,7 @@ typedef struct s_tdata
 }			t_tdata;
 
 void	exit_error(char *str, int ex_num);
-t_token *create_token(t_ttype type, char *str);
+t_token	*create_token(t_ttype type, char *str);
 void	addb_token(t_token **tokens, t_token *token);
 void	set_token(t_token **t, char *line, int len, t_ttype type);
 void	token_squote(t_tdata *d, t_token **t);
@@ -77,13 +77,16 @@ int		is_meta(char c);
 void	tokenise_init(t_tdata *data, t_token **t, char **line);
 t_token	*tokenise(char *line);
 void	print_tokens(t_token *t);
-int	put_error(char *str, int ret);
-int	is_metatype(int i);
-int	is_rdcttype(int i);
+int		put_error(char *str, int ret);
+int		is_metatype(int i);
+int		is_rdcttype(int i);
 void	check_qoute(int *flag, int type);
-int	check_syntax(t_token *t);
-int	check_avoid(t_token *t);
-
-int	check_tokens(t_token *t);
+int		check_syntax(t_token *t);
+int		check_avoid(t_token *t);
+int		check_tokens(t_token *t);
+int		lexer_str(t_token *t);
+void	lexer_space(t_token *t);
+int		lexer_tokens(t_token *t);
+t_token	*lexer(char *line);
 
 #endif

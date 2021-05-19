@@ -27,6 +27,7 @@ t_token *create_token(t_ttype type, char *str)
 void	addb_token(t_token **tokens, t_token *token)
 {
 	t_token	*back;
+
 	if (!tokens || !token)
 		return ;
 	if (!*tokens)
