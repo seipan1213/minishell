@@ -34,7 +34,7 @@ int		check_syntax(t_token *t)
 	}
 	if (t && (is_rdcttype(t->type) || t->type == PIPE || t->type == ESC))
 		return (put_error(SYNTAXERR, 0));
-	return (0);
+	return (1);
 }
 
 int		check_avoid(t_token *t)
@@ -45,7 +45,7 @@ int		check_avoid(t_token *t)
 			return (put_error(SYNTAXERR, 0));
 		t = t->next;
 	}
-
+	return (1);
 }
 
 int		check_tokens(t_token *t)

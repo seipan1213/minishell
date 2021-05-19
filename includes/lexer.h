@@ -84,9 +84,9 @@ void	check_qoute(int *flag, int type);
 int		check_syntax(t_token *t);
 int		check_avoid(t_token *t);
 int		check_tokens(t_token *t);
-void	lexer_str(t_token *t);
+int		lexer_str(t_token *t);
 void	lexer_space(t_token *t);
-void	lexer_tokens(t_token *t);
+int		lexer_tokens(t_token *t);
 t_token	*lexer(char *line);
 
 #endif

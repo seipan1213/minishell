@@ -12,7 +12,7 @@
 
 #include "../../includes/lexer.h"
 
-void		lexer_str(t_token *t)
+int		lexer_str(t_token *t)
 {
 	t_token	*tmp;
 	char		*str;
@@ -21,7 +21,8 @@ void		lexer_str(t_token *t)
 	{
 		while (t->next && t->type == t->next->type && t->type == STR)
 		{
-			str = ft_strjoin(t->str, t->next->str);
+			if (!(str = ft_strjoin(t->str, t->next->str)))
+				return (put_error(MALLOCERR, 0));
 			free(t->str);
 			t->str = str;
 			tmp = t->next;
@@ -31,6 +32,7 @@ void		lexer_str(t_token *t)
 		}
 		t = t->next;
 	}
+	return (1);
 }
 
 void		lexer_space(t_token *t)
@@ -51,10 +53,13 @@ void		lexer_space(t_token *t)
 	}
 }
 
-void		lexer_tokens(t_token *t)
+int		lexer_tokens(t_token *t)
 {
-	lexer_str(t);
+	int	ret;
+
+	ret = lexer_str(t);
 	lexer_space(t);
+	return (ret);
 }
 
 t_token		*lexer(char *line)
@@ -62,7 +67,7 @@ t_token		*lexer(char *line)
 	t_token	*t;
 	int			ret;
 
-	ret = 0;
+	ret = 1;
 	t = tokenise(line);
 	ret = check_tokens(t);
 	lexer_tokens(t);
