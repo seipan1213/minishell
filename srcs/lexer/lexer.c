@@ -67,10 +67,10 @@ t_token		*lexer(char *line)
 	t_token	*t;
 	int			ret;
 
-	ret = 1;
+	ret = 0;
 	t = tokenise(line);
 	ret = check_tokens(t);
-	lexer_tokens(t);
+	ret &= lexer_tokens(t);
 	//print_tokens(t);
 	if (ret == 0)
 		return (NULL);
