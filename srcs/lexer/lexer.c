@@ -12,7 +12,7 @@
 
 #include "../../includes/lexer.h"
 
-void	lexer_str(t_token *t)
+void		lexer_str(t_token *t)
 {
 	t_token	*tmp;
 	char		*str;
@@ -33,7 +33,7 @@ void	lexer_str(t_token *t)
 	}
 }
 
-void	lexer_space(t_token *t)
+void		lexer_space(t_token *t)
 {
 	t_token	*tmp;
 
@@ -51,21 +51,23 @@ void	lexer_space(t_token *t)
 	}
 }
 
-void	lexer_tokens(t_token *t)
+void		lexer_tokens(t_token *t)
 {
 	lexer_str(t);
 	lexer_space(t);
 }
 
-//int		main()
-//{
-//	char *line;
-//	t_token *t;
-//
-//	ft_putstr_fd(MINISHELL, STDERR_FILENO);
-//	get_next_line(0, &line);
-//	t = tokenise(line);
-//	check_tokens(t);
-//	lexer_tokens(t);
-//	print_tokens(t);
-//}
+t_token		*lexer(char *line)
+{
+	t_token	*t;
+	int			ret;
+
+	ret = 0;
+	t = tokenise(line);
+	ret = check_tokens(t);
+	lexer_tokens(t);
+	//print_tokens(t);
+	if (ret == 0)
+		return (NULL);
+	return (t);
+}
