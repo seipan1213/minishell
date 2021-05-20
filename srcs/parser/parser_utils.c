@@ -1,5 +1,7 @@
 
 #include "../../includes/parser.h"
+#include "../../includes/lexer.h"
+
 
 bool		is_rd(int type)
 {

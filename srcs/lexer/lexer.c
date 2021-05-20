@@ -71,7 +71,6 @@ t_token		*lexer(char *line)
 	t = tokenise(line);
 	ret = check_tokens(t);
 	ret &= lexer_tokens(t);
-	//print_tokens(t);
 	if (ret == 0)
 		return (NULL);
 	return (t);
