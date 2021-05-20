@@ -97,7 +97,7 @@ bool	parser(t_token **tokens, astNode **node)
 
 // 	t_command	*cmd;
 // 	cmd = new_cmd_node(&tokens, &node);
-	
+
 // 	print_cmd(cmd);
 
 // 	// del_token(list);
