@@ -1,5 +1,5 @@
 
-#include "../includes/env.h"
+#include "../../includes/env.h"
 
 void	env_delone(t_env **envs, t_env *prev, t_env *delEnv)
 {

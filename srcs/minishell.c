@@ -141,7 +141,6 @@ bool builtin_table(char *line)
 		return (true);
 	return (false);
 }
-
 int builtin_function(char **argv, char **envp)
 {
 	if (!ft_strncmp(argv[0], "echo", 5))
