@@ -1,16 +1,26 @@
-SRCS =	srcs/parser/*.c \
-		srcs/lexer/*.c
+SRCSDIR = srcs/
+SRCFILE = parser/init_parser.c parser/parser.c \
+				parser/parser_utils.c parser/parser_free.c \
+				parser/set_cmd_args.c lexer/token_utils.c \
+				lexer/error.c \
+				lexer/lexer.c lexer/lexer_check.c lexer/token.c \
+				lexer/token_meta_1.c lexer/token_meta_2.c
+CC    = gcc
+CFLAGS = #-Wall -Wextra -Werror
+NAME = minishell
+LIBFT = ${LIBFTDIR}libft.a
+LIBFTDIR = libft/
+SRCS = $(addprefix $(SRCSDIR), $(SRCFILE))
 OBJS = $(SRCS:.c=.o)
 
-CC	= gcc
-CFLAGS = -Wall -Wextra -Werror
-NAME = a.out
-LIBFT = libft/libft.a
 
 all: $(NAME)
 
-$(NAME): 
-	gcc ${LIBFT} $(SRCS) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+
+$(LIBFT):
+	$(MAKE) -C $(LIBFT)
 
 clean:
 	$(RM) $(OBJS)
@@ -18,7 +28,9 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean $(NAME)
+re: fclean all
 
 test: re
 	./${NAME}
+
+.PHONY: all clean fclean re

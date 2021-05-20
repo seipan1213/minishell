@@ -98,7 +98,7 @@ bool	parser(t_token **tokens, astNode **node)
 
 // 	t_command	*cmd;
 // 	cmd = new_cmd_node(&tokens, &node);
-	
+
 // 	print_cmd(cmd);
 
 // 	// del_token(list);
@@ -116,12 +116,10 @@ int main()
 	// t_pipe	*pipe;
 
 	tokens = NULL;
-	// printf("\n======= new_token =======\n");
+	printf("\n======= new_token =======\n");
 	get_next_line(0, &line);
 	tokens = lexer(line);
-	ft_putstr_fd("qqqqqq\n", 1);
-	// print_tokens(tokens);
-	return (0);
+	print_tokens(tokens);
 	printf("\n======= new_node =======\n");
 	if (!(parser(&tokens, &node)))
 		perror("Failure\n");
