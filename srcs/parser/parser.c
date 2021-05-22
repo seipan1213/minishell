@@ -125,14 +125,14 @@ int main()
 		perror("Failure\n");
 	else
 		ft_putstr_fd("Success!!!\n", 1);
-	printf("		%d: \n\n", node->type);
-	printf("	%d:		%d:%s \n\n",	node->left->type, \
-									 	node->right->type, \
-										node->right->cmd->arg->str);
-	printf("%d:%s		%d:%s\n",	node->left->left->type, \
-									node->left->left->cmd->arg->str, \
-									node->left->right->type, \
-									node->left->right->cmd->arg->str);
+	//printf("		%d: \n\n", node->type);
+	//printf("	%d:		%d:%s \n\n",	node->left->type, \
+	//								 	node->right->type, \
+	//									node->right->cmd->arg->str);
+	//printf("%d:%s		%d:%s\n",	node->left->left->type, \
+	//								node->left->left->cmd->arg->str, \
+	//								node->left->right->type, \
+	//								node->left->right->cmd->arg->str);
 	// del_token(list);
 	// system("leaks a.out");
 	return(0);
