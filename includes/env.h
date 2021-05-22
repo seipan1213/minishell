@@ -4,6 +4,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "../libft/libft.h"
+# include "lexer.h"
+# include "parser.h"
 
 typedef struct s_env
 {
@@ -22,5 +24,7 @@ t_env	*envlast(t_env *env);
 t_env	*search_env(char *key, t_env *env);
 int		ft_strcmp(char *s1, char *s2);
 int		del_env(char *delKey, t_env **env);
+int		envs_len(t_env *envs);
+char	**environ_gen(t_env *envs);
 
 #endif
