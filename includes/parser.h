@@ -12,7 +12,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include "../libft/libft.h"
-#include "lexer.h"
+# include "lexer.h"
 
 /**
  *
@@ -52,6 +52,9 @@ typedef struct	astNode {
 
 # define TRUE 1
 # define FALSE 0
+# define COLOR_RESET "\033[0m"
+# define COLOR_GREEN "\033[32m"
+# define COLOR_RED "\033[31m"
 
 # define STR 0      // 文字列
 # define RDIR 1     // >
@@ -86,5 +89,8 @@ bool		is_rd(int type);
 void		set_cmd_token(t_token *src, t_token **args);
 bool		set_cmd_rd(t_token **tokens, t_command *cmd);
 bool		parser(t_token **tokens, astNode **node);
+int			launch(char *line, char **envp);
+void		minishell(char **envp);
+
 
 #endif

@@ -4,7 +4,8 @@ SRCFILE = parser/init_parser.c parser/parser.c \
 				parser/set_cmd_args.c lexer/token_utils.c \
 				lexer/error.c \
 				lexer/lexer.c lexer/lexer_check.c lexer/token.c \
-				lexer/token_meta_1.c lexer/token_meta_2.c
+				lexer/token_meta_1.c lexer/token_meta_2.c \
+				exec/exec.c exec/exec_utils.c minishell.c
 CC    = gcc
 CFLAGS = #-Wall -Wextra -Werror
 NAME = minishell
