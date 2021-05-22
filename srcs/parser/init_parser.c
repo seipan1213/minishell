@@ -1,29 +1,22 @@
-/**
-* @file init_parser.c
-
-* @brief This is API for Sate machine
-**/
 
 #include "../../includes/parser.h"
 #include "../../includes/lexer.h"
 
-
-
 void		put_token(t_token *t, char *val, int type)
 {
 	t->str = ft_strdup(val);
-	t->type = type;
+	t->type = (t_ttype)type;
 }
 
 t_token		*gen_token(char *val, int type)
 {
-	t_token	*new;
+	t_token	*new_t;
 
-	new = NULL;
-	new = (t_token *)malloc(sizeof(t_token));
-	put_token(new, val, type);
-	new->next = NULL;
-	return(new);
+	new_t = NULL;
+	new_t = (t_token *)malloc(sizeof(t_token));
+	put_token(new_t, val, type);
+	new_t->next = NULL;
+	return(new_t);
 }
 
 // void		print_token(t_token *t)

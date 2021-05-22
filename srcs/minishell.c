@@ -11,6 +11,9 @@
 #include <sys/stat.h>
 
 #include "../libft/libft.h"
+#include "../includes/parser.h"
+#include "../includes/exec.h"
+#include "../includes/lexer.h"
 
 #define STDERR 2
 #define MINISHELL "MINISHELL$ "
@@ -30,8 +33,10 @@ int main(int argc, char **argv, char **envp)
 
 void minishell(char **envp)
 {
-	char *line;
-	int ret;
+	t_token		*tokens;
+	astNode		*node = NULL;
+	char		*line;
+	int			ret;
 
 	ret = 0;
 	while (1)
@@ -44,7 +49,11 @@ void minishell(char **envp)
 			exit(ret);
 		}
 		sig_ign();
-		ret = launch(line, envp);
+		// ret = launch(line, envp);
+		tokens = NULL;
+		tokens = lexer(line);
+		parser(&tokens, &node);
+		ret = exec(node);
 		free(line);
 	}
 }
@@ -90,11 +99,11 @@ void sig_ign()
 
 int launch(char *line, char **envp)
 {
-	char *argv[] = {NULL, NULL};
-	int pid;
-	int status;
-	//char *tmp;
-	char *path;
+	char	*argv[] = {NULL, NULL};
+	int		pid;
+	int		status;
+	// char	*tmp;
+	char	*path;
 
 	argv[0] = line;
 
