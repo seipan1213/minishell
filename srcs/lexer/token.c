@@ -16,7 +16,7 @@ t_token *create_token(t_ttype type, char *str)
 {
 	t_token *token;
 
-	if (!(token = malloc(sizeof(token))))
+	if (!(token = malloc(sizeof(t_token))))
 		return (NULL);
 	token->type = type;
 	token->str = str;
