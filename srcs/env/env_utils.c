@@ -96,7 +96,7 @@ void	print_envs(t_env *envs)
 	}
 }
 
-int		main ()//int argc, char **argv)
+/* int		main ()//int argc, char **argv)
 {
 	t_env *envs;
 	t_env *val;
@@ -122,4 +122,4 @@ int		main ()//int argc, char **argv)
 	free_envs(envs);
 	// system("leaks a.out");
 	return(0);
-}
+} */
