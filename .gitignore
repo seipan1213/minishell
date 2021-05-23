@@ -1,6 +1,7 @@
 *.out
 *.a
 *.o
+*.exe
 .vscode/
 .DS_Store
 minishell
