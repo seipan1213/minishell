@@ -91,7 +91,7 @@ prepare_test()
 		printf "${RED}ERROR${RESET}\n"
 		printf "${GREEN}STDOUT DIFF: ${STDOUT_DIFF}${RESET}\n"
 		printf "${RED}STDERR DIFF: ${STDERR_DIFF}${RESET}\n"
-		printf "${CYAN}RESULT DIFF: MINISHELL: ${MINISHELL_RESULT} BASH: ${BASH_RESULT}${RESET}\n"
+		printf "${CYAN}RESULT: MINISHELL: ${MINISHELL_RESULT} BASH: ${BASH_RESULT}${RESET}\n"
 	else
 		printf "${GREEN}SUCCESS${RESET}\n"
 	fi
