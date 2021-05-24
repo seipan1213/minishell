@@ -4,3 +4,8 @@
 .vscode/
 .DS_Store
 minishell
+*.exe
+bash_stdout.txt
+bash_stderr.txt
+minishell_stdout.txt
+minishell_stderr.txt

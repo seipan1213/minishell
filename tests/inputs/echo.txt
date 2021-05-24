@@ -1,0 +1,7 @@
+echo A
+echo A ; echo B
+echo	TAB
+echo "DQ"
+echo 'SQ'
+echo "DQ"'SQ
+echo first second third
