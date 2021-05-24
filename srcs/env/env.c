@@ -18,21 +18,6 @@ t_env	*envs_init(void)
     return (envs);
 }
 
-void	print_envs(t_env *envs)
-{
-	int i = 1;
-	while (envs)
-	{
-		ft_putnbr_fd(i, 1);
-		write(1, ": ", 2);
-		ft_putstr_fd(envs->name, STDERR_FILENO);
-		ft_putstr_fd("  =  ", STDERR_FILENO);
-		ft_putendl_fd(envs->value, STDERR_FILENO);
-		envs = envs->next;
-		i++;
-	}
-}
-
 void	addb_env(t_env **envs, t_env *env)
 {
 	t_env	*back;
@@ -90,18 +75,4 @@ void	free_envs(t_env *env)
 		free(env->value);
 		env = env->next;
 	}
-}
-
-t_env	*envlast(t_env *env)
-{
-	t_env	*last;
-
-	if (!env)
-		return (NULL);
-	last = env;
-	while (last->next != NULL)
-	{
-		last = last->next;
-	}
-	return (last);
 }
