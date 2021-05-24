@@ -72,7 +72,7 @@ typedef struct	astNode {
 # define SCOLON 13  // ;
 # define DSCOLON 14 // ;;
 # define DOLL 15    // $ 使わなかった
-# define ESC 16     // '/'
+# define ESC 16     // '\'
 # define SSTR 17    // single_quote内の文字列。 使わなかった。
 # define RINT 18    // 2>file の[2]
 
