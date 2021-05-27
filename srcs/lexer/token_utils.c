@@ -35,11 +35,20 @@ int	is_rdcttype(int i)
 	return (0);
 }
 
+t_token	*tokens_last(t_token *t)
+{
+	if (!t)
+		return (NULL);
+	while (t->next)
+		t = t->next;
+	return (t);
+}
+
 void	print_tokens(t_token *t)
 {
 	while (t)
 	{
-		printf("%s %d\n", t->str, t->type);
+		printf("STR	=	%s	TYPE	=	%d	TOKEN	=	%p	NEXT	=	%p\n", t->str, t->type, t, t->next);
 		t = t->next;
 	}
 }
