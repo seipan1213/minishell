@@ -1,23 +1,39 @@
-/**
-* @file parser.c
-
-* @brief parser
-**/
-
 #include "../../includes/parser.h"
 #include "../../includes/lexer.h"
 #include "../../includes/exec.h"
 
-bool	set_cmd_rd(t_token **tokens, t_command *cmd)
+bool	parse_cmd_rd(t_token **tokens, t_command *cmd)
 {
-	set_cmd_token(*tokens, &cmd->rd);
+	t_redirect	*rd;
+
+	rd = init_redirect();
+	if ((*tokens)->type == RINT)
+	{
+		if ((rd->fd_file = ft_atoi((*tokens)->str)) < 0)
+			return (FALSE);
+		*tokens = (*tokens)->next;
+	}
+	set_rd_type(&rd->type, *tokens);
 	*tokens = (*tokens)->next;
-	if (!*tokens) // '<''>'の後にコマンドが無いとエラー
+	if (!*tokens)
+	{
 		return (FALSE);
-	set_cmd_token(*tokens, &cmd->rd);
+	}
+	set_cmd_token(*tokens, &rd->filename);
+	set_cmd_rd(rd, &cmd->rd);
 	*tokens = (*tokens)->next;
 	return (TRUE);
 }
+// bool	set_cmd_rd(t_token **tokens, t_command *cmd)
+// {
+// 	set_cmd_token(*tokens, &cmd->rd);
+// 	*tokens = (*tokens)->next;
+// 	if (!*tokens) // '<''>'の後にコマンドが無いとエラー
+// 		return (FALSE);
+// 	set_cmd_token(*tokens, &cmd->rd);
+// 	*tokens = (*tokens)->next;
+// 	return (TRUE);
+// }
 
 bool	parse_cmd(t_token **tokens, astNode **node)
 {
@@ -30,7 +46,7 @@ bool	parse_cmd(t_token **tokens, astNode **node)
 		}
 		else if (is_rd((*tokens)->type))
 		{
-			set_cmd_rd(tokens, (*node)->cmd);
+			parse_cmd_rd(tokens, (*node)->cmd);
 		}
 		else
 			break ;

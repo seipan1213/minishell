@@ -20,7 +20,13 @@ int		exec_bin_cmd(astNode *node)
 {
 	pid_t	pid;
 	int		status;
+	// int		pipe_fd[2];
 
+	// if (node->type == PIPE)
+	// {
+	// 	if (!(pipe(pipe_fd)))
+	// 		return (FALSE);
+	// }
 	if ((pid = fork()) < 0)
 		exit(errno);
 	else if (pid == 0)
