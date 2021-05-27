@@ -6,7 +6,8 @@ bool		is_simple_cmd(t_token **tokens)
 {
 	if (!(*tokens))
 		return (0);
-	return (0 <= (*tokens)->type && (*tokens)->type <= 5);
+	return ((*tokens)->type == 0);
+	// return (0 <= (*tokens)->type && (*tokens)->type <= 5);
 }
 
 bool		is_type(t_token **tokens, int type)

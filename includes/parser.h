@@ -13,6 +13,7 @@
 # include <stdbool.h>
 # include "../libft/libft.h"
 # include "lexer.h"
+# define NOT_SPECIFIED -1
 
 /**
  *
@@ -37,9 +38,25 @@
 // 	struct s_token		*next;
 // }				t_token;
 
+typedef enum			e_rd_type
+{
+	RD_INPUT,
+	RD_OUTPUT,
+	RD_APPEND_OUTPUT
+}						t_rd_type;
+
+typedef struct	s_redirect{
+	int					fd_io;
+	int					fd_file;
+	t_rd_type			type;
+	t_token				*filename;
+	struct s_redirect	*next;
+}				t_redirect;
+
 typedef struct	s_command{
 	t_token				*arg;
-	t_token				*rd;
+	// t_token				*rd;
+	t_redirect			*rd;
 	struct s_command	*next;
 }				t_command;
 
@@ -87,10 +104,12 @@ astNode		*new_parent_node(int type, astNode *left, astNode *right);
 bool		is_type(t_token **tokens, int type);
 bool		is_rd(int type);
 void		set_cmd_token(t_token *src, t_token **args);
-bool		set_cmd_rd(t_token **tokens, t_command *cmd);
+bool		parse_cmd_rd(t_token **tokens, t_command *cmd);
 bool		parser(t_token **tokens, astNode **node);
 int			launch(char *line, char **envp);
 void		minishell(char **envp);
-
+t_redirect	*init_redirect(void);
+void		set_rd_type(t_rd_type *type, t_token *token);
+void		set_cmd_rd(t_redirect *rd, t_redirect **list);
 
 #endif

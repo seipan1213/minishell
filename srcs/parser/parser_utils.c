@@ -5,7 +5,7 @@
 
 bool		is_rd(int type)
 {
-	return (1 <= type && type <= 5);
+	return ((RDIR <= type && type <= LLLDIR) || type == RINT);
 }
 
 astNode		*new_cmd_node()
