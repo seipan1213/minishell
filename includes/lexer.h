@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "../libft/libft.h"
+# include "utils.h"
 
 # define MINISHELL "MINISHELL$ "
 # define MALLOCERR "malloc error..."
@@ -74,6 +75,7 @@ void	token_esc(t_tdata *d, t_token **t);
 void	token_semi(t_tdata *d, t_token **t);
 void	token_meta(t_tdata *d, t_token **t);
 int		is_meta(char c);
+t_token	*tokens_last(t_token *t);
 void	tokenise_init(t_tdata *data, t_token **t, char **line);
 t_token	*tokenise(char *line);
 void	print_tokens(t_token *t);

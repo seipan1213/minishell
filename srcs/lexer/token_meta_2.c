@@ -15,7 +15,11 @@
 void	token_lrdct(t_tdata *d, t_token **t)
 {
 	t_token	*token;
+	t_token	*back;
 
+	back = tokens_last(*t);
+	if (is_strdigit(back->str))
+		back->type = RINT;
 	if (!ft_strncmp(d->line + d->i, "<<<", 3))
 	{
 		token = create_token(LLLDIR, "<<<");
@@ -39,7 +43,11 @@ void	token_lrdct(t_tdata *d, t_token **t)
 void	token_rrdct(t_tdata *d, t_token **t)
 {
 	t_token	*token;
+	t_token	*back;
 
+	back = tokens_last(*t);
+	if (is_strdigit(back->str))
+		back->type = RINT;
 	if (!ft_strncmp(d->line + d->i, ">>", 2))
 	{
 		token = create_token(RRDIR, ">>");

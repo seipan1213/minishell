@@ -34,9 +34,7 @@ void	addb_token(t_token **tokens, t_token *token)
 		*tokens = token;
 	else
 	{
-		back = *tokens;
-		while (back->next)
-			back = back->next;
+		back = tokens_last(*tokens);
 		back->next = token;
 	}
 }
