@@ -24,25 +24,17 @@ bool	parse_cmd_rd(t_token **tokens, t_command *cmd)
 	*tokens = (*tokens)->next;
 	return (TRUE);
 }
-// bool	set_cmd_rd(t_token **tokens, t_command *cmd)
-// {
-// 	set_cmd_token(*tokens, &cmd->rd);
-// 	*tokens = (*tokens)->next;
-// 	if (!*tokens) // '<''>'の後にコマンドが無いとエラー
-// 		return (FALSE);
-// 	set_cmd_token(*tokens, &cmd->rd);
-// 	*tokens = (*tokens)->next;
-// 	return (TRUE);
-// }
 
-bool	parse_cmd(t_token **tokens, astNode **node)
+bool	parse_cmd(t_token **tokens, astNode **node, t_cmd_link *cmd_ptr)
 {
-	*node = new_cmd_node(); 	// create new node
+	*node = new_cmd_node(cmd_ptr); 	// create new node
 	while (*tokens)				// put t_command (args & rd) in node
 	{
 		if (is_type(tokens, STR))
 		{
 			set_cmd_args(tokens, (*node)->cmd);
+			// print_tokens((*node)->cmd->arg);
+			// printf("\n");
 		}
 		else if (is_rd((*tokens)->type))
 		{
@@ -54,12 +46,12 @@ bool	parse_cmd(t_token **tokens, astNode **node)
 	return(TRUE);
 }
 
-bool	parse_job(t_token **tokens, astNode **node)
+bool	parse_job(t_token **tokens, astNode **node, t_cmd_link *cmd_ptr)
 {
 	astNode		*right;
 
 	right = NULL;
-	if (!(parse_cmd(tokens, node)))
+	if (!(parse_cmd(tokens, node, cmd_ptr)))
 		return (FALSE);
 	while (*tokens)
 	{
@@ -68,7 +60,7 @@ bool	parse_job(t_token **tokens, astNode **node)
 			*tokens = (*tokens)->next;
 			if (!*tokens) // '|'の後にコマンドが無いとエラー
 				return (FALSE);
-			if (!(parse_cmd(tokens, &right))) // get right node
+			if (!(parse_cmd(tokens, &right, cmd_ptr))) // get right node
 				return(FALSE);
 			*node = new_parent_node(PIPE, *node, right);
 		}
@@ -81,17 +73,20 @@ bool	parse_job(t_token **tokens, astNode **node)
 bool	parse_cmdline(t_token **tokens, astNode **node)
 {
 	astNode		*right;
+	t_cmd_link	*cmd_ptr;
 
-	if (!(parse_job(tokens, node)))
+	cmd_ptr->ptr = NULL;
+	if (!(parse_job(tokens, node, cmd_ptr)))
 		return (FALSE);
 	while (*tokens)
 	{
 		if (is_type(tokens, SCOLON)) //	check ";" or not
 		{
+			cmd_ptr->ptr = NULL;
 			*tokens = (*tokens)->next;
 			if (!*tokens) // 最後が';'ならスルー
 				break ;
-			if (!(parse_job(tokens, &right))) // get right node
+			if (!(parse_job(tokens, &right, cmd_ptr))) // get right node
 				return(FALSE);
 			*node = new_parent_node(SCOLON, *node, right);
 		}

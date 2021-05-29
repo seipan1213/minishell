@@ -8,7 +8,7 @@ bool		is_rd(int type)
 	return ((RDIR <= type && type <= LLLDIR) || type == RINT);
 }
 
-astNode		*new_cmd_node()
+astNode		*new_cmd_node(t_cmd_link *cmd_ptr)
 {
 	astNode		*new;
 
@@ -20,6 +20,9 @@ astNode		*new_cmd_node()
 	new->cmd->arg = NULL;
 	new->cmd->rd = NULL;
 	new->cmd->next = NULL;
+	// if (cmd_ptr->ptr)
+	// 	cmd_ptr->ptr->next = new->cmd;
+	// cmd_ptr->ptr = new->cmd;
 	return (new);
 }
 
