@@ -32,11 +32,6 @@
  *
 **/
 
-// typedef struct	s_token {
-// 	char				*val;
-// 	int					type;
-// 	struct s_token		*next;
-// }				t_token;
 
 typedef enum			e_rd_type
 {
@@ -55,10 +50,14 @@ typedef struct	s_redirect{
 
 typedef struct	s_command{
 	t_token				*arg;
-	// t_token				*rd;
 	t_redirect			*rd;
 	struct s_command	*next;
 }				t_command;
+
+typedef struct	s_cmd_link
+{
+	t_command	*ptr;
+}				t_cmd_link;
 
 typedef struct	astNode {
 	int					type;
@@ -99,7 +98,7 @@ typedef struct	astNode {
 // void		print_token(t_token *t);
 t_token		*gen_token(char *val, int type);
 void		set_cmd_args(t_token **tokens, t_command *cmd);
-astNode		*new_cmd_node();
+astNode		*new_cmd_node(t_cmd_link *cmd_ptr);
 astNode		*new_parent_node(int type, astNode *left, astNode *right);
 bool		is_type(t_token **tokens, int type);
 bool		is_rd(int type);

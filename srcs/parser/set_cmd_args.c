@@ -6,8 +6,7 @@ bool		is_simple_cmd(t_token **tokens)
 {
 	if (!(*tokens))
 		return (0);
-	return ((*tokens)->type == 0);
-	// return (0 <= (*tokens)->type && (*tokens)->type <= 5);
+	return ((*tokens)->type == STR);
 }
 
 bool		is_type(t_token **tokens, int type)
@@ -51,6 +50,12 @@ void		set_cmd_token(t_token *src, t_token **dest)
 
 void		set_cmd_args(t_token **tokens, t_command *cmd)
 {
+	// if (*tokens)
+	// {
+	// 	print_tokens(*tokens);
+	// 	printf("\n");
+	// }
+
 	while (tokens && is_simple_cmd(tokens))
 	{
 		set_cmd_token(*tokens, &cmd->arg);

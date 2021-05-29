@@ -37,6 +37,7 @@ void minishell(char **envp)
 	astNode		*node = NULL;
 	char		*line;
 	int			ret;
+	t_command	*tmp;
 
 	ret = 0;
 	while (1)
@@ -53,12 +54,12 @@ void minishell(char **envp)
 		tokens = NULL;
 		tokens = lexer(line);
 		parser(&tokens, &node);
-		printf("		%d: \n\n", node->type);
-		printf("	fd_file %d:%s		fd_file %d:%s \n\n",\
-									node->left->cmd->rd->fd_file, \
-									node->left->cmd->rd->filename->str, \
-									node->right->cmd->rd->fd_file, \
-									node->right->cmd->rd->filename->str);
+		// printf("		%d: \n\n", node->type);
+		// printf("	fd_file %d:%s		fd_file %d:%s \n\n",\
+		// 							node->left->cmd->rd->fd_file, \
+		// 							node->left->cmd->rd->filename->str, \
+		// 							node->right->cmd->rd->fd_file, \
+		// 							node->right->cmd->rd->filename->str);
 		ret = exec(node);
 		free(line);
 	}
