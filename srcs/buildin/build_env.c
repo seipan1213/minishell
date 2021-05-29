@@ -1,6 +1,6 @@
 #include "../../includes/buildin.h"
 
-void	print_envs(t_env *envs)
+static void	print_envs(t_env *envs)
 {
 	while (envs)
 	{
