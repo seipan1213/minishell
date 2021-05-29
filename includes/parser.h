@@ -50,7 +50,6 @@ typedef struct	s_redirect{
 
 typedef struct	s_command{
 	t_token				*arg;
-	// t_token				*rd;
 	t_redirect			*rd;
 	struct s_command	*next;
 }				t_command;

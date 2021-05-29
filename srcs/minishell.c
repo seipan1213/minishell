@@ -60,16 +60,7 @@ void minishell(char **envp)
 		// 							node->left->cmd->rd->filename->str, \
 		// 							node->right->cmd->rd->fd_file, \
 		// 							node->right->cmd->rd->filename->str);
-			// while (node->left)
-			// 	node = node->left;
-			// tmp = node->cmd;
-			// while (tmp)
-			// {
-			// 	printf("%s %s / ", tmp->arg->str, tmp->arg->next->str);
-			// 	tmp = tmp->next;
-			// }
-			// printf("\n");
-		// ret = exec(node);
+		ret = exec(node);
 		free(line);
 	}
 }

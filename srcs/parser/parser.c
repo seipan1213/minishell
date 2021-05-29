@@ -33,8 +33,6 @@ bool	parse_cmd(t_token **tokens, astNode **node, t_cmd_link *cmd_ptr)
 		if (is_type(tokens, STR))
 		{
 			set_cmd_args(tokens, (*node)->cmd);
-			// print_tokens((*node)->cmd->arg);
-			// printf("\n");
 		}
 		else if (is_rd((*tokens)->type))
 		{
@@ -73,20 +71,20 @@ bool	parse_job(t_token **tokens, astNode **node, t_cmd_link *cmd_ptr)
 bool	parse_cmdline(t_token **tokens, astNode **node)
 {
 	astNode		*right;
-	t_cmd_link	*cmd_ptr;
+	t_cmd_link	cmd_ptr;
 
-	cmd_ptr->ptr = NULL;
-	if (!(parse_job(tokens, node, cmd_ptr)))
+	cmd_ptr.ptr = NULL;
+	if (!(parse_job(tokens, node, &cmd_ptr)))
 		return (FALSE);
 	while (*tokens)
 	{
 		if (is_type(tokens, SCOLON)) //	check ";" or not
 		{
-			cmd_ptr->ptr = NULL;
+			cmd_ptr.ptr = NULL;
 			*tokens = (*tokens)->next;
 			if (!*tokens) // 最後が';'ならスルー
 				break ;
-			if (!(parse_job(tokens, &right, cmd_ptr))) // get right node
+			if (!(parse_job(tokens, &right, &cmd_ptr))) // get right node
 				return(FALSE);
 			*node = new_parent_node(SCOLON, *node, right);
 		}

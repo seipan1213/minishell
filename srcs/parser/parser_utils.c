@@ -20,9 +20,9 @@ astNode		*new_cmd_node(t_cmd_link *cmd_ptr)
 	new->cmd->arg = NULL;
 	new->cmd->rd = NULL;
 	new->cmd->next = NULL;
-	// if (cmd_ptr->ptr)
-	// 	cmd_ptr->ptr->next = new->cmd;
-	// cmd_ptr->ptr = new->cmd;
+	if (cmd_ptr->ptr)
+		cmd_ptr->ptr->next = new->cmd;
+	cmd_ptr->ptr = new->cmd;
 	return (new);
 }
 
