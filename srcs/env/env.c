@@ -67,12 +67,11 @@ void	free_env(t_env *env)
 	env = NULL;
 }
 
-void	free_envs(t_env *env)
+void	free_envs(t_env *envs)
 {
-	while (env != NULL)
+	while (envs != NULL)
 	{
-		free(env->name);
-		free(env->value);
-		env = env->next;
+		free_env(envs);
+		envs = envs->next;
 	}
 }
