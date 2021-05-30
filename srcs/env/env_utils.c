@@ -81,21 +81,6 @@ int		del_env(char *delKey, t_env **envs)
 	return(0);
 }
 
-void	print_envs(t_env *envs)
-{
-	int i = 1;
-	while (envs)
-	{
-		ft_putnbr_fd(i, 1);
-		write(1, ": ", 2);
-		ft_putstr_fd(envs->name, STDERR_FILENO);
-		ft_putstr_fd("  =  ", STDERR_FILENO);
-		ft_putendl_fd(envs->value, STDERR_FILENO);
-		envs = envs->next;
-		i++;
-	}
-}
-
 /* int		main ()//int argc, char **argv)
 {
 	t_env *envs;

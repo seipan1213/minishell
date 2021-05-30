@@ -2,7 +2,10 @@
 # define BUILDIN_H
 
 # include "../libft/libft.h"
+# include "minishell.h"
 # include <stdio.h>
+
+# define UNSET_ERR "unset: not enough arguments"
 
 typedef enum e_echo_flag
 {
