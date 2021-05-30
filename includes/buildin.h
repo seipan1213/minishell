@@ -4,6 +4,8 @@
 # include "../libft/libft.h"
 # include "minishell.h"
 
+# define UNSET_ERR "unset: not enough arguments"
+
 typedef enum e_echo_flag
 {
 	ECHO_OP_N = 1,
