@@ -1,9 +1,3 @@
-/**
-* @file parser.h
-
-* @brief This is API for Sate machine
-**/
-
 #ifndef PARSER_H
 # define PARSER_H
 
@@ -51,6 +45,7 @@ typedef struct	s_redirect{
 typedef struct	s_command{
 	t_token				*arg;
 	t_redirect			*rd;
+	int					pid;
 	struct s_command	*next;
 }				t_command;
 

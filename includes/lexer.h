@@ -49,7 +49,7 @@ typedef enum e_ttype
 typedef struct s_token
 {
 	char			*str;
-	t_ttype		type;
+	t_ttype			type;
 	struct s_token	*next;
 }			t_token;
 

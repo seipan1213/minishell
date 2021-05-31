@@ -1,6 +1,7 @@
 
 #include "../../includes/parser.h"
 #include "../../includes/lexer.h"
+#include "../../includes/exec.h"
 
 
 bool		is_rd(int type)
@@ -19,6 +20,7 @@ astNode		*new_cmd_node(t_cmd_link *cmd_ptr)
 	new->right = NULL;
 	new->cmd->arg = NULL;
 	new->cmd->rd = NULL;
+	new->cmd->pid = NO_PID;
 	new->cmd->next = NULL;
 	if (cmd_ptr->ptr)
 		cmd_ptr->ptr->next = new->cmd;
