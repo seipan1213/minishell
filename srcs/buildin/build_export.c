@@ -25,7 +25,7 @@ static int	export_env(char *str)
 	return (1);
 }
 
-int	export(char **argv)
+int	build_export(char **argv)
 {
 	int	i;
 
@@ -34,10 +34,12 @@ int	export(char **argv)
 	{
 		while (argv[i])
 		{
-			export_env(argv[i]);
+			if (!(export_env(argv[i])))
+				return (-1);
 			i++;
 		}
 	}
 	else
 		print_export(g_data.envs);
+	return (EXIT_SUCCESS);
 }

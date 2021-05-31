@@ -1,6 +1,6 @@
 #include "../../includes/buildin.h"
 
-int	unset(char **argv)
+int	build_unset(char **argv)
 {
 	int	i;
 
@@ -15,5 +15,5 @@ int	unset(char **argv)
 		ft_putendl_fd(UNSET_ERR, STDERR_FILENO);
 		return (-1);
 	}
-	return (1);
+	return (EXIT_SUCCESS);
 }
