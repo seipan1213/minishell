@@ -7,7 +7,11 @@ SRCFILE = parser/init_parser.c parser/parser.c \
 				lexer/token_meta_1.c lexer/token_meta_2.c \
 				exec/exec.c exec/exec_utils.c exec/exec_cmd.c \
 				exec/exec_cmd_utils.c exec/exec_buildin.c \
-				buildin/build_env.c buildin/echo.c \
+				buildin/build_env.c buildin/build_echo.c \
+				buildin/build_exit.c buildin/build_export.c \
+				buildin/build_unset.c buildin/build_pwd.c \
+				env/env_cast.c env/env_sort.c env/env_utils.c \
+				env/env.c \
 				utils/utils.c \
 				minishell.c
 CC    = gcc

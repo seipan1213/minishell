@@ -27,6 +27,7 @@ void sig_ign();
 
 int main(int argc, char **argv, char **envp)
 {
+	g_data.envs = envs_init();
 	if (argc == 1)
 		minishell(envp);
 }

@@ -7,7 +7,7 @@ int	build_echo(char **argv)
 
 	i = 1;
 	flag = 0;
-	while (!ft_strncmp(argv[i], "-n", 3) && ++i)
+	while (argv[i] && !ft_strncmp(argv[i], "-n", 3) && ++i)
 		flag |= ECHO_OP_N;
 	while (argv[i] != NULL)
 	{
