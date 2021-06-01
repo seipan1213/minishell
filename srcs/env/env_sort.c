@@ -9,6 +9,25 @@ static void	swap_str(char **s1, char **s2)
 	*s2 = tmp;
 }
 
+void	sort_str(char **envs)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (envs[i])
+	{
+		j = i;
+		while (envs[j])
+		{
+			if (ft_strcmp(envs[i], envs[j]) > 0)
+				swap_str(&envs[i], &envs[j]);
+			j++;
+		}
+		i++;
+	}
+}
+
 void	sort_envs(t_env *envs)
 {
 	t_env	*top;

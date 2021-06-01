@@ -2,37 +2,31 @@
 
 #include "../../includes/exec.h"
 
-int		exec_bin(astNode *node)
+int		exec_bin(char **args)
 {
 	char		*line;
 	char		*path;
-	char		**args;
 	extern char	**environ;
 
-	args = to_wchar(node->cmd->arg);
 	line = args[0];
 	path = ft_strjoin("/bin/", line);
 	execve(path, args, environ);
-	return (TRUE);
+	return (FALSE);
 }
 
 int		exec_bin_cmd(astNode *node)
 {
 	pid_t	pid;
 	int		status;
-	// int		pipe_fd[2];
+	char	**args;
 
-	// if (node->type == PIPE)
-	// {
-	// 	if (!(pipe(pipe_fd)))
-	// 		return (FALSE);
-	// }
 	if ((pid = fork()) < 0)
 		exit(errno);
 	else if (pid == 0)
 	{
 		errno = 0;
-		exec_bin(node);
+		args = token_to_args(node->cmd->arg);
+		exec_bin(args);
 		if (errno)
 		{
 			ft_putstr_fd(strerror(errno), 2);
@@ -49,10 +43,14 @@ int		exec_bin_cmd(astNode *node)
 	return (TRUE);
 }
 
-int		exec_cmd(astNode *node)
+int		exec_cmd_node(astNode *node)
 {
-	// exec_pipeline
-	exec_bin_cmd(node);
+	if (node->type == PIPE)
+	{
+		exec_pipeline(node);
+	}
+	else
+		exec_bin_cmd(node);
 	return (TRUE);
 }
 
@@ -67,7 +65,7 @@ int		exec(astNode *node)
 	}
 	else
 	{
-		exec_cmd(node);
+		exec_cmd_node(node);
 	}
 	return (TRUE);
 }
