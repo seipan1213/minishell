@@ -1,7 +1,7 @@
 
 #include "../../includes/exec.h"
 
-int		exec_bin(char **args)
+void	exec_bin(char **args)
 {
 	char		*line;
 	char		*path;
@@ -11,7 +11,6 @@ int		exec_bin(char **args)
 	path = ft_strjoin("/bin/", line);
 	execve(path, args, environ);
 	exit(1);
-	return (FALSE);
 }
 
 int		exec_bin_cmd(astNode *node)

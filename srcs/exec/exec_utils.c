@@ -3,8 +3,8 @@
 
 int		is_buildin(char **args)
 {
-	int		i;
-	char	*buildin[] = {"echo", "cd", "pwd", "export", "unset","env", "exit"};
+	int			i;
+	const char	*buildin[] = {"echo", "cd", "pwd", "export", "unset","env", "exit"};
 
 	i = 0;
 	while (buildin[i])
