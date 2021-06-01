@@ -12,5 +12,10 @@ typedef enum e_echo_flag
 	ECHO_OP_N = 1,
 }	t_echo_flag;
 
+int		echo(char **argv);
+int		env(void);
+// int		unset(char **argv);
+
+
 
 #endif

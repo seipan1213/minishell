@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 01:16:23 by sehattor          #+#    #+#             */
-/*   Updated: 2021/05/11 23:44:23 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/06/01 19:32:22 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct		s_list
 #  define BUFFER_SIZE 100
 # endif
 
+int					ft_strcmp(char *s1, char *s2);
 int					get_next_line(int fd, char **line);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t len);

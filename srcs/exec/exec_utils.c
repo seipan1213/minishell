@@ -1,6 +1,21 @@
 
 #include "../../includes/exec.h"
 
+int		is_buildin(char **args)
+{
+	int		i;
+	char	*buildin[] = {"echo", "cd", "pwd", "export", "unset","env", "exit"};
+
+	i = 0;
+	while (buildin[i])
+	{
+		if (ft_strcmp(args[0], buildin[i]) == 0)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int		token_lst_len(t_token *token)
 {
 	t_token		*list;

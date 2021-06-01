@@ -15,8 +15,10 @@ int		exec_cmdline(t_command *cmd, char **args, t_pipe_status *p_stat, int pipe_f
 	if (pid == 0)
 	{
 		dup_pipe(p_stat, pipe_fd, new_pipe_fd);
-		exec_bin(args);
-		exit(1);
+		if (is_buildin(args))
+			exec_buildin(args);
+		else
+			exec_bin(args);
 	}
 	pass_pipe(p_stat, pipe_fd, new_pipe_fd);
 	cmd->pid = pid;

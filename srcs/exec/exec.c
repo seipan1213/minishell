@@ -1,5 +1,4 @@
 
-
 #include "../../includes/exec.h"
 
 int		exec_bin(char **args)
@@ -11,6 +10,7 @@ int		exec_bin(char **args)
 	line = args[0];
 	path = ft_strjoin("/bin/", line);
 	execve(path, args, environ);
+	exit(1);
 	return (FALSE);
 }
 
