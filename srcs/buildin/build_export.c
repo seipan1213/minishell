@@ -55,7 +55,7 @@ static int	export_env(char *str)
 	return (1);
 }
 
-int	export(char **argv)
+int	build_export(char **argv)
 {
 	int	i;
 	int	ret;
