@@ -1,6 +1,6 @@
 #include "../../includes/buildin.h"
 
-int	echo(char **argv)
+int	build_echo(char **argv)
 {
 	int	i;
 	int	flag;
@@ -18,5 +18,5 @@ int	echo(char **argv)
 	}
 	if (!(flag & ECHO_OP_N))
 		ft_putchar_fd('\n', STDOUT_FILENO);
-	return (1);
+	return (EXIT_SUCCESS);
 }

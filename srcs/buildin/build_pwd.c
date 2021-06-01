@@ -1,6 +1,6 @@
 #include "../../includes/buildin.h"
 
-int	pwd(void)
+int	build_pwd(void)
 {
 	char	*pwd;
 
@@ -9,5 +9,5 @@ int	pwd(void)
 	if (!pwd)
 		return (-1);
 	ft_putendl_fd(pwd, STDOUT_FILENO);
-	return (1);
+	return (EXIT_SUCCESS);
 }

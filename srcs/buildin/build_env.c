@@ -11,8 +11,8 @@ static void	print_envs(t_env *envs)
 	}
 }
 
-int	env(void)
+int	build_env(void)
 {
 	print_envs(g_data.envs);
-	return(1);
+	return(EXIT_SUCCESS);
 }
