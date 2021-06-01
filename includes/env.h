@@ -14,7 +14,6 @@ typedef struct s_env
 	struct s_env	*next;
 }			t_env;
 
-void	print_envs(t_env *envs);
 void	addb_env(t_env **envs, t_env *env);
 t_env	*create_env(char *environ);
 t_env	*envs_init(void);

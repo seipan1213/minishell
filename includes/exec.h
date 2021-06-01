@@ -10,6 +10,7 @@
 # include "../libft/libft.h"
 # include "lexer.h"
 # include "parser.h"
+# include "buildin.h"
 
 # define NO_PID -1
 # define PIPE_OUT 0
@@ -25,11 +26,13 @@ typedef enum	e_pipe_status
 
 int		exec(astNode *node);
 void	exec_pipeline(astNode *node);
-int		exec_bin(char **args);
+void	exec_bin(char **args);
 char	**token_to_args(t_token *token);
 int		dup_pipe(t_pipe_status *p_stat, int old_pipe_fd[], int new_pipe_fd[]);
 int		pass_pipe(t_pipe_status *p_stat, int old_pipe_fd[], int new_pipe_fd[]);
-void		get_next_p_stat(t_command *cmd, t_pipe_status *p_stat);
-void		wait_commands(t_command *cmd);
+void	get_next_p_stat(t_command *cmd, t_pipe_status *p_stat);
+void	wait_commands(t_command *cmd);
+int		is_buildin(char **args);
+void	exec_buildin(char **args);
 
 #endif

@@ -1,8 +1,7 @@
 
-
 #include "../../includes/exec.h"
 
-int		exec_bin(char **args)
+void	exec_bin(char **args)
 {
 	char		*line;
 	char		*path;
@@ -11,7 +10,7 @@ int		exec_bin(char **args)
 	line = args[0];
 	path = ft_strjoin("/bin/", line);
 	execve(path, args, environ);
-	return (FALSE);
+	exit(1);
 }
 
 int		exec_bin_cmd(astNode *node)
@@ -45,9 +44,16 @@ int		exec_bin_cmd(astNode *node)
 
 int		exec_cmd_node(astNode *node)
 {
+	char **args;
+
+	args = token_to_args(node->cmd->arg);
 	if (node->type == PIPE)
 	{
 		exec_pipeline(node);
+	}
+	else if (is_buildin(args))
+	{
+		exec_buildin(args);
 	}
 	else
 		exec_bin_cmd(node);
