@@ -27,5 +27,6 @@ int		del_env(char *delKey, t_env **env);
 int		envs_len(t_env *envs);
 char	**environ_gen(t_env *envs);
 void	sort_envs(t_env *envs);
+void	sort_str(char **envs);
 
 #endif

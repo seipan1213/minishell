@@ -12,5 +12,7 @@ typedef enum e_echo_flag
 	ECHO_OP_N = 1,
 }	t_echo_flag;
 
+int	check_identifier(char *str);
+
 
 #endif
