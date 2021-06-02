@@ -16,7 +16,7 @@ int		exec_cmdline(t_command *cmd, char **args, t_pipe_status *p_stat, int pipe_f
 	{
 		dup_pipe(p_stat, pipe_fd, new_pipe_fd);
 		if (is_buildin(args))
-			exec_buildin(args);
+			exit(exec_buildin(args));
 		else
 			exec_bin(args);
 	}

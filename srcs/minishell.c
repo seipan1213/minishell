@@ -54,13 +54,15 @@ void minishell(char **envp)
 		// ret = launch(line, envp);
 		tokens = NULL;
 		tokens = lexer(line);
+		node = NULL;
 		parser(&tokens, &node);
 		// printf("		%d: \n\n", node->type);
-		// printf("	fd_file %d:%s		fd_file %d:%s \n\n",\
-		// 							node->left->cmd->rd->fd_file, \
-		// 							node->left->cmd->rd->filename->str, \
-		// 							node->right->cmd->rd->fd_file, \
-		// 							node->right->cmd->rd->filename->str);
+		// printf("	 %d:%s		 %d:%s \n\n",\
+		// 							node->left->type, \
+		// 							node->left->cmd->arg->str, \
+		// 							node->right->type, \
+		// 							node->right->cmd->arg->str);
+
 		ret = exec(node);
 		free(line);
 	}

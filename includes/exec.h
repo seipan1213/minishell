@@ -33,6 +33,6 @@ int		pass_pipe(t_pipe_status *p_stat, int old_pipe_fd[], int new_pipe_fd[]);
 void	get_next_p_stat(t_command *cmd, t_pipe_status *p_stat);
 void	wait_commands(t_command *cmd);
 int		is_buildin(char **args);
-void	exec_buildin(char **args);
+int		exec_buildin(char **args);
 
 #endif
