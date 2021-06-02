@@ -1,19 +1,20 @@
 #include "../../includes/exec.h"
 
-void	exec_buildin(char **args)
+int		exec_buildin(char **args)
 {
 	if (ft_strcmp(args[0], "echo") == 0)
-		build_echo(args);
+		return (build_echo(args));
 	// if (ft_strcmp(args[0], "cd") == 0)
 	// 	build_cd();
 	if (ft_strcmp(args[0], "pwd") == 0)
-		build_pwd();
+		return (build_pwd());
 	if (ft_strcmp(args[0], "export") == 0)
-		build_export(args);
+		return (build_export(args));
 	if (ft_strcmp(args[0], "unset") == 0)
-		build_unset(args);
+		return (build_unset(args));
 	if (ft_strcmp(args[0], "env") == 0)
-		build_env();
+		return (build_env());
 	if (ft_strcmp(args[0], "exit") == 0)
-		build_exit(args);
+		return (build_exit(args));
+	return (EXIT_FAILURE);
 }

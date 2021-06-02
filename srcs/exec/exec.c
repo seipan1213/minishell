@@ -46,17 +46,22 @@ int		exec_cmd_node(astNode *node)
 {
 	char **args;
 
-	args = token_to_args(node->cmd->arg);
 	if (node->type == PIPE)
 	{
 		exec_pipeline(node);
 	}
-	else if (is_buildin(args))
-	{
-		exec_buildin(args);
-	}
 	else
-		exec_bin_cmd(node);
+	{
+		args = token_to_args(node->cmd->arg);
+		if (is_buildin(args))
+		{
+			exec_buildin(args);
+		}
+		else
+		{
+			exec_bin_cmd(node);
+		}
+	}
 	return (TRUE);
 }
 

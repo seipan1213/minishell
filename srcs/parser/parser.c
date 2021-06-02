@@ -97,6 +97,9 @@ bool	parse_cmdline(t_token **tokens, astNode **node)
 bool	parser(t_token **tokens, astNode **node)
 {
 	int		result;
+
+	if (!tokens || !*tokens)
+		return (0);
 	result = parse_cmdline(tokens, node);
 	return (result);
 }

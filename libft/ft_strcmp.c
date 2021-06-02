@@ -6,11 +6,11 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 18:26:45 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/05/12 18:27:05 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/06/02 15:58:40 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(char *s1, char *s2)
+int		ft_strcmp(const char *s1, const char *s2)
 {
 	int	i;
 	int	diff;

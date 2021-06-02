@@ -4,7 +4,7 @@
 int		is_buildin(char **args)
 {
 	int			i;
-	const char	*buildin[] = {"echo", "cd", "pwd", "export", "unset","env", "exit"};
+	const char	*buildin[] = {"echo", "cd", "pwd", "export", "unset","env", "exit", NULL};
 
 	i = 0;
 	while (buildin[i])
