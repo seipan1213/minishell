@@ -11,6 +11,7 @@
 # include "lexer.h"
 # include "parser.h"
 # include "buildin.h"
+# include "expand.h"
 
 # define NO_PID -1
 # define PIPE_OUT 0

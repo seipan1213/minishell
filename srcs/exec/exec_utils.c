@@ -44,7 +44,7 @@ char	**token_to_args(t_token *token)
 	i = 0;
 	while (i < token_len)
 	{
-		args[i] = ft_strdup(list->str);
+		args[i] = expand(list->str, g_data.envs);
 		list = list->next;
 		i++;
 	}
