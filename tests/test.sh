@@ -79,7 +79,7 @@ exec_cmd()
 	bash -c "$1" > ${BASH_STDOUT} 2> ${BASH_STDERR}
 	BASH_RESULT=$?
 	set_test_dir
-	bash -c "$1" > ${MINISHELL_STDOUT} 2> ${MINISHELL_STDERR}
+	${MINISHELL_PATH} -c "$1" > ${MINISHELL_STDOUT} 2> ${MINISHELL_STDERR}
 	MINISHELL_RESULT=$?
 }
 
