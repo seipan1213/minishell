@@ -14,9 +14,9 @@ int	build_echo(char **argv)
 		ft_putstr_fd(argv[i], STDOUT_FILENO);
 		i++;
 		if (argv[i] != NULL)
-			ft_putchar_fd(' ', STDOUT_FILENO);
+			ft_putstr_fd(" ", STDOUT_FILENO);
 	}
 	if (!(flag & ECHO_OP_N))
-		ft_putchar_fd('\n', STDOUT_FILENO);
+		ft_putstr_fd("\r\n", STDOUT_FILENO);
 	return (EXIT_SUCCESS);
 }
