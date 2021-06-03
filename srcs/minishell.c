@@ -25,14 +25,28 @@ int launch(char *line, char **envp);
 void sig_input();
 void sig_ign();
 
-int main(int argc, char **argv, char **envp)
+void	test_minishell(char **argv, char **envp)
+{
+	t_token		*tokens = NULL;
+	astNode		*node = NULL;
+
+	tokens = NULL;
+	tokens = lexer(argv[2]);
+	node = NULL;
+	parser(&tokens, &node);
+	exec(node);
+}
+
+int		main(int argc, char **argv, char **envp)
 {
 	g_data.envs = envs_init();
 	if (argc == 1)
 		minishell(envp);
+	else if (argc > 2 && (ft_strcmp(argv[1], "-c") == 0))
+		test_minishell(argv, envp);
 }
 
-void minishell(char **envp)
+void	minishell(char **envp)
 {
 	t_token		*tokens;
 	astNode		*node = NULL;
