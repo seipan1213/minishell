@@ -17,6 +17,6 @@ int	built_echo(char **argv)
 			ft_putstr_fd(" ", STDOUT_FILENO);
 	}
 	if (!(flag & ECHO_OP_N))
-		ft_putstr_fd("\r\n", STDOUT_FILENO);
+		ft_putstr_fd("\n", STDOUT_FILENO);
 	return (EXIT_SUCCESS);
 }

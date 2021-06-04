@@ -5,3 +5,5 @@ echo "DQ"
 echo 'SQ'
 echo "DQ"'SQ
 echo first second third
+echo A ; echo B
+echo $AAA, export AAA=bbbbb
