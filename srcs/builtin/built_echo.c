@@ -1,6 +1,6 @@
-#include "../../includes/buildin.h"
+#include "../../includes/builtin.h"
 
-int	build_echo(char **argv)
+int	built_echo(char **argv)
 {
 	int	i;
 	int	flag;

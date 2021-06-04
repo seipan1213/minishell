@@ -1,4 +1,4 @@
-#include "../../includes/buildin.h"
+#include "../../includes/builtin.h"
 
 static void	print_envs(t_env *envs)
 {
@@ -11,7 +11,7 @@ static void	print_envs(t_env *envs)
 	}
 }
 
-int	build_env(void)
+int	built_env(void)
 {
 	print_envs(g_data.envs);
 	return(EXIT_SUCCESS);

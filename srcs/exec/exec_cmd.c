@@ -2,7 +2,7 @@
 
 int		exec_cmdline(t_command *cmd, char **args, t_pipe_status *p_stat, int pipe_fd[])
 {
-	int		pid;
+	pid_t	pid;
 	int		new_pipe_fd[2];
 
 	if (*p_stat == PIPE_WRITE_ONLY || *p_stat == PIPE_READ_WRITE)
@@ -15,8 +15,8 @@ int		exec_cmdline(t_command *cmd, char **args, t_pipe_status *p_stat, int pipe_f
 	if (pid == 0)
 	{
 		dup_pipe(p_stat, pipe_fd, new_pipe_fd);
-		if (is_buildin(args))
-			exit(exec_buildin(args));
+		if (is_builtin(args))
+			exit(exec_builtin(args));
 		else
 			exec_bin(args);
 	}
@@ -30,7 +30,10 @@ void	exec_cmd(t_command *cmd, t_pipe_status *p_stat, int pipe_fd[])
 	char	**args;
 
 	args = token_to_args(cmd->arg);
-	exec_cmdline(cmd, args, p_stat, pipe_fd);
+	if (*p_stat == NO_PIPE && is_builtin(args))
+		exec_builtin(args);
+	else
+		exec_cmdline(cmd, args, p_stat, pipe_fd);
 	get_next_p_stat(cmd, p_stat);
 	// free args
 }

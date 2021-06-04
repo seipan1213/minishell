@@ -1,6 +1,6 @@
-#include "../../includes/buildin.h"
+#include "../../includes/builtin.h"
 
-int	build_exit(char **argv)
+int	built_exit(char **argv)
 {
 	int	i;
 	int	num;
