@@ -1,15 +1,15 @@
 
 #include "../../includes/exec.h"
 
-int		is_buildin(char **args)
+int		is_builtin(char **args)
 {
 	int			i;
-	const char	*buildin[] = {"echo", "cd", "pwd", "export", "unset","env", "exit", NULL};
+	const char	*builtin[] = {"echo", "cd", "pwd", "export", "unset","env", "exit", NULL};
 
 	i = 0;
-	while (buildin[i])
+	while (builtin[i])
 	{
-		if (ft_strcmp(args[0], buildin[i]) == 0)
+		if (ft_strcmp(args[0], builtin[i]) == 0)
 			return (1);
 		i++;
 	}

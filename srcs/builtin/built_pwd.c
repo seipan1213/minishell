@@ -1,6 +1,6 @@
-#include "../../includes/buildin.h"
+#include "../../includes/builtin.h"
 
-int	build_pwd(void)
+int	built_pwd(void)
 {
 	char	*pwd;
 

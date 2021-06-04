@@ -6,10 +6,10 @@ SRCFILE = parser/init_parser.c parser/parser.c \
 				lexer/lexer.c lexer/lexer_check.c lexer/token.c \
 				lexer/token_meta_1.c lexer/token_meta_2.c \
 				exec/exec.c exec/exec_utils.c exec/exec_cmd.c \
-				exec/exec_cmd_utils.c exec/exec_buildin.c \
-				buildin/build_env.c buildin/build_echo.c \
-				buildin/build_exit.c buildin/build_export.c \
-				buildin/build_unset.c buildin/build_pwd.c \
+				exec/exec_cmd_utils.c exec/exec_builtin.c \
+				builtin/built_env.c builtin/built_echo.c \
+				builtin/built_exit.c builtin/built_export.c \
+				builtin/built_unset.c builtin/built_pwd.c \
 				env/env_cast.c env/env_sort.c env/env_utils.c \
 				env/env.c \
 				expand/expand.c expand/expand_utils.c \

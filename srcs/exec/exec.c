@@ -44,23 +44,18 @@ int		exec_bin_cmd(astNode *node)
 
 int		exec_cmd_node(astNode *node)
 {
-	char **args;
+	char			**args;
+	t_pipe_status	p_stat;
 
+	p_stat = NO_PIPE;
 	if (node->type == PIPE)
 	{
 		exec_pipeline(node);
 	}
 	else
 	{
-		args = token_to_args(node->cmd->arg);
-		if (is_buildin(args))
-		{
-			exec_buildin(args);
-		}
-		else
-		{
-			exec_bin_cmd(node);
-		}
+		exec_cmd(node->cmd, &p_stat, NULL);
+		wait_commands(node->cmd);
 	}
 	return (TRUE);
 }

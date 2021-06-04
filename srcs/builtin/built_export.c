@@ -1,4 +1,4 @@
-#include "../../includes/buildin.h"
+#include "../../includes/builtin.h"
 
 static void	print_export(t_env *envs)
 {
@@ -55,7 +55,7 @@ static int	export_env(char *str)
 	return (1);
 }
 
-int	build_export(char **argv)
+int	built_export(char **argv)
 {
 	int	i;
 	int	ret;

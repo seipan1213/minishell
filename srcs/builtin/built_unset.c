@@ -1,6 +1,6 @@
-#include "../../includes/buildin.h"
+#include "../../includes/builtin.h"
 
-int	build_unset(char **argv)
+int	built_unset(char **argv)
 {
 	int	i;
 	int	ret;
