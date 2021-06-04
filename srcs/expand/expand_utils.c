@@ -4,6 +4,7 @@ char	*expand_env(char *str, t_env *envs)
 {
 	char	*key;
 	char	*env;
+	t_env	*tmp;
 	int		i;
 
 	i = 0;
@@ -13,7 +14,11 @@ char	*expand_env(char *str, t_env *envs)
 		i++;
 	if (!(key = ft_substr(str, 1, i - 1)))
 		return (NULL);
-	env = ft_strdup(search_env(key, envs)->value);
+	tmp = search_env(key, envs);
+	if (tmp)
+		env = ft_strdup(tmp->value);
+	else
+		env = ft_strdup("");
 	free(key);
 	return (env);
 }
