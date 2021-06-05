@@ -7,6 +7,7 @@ SRCFILE = parser/init_parser.c parser/parser.c \
 				lexer/token_meta_1.c lexer/token_meta_2.c \
 				exec/exec.c exec/exec_utils.c exec/exec_cmd.c \
 				exec/exec_cmd_utils.c exec/exec_builtin.c \
+				exec/exec_rd_utils.c \
 				builtin/built_env.c builtin/built_echo.c \
 				builtin/built_exit.c builtin/built_export.c \
 				builtin/built_unset.c builtin/built_pwd.c \

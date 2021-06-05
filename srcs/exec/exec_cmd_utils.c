@@ -2,14 +2,14 @@
 
 int		dup_pipe(t_pipe_status *p_stat, int old_pipe_fd[], int new_pipe_fd[])
 {
-	if (*p_stat == PIPE_READ_ONLY || *p_stat == PIPE_READ_WRITE)
+	if (*p_stat == PIPE_RD_ONLY || *p_stat == PIPE_RD_WR)
 	{
 		if (close(old_pipe_fd[PIPE_IN]) < 0 ||\
 		dup2(old_pipe_fd[PIPE_OUT], STDIN_FILENO) < 0 ||\
 		close(old_pipe_fd[PIPE_OUT]) < 0)
 			return (FALSE);
 	}
-	if (*p_stat == PIPE_WRITE_ONLY || *p_stat == PIPE_READ_WRITE)
+	if (*p_stat == PIPE_WR_ONLY || *p_stat == PIPE_RD_WR)
 	{
 		if (close(new_pipe_fd[PIPE_OUT]) < 0 ||\
 		dup2(new_pipe_fd[PIPE_IN], STDOUT_FILENO) < 0 ||\
@@ -21,12 +21,12 @@ int		dup_pipe(t_pipe_status *p_stat, int old_pipe_fd[], int new_pipe_fd[])
 
 int		pass_pipe(t_pipe_status *p_stat, int old_pipe_fd[], int new_pipe_fd[])
 {
-	if (*p_stat == PIPE_READ_ONLY || *p_stat == PIPE_READ_WRITE)
+	if (*p_stat == PIPE_RD_ONLY || *p_stat == PIPE_RD_WR)
 	{
 		if (close(old_pipe_fd[PIPE_IN]) < 0 || close(old_pipe_fd[PIPE_OUT]) < 0)
 			return (FALSE);
 	}
-	if (*p_stat == PIPE_WRITE_ONLY || *p_stat == PIPE_READ_WRITE)
+	if (*p_stat == PIPE_WR_ONLY || *p_stat == PIPE_RD_WR)
 	{
 		old_pipe_fd[PIPE_IN] = new_pipe_fd[PIPE_IN];
 		old_pipe_fd[PIPE_OUT] = new_pipe_fd[PIPE_OUT];
@@ -43,10 +43,10 @@ void		get_next_p_stat(t_command *cmd, t_pipe_status *p_stat)
 		return ;
 	if (!now->next)
 		return ;
-	*p_stat = PIPE_READ_ONLY;
+	*p_stat = PIPE_RD_ONLY;
 	if (now->next->next)
 	{
-		*p_stat = PIPE_READ_WRITE;
+		*p_stat = PIPE_RD_WR;
 	}
 }
 
