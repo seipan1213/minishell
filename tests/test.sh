@@ -25,13 +25,15 @@ CYAN="\x1b[36m"
 start_test()
 {
 	clean_output
-	for file in `ls ${INPUT_DIR}`; do
+	set_pwd
+	for file in `ls ${INPUT_DIR}`;do
 		run_tests "${file}"
 	done
+	clean_output
 }
 
 clean_output () {
-	rm -f ${BASH_STDOUT_FILE} ${BASH_STDERR_FILE} ${MINISHELL_STDOUT_FILE} ${MINISHELL_STDERR_FILE}
+	rm -f ${BASH_STDOUT} ${BASH_STDERR} ${MINISHELL_STDOUT} ${MINISHELL_STDERR}
 	if [ -e "${TESTS_DIR}" ]; then
 		chmod -R 777 ${TEST_DIR}
 		rm -rf ${TESTS_DIR}
@@ -50,16 +52,16 @@ run_tests()
 {
 	printf "^^^^^^^^^^"$1"^^^^^^^^^^^^\n"
 	while read -r line; do
-		TEST_CMD=`echo "$line"`
-		print_usage "${TEST_CMD}"
-		set_pwd
-		exec_cmd "$line"
+		TEST_CMD=`echo "$line" | cut -d ',' -f 1`
+		SETUP_CMD=`echo "$line" | cut -d ',' -f 2- -s`
+		print_usage "$TEST_CMD"
+		exec_cmd "$TEST_CMD"
 		prepare_test
 	done < "${INPUT_DIR}/$1"
 }
 
 print_usage(){
-	printf "$1							"
+	printf "%-50s" "$1"
 }
 
 set_test_dir () {

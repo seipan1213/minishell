@@ -3,6 +3,7 @@
 
 # include "../libft/libft.h"
 # include "minishell.h"
+# include <unistd.h>
 # include <stdio.h>
 
 # define UNSET_ERR "unset: not enough arguments"
