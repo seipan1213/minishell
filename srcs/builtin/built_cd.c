@@ -29,9 +29,11 @@ int	built_cd(char **argv)
 	int		i;
 
 	dst = check_cd(argv);
-	tmp = get_env("PWD", g_data.envs);
-	if (tmp)
+	if (!(tmp = getcwd(0, 0)))
+		exit_error("getcwd error", 1);
+	else
 		update_env("OLDPWD", tmp, g_data.envs);
+	free(tmp);
 	if (chdir(dst))
 		exit_error("No such file or directory", 1);
 	if (!(tmp = getcwd(0, 0)))
