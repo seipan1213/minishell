@@ -14,6 +14,7 @@ int		exec_cmdline(t_command *cmd, char **args, t_pipe_status *p_stat, int pipe_f
 		return (FALSE);
 	if (pid == 0)
 	{
+		set_signal(SIG_DFL);
 		dup_pipe(p_stat, pipe_fd, new_pipe_fd);
 		if (is_builtin(args))
 			exit(exec_builtin(args));
@@ -51,7 +52,7 @@ void	exec_pipeline(astNode *node)
 	while (cmd)
 	{
 		exec_cmd(cmd, &p_stat, pipe_fd);
-		cmd = cmd->next; 
+		cmd = cmd->next;
 	}
 	wait_commands(node->cmd);
 }
