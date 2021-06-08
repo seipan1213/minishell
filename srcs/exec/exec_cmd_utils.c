@@ -91,5 +91,4 @@ void		wait_commands(t_command *cmd)
 	}
 	if (is_cmd)
 		handler_singal(status, is_sig);
-	printf("ST = %d\n",g_data.states);
 }
