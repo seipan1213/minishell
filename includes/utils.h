@@ -15,8 +15,11 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <signal.h>
+# include <errno.h>
 # include "../libft/libft.h"
 
 int		is_strdigit(char *str);
+void	set_signal(void func(void));
 
 #endif
