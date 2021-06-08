@@ -53,10 +53,10 @@ void		get_next_p_stat(t_command *cmd, t_pipe_status *p_stat)
 static void	handler_singal(int status, int is_sig)
 {
 	if (WIFEXITED(status))
-		g_data.states = WIFEXITED(status);
+		g_data.states = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
 	{
-		g_data.states = WIFSIGNALED(status);
+		g_data.states = WTERMSIG(status);
 		if (signal == SIGQUIT)
 			ft_putendl_fd("Quit: 3", STDERR_FILENO);
 	}
@@ -68,10 +68,13 @@ void		wait_commands(t_command *cmd)
 {
 	int	status;
 	int	is_sig;
+	int	is_cmd;
 
 	is_sig = -1;
+	is_cmd = 0;
 	while (cmd)
 	{
+		is_cmd = 1;
 		if (cmd->pid != NO_PID)
 		{
 			if (waitpid(cmd->pid, &status, 0) < 0)
@@ -85,4 +88,6 @@ void		wait_commands(t_command *cmd)
 		}
 		cmd = cmd->next;
 	}
+	if (is_cmd)
+		handler_singal(status, is_sig);
 }
