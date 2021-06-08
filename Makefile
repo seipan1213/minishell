@@ -14,7 +14,7 @@ SRCFILE = parser/init_parser.c parser/parser.c \
 				env/env_cast.c env/env_sort.c env/env_utils.c \
 				env/env.c env/env_get.c \
 				expand/expand.c expand/expand_utils.c \
-				utils/utils.c utils/error.c \
+				utils/utils.c utils/error.c utils/signal.c \
 				minishell.c
 CC    = gcc
 CFLAGS = #-Wall -Wextra -Werror

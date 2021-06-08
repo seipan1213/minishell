@@ -14,6 +14,7 @@ int		exec_cmdline(t_command *cmd, char **args, t_pipe_status *p_stat, int pipe_f
 		return (FALSE);
 	if (pid == 0)
 	{
+		set_signal(SIG_DFL);
 		get_rd_fd(cmd);
 		dup_pipe(p_stat, pipe_fd, new_pipe_fd);
 		change_rd_fd(cmd);
@@ -34,7 +35,7 @@ void	exec_cmd(t_command *cmd, t_pipe_status *p_stat, int pipe_fd[])
 	args = token_to_args(cmd->arg);
 	if (*p_stat == NO_PIPE && is_builtin(args))
 	{
-		exec_simple_buildin(cmd, args);
+		g_data.states = exec_simple_buildin(cmd, args);
 	}
 	else
 		exec_cmdline(cmd, args, p_stat, pipe_fd);
@@ -55,7 +56,7 @@ void	exec_pipeline(astNode *node)
 	while (cmd)
 	{
 		exec_cmd(cmd, &p_stat, pipe_fd);
-		cmd = cmd->next; 
+		cmd = cmd->next;
 	}
 	wait_commands(node->cmd);
 }

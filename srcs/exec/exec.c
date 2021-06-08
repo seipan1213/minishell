@@ -1,4 +1,3 @@
-
 #include "../../includes/exec.h"
 
 void	exec_bin(char **args)
