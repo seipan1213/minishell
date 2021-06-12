@@ -21,9 +21,9 @@
 typedef enum	e_pipe_status
 {
 	NO_PIPE,
-	PIPE_READ_ONLY,
-	PIPE_WRITE_ONLY,
-	PIPE_READ_WRITE
+	PIPE_RD_ONLY,
+	PIPE_WR_ONLY,
+	PIPE_RD_WR
 }				t_pipe_status;
 
 int		exec(astNode *node);
@@ -37,5 +37,8 @@ void	get_next_p_stat(t_command *cmd, t_pipe_status *p_stat);
 void	wait_commands(t_command *cmd);
 int		is_builtin(char **args);
 int		exec_builtin(char **args);
+void	get_rd_fd(t_command *cmd);
+void	change_rd_fd(t_command *cmd);
+int		exec_simple_buildin(t_command *cmd, char **args);
 
 #endif

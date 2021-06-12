@@ -7,6 +7,7 @@ t_redirect	*init_redirect(void)
 	ret = (t_redirect*)malloc(sizeof(t_redirect));
 	ret->fd_io = NOT_SPECIFIED;
 	ret->fd_file = NOT_SPECIFIED;
+	ret->fd_backup = NOT_SPECIFIED;
 	ret->type = NOT_SPECIFIED;
 	ret->filename = NULL;
 	ret->next = NULL;

@@ -37,6 +37,7 @@ typedef enum			e_rd_type
 typedef struct	s_redirect{
 	int					fd_io;
 	int					fd_file;
+	int					fd_backup;
 	t_rd_type			type;
 	t_token				*filename;
 	struct s_redirect	*next;
@@ -67,25 +68,6 @@ typedef struct	astNode {
 # define COLOR_GREEN "\033[32m"
 # define COLOR_RED "\033[31m"
 
-# define STR 0      // 文字列
-# define RDIR 1     // >
-# define RRDIR 2    // >>
-# define LDIR 3     // <
-# define LLDIR 4    // <<
-# define LLLDIR 5   // <<<
-# define SPACE 6    //
-# define SQUOTE 7   // '
-# define DQUOTE 8   // "
-# define PIPE 9     // |
-# define DPIPE 10   // ||
-# define AND 11     // &
-# define DAND 12    // &&
-# define SCOLON 13  // ;
-# define DSCOLON 14 // ;;
-# define DOLL 15    // $ 使わなかった
-# define ESC 16     // '\'
-# define SSTR 17    // single_quote内の文字列。 使わなかった。
-# define RINT 18    // 2>file の[2]
 
 // void		del_token(void *ptr);
 // void		exit_token(t_token *t);

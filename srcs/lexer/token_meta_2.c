@@ -67,7 +67,7 @@ void	token_esc(t_tdata *d, t_token **t)
 	t_token	*token;
 
 
-	token = create_token(ESC, "\\");
+	token = create_token(ESCAPE, "\\");
 	addb_token(t, token);
 	d->j = d->i + 1;
 }

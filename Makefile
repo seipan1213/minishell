@@ -7,16 +7,18 @@ SRCFILE = parser/init_parser.c parser/parser.c \
 				lexer/token_meta_1.c lexer/token_meta_2.c \
 				exec/exec.c exec/exec_utils.c exec/exec_cmd.c \
 				exec/exec_cmd_utils.c exec/exec_builtin.c \
+				exec/exec_rd_utils.c exec/exec_simple_builtin.c \
 				builtin/built_env.c builtin/built_echo.c \
 				builtin/built_exit.c builtin/built_export.c \
 				builtin/built_unset.c builtin/built_pwd.c \
 				env/env_cast.c env/env_sort.c env/env_utils.c \
-				env/env.c \
+				env/env.c env/env_get.c \
 				expand/expand.c expand/expand_utils.c \
 				utils/utils.c utils/error.c utils/signal.c \
 				minishell.c
 CC    = gcc
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS = -I $(shell brew --prefix readline)/include #-Wall -Wextra -Werror
+LDFLAGS = -lreadline -lhistory -L$(shell brew --prefix readline)/lib
 NAME = minishell
 LIBFT = ${LIBFTDIR}libft.a
 LIBFTDIR = libft/
@@ -27,7 +29,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LDFLAGS) -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT)

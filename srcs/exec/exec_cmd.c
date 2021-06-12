@@ -5,7 +5,7 @@ int		exec_cmdline(t_command *cmd, char **args, t_pipe_status *p_stat, int pipe_f
 	pid_t	pid;
 	int		new_pipe_fd[2];
 
-	if (*p_stat == PIPE_WRITE_ONLY || *p_stat == PIPE_READ_WRITE)
+	if (*p_stat == PIPE_WR_ONLY || *p_stat == PIPE_RD_WR)
 	{
 		if (pipe(new_pipe_fd) < 0)
 			return (FALSE);
@@ -15,7 +15,9 @@ int		exec_cmdline(t_command *cmd, char **args, t_pipe_status *p_stat, int pipe_f
 	if (pid == 0)
 	{
 		set_signal(SIG_DFL);
+		get_rd_fd(cmd);
 		dup_pipe(p_stat, pipe_fd, new_pipe_fd);
+		change_rd_fd(cmd);
 		if (is_builtin(args))
 			exit(exec_builtin(args));
 		else
@@ -32,7 +34,9 @@ void	exec_cmd(t_command *cmd, t_pipe_status *p_stat, int pipe_fd[])
 
 	args = token_to_args(cmd->arg);
 	if (*p_stat == NO_PIPE && is_builtin(args))
-		g_data.states = exec_builtin(args);
+	{
+		g_data.states = exec_simple_buildin(cmd, args);
+	}
 	else
 		exec_cmdline(cmd, args, p_stat, pipe_fd);
 	get_next_p_stat(cmd, p_stat);
@@ -45,7 +49,7 @@ void	exec_pipeline(astNode *node)
 	t_command		*cmd;
 	int				pipe_fd[2];
 
-	p_stat = PIPE_WRITE_ONLY;
+	p_stat = PIPE_WR_ONLY;
 	while (node->type == PIPE)
 		node = node->left;
 	cmd = node->cmd;

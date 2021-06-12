@@ -31,7 +31,7 @@ typedef enum e_ttype
 	LDIR = 3,
 	LLDIR = 4,
 	LLLDIR = 5,
-	SPACE = 6,
+	SP = 6,
 	SQUOTE = 7,
 	DQUOTE = 8,
 	PIPE = 9,
@@ -41,7 +41,7 @@ typedef enum e_ttype
 	SCOLON = 13,
 	DSCOLON = 14,
 	DOLL = 15,
-	ESC = 16,
+	ESCAPE = 16,
 	SSTR = 17,
 	RINT = 18,
 }				t_ttype;
