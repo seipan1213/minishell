@@ -41,7 +41,7 @@ void		lexer_space(t_token *t)
 
 	while(t && t->next)
 	{
-		if (t->next->type == SPACE)
+		if (t->next->type == SP)
 		{
 			tmp = t->next;
 			t->next = tmp->next;

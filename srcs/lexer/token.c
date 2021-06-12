@@ -72,7 +72,7 @@ t_token	*tokenise(char *line)
 	while (line[++d.i])
 	{
 		if (ft_isspace(line[d.i]))
-			set_token(&tokens, line + d.i, 1, SPACE);
+			set_token(&tokens, line + d.i, 1, SP);
 		while (ft_isspace(line[d.i]))
 			d.i++;
 		d.j = d.i;

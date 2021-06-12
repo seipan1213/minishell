@@ -9,8 +9,8 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-// #include <readline/readline.h>
-// #include <readline/history.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 
 #include "../libft/libft.h"
 #include "../includes/parser.h"
@@ -58,20 +58,21 @@ void	minishell(char **envp)
 	ret = 0;
 	while (1)
 	{
-		ft_putstr_fd(MINISHELL, STDERR);
+		// ft_putstr_fd(MINISHELL, STDERR);
 		set_signal(SIG_DFL);
-		if (get_next_line(0, &line) == 0)
+		line = readline(MINISHELL);
+		// rl_on_new_line();
+		if (line && ft_strlen(line) > 0)
 		{
-			ft_putstr_fd("exit\n", STDERR);
-			exit(ret);
+			add_history(line);
+			set_signal(SIG_IGN);
+			tokens = NULL;
+			tokens = lexer(line);
+			node = NULL;
+			parser(&tokens, &node);
+			ret = exec(node);
+			free(line);
 		}
-		set_signal(SIG_IGN);
-		tokens = NULL;
-		tokens = lexer(line);
-		node = NULL;
-		parser(&tokens, &node);
-		ret = exec(node);
-		free(line);
 	}
 }
 
