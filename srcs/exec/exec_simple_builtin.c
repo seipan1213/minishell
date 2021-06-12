@@ -30,11 +30,14 @@ void	recover_fd(t_command *cmd)
 	}
 }
 
-void	exec_simple_buildin(t_command *cmd, char **args)
+int		exec_simple_buildin(t_command *cmd, char **args)
 {
+	int	ret;
+
 	backup_fd(cmd);
 	get_rd_fd(cmd);
 	change_rd_fd(cmd);
-	exec_builtin(args);
+	ret = exec_builtin(args);
 	recover_fd(cmd);
+	return (ret);
 }

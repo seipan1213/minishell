@@ -9,6 +9,8 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+// #include <readline/readline.h>
+// #include <readline/history.h>
 
 #include "../libft/libft.h"
 #include "../includes/parser.h"
@@ -19,10 +21,10 @@
 #define STDERR 2
 #define MINISHELL "MINISHELL$ "
 
-void minishell(char **envp);
-void sig_int_input();
-void sig_quit_input();
-int launch(char *line, char **envp);
+void		minishell(char **envp);
+void		sig_int_input();
+void		sig_quit_input();
+
 
 void	test_minishell(char **argv, char **envp)
 {

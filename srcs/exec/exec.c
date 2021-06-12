@@ -12,35 +12,6 @@ void	exec_bin(char **args)
 	exit(1);
 }
 
-int		exec_bin_cmd(astNode *node)
-{
-	pid_t	pid;
-	int		status;
-	char	**args;
-
-	if ((pid = fork()) < 0)
-		exit(errno);
-	else if (pid == 0)
-	{
-		errno = 0;
-		args = token_to_args(node->cmd->arg);
-		exec_bin(args);
-		if (errno)
-		{
-			ft_putstr_fd(strerror(errno), 2);
-			ft_putstr_fd("...\n", 2);
-			exit(errno);
-		}
-	}
-	if (waitpid(pid, &status, 0) < 0)
-	{
-		ft_putstr_fd(strerror(errno), 2);
-		ft_putstr_fd("\n", 2);
-		exit(errno);
-	}
-	return (TRUE);
-}
-
 int		exec_cmd_node(astNode *node)
 {
 	char			**args;

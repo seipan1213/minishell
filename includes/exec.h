@@ -39,6 +39,6 @@ int		is_builtin(char **args);
 int		exec_builtin(char **args);
 void	get_rd_fd(t_command *cmd);
 void	change_rd_fd(t_command *cmd);
-void	exec_simple_buildin(t_command *cmd, char **args);
+int		exec_simple_buildin(t_command *cmd, char **args);
 
 #endif
