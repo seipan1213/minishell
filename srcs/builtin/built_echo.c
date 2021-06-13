@@ -13,7 +13,7 @@ int	built_echo(char **argv)
 		j = 1;
 		while (argv[i][j] == 'n')
 			j++;
-		if (argv[i][j] == ' ' && ++i)
+		if (argv[i][j] == '\0' && ++i)
 			flag |= ECHO_OP_N;
 		else
 			break ;
@@ -21,7 +21,7 @@ int	built_echo(char **argv)
 	while (argv[i] != NULL)
 	{
 		ft_putstr_fd(argv[i], STDOUT_FILENO);
-		if (argv[i++] != NULL)
+		if (argv[++i] != NULL)
 			ft_putstr_fd(" ", STDOUT_FILENO);
 	}
 	if (!(flag & ECHO_OP_N))
