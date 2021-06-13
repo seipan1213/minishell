@@ -8,6 +8,10 @@
 # include <stdbool.h>
 # include <errno.h>
 # include <signal.h>
+# include <sys/stat.h>
+# include <sys/types.h>
+# include <fcntl.h>
+
 # include "../libft/libft.h"
 # include "lexer.h"
 # include "parser.h"
@@ -17,6 +21,8 @@
 # define NO_PID -1
 # define PIPE_OUT 0
 # define PIPE_IN 1
+
+typedef struct stat	t_stat;
 
 typedef enum	e_pipe_status
 {
@@ -40,5 +46,7 @@ int		exec_builtin(char **args);
 void	get_rd_fd(t_command *cmd);
 void	change_rd_fd(t_command *cmd);
 int		exec_simple_buildin(t_command *cmd, char **args);
-
+int		is_exec(char *path);
+void	free_split(char **split);
+char	*exec_serach(char *argv);
 #endif
