@@ -3,6 +3,7 @@
 
 # include "../libft/libft.h"
 # include "env.h"
+# include "minishell.h"
 
 char	*expand_env(char *str, t_env *envs);
 char	*front_join(char *front, char *str);

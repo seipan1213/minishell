@@ -4,21 +4,25 @@ char	*expand_env(char *str, t_env *envs)
 {
 	char	*key;
 	char	*env;
-	t_env	*tmp;
 	int		i;
 
 	i = 0;
 	if (str[i] != '$')
 		return (NULL);
-	while (!ft_isspace(str[i]) && str[i] != '\"' && str[i])
+	if (ft_strncmp(str, "$ ", 2) == 0 && (i += 2))
+		return (ft_strdup("$ "));
+	while (!ft_isspace(str[i]) && str[i] != '\"' && str[i] != '?' && str[i])
 		i++;
 	if (!(key = ft_substr(str, 1, i - 1)))
 		return (NULL);
-	tmp = search_env(key, envs);
-	if (tmp)
-		env = ft_strdup(tmp->value);
-	else
-		env = ft_strdup("");
+	env = get_env(key, g_data.envs);
+	if (!env)
+	{
+		if (!(ft_strncmp(str, "$?", 2)))
+			env = ft_strdup(ft_itoa(g_data.states));
+		else
+			env = ft_strdup("");
+	}
 	free(key);
 	return (env);
 }
