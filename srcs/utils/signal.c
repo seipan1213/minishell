@@ -1,6 +1,6 @@
 #include "../../includes/utils.h"
 
-void	set_signal(void func(void))
+void	set_signal(void (*func)(int))
 {
 	if (signal(SIGINT, func) == SIG_ERR)
 	{
