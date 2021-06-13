@@ -11,6 +11,7 @@ void	exec_bin(char **args)
 		exit(1);
 	execve(path, args, envs);
 	free_split(envs);
+	free(path);
 	exit(1);
 }
 
