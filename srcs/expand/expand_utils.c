@@ -4,7 +4,6 @@ char	*expand_env(char *str, t_env *envs)
 {
 	char	*key;
 	char	*env;
-	t_env	*tmp;
 	int		i;
 
 	i = 0;
@@ -14,13 +13,11 @@ char	*expand_env(char *str, t_env *envs)
 		i++;
 	if (!(key = ft_substr(str, 1, i - 1)))
 		return (NULL);
-	tmp = search_env(key, envs);
-	if (tmp)
-		env = ft_strdup(tmp->value);
-	else
+	env = get_env(key, g_data.envs);
+	if (!env)
 	{
-		if (ft_strncmp(str, "$?", 2))
-			env = ft_strdup(ft_atoi(g_data.states));
+		if (!(ft_strncmp(str, "$?", 2)))
+			env = ft_strdup(ft_itoa(g_data.states));
 		else
 			env = ft_strdup("");
 	}
