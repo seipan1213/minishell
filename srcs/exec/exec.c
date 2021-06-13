@@ -1,5 +1,18 @@
 #include "../../includes/exec.h"
 
+/* void	exec_bin(char **args)
+{
+	char		*line;
+	char		**path;
+	extern char	**environ; //変更
+
+	line = args[0];
+	path = ft_split(get_env("PATH", g_data.envs), ':');
+
+	execve(path, args, environ);
+	exit(1);
+} */
+
 void	exec_bin(char **args)
 {
 	char		*line;
