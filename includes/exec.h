@@ -8,6 +8,7 @@
 # include <stdbool.h>
 # include <errno.h>
 # include <signal.h>
+# include <fcntl.h>
 # include "../libft/libft.h"
 # include "lexer.h"
 # include "parser.h"

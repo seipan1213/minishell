@@ -10,7 +10,7 @@ char	*expand_env(char *str, t_env *envs)
 	i = 0;
 	if (str[i] != '$')
 		return (NULL);
-	while (!ft_isspace(str[i]) && str[i] != '\"' && str[i])
+	while (!ft_isspace(str[i]) && str[i] != '\"' && str[i] != '?' && str[i])
 		i++;
 	if (!(key = ft_substr(str, 1, i - 1)))
 		return (NULL);
@@ -18,7 +18,12 @@ char	*expand_env(char *str, t_env *envs)
 	if (tmp)
 		env = ft_strdup(tmp->value);
 	else
-		env = ft_strdup("");
+	{
+		if (ft_strncmp(str, "$?", 2))
+			env = ft_strdup(ft_atoi(g_data.states));
+		else
+			env = ft_strdup("");
+	}
 	free(key);
 	return (env);
 }
