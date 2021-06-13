@@ -4,8 +4,8 @@ int		exec_builtin(char **args)
 {
 	if (ft_strcmp(args[0], "echo") == 0)
 		return (built_echo(args));
-	// if (ft_strcmp(args[0], "cd") == 0)
-	// 	built_cd();
+	if (ft_strcmp(args[0], "cd") == 0)
+		return (built_cd(args));
 	if (ft_strcmp(args[0], "pwd") == 0)
 		return (built_pwd());
 	if (ft_strcmp(args[0], "export") == 0)
