@@ -2,13 +2,16 @@
 
 void	exec_bin(char **args)
 {
-	char		*line;
-	char		*path;
-	extern char	**environ;
+	char	*path;
+	char	**envs;
 
-	line = args[0];
-	path = ft_strjoin("/bin/", line);
-	execve(path, args, environ);
+	if (!(envs = environ_gen(g_data.envs)))
+		exit_error(MALLOCERR, 1);
+	if (!(path = exec_serach(args[0])))
+		exit(1);
+	execve(path, args, envs);
+	free_split(envs);
+	free(path);
 	exit(1);
 }
 
