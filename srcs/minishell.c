@@ -71,7 +71,8 @@ void	minishell(char **envp)
 			parser(&tokens, &node);
 			ret = exec(node);
 		}
-		free(line);
+		if (line)
+			free(line);
 	}
 }
 
