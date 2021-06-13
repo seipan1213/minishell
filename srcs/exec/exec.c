@@ -14,7 +14,6 @@ void	exec_bin(char **args)
 
 int		exec_cmd_node(astNode *node)
 {
-	char			**args;
 	t_pipe_status	p_stat;
 
 	p_stat = NO_PIPE;

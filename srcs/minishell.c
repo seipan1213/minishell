@@ -58,7 +58,6 @@ void	minishell(char **envp)
 	ret = 0;
 	while (1)
 	{
-		// ft_putstr_fd(MINISHELL, STDERR);
 		set_signal(SIG_DFL);
 		line = readline(MINISHELL);
 		// rl_on_new_line();
@@ -71,8 +70,8 @@ void	minishell(char **envp)
 			node = NULL;
 			parser(&tokens, &node);
 			ret = exec(node);
-			free(line);
 		}
+		free(line);
 	}
 }
 
