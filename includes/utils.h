@@ -20,6 +20,6 @@
 # include "../libft/libft.h"
 
 int		is_strdigit(char *str);
-void	set_signal(void func(void));
+void	set_signal(void (*func)(int));
 
 #endif

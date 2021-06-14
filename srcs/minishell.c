@@ -61,6 +61,11 @@ void	minishell(char **envp)
 		// ft_putstr_fd(MINISHELL, STDERR);
 		set_signal(SIG_DFL);
 		line = readline(MINISHELL);
+		if (!line)
+		{
+			g_data.quit = 1;
+			built_exit(NULL);
+		}
 		// rl_on_new_line();
 		if (line && ft_strlen(line) > 0)
 		{

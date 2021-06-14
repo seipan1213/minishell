@@ -19,7 +19,7 @@ int		built_exit(char **argv);
 int		built_export(char **argv);
 int		built_pwd(void);
 int		built_unset(char **argv);
-
+int		built_cd(char **argv);
 int		check_identifier(char *str);
 
 
