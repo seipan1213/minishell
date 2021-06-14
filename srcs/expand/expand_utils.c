@@ -9,8 +9,6 @@ char	*expand_env(char *str, t_env *envs)
 	i = 0;
 	if (str[i] != '$')
 		return (NULL);
-	if (ft_strncmp(str, "$ ", 2) == 0 && (i += 2))
-		return (ft_strdup("$ "));
 	while (!ft_isspace(str[i]) && str[i] != '\"' && str[i] != '?' && str[i])
 		i++;
 	if (!(key = ft_substr(str, 1, i - 1)))
@@ -20,6 +18,8 @@ char	*expand_env(char *str, t_env *envs)
 	{
 		if (!(ft_strncmp(str, "$?", 2)))
 			env = ft_strdup(ft_itoa(g_data.states));
+		else if (ft_isspace(str[1]) || !str[1] || str[1] == '\"')
+			env = ft_substr(str, 0, 2);
 		else
 			env = ft_strdup("");
 	}
