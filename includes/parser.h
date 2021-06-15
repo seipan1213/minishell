@@ -7,6 +7,7 @@
 # include <stdbool.h>
 # include "../libft/libft.h"
 # include "lexer.h"
+
 # define NOT_SPECIFIED -1
 
 /**
