@@ -36,6 +36,7 @@ void	test_minishell(char **argv, char **envp)
 	node = NULL;
 	parser(&tokens, &node);
 	exec(node);
+	exit(g_data.status);
 }
 
 int		main(int argc, char **argv, char **envp)
