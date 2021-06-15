@@ -18,7 +18,7 @@ void	token_lrdct(t_tdata *d, t_token **t)
 	t_token	*back;
 
 	back = tokens_last(*t);
-	if (is_strdigit(back->str))
+	if (back && is_strdigit(back->str))
 		back->type = RINT;
 	if (!ft_strncmp(d->line + d->i, "<<<", 3))
 	{
