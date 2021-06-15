@@ -1,0 +1,16 @@
+ls
+ls -ls
+ls -la
+ls -lllll
+ls -A
+cat A
+cat dssadsa
+cat file, echo AA>file
+wc dsa
+wc file, echo dasdsajfaj>>file
+mv
+/bin/ls
+/bin/cat file, touch file
+ls | grep a
+ls | grep a| wc
+ls ; ls;ls
