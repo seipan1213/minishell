@@ -13,7 +13,7 @@ bool	parse_cmd_rd(t_token **tokens, t_command *cmd)
 			return (FALSE);
 		*tokens = (*tokens)->next;
 	}
-	set_rd_type(&rd->type, *tokens);
+	set_rd_type(rd, *tokens);
 	*tokens = (*tokens)->next;
 	if (!*tokens)
 	{

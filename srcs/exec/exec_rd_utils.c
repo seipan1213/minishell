@@ -43,22 +43,7 @@ void	change_rd_fd(t_redirect *rd)
 	rd_now = rd;
 	while (rd_now)
 	{
-		if (rd_now->fd_file != NOT_SPECIFIED)
-		{
-			dup_fd(rd_now->fd_io, rd_now->fd_file);
-			return ;
-		}
-		if (rd_now->type == RD_INPUT)
-		{
-			dup_fd(rd_now->fd_io, STDIN_FILENO);
-		}
-		else if (rd_now->type == RD_OUTPUT || rd_now->type == RD_APPEND_OUTPUT)
-		{
-			if (rd_now->fd_file == STDERR_FILENO)
-				dup_fd(rd_now->fd_io, STDERR_FILENO);
-			else
-				dup_fd(rd_now->fd_io, STDOUT_FILENO);
-		}
+		dup_fd(rd_now->fd_io, rd->fd_file);
 		rd_now = rd_now->next;
 	}
 }

@@ -10,34 +10,48 @@ t_redirect	*init_redirect(void)
 	ret->fd_backup = NOT_SPECIFIED;
 	ret->type = NOT_SPECIFIED;
 	ret->filename = NULL;
+	ret->prev = NULL;
 	ret->next = NULL;
 	return (ret);
 }
 
-void		set_rd_type(t_rd_type *type, t_token *token)
+void		set_rd_fd(t_redirect *rd)
 {
-	if (token->type == LDIR)
-		*type = RD_INPUT;
-	else if (token->type == RDIR)
-		*type = RD_OUTPUT;
-	else if (token->type == RRDIR)
-		*type = RD_APPEND_OUTPUT;
+	if (rd->fd_file != NOT_SPECIFIED)
+	{
+		if (rd->type == RD_INPUT)
+			rd->fd_file = STDIN_FILENO;
+		else
+			rd->fd_file = STDOUT_FILENO;
+	}
 }
 
-void		set_cmd_rd(t_redirect *rd, t_redirect **list)
+void		set_rd_type(t_redirect *rd, t_token *token)
 {
-	t_redirect	*last;
+	if (token->type == LDIR)
+		rd->type = RD_INPUT;
+	else if (token->type == RDIR)
+		rd->type = RD_OUTPUT;
+	else if (token->type == RRDIR)
+		rd->type = RD_APPEND_OUTPUT;
+	set_rd_fd(rd);
+}
 
-	if (!*list)
+void		set_cmd_rd(t_redirect *rd, t_redirect **dst)
+{
+	t_redirect	*dst_tmp;
+
+	if (!*dst)
 	{
-		*list = rd;
+		*dst = rd;
 	}
 	else
 	{
-		last = *list;
-		while (last->next)
-			last = last->next;
-		last->next = rd;
+		dst_tmp = *dst;
+		while (dst_tmp->next)
+			dst_tmp = dst_tmp->next;
+		dst_tmp->next = rd;
+		rd->prev = dst_tmp;
 		rd->next = NULL;
 	}
 }
