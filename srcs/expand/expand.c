@@ -7,6 +7,16 @@ char	*expand_init(int *i, int *j)
 	return (ft_strdup(""));
 }
 
+char	*expand_null(char *str, char *front)
+{
+	if (front[0] == '\0' && !ft_strchr(str, '\"'))
+	{
+		free(front);
+		return (NULL);
+	}
+	return (front);
+}
+
 char	*expand(char *str, t_env *envs)
 {
 	int		i;
@@ -33,7 +43,7 @@ char	*expand(char *str, t_env *envs)
 	}
 	if (i != j)
 		front = sub_join(front, str, i, j);
-	return (front);
+	return (expand_null(str, front));
 }
 
 /* int	main()
