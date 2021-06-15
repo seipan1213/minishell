@@ -17,6 +17,8 @@ int		check_syntax(t_token *t)
 	t_ttype	pre_type;
 
 	pre_type = -1;
+	if (is_metatype(t->type))
+		return (put_error(SYNTAXERR, 0));
 	while (t->next)
 	{
 		while (t->type == SP && t->next)
@@ -32,8 +34,7 @@ int		check_syntax(t_token *t)
 		if (t->next)
 			t = t->next;
 	}
-	if (t && (is_rdcttype(t->type) || t->type == PIPE || t->type == ESCAPE ||
-			t->type == SCOLON || t->type == DSCOLON))
+	if (t && (is_rdcttype(t->type) || t->type == PIPE || t->type == ESCAPE))
 		return (put_error(SYNTAXERR, 0));
 	return (1);
 }
