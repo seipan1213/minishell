@@ -9,7 +9,7 @@
 typedef struct s_minidata
 {
 	t_env	*envs;
-	int		states;
+	int		status;
 	int		quit;
 }	t_minidata;
 

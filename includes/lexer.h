@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "../libft/libft.h"
+# include "minishell.h"
 # include "utils.h"
 
 # define MINISHELL "MINISHELL$ "
