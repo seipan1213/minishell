@@ -12,7 +12,7 @@ int	built_unset(char **argv)
 		if (!check_identifier(argv[i]))
 		{
 			ft_putendl_fd("unset: not a valid identifier", STDERR_FILENO);
-			ret = -1;
+			ret = EXIT_FAILURE;
 		}
 		else
 			del_env(argv[i], &g_data.envs);
@@ -21,7 +21,7 @@ int	built_unset(char **argv)
 	if (i == 1)
 	{
 		ft_putendl_fd(UNSET_ERR, STDERR_FILENO);
-		return (-1);
+		return (EXIT_FAILURE);
 	}
 	return (ret);
 }
