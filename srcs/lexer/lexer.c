@@ -73,7 +73,7 @@ t_token		*lexer(char *line)
 	ret &= lexer_tokens(t);
 	if (ret == 0)
 	{
-		g_data.status = 1;
+		g_data.status = 2;
 		return (NULL);
 	}
 	return (t);
