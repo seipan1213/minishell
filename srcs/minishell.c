@@ -47,16 +47,6 @@ int		main(int argc, char **argv, char **envp)
 		test_minishell(argv, envp);
 }
 
-// void	print_rd(t_redirect *redir)
-// {
-// 	t_redirect *rd = redir;
-// 	while (rd)
-// 	{
-// 		printf("PREV	=	%p	NOW	=	%p	NEXT	=	%p\n", rd->prev, rd, rd->next);
-// 		rd = rd->next;
-// 	}
-// }
-
 void	minishell(char **envp)
 {
 	t_token		*tokens;

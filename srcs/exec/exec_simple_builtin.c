@@ -55,14 +55,6 @@ int		exec_simple_buildin(t_command *cmd, char **args)
 	get_rd_fd(cmd->rd);
 	change_rd_fd(cmd->rd);
 	ret = exec_builtin(args);
-	if (errno)
-	{
-		ft_putstr_fd(args[0], STDERR_FILENO);
-		ft_putstr_fd(": ", STDERR_FILENO);
-		ft_putstr_fd(strerror(errno), STDERR_FILENO);
-		ft_putstr_fd("\n", STDERR_FILENO);
-	}
-	errno = 0;
 	recover_fd(cmd->rd);
 	return (ret);
 }
