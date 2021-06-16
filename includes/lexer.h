@@ -16,12 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "../libft/libft.h"
+# include "minishell.h"
 # include "utils.h"
-
-# define MINISHELL "MINISHELL$ "
-# define MALLOCERR "malloc error..."
-# define SYNTAXERR "syntax error..."
-# define QUOTEERR "quote is not close..."
 
 typedef enum e_ttype
 {
@@ -61,7 +57,6 @@ typedef struct s_tdata
 	int			status;
 }			t_tdata;
 
-void	exit_error(char *str, int ex_num);
 t_token	*create_token(t_ttype type, char *str);
 void	addb_token(t_token **tokens, t_token *token);
 void	set_token(t_token **t, char *line, int len, t_ttype type);
@@ -79,7 +74,6 @@ t_token	*tokens_last(t_token *t);
 void	tokenise_init(t_tdata *data, t_token **t, char **line);
 t_token	*tokenise(char *line);
 void	print_tokens(t_token *t);
-int		put_error(char *str, int ret);
 int		is_metatype(int i);
 int		is_rdcttype(int i);
 void	check_qoute(int *flag, int type);

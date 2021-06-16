@@ -1,0 +1,4 @@
+echo $AAA,export AAA=BBB
+echo $a; unset a,export a=\\\\\\\\\\\\\\\\\
+echo $dsa; unset dsa,export dsa
+export

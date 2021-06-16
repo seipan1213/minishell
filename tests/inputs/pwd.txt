@@ -1,0 +1,4 @@
+pwd
+pwd, mkdir dir;cd dir
+pwd, export PWD=AAA
+pwd, cat dsadsa

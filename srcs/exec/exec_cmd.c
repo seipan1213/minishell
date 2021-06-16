@@ -35,7 +35,7 @@ void	exec_cmd(t_command *cmd, t_pipe_status *p_stat, int pipe_fd[])
 	args = token_to_args(cmd->arg);
 	if (*p_stat == NO_PIPE && is_builtin(args))
 	{
-		g_data.states = exec_simple_buildin(cmd, args);
+		g_data.status = exec_simple_buildin(cmd, args);
 	}
 	else
 		exec_cmdline(cmd, args, p_stat, pipe_fd);

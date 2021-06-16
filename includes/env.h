@@ -3,9 +3,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <errno.h>
 # include "../libft/libft.h"
-# include "lexer.h"
-# include "parser.h"
 
 typedef struct s_env
 {
@@ -13,6 +12,9 @@ typedef struct s_env
 	char			*value;
 	struct s_env	*next;
 }			t_env;
+
+# include "minishell.h"
+# include "utils.h"
 
 void	addb_env(t_env **envs, t_env *env);
 t_env	*create_env(char *environ);

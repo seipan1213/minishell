@@ -2,9 +2,9 @@
 # define BUILTIN_H
 
 # include "../libft/libft.h"
-# include "minishell.h"
 # include <unistd.h>
 # include <stdio.h>
+# include "utils.h"
 
 # define UNSET_ERR "unset: not enough arguments"
 

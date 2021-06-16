@@ -18,8 +18,10 @@
 # include <signal.h>
 # include <errno.h>
 # include "../libft/libft.h"
+# include "minishell.h"
 
 int		is_strdigit(char *str);
 void	set_signal(void (*func)(int));
-
+int		put_error(char *str, int ret);
+void	exit_error(char *str, int ex_num);
 #endif

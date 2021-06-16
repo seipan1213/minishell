@@ -1,0 +1,4 @@
+unset A
+unset BBB, export BBB=AAAaAAA
+unset $sada
+unset 1213
