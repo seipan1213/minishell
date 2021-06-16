@@ -42,7 +42,7 @@ t_env	*create_env(char *environ)
 
 	if (!(env = (t_env *)malloc(sizeof(t_env))))
 		return (NULL);
-	if (!(tmp = ft_strchr(environ, '=')))
+	if (!(tmp = ft_strchr(environ + 1, '=')))
 	{
 		free(env);
 		return (NULL);
