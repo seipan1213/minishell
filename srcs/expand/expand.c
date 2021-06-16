@@ -34,7 +34,7 @@ char	*expand(char *str, t_env *envs)
 			if (!(front = sub_join(front, str, i, j)))
 				return (NULL);
 			env = expand_env(str + i, envs);
-			while (!ft_isspace(str[i]) && str[i])
+			while (!ft_isspace(str[i]) && str[i] != '=' && str[i])
 				i++;
 			if (!(front = front_join(front, env)))
 				return (NULL);
