@@ -10,7 +10,7 @@ char	*expand_env(char *str, t_env *envs)
 	if (str[i] != '$')
 		return (NULL);
 	while (!ft_isspace(str[i]) && str[i] != '\"' && str[i] != '?'
-		&& str[i] != '=' || str[i])
+		&& str[i] != '=' && str[i])
 		i++;
 	if (!(key = ft_substr(str, 1, i - 1)))
 		return (NULL);
