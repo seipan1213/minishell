@@ -42,10 +42,12 @@ void	get_next_p_stat(t_command *cmd, t_pipe_status *p_stat);
 void	wait_commands(t_command *cmd);
 int		is_builtin(char **args);
 int		exec_builtin(char **args);
-void	get_rd_fd(t_command *cmd);
-void	change_rd_fd(t_command *cmd);
+void	get_rd_fd(t_redirect *rd);
+void	change_rd_fd(t_redirect *rd);
 int		exec_simple_buildin(t_command *cmd, char **args);
 int		is_exec(char *path);
 void	free_split(char **split);
 char	*exec_serach(char *argv);
+void	dup_fd(int oldfd, int newfd);
+
 #endif
