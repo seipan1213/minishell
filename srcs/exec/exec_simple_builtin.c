@@ -1,68 +1,60 @@
 #include "../../includes/exec.h"
 
-void	backup_cur_fd(t_command *cmd)
+void	backup_cur_fd(t_redirect *rd)
 {
-	if (!cmd->rd)
+	t_redirect	*rd_tmp;
+
+	if (!rd)
 		return ;
-	if (cmd->rd->fd_file != NOT_SPECIFIED)
+	rd_tmp = rd;
+	while (rd_tmp)
 	{
-		cmd->rd->fd_backup = dup(cmd->rd->fd_file);
-		return ;
-	}
-	if (cmd->rd->type == RD_INPUT)
-	{
-		cmd->rd->fd_backup = dup(STDIN_FILENO);
-	}
-	else if (cmd->rd->type == RD_OUTPUT || cmd->rd->type == RD_APPEND_OUTPUT)
-	{
-		if (cmd->rd->fd_file == STDERR_FILENO)
-			cmd->rd->fd_backup = dup(STDERR_FILENO);
-		else
-			cmd->rd->fd_backup = dup(STDOUT_FILENO);
+		if (rd_tmp->fd_file >= 0)
+		{
+			rd_tmp->fd_backup = dup(rd_tmp->fd_file);
+		}
+		rd_tmp = rd_tmp->next;
 	}
 }
 
-void	recover_fd(t_command *cmd)
+void	recover_fd(t_redirect *rd)
 {
-	if (!cmd->rd)
+	t_redirect	*rd_now;
+
+	if (!rd)
 		return ;
-	if (cmd->rd->type == RD_INPUT)
+	while (rd->next)
+		rd = rd->next;
+	while (rd)
 	{
-		dup2(cmd->rd->fd_backup, STDIN_FILENO);
-		close(cmd->rd->fd_backup);
-	}
-	else if (cmd->rd->type == RD_OUTPUT || cmd->rd->type == RD_APPEND_OUTPUT)
-	{
-		dup2(cmd->rd->fd_backup, STDOUT_FILENO);
-		close(cmd->rd->fd_backup);
+		if (rd->fd_file >= 0)
+		{
+			close(rd->fd_file);
+			dup_fd(rd->fd_backup, rd->fd_file);
+		}
+		rd = rd->prev;
 	}
 }
 
-void	close_rd_fd(t_command *cmd)
-{
-	if (!cmd->rd)
-		return ;
-	if (cmd->rd->fd_file != NOT_SPECIFIED)
-		close(cmd->rd->fd_file);
-}
+	// void		print_rd(t_redirect *rd)
+	// {
+	// 	while (rd)
+	// 	{
+	// 		printf("[%s]\n", rd->filename->str);
+	// 		rd = rd->next;
+	// 		if (!rd)
+	// 			printf("p: %p\n", rd);
+	// 	}
+	// }
 
 int		exec_simple_buildin(t_command *cmd, char **args)
 {
-	int	ret;
+	int		ret;
 
-	backup_cur_fd(cmd);
-	get_rd_fd(cmd);
-	change_rd_fd(cmd);
+	backup_cur_fd(cmd->rd);
+	get_rd_fd(cmd->rd);
+	change_rd_fd(cmd->rd);
 	ret = exec_builtin(args);
-	close_rd_fd(cmd);
-	// if (errno)
-	// {
-	// 	ft_putstr_fd(args[0], STDERR_FILENO);
-	// 	ft_putstr_fd(": ", STDERR_FILENO);
-	// 	ft_putstr_fd(strerror(errno), STDERR_FILENO);
-	// 	ft_putstr_fd("\n", STDERR_FILENO);
-	// }
-	// errno = 0;
-	recover_fd(cmd);
+	recover_fd(cmd->rd);
 	return (ret);
 }

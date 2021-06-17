@@ -41,6 +41,7 @@ typedef struct	s_redirect{
 	int					fd_backup;
 	t_rd_type			type;
 	t_token				*filename;
+	struct s_redirect	*prev;
 	struct s_redirect	*next;
 }				t_redirect;
 
@@ -86,7 +87,7 @@ bool		parser(t_token **tokens, astNode **node);
 int			launch(char *line, char **envp);
 void		minishell(char **envp);
 t_redirect	*init_redirect(void);
-void		set_rd_type(t_rd_type *type, t_token *token);
+void		set_rd_type(t_redirect *rd, t_token *token);
 void		set_cmd_rd(t_redirect *rd, t_redirect **list);
 
 #endif
