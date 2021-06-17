@@ -3,19 +3,17 @@
 int		is_strdigit(char *str)
 {
 	int	i;
-	int	flag;
 
 	i = 0;
-	flag = 0;
-	while (str[i])
-	{
-		if (ft_isdigit(str[i]))
-			flag = 1;
-		if (!ft_isdigit(str[i]) && !ft_isspace(str[i]))
-			return (0);
+	while (ft_isspace(str[i]))
 		i++;
-	}
-	if (flag)
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (ft_isdigit(str[i]))
+		i++;
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '\0')
 		return (1);
 	return (0);
 }

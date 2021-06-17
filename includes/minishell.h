@@ -8,6 +8,7 @@
 # define MALLOCERR "malloc error..."
 # define SYNTAXERR "syntax error..."
 # define QUOTEERR "quote is not close..."
+# define NUMERR "numeric argument required"
 
 typedef struct s_minidata
 {
