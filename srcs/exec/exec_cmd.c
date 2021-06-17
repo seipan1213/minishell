@@ -40,7 +40,7 @@ void	exec_cmd(t_command *cmd, t_pipe_status *p_stat, int pipe_fd[])
 	else
 		exec_cmdline(cmd, args, p_stat, pipe_fd);
 	get_next_p_stat(cmd, p_stat);
-	// free args
+	free_split(args);
 }
 
 void	exec_pipeline(astNode *node)

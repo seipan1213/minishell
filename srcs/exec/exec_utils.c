@@ -19,13 +19,18 @@ int		is_builtin(char **args)
 int		token_lst_len(t_token *token)
 {
 	t_token		*list;
+	char 		*tmp;
 	int			token_len = 0;
 
 	list = token;
 	while (list)
 	{
+		if ((tmp = expand(list->str, g_data.envs)))
+		{
+			free(tmp);
+			token_len++;
+		}
 		list = list->next;
-		token_len++;
 	}
 	return (token_len);
 }
@@ -35,6 +40,7 @@ char	**token_to_args(t_token *token)
 	t_token		*list;
 	int			token_len = 0;
 	int			i;
+	char		*arg_tmp;
 	char		**args;
 
 	token_len = token_lst_len(token);
@@ -44,9 +50,12 @@ char	**token_to_args(t_token *token)
 	i = 0;
 	while (i < token_len)
 	{
-		args[i] = expand(list->str, g_data.envs);
+		if ((arg_tmp = expand(list->str, g_data.envs)))
+		{
+			args[i] = arg_tmp;
+			i++;
+		}
 		list = list->next;
-		i++;
 	}
 	return (args);
 }
