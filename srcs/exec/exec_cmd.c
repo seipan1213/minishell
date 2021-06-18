@@ -33,8 +33,8 @@ int		exec_cmd(t_command *cmd, t_pipe_status *p_stat, int pipe_fd[])
 	char	**args;
 
 	args = token_to_args(cmd->arg);
-	// if (!*args || !**args)
-	// 	return (FALSE);
+	if (!*args || !**args)
+		return (FALSE);
 	if (*p_stat == NO_PIPE && is_builtin(args))
 	{
 		g_data.status = exec_simple_buildin(cmd, args);
