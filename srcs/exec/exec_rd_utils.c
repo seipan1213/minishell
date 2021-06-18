@@ -14,7 +14,7 @@ void	get_rd_fd(t_redirect *rd)
 		{
 			rd_now->fd_io = open(rd_now->filename->str, O_RDONLY);
 		}
-		else if (rd->type == RD_OUTPUT)
+		else if (rd_now->type == RD_OUTPUT)
 		{
 			rd_now->fd_io = open(rd_now->filename->str, O_WRONLY | O_CREAT | O_TRUNC, \
 			S_IREAD | S_IWRITE);
@@ -43,7 +43,7 @@ void	change_rd_fd(t_redirect *rd)
 	rd_now = rd;
 	while (rd_now)
 	{
-		dup_fd(rd_now->fd_io, rd->fd_file);
+		dup_fd(rd_now->fd_io, rd_now->fd_file);
 		rd_now = rd_now->next;
 	}
 }
