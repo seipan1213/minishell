@@ -14,7 +14,7 @@ char	*expand_env(char *str, t_env *envs)
 		i++;
 	if (!(key = ft_substr(str, 1, i - 1)))
 		return (NULL);
-	env = ft_strdup(get_env(key, g_data.envs));
+	env = get_env(key, g_data.envs);
 	if (!env)
 	{
 		if (!(ft_strncmp(str, "$?", 2)))
@@ -24,6 +24,8 @@ char	*expand_env(char *str, t_env *envs)
 		else
 			env = ft_strdup("");
 	}
+	else
+		env = ft_strdup(env);
 	free(key);
 	return (env);
 }
