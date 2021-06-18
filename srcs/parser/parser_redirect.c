@@ -17,7 +17,7 @@ t_redirect	*init_redirect(void)
 
 void		set_rd_fd(t_redirect *rd)
 {
-	if (rd->fd_file != NOT_SPECIFIED)
+	if (rd->fd_file == NOT_SPECIFIED)
 	{
 		if (rd->type == RD_INPUT)
 			rd->fd_file = STDIN_FILENO;

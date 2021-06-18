@@ -2,25 +2,23 @@
 
 void	backup_cur_fd(t_redirect *rd)
 {
-	t_redirect	*rd_tmp;
+	t_redirect	*rd_now;
 
 	if (!rd)
 		return ;
-	rd_tmp = rd;
-	while (rd_tmp)
+	rd_now = rd;
+	while (rd_now)
 	{
-		if (rd_tmp->fd_file >= 0)
+		if (rd_now->fd_file >= 0)
 		{
-			rd_tmp->fd_backup = dup(rd_tmp->fd_file);
+			rd_now->fd_backup = dup(rd_now->fd_file);
 		}
-		rd_tmp = rd_tmp->next;
+		rd_now = rd_now->next;
 	}
 }
 
 void	recover_fd(t_redirect *rd)
 {
-	t_redirect	*rd_now;
-
 	if (!rd)
 		return ;
 	while (rd->next)
@@ -36,11 +34,12 @@ void	recover_fd(t_redirect *rd)
 	}
 }
 
-	// void		print_rd(t_redirect *rd)
+	// void		print_rd(t_redirect *redir)
 	// {
+	// 	t_redirect *rd = redir;
 	// 	while (rd)
 	// 	{
-	// 		printf("[%s]\n", rd->filename->str);
+	// 	printf("%-6s: io %2d: rint %-2d  <rdtype %2d>\n",rd->filename->str, rd->fd_io, rd->fd_file, rd->type);
 	// 		rd = rd->next;
 	// 		if (!rd)
 	// 			printf("p: %p\n", rd);
