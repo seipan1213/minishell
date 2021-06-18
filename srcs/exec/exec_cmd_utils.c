@@ -54,13 +54,13 @@ void		get_next_p_stat(t_command *cmd, t_pipe_status *p_stat)
 static void	handler_singal(int status, int is_sig)
 {
 	if (WIFEXITED(status))
-			g_data.states = WEXITSTATUS(status);
+			g_data.status = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
 	{
-		g_data.states = WTERMSIG(status);
-		if (g_data.states == SIGQUIT)
+		g_data.status = WTERMSIG(status);
+		if (g_data.status == SIGQUIT)
 			ft_putendl_fd("Quit: 3", STDERR_FILENO);
-		g_data.states += 128;
+		g_data.status += 128;
 	}
 	if (is_sig)
 		ft_putchar_fd('\n', STDOUT_FILENO);

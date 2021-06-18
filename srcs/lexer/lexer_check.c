@@ -17,6 +17,8 @@ int		check_syntax(t_token *t)
 	t_ttype	pre_type;
 
 	pre_type = -1;
+	if (is_metatype(t->type))
+		return (put_error(SYNTAXERR, 0));
 	while (t->next)
 	{
 		while (t->type == SP && t->next)

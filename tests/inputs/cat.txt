@@ -1,1 +1,5 @@
 cat A
+cat Bdsad
+cat file,touch file
+cat file,echo dssadsa>>file 2>fileERR
+cat file,echo $PWD>file 2>fileERR

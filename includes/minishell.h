@@ -1,15 +1,18 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "parser.h"
-# include "lexer.h"
-# include "env.h"
 # include <stdio.h>
+# include "env.h"
+
+# define MINISHELL "MINISHELL$ "
+# define MALLOCERR "malloc error..."
+# define SYNTAXERR "syntax error..."
+# define QUOTEERR "quote is not close..."
 
 typedef struct s_minidata
 {
 	t_env	*envs;
-	int		states;
+	int		status;
 	int		quit;
 }	t_minidata;
 
