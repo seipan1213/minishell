@@ -12,6 +12,6 @@ char	*expand_init(int *i, int *j);
 char	*sub_quote(char *front, char *str, int *i, int *j);
 char	*expand_null(char *str, char *front);
 char	*expand(char *str, t_env *envs);
-int		is_stop_env(char c);
+int		add_cnt_stop_env(char *str);
 
 #endif

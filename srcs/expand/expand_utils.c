@@ -9,8 +9,7 @@ char	*expand_env(char *str, t_env *envs)
 	i = 0;
 	if (str[i] != '$')
 		return (NULL);
-	while (is_stop_env(str[i]))
-		i++;
+	i += add_cnt_stop_env(str + i);
 	if (!(key = ft_substr(str, 1, i - 1)))
 		return (NULL);
 	env = get_env(key, g_data.envs);

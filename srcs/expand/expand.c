@@ -17,10 +17,17 @@ char	*expand_null(char *str, char *front)
 	return (front);
 }
 
-int		is_stop_env(char c)
+int		add_cnt_stop_env(char *str)
 {
-	return (!ft_isspace(c) && c != '\"' && c != '?'
-				&& c != '=' && c);
+	int	i;
+
+	i = 0;
+	while (!ft_isspace(str[i]) && str[i] != '\"' && str[i] != '?'
+				&& str[i] != '=' && str[i])
+				i++;
+	if (str[i] == '?' && str[i - 1] == '$')
+		i++;
+	return (i);
 }
 
 char	*expand(char *str, t_env *envs)
@@ -37,8 +44,7 @@ char	*expand(char *str, t_env *envs)
 		if (str[i] == '$')
 		{
 			env = expand_env(str + i, envs);
-			while (is_stop_env(str[i]))
-				i++;
+			i += add_cnt_stop_env(str + i);
 			if (!(front = front_join(front, env)))
 				return (NULL);
 			j = i;
