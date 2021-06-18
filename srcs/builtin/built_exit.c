@@ -43,7 +43,7 @@ int	built_exit(char **argv)
 	num = ft_atoi(argv[i]);
 	num &= 255;
 	if (is_numeric_argument(argv[i]))
-		exit_error(NUMERR, 2);
+		exit_error(NUMERR, 255);
 	if (is_strdigit(argv[i]) && !argv[i + 1])
 		exit(num);
 	if (argv[i + 1])
