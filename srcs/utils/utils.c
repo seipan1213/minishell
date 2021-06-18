@@ -5,11 +5,15 @@ int		is_strdigit(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
+	while (ft_isspace(str[i]))
 		i++;
-	}
-	return (1);
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (ft_isdigit(str[i]))
+		i++;
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '\0')
+		return (1);
+	return (0);
 }
