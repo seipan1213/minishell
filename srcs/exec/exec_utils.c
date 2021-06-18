@@ -38,7 +38,7 @@ int		token_lst_len(t_token *token)
 char	**token_to_args(t_token *token)
 {
 	t_token		*list;
-	int			token_len = 0;
+	int			token_len;
 	int			i;
 	char		*arg_tmp;
 	char		**args;

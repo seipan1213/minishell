@@ -34,7 +34,7 @@ typedef enum	e_pipe_status
 int		exec(astNode *node);
 void	exec_pipeline(astNode *node);
 void	exec_bin(char **args);
-void	exec_cmd(t_command *cmd, t_pipe_status *p_stat, int pipe_fd[]);
+int		exec_cmd(t_command *cmd, t_pipe_status *p_stat, int pipe_fd[]);
 char	**token_to_args(t_token *token);
 int		dup_pipe(t_pipe_status *p_stat, int old_pipe_fd[], int new_pipe_fd[]);
 int		pass_pipe(t_pipe_status *p_stat, int old_pipe_fd[], int new_pipe_fd[]);
