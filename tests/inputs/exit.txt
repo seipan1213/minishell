@@ -1,6 +1,11 @@
 exit 0
 exit
 exit "-1"
+exit "   -42  "
+exit "   -42dsada"
+exit "   42  "
+exit "dda 42"
+exit " sss-42  "
 exit 1
 exit -1
 exit -2

@@ -69,7 +69,7 @@ int	built_export(char **argv)
 			if (!export_env(argv[i]))
 			{
 				ft_putendl_fd("export: not a valid identifier", STDERR_FILENO);
-				ret = -1;
+				ret = EXIT_FAILURE;
 			}
 			i++;
 		}
