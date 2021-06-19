@@ -7,12 +7,12 @@ bool	parse_cmd_rd(t_token **tokens, t_command *cmd)
 	t_redirect	*rd;
 
 	rd = init_redirect();
-	if ((*tokens)->type == RINT && *(*tokens)->str != ' ')
+	if ((*tokens)->type == RINT)
 	{
 		if ((rd->fd_file = ft_atoi((*tokens)->str)) < 0)
 			return (FALSE);
+		*tokens = (*tokens)->next;
 	}
-	*tokens = (*tokens)->next;
 	set_rd_type(rd, *tokens);
 	*tokens = (*tokens)->next;
 	if (!*tokens)
@@ -62,7 +62,7 @@ bool	parse_job(t_token **tokens, astNode **node, t_cmd_link *cmd_ptr)
 			if (!*tokens)
 				return (put_error(SYNTAXERR, FALSE));
 			if (!(parse_cmd(tokens, &right, cmd_ptr)))
-				return(put_error(SYNTAXERR, FALSE));
+				return (FALSE);
 			*node = new_parent_node(PIPE, *node, right);
 		}
 		else
