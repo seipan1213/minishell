@@ -17,6 +17,19 @@ char	*expand_null(char *str, char *front)
 	return (front);
 }
 
+int		add_cnt_stop_env(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (!ft_isspace(str[i]) && str[i] != '\"' && str[i] != '?'
+				&& str[i] != '=' && str[i])
+				i++;
+	if (str[i] == '?' && str[i - 1] == '$')
+		i++;
+	return (i);
+}
+
 char	*expand(char *str, t_env *envs)
 {
 	int		i;
@@ -28,17 +41,17 @@ char	*expand(char *str, t_env *envs)
 		return (NULL);
 	while (str[++i])
 	{
-		front = sub_quote(front, str, &i, &j);
 		if (str[i] == '$')
 		{
 			env = expand_env(str + i, envs);
-			while (!ft_isspace(str[i]) && str[i] != '\"' && str[i] != '?'
-				&& str[i] != '=' && str[i])
-				i++;
+			i += add_cnt_stop_env(str + i);
 			if (!(front = front_join(front, env)))
 				return (NULL);
 			j = i;
 		}
+		front = sub_quote(front, str, &i, &j);
+		if (!str[i])
+			break ;
 	}
 	if (i != j)
 		front = sub_join(front, str, i, j);
