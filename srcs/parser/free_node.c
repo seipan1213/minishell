@@ -22,6 +22,7 @@ void	free_cmd(t_command *cmd)
 	{
 		tmp = cmd;
 		free_redirect(tmp->rd);
+		free_token(tmp->arg);
 		cmd = cmd->next;
 		free(tmp);
 	}
