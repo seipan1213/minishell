@@ -14,14 +14,14 @@
 
 int	put_error(char *str, int ret)
 {
-	ft_putstr_fd(MINISHELL, STDERR_FILENO);
+	ft_putstr_fd(ERR_MSH, STDERR_FILENO);
 	ft_putendl_fd(str, STDERR_FILENO);
 	return (ret);
 }
 
 void	exit_error(char *str, int ex_num)
 {
-	ft_putstr_fd(MINISHELL, STDERR_FILENO);
+	ft_putstr_fd(ERR_MSH, STDERR_FILENO);
 	ft_putendl_fd(str, STDERR_FILENO);
 	exit(ex_num);
 }

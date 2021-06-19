@@ -76,7 +76,7 @@ typedef struct	astNode {
 // t_token		*token_init();
 // void		print_token(t_token *t);
 t_token		*gen_token(char *val, int type);
-void		set_cmd_args(t_token **tokens, t_command *cmd);
+bool		set_cmd_args(t_token **tokens, t_command *cmd);
 astNode		*new_cmd_node(t_cmd_link *cmd_ptr);
 astNode		*new_parent_node(int type, astNode *left, astNode *right);
 bool		is_type(t_token **tokens, int type);
@@ -89,5 +89,8 @@ void		minishell(char **envp);
 t_redirect	*init_redirect(void);
 void		set_rd_type(t_redirect *rd, t_token *token);
 void		set_cmd_rd(t_redirect *rd, t_redirect **list);
+void		free_node(astNode *node);
+void		free_tokens(t_token **tokens);
+void		free_token(t_token *token);
 
 #endif
