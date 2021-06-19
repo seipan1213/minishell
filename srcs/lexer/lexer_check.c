@@ -34,7 +34,8 @@ int		check_syntax(t_token *t)
 		if (t->next)
 			t = t->next;
 	}
-	if (t && (is_rdcttype(t->type) || t->type == PIPE || t->type == ESCAPE))
+	if (t && (is_rdcttype(t->type) || t->type == PIPE || t->type == ESCAPE
+			|| (is_rdcttype(pre_type) && t->type == SP)))
 		return (put_error(SYNTAXERR, 0));
 	return (1);
 }
