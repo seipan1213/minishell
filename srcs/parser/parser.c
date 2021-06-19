@@ -99,17 +99,19 @@ bool	parse_cmdline(t_token **tokens, astNode **node)
 
 bool	parser(t_token **tokens, astNode **node)
 {
-	int		result;
+	int			result;
+	t_token		*for_free;
 
+	for_free = *tokens;
 	if (!tokens || !*tokens)
 		return (0);
 	if ((result = parse_cmdline(tokens, node)) == FALSE)
 	{
-		free_token(*tokens);
+		free_token(for_free);
 		free_node(*node);
 	}
 	else
-		free_token(*tokens);
+		free_token(for_free);
 	return (result);
 }
 
