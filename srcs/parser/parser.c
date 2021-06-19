@@ -7,19 +7,20 @@ bool	parse_cmd_rd(t_token **tokens, t_command *cmd)
 	t_redirect	*rd;
 
 	rd = init_redirect();
-	if ((*tokens)->type == RINT)
+	if ((*tokens)->type == RINT && *(*tokens)->str != ' ')
 	{
 		if ((rd->fd_file = ft_atoi((*tokens)->str)) < 0)
 			return (FALSE);
-		*tokens = (*tokens)->next;
 	}
+	*tokens = (*tokens)->next;
 	set_rd_type(rd, *tokens);
 	*tokens = (*tokens)->next;
 	if (!*tokens)
 	{
-		return (FALSE);
+		free(rd);
+		return (put_error(SYNTAXERR, FALSE));
 	}
-	set_cmd_token(*tokens, &rd->filename);
+	rd->filename = gen_token((*tokens)->str, (*tokens)->type);
 	set_cmd_rd(rd, &cmd->rd);
 	*tokens = (*tokens)->next;
 	return (TRUE);
@@ -27,16 +28,18 @@ bool	parse_cmd_rd(t_token **tokens, t_command *cmd)
 
 bool	parse_cmd(t_token **tokens, astNode **node, t_cmd_link *cmd_ptr)
 {
-	*node = new_cmd_node(cmd_ptr); 	// create new node
-	while (*tokens)				// put t_command (args & rd) in node
+	*node = new_cmd_node(cmd_ptr);
+	while (*tokens)
 	{
 		if (is_type(tokens, STR))
 		{
-			set_cmd_args(tokens, (*node)->cmd);
+			if (set_cmd_args(tokens, (*node)->cmd) == FALSE)
+				return (FALSE);
 		}
 		else if (is_rd((*tokens)->type))
 		{
-			parse_cmd_rd(tokens, (*node)->cmd);
+			if (parse_cmd_rd(tokens, (*node)->cmd) == FALSE)
+				return (FALSE);
 		}
 		else
 			break ;
@@ -56,10 +59,10 @@ bool	parse_job(t_token **tokens, astNode **node, t_cmd_link *cmd_ptr)
 		if (is_type(tokens, PIPE)) 	//	check "|" or not
 		{
 			*tokens = (*tokens)->next;
-			if (!*tokens) // '|'の後にコマンドが無いとエラー
-				return (FALSE);
-			if (!(parse_cmd(tokens, &right, cmd_ptr))) // get right node
-				return(FALSE);
+			if (!*tokens)
+				return (put_error(SYNTAXERR, FALSE));
+			if (!(parse_cmd(tokens, &right, cmd_ptr)))
+				return(put_error(SYNTAXERR, FALSE));
 			*node = new_parent_node(PIPE, *node, right);
 		}
 		else
@@ -100,7 +103,13 @@ bool	parser(t_token **tokens, astNode **node)
 
 	if (!tokens || !*tokens)
 		return (0);
-	result = parse_cmdline(tokens, node);
+	if ((result = parse_cmdline(tokens, node)) == FALSE)
+	{
+		free_token(*tokens);
+		free_node(*node);
+	}
+	else
+		free_token(*tokens);
 	return (result);
 }
 

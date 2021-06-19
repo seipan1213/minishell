@@ -5,6 +5,7 @@
 # include "env.h"
 
 # define MINISHELL "MINISHELL$ "
+# define ERR_MSH "minishell: "
 # define MALLOCERR "malloc error..."
 # define SYNTAXERR "syntax error..."
 # define QUOTEERR "quote is not close..."
@@ -17,6 +18,7 @@ typedef struct s_minidata
 	int		quit;
 }	t_minidata;
 
-t_minidata g_data;
+t_minidata	g_data;
+void		minishell(char **envp);
 
 #endif
