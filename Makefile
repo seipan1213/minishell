@@ -1,7 +1,8 @@
 SRCSDIR = srcs/
 SRCFILE = parser/init_parser.c parser/parser.c \
-				parser/parser_utils.c parser/parser_free.c \
-				parser/set_cmd_args.c parser/parser_redirect.c \
+				parser/parser_utils.c parser/set_cmd_args.c \
+				parser/parser_redirect.c parser/free_node.c \
+				parser/free_tokens.c \
 				lexer/token_utils.c \
 				lexer/lexer.c lexer/lexer_check.c lexer/token.c \
 				lexer/token_meta_1.c lexer/token_meta_2.c \

@@ -48,19 +48,16 @@ void		set_cmd_token(t_token *src, t_token **dest)
 	}
 }
 
-void		set_cmd_args(t_token **tokens, t_command *cmd)
+bool		set_cmd_args(t_token **tokens, t_command *cmd)
 {
-	// if (*tokens)
-	// {
-	// 	print_tokens(*tokens);
-	// 	printf("\n");
-	// }
-
-	while (tokens && is_simple_cmd(tokens))
+	if (!*tokens)
+		return(FALSE);
+	while (*tokens && is_simple_cmd(tokens))
 	{
 		set_cmd_token(*tokens, &cmd->arg);
 		*tokens = (*tokens)->next;
 	}
+	return (TRUE);
 }
 
 

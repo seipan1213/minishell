@@ -17,19 +17,12 @@
 #include "../includes/exec.h"
 #include "../includes/lexer.h"
 #include "../includes/utils.h"
-
-#define STDERR 2
-#define MINISHELL "MINISHELL$ "
-
-void		minishell(char **envp);
-void		sig_int_input();
-void		sig_quit_input();
-
+#include "../includes/minishell.h"
 
 void	test_minishell(char **argv, char **envp)
 {
-	t_token		*tokens = NULL;
-	astNode		*node = NULL;
+	t_token		*tokens;
+	astNode		*node;
 
 	tokens = NULL;
 	tokens = lexer(argv[2]);
@@ -51,7 +44,7 @@ int		main(int argc, char **argv, char **envp)
 void	minishell(char **envp)
 {
 	t_token		*tokens;
-	astNode		*node = NULL;
+	astNode		*node;
 	char		*line;
 	int			ret;
 	t_command	*tmp;
@@ -66,7 +59,6 @@ void	minishell(char **envp)
 			g_data.quit = 1;
 			built_exit(NULL);
 		}
-		// rl_on_new_line();
 		if (line && ft_strlen(line) > 0)
 		{
 			add_history(line);
@@ -80,15 +72,4 @@ void	minishell(char **envp)
 		if (line)
 			free(line);
 	}
-}
-
-void	sig_int_input()
-{
-	ft_putstr_fd("\b\b  \b\n", STDERR);
-	ft_putstr_fd(MINISHELL, STDERR);
-}
-
-void	sig_quit_input()
-{
-	ft_putstr_fd("\b\b  \b\b", STDERR);
 }
