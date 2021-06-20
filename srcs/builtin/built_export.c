@@ -15,6 +15,7 @@ static void	print_export(t_env *envs)
 		while (str_envs[i][j] != '=')
 			j++;
 		str_envs[i][j] = '\0';
+		ft_putstr_fd("declare -x ", STDOUT_FILENO);
 		ft_putstr_fd(str_envs[i], STDOUT_FILENO);
 		ft_putstr_fd("=", STDOUT_FILENO);
 		ft_putchar_fd('\"', STDOUT_FILENO);
