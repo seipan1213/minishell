@@ -69,8 +69,11 @@ t_token		*lexer(char *line)
 
 	ret = 0;
 	t = tokenise(line);
-	ret = check_tokens(t);
-	ret &= lexer_tokens(t);
+	if (t)
+	{
+		ret = check_tokens(t);
+		ret &= lexer_tokens(t);
+	}
 	if (ret == 0)
 	{
 		g_data.status = 2;
