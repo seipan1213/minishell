@@ -107,11 +107,9 @@ bool	parser(t_token **tokens, astNode **node)
 		return (0);
 	if ((result = parse_cmdline(tokens, node)) == FALSE)
 	{
-		free_token(for_free);
 		free_node(*node);
 	}
-	else
-		free_token(for_free);
+	free_token(for_free);
 	return (result);
 }
 

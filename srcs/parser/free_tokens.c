@@ -5,14 +5,17 @@
 void	free_token(t_token *token)
 {
 	t_token	*tmp;
+	t_token	*now;
 
-	while (token)
+	now = token;
+	while (now)
 	{
-		tmp = token;
-		free(tmp->str);
-		token = token->next;
-		free(tmp);
+		tmp = now->next;
+		free(now->str);
+		free(now);
+		now = tmp;
 	}
+	token = NULL;
 }
 
 void	free_tokens(t_token **tokens)

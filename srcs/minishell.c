@@ -68,6 +68,7 @@ void	minishell(char **envp)
 			node = NULL;
 			parser(&tokens, &node);
 			ret = exec(node);
+			free_node(node);
 		}
 		if (line)
 			free(line);
