@@ -22,7 +22,7 @@ int		lexer_str(t_token *t)
 		while (t->next && t->type == t->next->type && t->type == STR)
 		{
 			if (!(str = ft_strjoin(t->str, t->next->str)))
-				return (put_error(MALLOCERR, 0));
+				return (put_error(MALLOCERR, NULL, 0));
 			free(t->str);
 			t->str = str;
 			tmp = t->next;

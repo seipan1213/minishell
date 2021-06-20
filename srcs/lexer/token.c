@@ -47,7 +47,7 @@ void	set_token(t_token **t, char *line, int len, t_ttype type)
 	if (len <= 0)
 		return ;
 	if (!(str = ft_substr(line, 0, len)))
-		exit_error("malloc error", 1);
+		exit_error(MALLOCERR, NULL, 1);
 	token = create_token(type, str);
 	addb_token(t, token);
 }
@@ -55,7 +55,7 @@ void	set_token(t_token **t, char *line, int len, t_ttype type)
 void	tokenise_init(t_tdata *data, t_token **t, char **line)
 {
 	if (!line)
-		exit_error("", 1);
+		exit_error("", NULL, 1);
 	*t = NULL;
 	data->i = -1;
 	data->line = *line;

@@ -43,10 +43,10 @@ int	built_exit(char **argv)
 	num = ft_atoi(argv[i]);
 	num &= 255;
 	if (is_numeric_argument(argv[i]))
-		exit_error(NUMERR, 255);
+		exit_error(NUMERR, "exit", 255);
 	if (is_strdigit(argv[i]) && !argv[i + 1])
 		exit(num);
 	if (argv[i + 1])
-		ft_putendl_fd("args err", STDERR_FILENO);
+		put_error("args err", "exit", -1);
 	return (-1);
 }

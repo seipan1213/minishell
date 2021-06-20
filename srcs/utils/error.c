@@ -12,16 +12,26 @@
 
 #include "../../includes/utils.h"
 
-int	put_error(char *str, int ret)
+int		put_error(char *str, char *cmd, int ret)
 {
 	ft_putstr_fd(ERR_MSH, STDERR_FILENO);
+	if (cmd)
+	{
+		ft_putstr_fd(cmd, STDERR_FILENO);
+		ft_putstr_fd(": ", STDERR_FILENO);
+	}
 	ft_putendl_fd(str, STDERR_FILENO);
 	return (ret);
 }
 
-void	exit_error(char *str, int ex_num)
+void	exit_error(char *str, char *cmd, int ex_num)
 {
 	ft_putstr_fd(ERR_MSH, STDERR_FILENO);
+	if (cmd)
+	{
+		ft_putstr_fd(cmd, STDERR_FILENO);
+		ft_putstr_fd(": ", STDERR_FILENO);
+	}
 	ft_putendl_fd(str, STDERR_FILENO);
 	exit(ex_num);
 }
