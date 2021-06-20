@@ -14,6 +14,7 @@ void	free_redirect(t_redirect *rd)
 		free(now);
 		now = tmp;
 	}
+	rd = NULL;
 }
 
 void	free_cmd(t_command *cmd)
