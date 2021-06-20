@@ -8,6 +8,7 @@ void	free_redirect(t_redirect *rd)
 	while (rd)
 	{
 		tmp = rd;
+			// print_tokens(rd->filename);
 		free_token(tmp->filename);
 		rd = rd->next;
 		free(tmp);
@@ -17,30 +18,41 @@ void	free_redirect(t_redirect *rd)
 void	free_cmd(t_command *cmd)
 {
 	t_command	*tmp;
+	t_command	*now;
 
-	while (cmd)
+	now = cmd;
+	while (now)
 	{
-		tmp = cmd;
-		free_redirect(tmp->rd);
-		free_token(tmp->arg);
-		cmd = cmd->next;
-		free(tmp);
+		tmp = now->next;
+		free_redirect(now->rd);
+		free_token(now->arg);
+		free(now);
+		now = tmp;
 	}
+	cmd = NULL;
+}
+
+int		is_node_type(int type)
+{
+	if (type == SCOLON || type == PIPE || type == STR)
+		return (1);
+	return (0);
 }
 
 void	free_node(astNode *node)
 {
+	// printf("\n===== free_node %p ====\n", node);
 	if (!node)
 		return ;
-	if (node->type == SCOLON || node->type == PIPE)
+	if (is_node_type(node->type) && node->cmd)
 	{
-		free_node(node->left);
-		free_node(node->right);
-		free(node);
-	}
-	else
-	{
+		// print_tokens(node->cmd->arg);
 		free_cmd(node->cmd);
-		free(node);
+		node->cmd = NULL;
 	}
+	free_node(node->left);
+	free_node(node->right);
+	free(node);
+	node = NULL;
+	// printf("\n===== done!! %p ====\n", node);
 }
