@@ -34,11 +34,8 @@ int		exec_cmd_node(astNode *node)
 
 int		exec(astNode *node)
 {
-	astNode	*for_free;
-
 	if (!node)
 		return (FALSE);
-	for_free = node;
 	if (node->type == SCOLON)
 	{
 		exec(node->left);
@@ -48,8 +45,5 @@ int		exec(astNode *node)
 	{
 		exec_cmd_node(node);
 	}
-	// printf("for_free %p\n", for_free);
-	// printf("for_free left %p\n", for_free->left);
-	// printf("for_free right %p\n", for_free->right);
 	return (TRUE);
 }
