@@ -45,6 +45,5 @@ int		exec(astNode *node)
 	{
 		exec_cmd_node(node);
 	}
-	free_node(node);
 	return (TRUE);
 }

@@ -90,13 +90,13 @@ void	token_and(t_tdata *d, t_token **t)
 
 	if (!ft_strncmp(d->line + d->i, "&&", 2))
 	{
-		token = create_token(DAND, "&&");
+		token = create_token(DAND, ft_strdup("&&"));
 		addb_token(t, token);
 		d->i++;
 	}
 	else
 	{
-		token = create_token(AND, "&");
+		token = create_token(AND, ft_strdup("&"));
 		addb_token(t, token);
 	}
 	d->j = d->i + 1;
@@ -108,13 +108,13 @@ void	token_pipe(t_tdata *d, t_token **t)
 
 	if (!ft_strncmp(d->line + d->i, "||", 2))
 	{
-		token = create_token(DPIPE, "||");
+		token = create_token(DPIPE, ft_strdup("||"));
 		addb_token(t, token);
 		d->i++;
 	}
 	else
 	{
-		token = create_token(PIPE, "|");
+		token = create_token(PIPE, ft_strdup("|"));
 		addb_token(t, token);
 	}
 	d->j = d->i + 1;
