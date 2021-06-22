@@ -18,7 +18,7 @@ bool	parse_cmd_rd(t_token **tokens, t_command *cmd)
 	if (!*tokens)
 	{
 		free(rd);
-		return (put_error(SYNTAXERR, FALSE));
+		return (put_error(SYNTAXERR, NULL, FALSE));
 	}
 	rd->filename = gen_token((*tokens)->str, (*tokens)->type);
 	set_cmd_rd(rd, &cmd->rd);
@@ -60,7 +60,7 @@ bool	parse_job(t_token **tokens, astNode **node, t_cmd_link *cmd_ptr)
 		{
 			*tokens = (*tokens)->next;
 			if (!*tokens)
-				return (put_error(SYNTAXERR, FALSE));
+				return (put_error(SYNTAXERR, NULL, FALSE));
 			if (!(parse_cmd(tokens, &right, cmd_ptr)))
 				return (FALSE);
 			*node = new_parent_node(PIPE, *node, right);
@@ -107,11 +107,9 @@ bool	parser(t_token **tokens, astNode **node)
 		return (0);
 	if ((result = parse_cmdline(tokens, node)) == FALSE)
 	{
-		free_token(for_free);
 		free_node(*node);
 	}
-	else
-		free_token(for_free);
+	free_token(for_free);
 	return (result);
 }
 

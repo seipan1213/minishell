@@ -22,7 +22,7 @@ int		lexer_str(t_token *t)
 		while (t->next && t->type == t->next->type && t->type == STR)
 		{
 			if (!(str = ft_strjoin(t->str, t->next->str)))
-				return (put_error(MALLOCERR, 0));
+				return (put_error(MALLOCERR, NULL, 0));
 			free(t->str);
 			t->str = str;
 			tmp = t->next;
@@ -69,8 +69,11 @@ t_token		*lexer(char *line)
 
 	ret = 0;
 	t = tokenise(line);
-	ret = check_tokens(t);
-	ret &= lexer_tokens(t);
+	if (t)
+	{
+		ret = check_tokens(t);
+		ret &= lexer_tokens(t);
+	}
 	if (ret == 0)
 	{
 		g_data.status = 2;

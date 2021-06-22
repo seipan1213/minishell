@@ -15,6 +15,7 @@ static void	print_export(t_env *envs)
 		while (str_envs[i][j] != '=')
 			j++;
 		str_envs[i][j] = '\0';
+		ft_putstr_fd("declare -x ", STDOUT_FILENO);
 		ft_putstr_fd(str_envs[i], STDOUT_FILENO);
 		ft_putstr_fd("=", STDOUT_FILENO);
 		ft_putchar_fd('\"', STDOUT_FILENO);
@@ -67,10 +68,7 @@ int	built_export(char **argv)
 		while (argv[i])
 		{
 			if (!export_env(argv[i]))
-			{
-				ft_putendl_fd("export: not a valid identifier", STDERR_FILENO);
-				ret = EXIT_FAILURE;
-			}
+				ret = put_error("not a valid identifier", "export", EXIT_FAILURE);
 			i++;
 		}
 	}
