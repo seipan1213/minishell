@@ -24,6 +24,7 @@ CYAN="\x1b[36m"
 
 start_test()
 {
+	mkdir outputs
 	clean_output
 	set_pwd
 	for file in `ls ${INPUT_DIR}`;do

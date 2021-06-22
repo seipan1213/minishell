@@ -52,7 +52,7 @@ void	token_squote(t_tdata *d, t_token **t)
 	else
 	{
 		free(str);
-		exit_error(SYNTAXERR, 2);
+		exit_error(SYNTAXERR, NULL, 2);
 	}
 	token = create_token(STR, tmp);
 	addb_token(t, token);
@@ -77,7 +77,7 @@ void	token_dquote(t_tdata *d, t_token **t)
 	else
 	{
 		free(str);
-		exit_error(SYNTAXERR, 2);
+		exit_error(SYNTAXERR, NULL, 2);
 	}
 	token = create_token(STR, tmp);
 	addb_token(t, token);
