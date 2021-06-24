@@ -28,9 +28,9 @@ char	**environ_gen(t_env *envs)
 	while(i < len)
 	{
 		if (!(tmp = ft_strjoin(envs->name, "=")))
-			exit_error(MALLOCERR, 0);
+			exit_error(MALLOCERR, NULL, 0);
 		if (!(c_envs[i] = ft_strjoin(tmp, envs->value)))
-			exit_error(MALLOCERR, 0);
+			exit_error(MALLOCERR, NULL, 0);
 		free(tmp);
 		i++;
 		envs = envs->next;

@@ -1,5 +1,18 @@
 #include "../../includes/builtin.h"
 
+char	*get_home(t_env *envs)
+{
+	char	*home;
+
+	home = get_env("HOME", g_data.envs);
+	if (!home)
+	{
+		put_error("unset HOME", "cd", 0);
+		return (NULL);
+	}
+	return (home);
+}
+
 char	*check_cd(char **argv)
 {
 	int		i;
@@ -8,17 +21,23 @@ char	*check_cd(char **argv)
 	i = 0;
 	while (argv[i])
 		i++;
+	home = get_home(g_data.envs);
 	if (i == 1)
 	{
-		home = get_env("HOME", g_data.envs);
-		if (!home)
-			exit_error("unset HOME", 1);
-		return (home);
+		if (home)
+			return (ft_strdup(get_home(g_data.envs)));
 	}
 	else if (i == 2)
-		return (argv[1]);
+	{
+		if (argv[1][0] == '~')
+			if (home)
+				return (ft_strjoin(home, argv[1] + 1));
+			else
+				return (NULL);
+		return (ft_strdup(argv[1]));
+	}
 	else
-		exit_error("too many arguments", 1);
+		put_error("too many arguments", "cd", 0);
 	return (NULL);
 }
 
@@ -28,15 +47,18 @@ int	built_cd(char **argv)
 	char	*tmp;
 	int		i;
 
-	dst = check_cd(argv);
+	if (!(dst = check_cd(argv)))
+		return (EXIT_FAILURE);
 	tmp = get_env("PWD", g_data.envs);
 	if (tmp)
 		update_env("OLDPWD", tmp, g_data.envs);
 	if (chdir(dst))
-		exit_error("No such file or directory", 1);
+		put_error(strerror(errno), "cd", 1);
 	if (!(tmp = getcwd(0, 0)))
-		exit_error("getcwd error", 1);
-	update_env("PWD", tmp, g_data.envs);
+		put_error(strerror(errno), "cd", 1);
+	if (tmp)
+		update_env("PWD", tmp, g_data.envs);
 	free(tmp);
+	free(dst);
 	return (EXIT_SUCCESS);
 }

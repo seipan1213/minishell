@@ -22,6 +22,6 @@
 
 int		is_strdigit(char *str);
 void	set_signal(void (*func)(int));
-int		put_error(char *str, int ret);
-void	exit_error(char *str, int ex_num);
+int		put_error(char *str, char *cmd, int ret);
+void	exit_error(char *str, char *cmd, int ex_num);
 #endif

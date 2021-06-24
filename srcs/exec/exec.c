@@ -6,9 +6,9 @@ void	exec_bin(char **args)
 	char	**envs;
 
 	if (!(envs = environ_gen(g_data.envs)))
-		exit_error(MALLOCERR, 1);
+		exit_error(MALLOCERR, NULL, 1);
 	if (!(path = exec_serach(args[0])))
-		exit(1);
+		exit_error("command not found", args[0], 127);
 	execve(path, args, envs);
 	free_split(envs);
 	free(path);

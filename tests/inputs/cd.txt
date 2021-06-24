@@ -1,0 +1,6 @@
+cd ; pwd
+cd ~;pwd
+cd ../../; pwd
+cd $HOME; pwd
+cd $HOME, unset HOME
+mkdir test;cd test; rmdir ../test; pwd
