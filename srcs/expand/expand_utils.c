@@ -54,7 +54,9 @@ char	*sub_quote(char *front, char *str, int *i, int *j)
 {
 	while (str[*i] != '\'' && str[*i] != '\"' && str[*i] != '$' && str[*i])
 		(*i)++;
-	if (*i != *j)
+	if (str[*i] == '$')
+		(*i)--;
+	if (*i > *j)
 		front = sub_join(front, str, *i, *j);
 	if (str[*i] == '\'' || str[*i] == '\"')
 	{

@@ -23,7 +23,7 @@ int		add_cnt_stop_env(char *str)
 
 	i = 0;
 	while (!ft_isspace(str[i]) && str[i] != '\"' && str[i] != '?'
-				&& str[i] != '=' && str[i])
+				&& str[i] != '=' && !(i != 0 && str[i] == '$') && str[i])
 				i++;
 	if (str[i] == '?' && str[i - 1] == '$')
 		i++;
