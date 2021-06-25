@@ -41,15 +41,15 @@ char	*expand(char *str, t_env *envs)
 		return (NULL);
 	while (str[++i])
 	{
+		front = sub_quote(front, str, &i, &j);
 		if (str[i] == '$')
 		{
 			env = expand_env(str + i, envs);
 			i += add_cnt_stop_env(str + i);
 			if (!(front = front_join(front, env)))
 				return (NULL);
-			j = i;
+			j = i--;
 		}
-		front = sub_quote(front, str, &i, &j);
 		if (!str[i])
 			break ;
 	}
