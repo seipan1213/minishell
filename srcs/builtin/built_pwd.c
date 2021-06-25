@@ -4,10 +4,9 @@ int	built_pwd(void)
 {
 	char	*pwd;
 
-	pwd = getcwd(0, 0);
+	pwd = get_env("PWD", g_data.envs);
 	if (!pwd)
 		return (-1);
 	ft_putendl_fd(pwd, STDOUT_FILENO);
-	free(pwd);
 	return (EXIT_SUCCESS);
 }

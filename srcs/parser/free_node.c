@@ -19,17 +19,14 @@ void	free_redirect(t_redirect *rd)
 
 void	free_cmd(t_command *cmd)
 {
-	t_command	*tmp;
 	t_command	*now;
 
 	now = cmd;
-	while (now)
+	if (now)
 	{
-		tmp = now->next;
 		free_redirect(now->rd);
 		free_token(now->arg);
 		free(now);
-		now = tmp;
 	}
 	cmd = NULL;
 }
