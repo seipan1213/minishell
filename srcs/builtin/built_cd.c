@@ -43,22 +43,23 @@ char	*check_cd(char **argv)
 
 int	built_cd(char **argv)
 {
+	char	*oldpwd;
 	char	*dst;
 	char	*tmp;
 	int		i;
 
 	if (!(dst = check_cd(argv)))
 		return (EXIT_FAILURE);
-	tmp = get_env("PWD", g_data.envs);
-	if (tmp)
-		update_env("OLDPWD", tmp, g_data.envs);
-	if (chdir(dst))
-		put_error(strerror(errno), "cd", 1);
-	if (!(tmp = getcwd(0, 0)))
-		put_error(strerror(errno), "cd", 1);
-	if (tmp)
+	if (!chdir(dst) && (tmp = getcwd(0, 0)))
+	{
+		if (oldpwd = get_env("PWD", g_data.envs));
+			update_env("OLDPWD", oldpwd, g_data.envs);
 		update_env("PWD", tmp, g_data.envs);
-	free(tmp);
+		free(g_data.pwd);
+		g_data.pwd = tmp;
+	}
+	else
+		put_error(strerror(errno), "cd", 1);
 	free(dst);
 	return (EXIT_SUCCESS);
 }
