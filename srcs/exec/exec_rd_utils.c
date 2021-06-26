@@ -1,16 +1,7 @@
 
 #include "../../includes/exec.h"
 
-void	get_heredoc(t_redirect *rd)
-{
-	char	*line;
-	while (get_next_line(0, &line) < 0)
-	{
-		
-	}
-}
-
-int	open_file(t_redirect *rd)
+int	open_rdfile(t_redirect *rd)
 {
 	if (rd->type == RD_INPUT)
 		return (open(rd->filename->str, O_RDONLY));
@@ -26,8 +17,8 @@ int	open_file(t_redirect *rd)
 	}
 	else if (rd->type == RD_HERE_DOC)
 	{
-		return(open(".tmpfile", \
-		O_RDONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE));
+		return (open(HD_TMPFILE, \
+		O_RDWR | O_CREAT | O_TRUNC, 0664));
 	}
 	return(-1);
 }
@@ -41,8 +32,10 @@ void	get_rd_fd(t_redirect *rd)
 	rd_now = rd;
 	while (rd_now)
 	{
-		if ((rd_now->fd_io = open_file(rd_now)) < 0)
+		if ((rd_now->fd_io = open_rdfile(rd_now)) < 0)
 			return ;
+		if (rd_now->type == RD_HERE_DOC)
+			get_heredoc(rd);
 		rd_now = rd_now->next;
 	}
 }
@@ -62,7 +55,14 @@ void	change_rd_fd(t_redirect *rd)
 	rd_now = rd;
 	while (rd_now)
 	{
+		if (rd_now->type == RD_HERE_DOC)
+		{
+			close(rd_now->fd_io);
+			rd_now->fd_io = open(HD_TMPFILE, O_RDWR);
+		}
 		dup_fd(rd_now->fd_io, rd_now->fd_file);
+		if (rd_now->type == RD_HERE_DOC)
+			unlink(HD_TMPFILE);
 		rd_now = rd_now->next;
 	}
 }
