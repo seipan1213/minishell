@@ -23,7 +23,7 @@ int		add_cnt_stop_env(char *str)
 
 	i = 0;
 	while (!ft_isspace(str[i]) && str[i] != '\"' && str[i] != '?'
-				&& str[i] != '=' && str[i])
+				&& str[i] != '=' && !(i != 0 && str[i] == '$') && str[i])
 				i++;
 	if (str[i] == '?' && str[i - 1] == '$')
 		i++;
@@ -41,15 +41,15 @@ char	*expand(char *str, t_env *envs)
 		return (NULL);
 	while (str[++i])
 	{
+		front = sub_quote(front, str, &i, &j);
 		if (str[i] == '$')
 		{
 			env = expand_env(str + i, envs);
 			i += add_cnt_stop_env(str + i);
 			if (!(front = front_join(front, env)))
 				return (NULL);
-			j = i;
+			j = i--;
 		}
-		front = sub_quote(front, str, &i, &j);
 		if (!str[i])
 			break ;
 	}

@@ -51,8 +51,16 @@ static int	export_env(char *str)
 	if (!(env = create_env(str)))
 		return (0);
 	if (!check_identifier(env->name))
+	{
+		free_env(env);
 		return (0);
-	addb_env(&g_data.envs, env);
+	}
+	if (!(update_env(env->name, env->value, g_data.envs)))
+	{
+		free_env(env);
+		return (0);
+	}
+	free_env(env);
 	return (1);
 }
 

@@ -17,6 +17,10 @@ int			is_exec(char *path)
 		return (0);
 	if (!(status.st_mode & S_IXUSR))
 		return (0);
+	if (lstat(path, &status) == -1)
+		return (0);
+	if (S_ISDIR(status.st_mode))
+		exit_error("is a directory", path, 126);
 	return (1);
 }
 
@@ -41,7 +45,10 @@ char		*exec_serach(char *argv)
 	int		i;
 
 	if (!(is_cmd(argv)))
-		return (ft_strdup(argv));
+		if (is_exec(argv))
+			return (ft_strdup(argv));
+		else
+			return (NULL);
 	if (!(path = ft_split(get_env("PATH", g_data.envs), ':')))
 		return (NULL);
 	i = -1;
