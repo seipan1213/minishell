@@ -4,7 +4,7 @@ static void	print_envs(t_env *envs)
 {
 	while (envs)
 	{
-		if (*envs->value)
+		if (envs->value)
 		{
 			ft_putstr_fd(envs->name, STDOUT_FILENO);
 			ft_putstr_fd("=", STDOUT_FILENO);
