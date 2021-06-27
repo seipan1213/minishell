@@ -24,4 +24,6 @@ int		is_strdigit(char *str);
 void	set_signal(void (*func)(int));
 int		put_error(char *str, char *cmd, int ret);
 void	exit_error(char *str, char *cmd, int ex_num);
+char	*strjoin_free(char *front, char *back);
+
 #endif

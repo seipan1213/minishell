@@ -22,3 +22,26 @@ int		is_strdigit(char *str)
 		return (1);
 	return (0);
 }
+
+char	*strjoin_free(char *front, char *back)
+{
+	char	*tmp;
+
+	if (front && !back)
+	{
+		tmp = ft_strdup(front);
+		free(front);
+		return (tmp);
+	}
+	if (!front && back)
+	{
+		tmp = ft_strdup(back);
+		free(back);
+		return (tmp);
+	}
+	tmp = front;
+	front = ft_strjoin(front, back);
+	free(tmp);
+	free(back);
+	return (front);
+}

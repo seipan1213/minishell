@@ -19,7 +19,7 @@ void		set_rd_fd(t_redirect *rd)
 {
 	if (rd->fd_file == NOT_SPECIFIED)
 	{
-		if (rd->type == RD_INPUT)
+		if (rd->type == RD_INPUT || rd->type == RD_HERE_DOC)
 			rd->fd_file = STDIN_FILENO;
 		else
 			rd->fd_file = STDOUT_FILENO;
@@ -34,6 +34,8 @@ void		set_rd_type(t_redirect *rd, t_token *token)
 		rd->type = RD_OUTPUT;
 	else if (token->type == RRDIR)
 		rd->type = RD_APPEND_OUTPUT;
+	else if (token->type == LLDIR)
+		rd->type = RD_HERE_DOC;
 	set_rd_fd(rd);
 }
 
