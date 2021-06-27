@@ -61,7 +61,7 @@ int	built_cd(char **argv)
 		return (EXIT_FAILURE);
 	if (!chdir(dst) && (tmp = getcwd(0, 0)))
 	{
-		if (oldpwd = get_env("PWD", g_data.envs))
+		if ((oldpwd = get_env("PWD", g_data.envs)))
 			update_env("OLDPWD", oldpwd, g_data.envs);
 		update_env("PWD", tmp, g_data.envs);
 		free(g_data.pwd);

@@ -1,6 +1,6 @@
 #include "../../includes/utils.h"
 
-int	init_data(void)
+void	init_data(void)
 {
 	char	*oldpwd;
 
