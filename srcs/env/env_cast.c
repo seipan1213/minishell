@@ -37,7 +37,6 @@ char	**environ_gen(t_env *envs)
 				exit_error(MALLOCERR, NULL, 0);
 			free(tmp);
 		}
-		printf("%s\n",c_envs[i-1]);
 		envs = envs->next;
 	}
 	return (c_envs);

@@ -14,7 +14,7 @@ t_env	*make_env(char *name, char *value)
 {
 	t_env	*env;
 
-	if (!(env = malloc(sizeof(t_env))))
+	if (!(env = (t_env *)malloc(sizeof(t_env))))
 		return (NULL);
 	env->name = name;
 	env->value = value;

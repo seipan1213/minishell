@@ -4,25 +4,23 @@ static void	print_export(t_env *envs)
 {
 	int		i;
 	int		j;
+	char	*tmp;
 	char	**str_envs;
 
-	i = 0;
+	i = -1;
 	str_envs = environ_gen(envs);
 	sort_str(str_envs);
-	while (str_envs[i])
+	while (str_envs[++i])
 	{
-		j = 0;
-		while (str_envs[i][j] != '=' && str_envs[i][j])
-			j++;
-		if (str_envs[i][j] && (str_envs[i][j] = '\0'))
-			j = -1;
+		if (tmp = ft_strchr(str_envs[i], '='))
+			*tmp = '\0';
 		printf("declare -x %s", str_envs[i]);
-		if (j != -1)
+		if (tmp)
 		{
-			printf("=\"%s\"\n", str_envs[i] + j + 1);
-			str_envs[i][j] = '=';
+			printf("=\"%s\"", tmp + 1);
+			*tmp = '=';
 		}
-		i++;
+		printf("\n");
 	}
 	i = -1;
 	while (str_envs[++i])

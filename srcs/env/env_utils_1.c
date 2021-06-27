@@ -30,20 +30,20 @@ int		update_env(char *key, char *newVal, t_env *envs)
 			return (0);
 		else if (!newVal)
 			value = newVal;
-		if ((tmp = ft_strdup(key)) && (newEnv = make_env(key, value)))
-		{
+		if ((tmp = ft_strdup(key)) && (newEnv = make_env(tmp, value)))
 			addb_env(&envs, newEnv);
+		if (tmp && newEnv)
 			return (1);
-		}
 		if (tmp)
 			free(tmp);
 		if (value)
 			free(value);
 		return (0);
 	}
-	free(newEnv->value);
-	if (newVal && !(newEnv->value = ft_strdup(newVal)))
-		newEnv->value = NULL;
+	if (newVal)
+		free(newEnv->value);
+	if (newVal)
+		newEnv->value = ft_strdup(newVal);
 	return(1);
 }
 
