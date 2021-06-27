@@ -2,13 +2,14 @@
 
 char	*special_cd(char **argv)
 {
-	char	*home;
-	char	*oldpwd;
+	char	*env;
+	int		i;
 
-	if (argv[1][0] == '~' || ft_strncmp(argv[1], "--", 2))
+	i = 1;
+	if (argv[1][0] == '~' || (!ft_strncmp(argv[1], "--", 2) && ++i))
 	{
-		if ((home = get_env("HOME", g_data.envs)))
-			return (ft_strjoin(home, argv[1] + 1));
+		if ((env = get_env("HOME", g_data.envs)))
+			return (ft_strjoin(env, argv[1] + i));
 		else
 		{
 			put_error("HOME not set", "cd", 0);
@@ -17,8 +18,8 @@ char	*special_cd(char **argv)
 	}
 	else if (argv[1][0] == '-')
 	{
-		if ((oldpwd = get_env("OLDPWD", g_data.envs)))
-			return (ft_strjoin(oldpwd, argv[1] + 1));
+		if ((env = get_env("OLDPWD", g_data.envs)))
+			return (ft_strjoin(env, argv[1] + i));
 		else
 		{
 			put_error("OLDPWD not set", "cd", 0);
