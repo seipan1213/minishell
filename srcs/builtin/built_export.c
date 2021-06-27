@@ -12,7 +12,7 @@ static void	print_export(t_env *envs)
 	sort_str(str_envs);
 	while (str_envs[++i])
 	{
-		if (tmp = ft_strchr(str_envs[i], '='))
+		if ((tmp = ft_strchr(str_envs[i], '=')))
 			*tmp = '\0';
 		printf("declare -x %s", str_envs[i]);
 		if (tmp)
