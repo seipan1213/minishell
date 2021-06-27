@@ -59,7 +59,7 @@ void	get_heredoc(t_redirect *rd)
 	}
 	while (write(STDOUT_FILENO, "> ", 2) && get_next_line(0, &line) > 0)
 	{
-		if (!q_flag)
+		if (*line && !q_flag)
 			expand_heredoc(&line);
 		if (ft_strcmp(line, rd->filename->str) != 0)
 		{
