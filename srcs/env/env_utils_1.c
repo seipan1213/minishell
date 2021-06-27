@@ -22,25 +22,28 @@ int		update_env(char *key, char *newVal, t_env *envs)
 {
 	t_env *newEnv;
 	char	*tmp;
-	char	*str;
+	char	*value;
 
 	if (!(newEnv = search_env(key, envs)))
 	{
-		tmp = ft_strjoin(key, "=");
-		str = NULL;
-		if (tmp && (str = ft_strjoin(tmp, newVal)))
-			if (newEnv = create_env(str))
-				addb_env(&envs, newEnv);
+		if (newVal && !(value = ft_strdup(newVal)))
+			return (0);
+		else if (!newVal)
+			value = newVal;
+		if ((tmp = ft_strdup(key)) && (newEnv = make_env(key, value)))
+		{
+			addb_env(&envs, newEnv);
+			return (1);
+		}
 		if (tmp)
 			free(tmp);
-		if (str)
-			free(str);
-		if (newEnv)
-			return (1);
+		if (value)
+			free(value);
 		return (0);
 	}
 	free(newEnv->value);
-	newEnv->value = ft_strdup(newVal);
+	if (newVal && !(newEnv->value = ft_strdup(newVal)))
+		newEnv->value = NULL;
 	return(1);
 }
 

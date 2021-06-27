@@ -1,16 +1,31 @@
 #include "../../includes/builtin.h"
 
-char	*get_home(t_env *envs)
+char	*special_cd(char **argv)
 {
 	char	*home;
+	char	*oldpwd;
 
-	home = get_env("HOME", g_data.envs);
-	if (!home)
+	if (argv[1][0] == '~' || ft_strncmp(argv[1], "--", 2))
 	{
-		put_error("unset HOME", "cd", 0);
-		return (NULL);
+		if ((home = get_env("HOME", g_data.envs)))
+			return (ft_strjoin(home, argv[1] + 1));
+		else
+		{
+			put_error("HOME not set", "cd", 0);
+			return (NULL);
+		}
 	}
-	return (home);
+	else if (argv[1][0] == '-')
+	{
+		if ((oldpwd = get_env("OLDPWD", g_data.envs)))
+			return (ft_strjoin(oldpwd, argv[1] + 1));
+		else
+		{
+			put_error("OLDPWD not set", "cd", 0);
+			return (NULL);
+		}
+	}
+	return (ft_strdup(argv[1]));
 }
 
 char	*check_cd(char **argv)
@@ -21,21 +36,15 @@ char	*check_cd(char **argv)
 	i = 0;
 	while (argv[i])
 		i++;
-	home = get_home(g_data.envs);
 	if (i == 1)
 	{
-		if (home)
-			return (ft_strdup(get_home(g_data.envs)));
+		if ((home = get_env("HOME", g_data.envs)))
+			return (ft_strdup(home));
+		else
+			put_error("HOME not set", "cd", 0);
 	}
 	else if (i == 2)
-	{
-		if (argv[1][0] == '~')
-			if (home)
-				return (ft_strjoin(home, argv[1] + 1));
-			else
-				return (NULL);
-		return (ft_strdup(argv[1]));
-	}
+		return (special_cd(argv));
 	else
 		put_error("too many arguments", "cd", 0);
 	return (NULL);

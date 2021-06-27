@@ -27,12 +27,17 @@ char	**environ_gen(t_env *envs)
 	c_envs[len] = NULL;
 	while(i < len)
 	{
-		if (!(tmp = ft_strjoin(envs->name, "=")))
-			exit_error(MALLOCERR, NULL, 0);
-		if (!(c_envs[i] = ft_strjoin(tmp, envs->value)))
-			exit_error(MALLOCERR, NULL, 0);
-		free(tmp);
-		i++;
+		if (!envs->value)
+			c_envs[i++] = ft_strdup(envs->name);
+		else
+		{
+			if (!(tmp = ft_strjoin(envs->name, "=")))
+				exit_error(MALLOCERR, NULL, 0);
+			if (!(c_envs[i++] = ft_strjoin(tmp, envs->value)))
+				exit_error(MALLOCERR, NULL, 0);
+			free(tmp);
+		}
+		printf("%s\n",c_envs[i-1]);
 		envs = envs->next;
 	}
 	return (c_envs);

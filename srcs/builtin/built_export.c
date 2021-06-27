@@ -12,16 +12,16 @@ static void	print_export(t_env *envs)
 	while (str_envs[i])
 	{
 		j = 0;
-		while (str_envs[i][j] != '=')
+		while (str_envs[i][j] != '=' && str_envs[i][j])
 			j++;
-		str_envs[i][j] = '\0';
-		ft_putstr_fd("declare -x ", STDOUT_FILENO);
-		ft_putstr_fd(str_envs[i], STDOUT_FILENO);
-		ft_putstr_fd("=", STDOUT_FILENO);
-		ft_putchar_fd('\"', STDOUT_FILENO);
-		ft_putstr_fd(str_envs[i] + j + 1, STDOUT_FILENO);
-		ft_putstr_fd("\"\n", STDOUT_FILENO);
-		str_envs[i][j] = '=';
+		if (str_envs[i][j] && (str_envs[i][j] = '\0'))
+			j = -1;
+		printf("declare -x %s", str_envs[i]);
+		if (j != -1)
+		{
+			printf("=\"%s\"\n", str_envs[i] + j + 1);
+			str_envs[i][j] = '=';
+		}
 		i++;
 	}
 	i = -1;
