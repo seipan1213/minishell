@@ -55,7 +55,6 @@ int	built_cd(char **argv)
 	char	*oldpwd;
 	char	*dst;
 	char	*tmp;
-	int		i;
 
 	if (!(dst = check_cd(argv)))
 		return (EXIT_FAILURE);

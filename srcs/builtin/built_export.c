@@ -3,7 +3,6 @@
 static void	print_export(t_env *envs)
 {
 	int		i;
-	int		j;
 	char	*tmp;
 	char	**str_envs;
 

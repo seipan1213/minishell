@@ -2,8 +2,6 @@
 
 void	init_data(void)
 {
-	char	*oldpwd;
-
 	g_data.envs = envs_init();
 	if (!(update_env("OLDPWD", NULL, g_data.envs)))
 		exit_error("init error", NULL, 1);
