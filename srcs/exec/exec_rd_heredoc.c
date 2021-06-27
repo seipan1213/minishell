@@ -34,12 +34,12 @@ void	expand_heredoc(char **line)
 		if ((*line)[end])
 		{
 			back = expand_env((*line) + end, g_data.envs);
+			expand_line = strjoin_free(expand_line, back);
 			end += add_cnt_stop_env((*line) + end);
 			start = end;
 		}
-		else
-			;
 	}
+	*line = expand_line;
 }
 
 void	get_heredoc(t_redirect *rd)
