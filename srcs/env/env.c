@@ -44,14 +44,20 @@ t_env	*create_env(char *environ)
 		return (NULL);
 	if (!(tmp = ft_strchr(environ + 1, '=')))
 	{
-		free(env);
-		return (NULL);
+		env->name = ft_strdup(environ);
+		env->value = ft_strdup("");
 	}
-	*tmp = '\0';
-	env->name = ft_strdup(environ);
-	env->value = ft_strdup(tmp + 1);
-	*tmp = '=';
+	else {
+		*tmp = '\0';
+		env->name = ft_strdup(environ);
+		env->value = ft_strdup(tmp + 1);
+		*tmp = '=';
+	}
 	env->next = NULL;
+	if (env->name && !env->value)
+		free(env->name);
+	if (!env->name && env->value)
+		free(env->value);
 	if (!env->name || !env->value)
 		return (NULL);
 	return (env);

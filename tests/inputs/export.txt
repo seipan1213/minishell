@@ -1,6 +1,8 @@
 echo $AAA,export AAA=BBB
 export dsa=dsadadsad
+export a=
+export A
 export $dsadas=dsa
-echo $a; unset a,export a=/////////
+echo $a,export a=/////////
 echo $dsa; unset dsa,export dsa
 export

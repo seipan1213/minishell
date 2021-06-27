@@ -56,6 +56,7 @@ void	minishell(char **envp)
 		line = readline(MINISHELL);
 		if (!line)
 		{
+			free(line);
 			g_data.quit = 1;
 			built_exit(NULL);
 		}
