@@ -21,8 +21,20 @@
 # define NO_PID -1
 # define PIPE_OUT 0
 # define PIPE_IN 1
+# define HD_TMPFILE ".heredoc_tmpfile"
+# define SQUOTE '\''
+# define DQUOTE '\"'
+# define NO_QUOTE 0
+# define QUOTE_FALSE -1
 
 typedef struct stat	t_stat;
+
+typedef struct	s_quote
+{
+	int		start;
+	int		end;
+	char	quote;
+}				t_quote;
 
 typedef enum	e_pipe_status
 {
@@ -50,5 +62,8 @@ int		is_exec(char *path);
 void	free_split(char **split);
 char	*exec_serach(char *argv);
 void	dup_fd(int oldfd, int newfd);
+void	get_heredoc(t_redirect *rd);
+int		is_quote(char c);
+char	*expand_delimiter(char *deli);
 
 #endif

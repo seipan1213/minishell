@@ -25,4 +25,6 @@ void	set_signal(void (*func)(int));
 int		put_error(char *str, char *cmd, int ret);
 void	exit_error(char *str, char *cmd, int ex_num);
 int		init_data(void);
+char	*strjoin_free(char *front, char *back);
+
 #endif

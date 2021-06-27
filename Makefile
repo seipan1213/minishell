@@ -9,7 +9,8 @@ SRCFILE = parser/init_parser.c parser/parser.c \
 				exec/exec.c exec/exec_utils.c exec/exec_cmd.c \
 				exec/exec_cmd_utils.c exec/exec_builtin.c \
 				exec/exec_rd_utils.c exec/exec_simple_builtin.c \
-				exec/exec_path.c \
+				exec/exec_path.c exec/exec_rd_heredoc.c \
+				exec/exec_expand_delimiter.c \
 				builtin/built_env.c builtin/built_echo.c \
 				builtin/built_exit.c builtin/built_export.c \
 				builtin/built_unset.c builtin/built_pwd.c \

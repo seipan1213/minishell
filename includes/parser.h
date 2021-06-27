@@ -32,7 +32,8 @@ typedef enum			e_rd_type
 {
 	RD_INPUT,
 	RD_OUTPUT,
-	RD_APPEND_OUTPUT
+	RD_APPEND_OUTPUT,
+	RD_HERE_DOC
 }						t_rd_type;
 
 typedef struct	s_redirect{
