@@ -8,9 +8,7 @@ char	*special_cd(char **argv)
 	i = 1;
 	if (argv[1][0] == '~' || (!ft_strncmp(argv[1], "--", 2) && ++i))
 	{
-		if ((env = get_env("HOME", g_data.envs)))
-			return (ft_strjoin(env, argv[1] + i));
-		else
+		if (!(env = get_env("HOME", g_data.envs)))
 		{
 			put_error("HOME not set", "cd", 0);
 			return (NULL);
@@ -18,15 +16,16 @@ char	*special_cd(char **argv)
 	}
 	else if (argv[1][0] == '-')
 	{
-		if ((env = get_env("OLDPWD", g_data.envs)))
-			return (ft_strjoin(env, argv[1] + i));
-		else
+		if (!(env = get_env("OLDPWD", g_data.envs)))
 		{
 			put_error("OLDPWD not set", "cd", 0);
 			return (NULL);
 		}
+		ft_putendl_fd(env, STDOUT_FILENO);
 	}
-	return (ft_strdup(argv[1]));
+	else
+		return (ft_strdup(argv[1]));
+	return (ft_strjoin(env, argv[1] + i));
 }
 
 char	*check_cd(char **argv)
