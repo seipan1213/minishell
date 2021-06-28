@@ -52,7 +52,7 @@ int		exec_simple_buildin(t_command *cmd, char **args)
 
 	backup_cur_fd(cmd->rd);
 	if (!(get_rd_fd(cmd->rd, FALSE)))
-		return (EXIT_STAT_ERR);
+		return (EXIT_FAILURE);
 	change_rd_fd(cmd->rd);
 	ret = exec_builtin(args);
 	recover_fd(cmd->rd);

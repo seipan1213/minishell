@@ -26,7 +26,6 @@
 # define DQUOTE '\"'
 # define NO_QUOTE 0
 # define QUOTE_FALSE -1
-# define EXIT_STAT_ERR 1
 
 typedef struct stat	t_stat;
 
