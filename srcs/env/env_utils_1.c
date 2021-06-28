@@ -85,7 +85,6 @@ int		del_env(char *delKey, t_env **envs)
 
 	prev = NULL;
 	delEnv = *envs;
-
 	while (delEnv)
 	{
 		if (!(ft_strcmp(delKey, delEnv->name)))
