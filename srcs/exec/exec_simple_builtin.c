@@ -51,7 +51,8 @@ int		exec_simple_buildin(t_command *cmd, char **args)
 	int		ret;
 
 	backup_cur_fd(cmd->rd);
-	get_rd_fd(cmd->rd);
+	if (!(get_rd_fd(cmd->rd, FALSE)))
+		return (EXIT_STAT_ERR);
 	change_rd_fd(cmd->rd);
 	ret = exec_builtin(args);
 	recover_fd(cmd->rd);

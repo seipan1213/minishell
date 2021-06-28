@@ -15,7 +15,7 @@ int		exec_cmdline(t_command *cmd, char **args, t_pipe_status *p_stat, int pipe_f
 	if (pid == 0)
 	{
 		set_signal(SIG_DFL);
-		get_rd_fd(cmd->rd);
+		get_rd_fd(cmd->rd, TRUE);
 		dup_pipe(p_stat, pipe_fd, new_pipe_fd);
 		change_rd_fd(cmd->rd);
 		if (is_builtin(args))

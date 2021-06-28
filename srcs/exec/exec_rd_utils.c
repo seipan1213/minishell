@@ -23,21 +23,27 @@ int	open_rdfile(t_redirect *rd)
 	return(-1);
 }
 
-void	get_rd_fd(t_redirect *rd)
+int	get_rd_fd(t_redirect *rd, int is_child)
 {
 	t_redirect	*rd_now;
 
 	if (!rd)
-		return ;
+		return (TRUE);
 	rd_now = rd;
 	while (rd_now)
 	{
 		if ((rd_now->fd_io = open_rdfile(rd_now)) < 0)
-			return ;
+		{
+			if (is_child)
+				exit_error(strerror(errno), rd_now->filename->str, 1);
+			else
+				return (put_error(strerror(errno), rd_now->filename->str, FALSE));
+		}
 		if (rd_now->type == RD_HERE_DOC)
 			get_heredoc(rd);
 		rd_now = rd_now->next;
 	}
+	return (TRUE);
 }
 
 void	dup_fd(int oldfd, int newfd)
