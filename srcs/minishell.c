@@ -19,7 +19,7 @@
 #include "../includes/utils.h"
 #include "../includes/minishell.h"
 
-void	test_minishell(char **argv, char **envp)
+void	test_minishell(char **argv)
 {
 	t_token		*tokens;
 	astNode		*node;
@@ -32,22 +32,21 @@ void	test_minishell(char **argv, char **envp)
 	exit(g_data.status);
 }
 
-int		main(int argc, char **argv, char **envp)
+int		main(int argc, char **argv)
 {
 	init_data();
 	if (argc == 1)
-		minishell(envp);
+		minishell();
 	else if (argc > 2 && (ft_strcmp(argv[1], "-c") == 0))
-		test_minishell(argv, envp);
+		test_minishell(argv);
 }
 
-void	minishell(char **envp)
+void	minishell(void)
 {
 	t_token		*tokens;
 	astNode		*node;
 	char		*line;
 	int			ret;
-	t_command	*tmp;
 
 	ret = 0;
 	while (1)

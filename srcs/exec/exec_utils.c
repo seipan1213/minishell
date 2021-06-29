@@ -25,7 +25,7 @@ int		token_lst_len(t_token *token)
 	list = token;
 	while (list)
 	{
-		if ((tmp = expand(list->str, g_data.envs)))
+		if ((tmp = expand(list->str)))
 		{
 			free(tmp);
 			token_len++;
@@ -50,7 +50,7 @@ char	**token_to_args(t_token *token)
 	i = 0;
 	while (i < token_len)
 	{
-		if ((arg_tmp = expand(list->str, g_data.envs)))
+		if ((arg_tmp = expand(list->str)))
 		{
 			args[i] = arg_tmp;
 			i++;

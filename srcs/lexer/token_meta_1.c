@@ -44,6 +44,7 @@ void	token_squote(t_tdata *d, t_token **t)
 	while (d->line[++d->i] != '\'' && d->line[d->i])
 		;
 	str = ft_substr(d->line, d->j, d->i - d->j);
+	tmp = NULL;
 	if (d->line[d->i] == '\'')
 	{
 		tmp = ft_strjoin(str, "\'");
@@ -69,6 +70,7 @@ void	token_dquote(t_tdata *d, t_token **t)
 	while (d->line[++d->i] != '\"' && d->line[d->i])
 		;
 	str = ft_substr(d->line, d->j, d->i - d->j);
+	tmp = NULL;
 	if (d->line[d->i] == '\"')
 	{
 		tmp = ft_strjoin(str, "\"");

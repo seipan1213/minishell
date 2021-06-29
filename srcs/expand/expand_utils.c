@@ -1,6 +1,6 @@
 #include "../../includes/expand.h"
 
-char	*expand_env(char *str, t_env *envs)
+char	*expand_env(char *str)
 {
 	char	*key;
 	char	*env;
@@ -42,7 +42,6 @@ char	*front_join(char *front, char *str)
 char	*sub_join(char *front, char *str, int i, int j)
 {
 	char	*tmp;
-	char	*w;
 
 	if (!(tmp = ft_substr(str, j, i - j)))
 		return (NULL);
