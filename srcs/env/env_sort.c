@@ -32,7 +32,6 @@ void	sort_envs(t_env *envs)
 {
 	t_env	*top;
 	t_env	*back;
-	char	*tmp;
 
 	top = envs;
 	while (top)

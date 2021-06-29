@@ -30,7 +30,7 @@ int		add_cnt_stop_env(char *str)
 	return (i);
 }
 
-char	*expand(char *str, t_env *envs)
+char	*expand(char *str)
 {
 	int		i;
 	int		j;
@@ -44,7 +44,7 @@ char	*expand(char *str, t_env *envs)
 		front = sub_quote(front, str, &i, &j);
 		if (str[i] == '$')
 		{
-			env = expand_env(str + i, envs);
+			env = expand_env(str + i);
 			i += add_cnt_stop_env(str + i);
 			if (!(front = front_join(front, env)))
 				return (NULL);

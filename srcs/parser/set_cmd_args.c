@@ -13,7 +13,7 @@ bool		is_type(t_token **tokens, int type)
 {
 	if (!(*tokens))
 		return (0);
-	return ((*tokens)->type == type);
+	return ((*tokens)->type == (t_ttype)type);
 }
 
 t_command	*create_cmd()

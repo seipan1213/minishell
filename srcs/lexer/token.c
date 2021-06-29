@@ -65,8 +65,6 @@ t_token	*tokenise(char *line)
 {
 	t_token	*tokens;
 	t_tdata	d;
-	t_token	*token;
-	char		*tmp;
 
 	tokenise_init(&d, &tokens, &line);
 	while (ft_isspace(line[++d.i]))

@@ -27,7 +27,7 @@ int		check_syntax(t_token *t)
 			|| (is_metatype(pre_type) && is_rdcttype(t->type))
 			|| (is_metatype(t->type) && is_metatype(pre_type))
 			|| (is_rdcttype(t->type) && is_rdcttype(pre_type))
-			|| (is_metatype(t->type) && pre_type == -1)
+			|| (is_metatype(t->type) && (int)pre_type == -1)
 			|| t->type == DSCOLON)
 			return (put_error(SYNTAXERR, NULL, 0));
 		pre_type = t->type;

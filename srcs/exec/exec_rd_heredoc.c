@@ -33,7 +33,7 @@ void	expand_heredoc(char **line)
 		expand_line = strjoin_free(expand_line, front);
 		if ((*line)[end])
 		{
-			back = expand_env((*line) + end, g_data.envs);
+			back = expand_env((*line) + end);
 			expand_line = strjoin_free(expand_line, back);
 			end += add_cnt_stop_env((*line) + end);
 			start = end;
@@ -47,7 +47,6 @@ void	get_heredoc(t_redirect *rd)
 	int		q_flag;
 	char	*line;
 	char	*tmp;
-	t_quote	*point;
 
 	q_flag = 0;
 	if (have_quote(rd->filename->str))
