@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_cmd_args.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/29 20:58:42 by kotatabe          #+#    #+#             */
+/*   Updated: 2021/06/29 20:58:44 by kotatabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/parser.h"
 #include "../../includes/lexer.h"
@@ -59,14 +70,3 @@ bool		set_cmd_args(t_token **tokens, t_command *cmd)
 	}
 	return (TRUE);
 }
-
-
-
-// void		print_cmd(t_command *cmd)
-// {
-// 	while (cmd)
-// 	{
-// 		printf("[%s]\n", cmd->arg);
-// 		cmd = cmd->next;
-// 	}
-// }

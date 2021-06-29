@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_redirect.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/29 21:05:07 by kotatabe          #+#    #+#             */
+/*   Updated: 2021/06/29 21:05:09 by kotatabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/parser.h"
 
 t_redirect	*init_redirect(void)
 {
 	t_redirect	*ret;
 
-	ret = (t_redirect*)malloc(sizeof(t_redirect));
+	ret = (t_redirect *)malloc(sizeof(t_redirect));
 	ret->fd_io = NOT_SPECIFIED;
 	ret->fd_file = NOT_SPECIFIED;
 	ret->fd_backup = NOT_SPECIFIED;
@@ -15,7 +27,7 @@ t_redirect	*init_redirect(void)
 	return (ret);
 }
 
-void		set_rd_fd(t_redirect *rd)
+void	set_rd_fd(t_redirect *rd)
 {
 	if (rd->fd_file == NOT_SPECIFIED)
 	{
@@ -26,7 +38,7 @@ void		set_rd_fd(t_redirect *rd)
 	}
 }
 
-void		set_rd_type(t_redirect *rd, t_token *token)
+void	set_rd_type(t_redirect *rd, t_token *token)
 {
 	if (token->type == LDIR)
 		rd->type = RD_INPUT;
@@ -39,7 +51,7 @@ void		set_rd_type(t_redirect *rd, t_token *token)
 	set_rd_fd(rd);
 }
 
-void		set_cmd_rd(t_redirect *rd, t_redirect **dst)
+void	set_cmd_rd(t_redirect *rd, t_redirect **dst)
 {
 	t_redirect	*dst_tmp;
 

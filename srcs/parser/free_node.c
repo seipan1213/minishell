@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_node.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/29 21:08:23 by kotatabe          #+#    #+#             */
+/*   Updated: 2021/06/29 21:08:24 by kotatabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/parser.h"
 #include "../../includes/lexer.h"
 
@@ -31,7 +43,7 @@ void	free_cmd(t_command *cmd)
 	cmd = NULL;
 }
 
-int		is_node_type(int type)
+int	is_node_type(int type)
 {
 	if (type == SCOLON || type == PIPE || type == STR)
 		return (1);
