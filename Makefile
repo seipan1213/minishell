@@ -15,10 +15,10 @@ SRCFILE = parser/init_parser.c parser/parser.c \
 				builtin/built_exit.c builtin/built_export.c \
 				builtin/built_unset.c builtin/built_pwd.c \
 				builtin/built_cd.c \
-				env/env_cast.c env/env_sort.c env/env_utils.c \
-				env/env.c env/env_get.c \
+				env/env_cast.c env/env_sort.c env/env_utils_1.c \
+				env/env.c env/env_utils_2.c \
 				expand/expand.c expand/expand_utils.c \
-				utils/utils.c utils/error.c utils/signal.c \
+				utils/utils.c utils/error.c utils/signal.c utils/init.c \
 				minishell.c
 CC    = gcc
 CFLAGS = -I $(shell brew --prefix readline)/include -Wall -Wextra -Werror

@@ -34,7 +34,7 @@ void	test_minishell(char **argv)
 
 int		main(int argc, char **argv)
 {
-	g_data.envs = envs_init();
+	init_data();
 	if (argc == 1)
 		minishell();
 	else if (argc > 2 && (ft_strcmp(argv[1], "-c") == 0))

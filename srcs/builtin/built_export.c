@@ -3,26 +3,23 @@
 static void	print_export(t_env *envs)
 {
 	int		i;
-	int		j;
+	char	*tmp;
 	char	**str_envs;
 
-	i = 0;
+	i = -1;
 	str_envs = environ_gen(envs);
 	sort_str(str_envs);
-	while (str_envs[i])
+	while (str_envs[++i])
 	{
-		j = 0;
-		while (str_envs[i][j] != '=')
-			j++;
-		str_envs[i][j] = '\0';
-		ft_putstr_fd("declare -x ", STDOUT_FILENO);
-		ft_putstr_fd(str_envs[i], STDOUT_FILENO);
-		ft_putstr_fd("=", STDOUT_FILENO);
-		ft_putchar_fd('\"', STDOUT_FILENO);
-		ft_putstr_fd(str_envs[i] + j + 1, STDOUT_FILENO);
-		ft_putstr_fd("\"\n", STDOUT_FILENO);
-		str_envs[i][j] = '=';
-		i++;
+		if ((tmp = ft_strchr(str_envs[i], '=')))
+			*tmp = '\0';
+		printf("declare -x %s", str_envs[i]);
+		if (tmp)
+		{
+			printf("=\"%s\"", tmp + 1);
+			*tmp = '=';
+		}
+		printf("\n");
 	}
 	i = -1;
 	while (str_envs[++i])

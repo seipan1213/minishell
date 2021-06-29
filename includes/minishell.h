@@ -16,6 +16,7 @@ typedef struct s_minidata
 	t_env	*envs;
 	int		status;
 	int		quit;
+	char	*pwd;
 }	t_minidata;
 
 t_minidata	g_data;

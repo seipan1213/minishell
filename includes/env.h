@@ -31,5 +31,6 @@ char	**environ_gen(t_env *envs);
 void	sort_envs(t_env *envs);
 void	sort_str(char **envs);
 char	*get_env(char *key, t_env *envs);
+t_env	*make_env(char *name, char *value);
 
 #endif

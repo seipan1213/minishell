@@ -44,13 +44,10 @@ char		*exec_serach(char *argv)
 	char	*tmp;
 	int		i;
 
-	if (!(is_cmd(argv)))
-	{
-		if (is_exec(argv))
-			return (ft_strdup(argv));
-		else
-			return (NULL);
-	}
+	if (!(is_cmd(argv)) && is_exec(argv))
+		return (ft_strdup(argv));
+	else if ((!(is_cmd(argv)) && !is_exec(argv)))
+		return (NULL);
 	if (!(path = ft_split(get_env("PATH", g_data.envs), ':')))
 		return (NULL);
 	i = -1;

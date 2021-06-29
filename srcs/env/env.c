@@ -42,22 +42,23 @@ t_env	*create_env(char *environ)
 
 	if (!(env = (t_env *)malloc(sizeof(t_env))))
 		return (NULL);
+	env->next = NULL;
 	if (!(tmp = ft_strchr(environ + 1, '=')))
 	{
-		env->name = ft_strdup(environ);
-		env->value = ft_strdup("");
+		if (!(env->name = ft_strdup(environ)))
+			free(env);
+		if (!env->name)
+			return (NULL);
+		env->value = NULL;
+		return (env);
 	}
-	else {
-		*tmp = '\0';
-		env->name = ft_strdup(environ);
-		env->value = ft_strdup(tmp + 1);
-		*tmp = '=';
-	}
-	env->next = NULL;
-	if (env->name && !env->value)
+	*tmp = '\0';
+	env->name = ft_strdup(environ);
+	if (!(env->value = ft_strdup(tmp + 1)))
 		free(env->name);
-	if (!env->name && env->value)
-		free(env->value);
+	*tmp = '=';
+	if (!env->name || !env->value)
+		free(env);
 	if (!env->name || !env->value)
 		return (NULL);
 	return (env);
