@@ -56,7 +56,7 @@ void	shlvl_change(t_env *shlvl)
 	shlvl->value = lv;
 	if (lv_num > 1000)
 	{
-		printf("warning: shell level (%d) too high, resetting to 1", lv_num);
+		printf("warning: shell level (%d) too high, resetting to 1\n", lv_num);
 		exit(1);
 	}
 }
