@@ -1,16 +1,31 @@
 #include "../../includes/builtin.h"
 
-char	*get_home(t_env *envs)
+char	*special_cd(char **argv)
 {
-	char	*home;
+	char	*env;
+	int		i;
 
-	home = get_env("HOME", g_data.envs);
-	if (!home)
+	i = 1;
+	if (argv[1][0] == '~' || (!ft_strncmp(argv[1], "--", 2) && ++i))
 	{
-		put_error("unset HOME", "cd", 0);
-		return (NULL);
+		if (!(env = get_env("HOME", g_data.envs)))
+		{
+			put_error("HOME not set", "cd", 0);
+			return (NULL);
+		}
 	}
-	return (home);
+	else if (argv[1][0] == '-')
+	{
+		if (!(env = get_env("OLDPWD", g_data.envs)))
+		{
+			put_error("OLDPWD not set", "cd", 0);
+			return (NULL);
+		}
+		ft_putendl_fd(env, STDOUT_FILENO);
+	}
+	else
+		return (ft_strdup(argv[1]));
+	return (ft_strjoin(env, argv[1] + i));
 }
 
 char	*check_cd(char **argv)
@@ -21,21 +36,15 @@ char	*check_cd(char **argv)
 	i = 0;
 	while (argv[i])
 		i++;
-	home = get_home(g_data.envs);
 	if (i == 1)
 	{
-		if (home)
-			return (ft_strdup(get_home(g_data.envs)));
+		if ((home = get_env("HOME", g_data.envs)))
+			return (ft_strdup(home));
+		else
+			put_error("HOME not set", "cd", 0);
 	}
 	else if (i == 2)
-	{
-		if (argv[1][0] == '~')
-			if (home)
-				return (ft_strjoin(home, argv[1] + 1));
-			else
-				return (NULL);
-		return (ft_strdup(argv[1]));
-	}
+		return (special_cd(argv));
 	else
 		put_error("too many arguments", "cd", 0);
 	return (NULL);
@@ -43,22 +52,22 @@ char	*check_cd(char **argv)
 
 int	built_cd(char **argv)
 {
+	char	*oldpwd;
 	char	*dst;
 	char	*tmp;
-	int		i;
 
 	if (!(dst = check_cd(argv)))
 		return (EXIT_FAILURE);
-	tmp = get_env("PWD", g_data.envs);
-	if (tmp)
-		update_env("OLDPWD", tmp, g_data.envs);
-	if (chdir(dst))
-		put_error(strerror(errno), "cd", 1);
-	if (!(tmp = getcwd(0, 0)))
-		put_error(strerror(errno), "cd", 1);
-	if (tmp)
+	if (!chdir(dst) && (tmp = getcwd(0, 0)))
+	{
+		if ((oldpwd = get_env("PWD", g_data.envs)))
+			update_env("OLDPWD", oldpwd, g_data.envs);
 		update_env("PWD", tmp, g_data.envs);
-	free(tmp);
+		free(g_data.pwd);
+		g_data.pwd = tmp;
+	}
+	else
+		put_error(strerror(errno), "cd", 1);
 	free(dst);
 	return (EXIT_SUCCESS);
 }
