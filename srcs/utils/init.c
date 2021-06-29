@@ -33,6 +33,31 @@ void	shlvl_add(t_env *envs)
 	addb_env(&envs, env);
 }
 
+void	shlvl_puterr(int num)
+{
+	char	*str;
+	char	*tmp;
+
+	if (!(str = ft_itoa(num)))
+		exit_error(MALLOCERR, NULL, 1);
+	tmp = str;
+	if (!(str = ft_strjoin("shell level (", str)))
+	{
+		free(str);
+		exit_error(MALLOCERR, NULL, 1);
+	}
+	free(tmp);
+	tmp = str;
+	if (!(str = ft_strjoin(str, ") too high, resetting to 1")))
+	{
+		free(str);
+		exit_error(MALLOCERR, NULL, 1);
+	}
+	free(tmp);
+	put_error(str, "warning", STDERR_FILENO);
+	free(str);
+}
+
 void	shlvl_change(t_env *shlvl)
 {
 	char	*lv;
@@ -55,10 +80,7 @@ void	shlvl_change(t_env *shlvl)
 		exit_error(MALLOCERR, NULL, 1);
 	shlvl->value = lv;
 	if (lv_num > 1000)
-	{
-		printf("warning: shell level (%d) too high, resetting to 1\n", lv_num);
-		exit(1);
-	}
+		shlvl_puterr(lv_num);
 }
 
 void	shlvl_init(void)
