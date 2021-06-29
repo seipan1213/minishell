@@ -1,8 +1,11 @@
 echo $AAA,export AAA=BBB
 export dsa=dsadadsad
 export a=
-export A
+export A ; unset A
 export $dsadas=dsa
 echo $a,export a=/////////
 echo $dsa; unset dsa,export dsa
 export
+export A ; env | grep A=B ; unset A, export A=B
+export A=C ; env | grep A=C ; unset A, export A=B
+export | grep OLDPWD
