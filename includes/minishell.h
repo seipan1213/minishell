@@ -19,6 +19,6 @@ typedef struct s_minidata
 }	t_minidata;
 
 t_minidata	g_data;
-void		minishell(char **envp);
+void		minishell(void);
 
 #endif

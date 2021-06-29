@@ -29,7 +29,7 @@ int		update_env(char *key, char *newVal, t_env *envs)
 		tmp = ft_strjoin(key, "=");
 		str = NULL;
 		if (tmp && (str = ft_strjoin(tmp, newVal)))
-			if (newEnv = create_env(str))
+			if ((newEnv = create_env(str)))
 				addb_env(&envs, newEnv);
 		if (tmp)
 			free(tmp);

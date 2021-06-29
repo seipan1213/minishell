@@ -45,10 +45,12 @@ char		*exec_serach(char *argv)
 	int		i;
 
 	if (!(is_cmd(argv)))
+	{
 		if (is_exec(argv))
 			return (ft_strdup(argv));
 		else
 			return (NULL);
+	}
 	if (!(path = ft_split(get_env("PATH", g_data.envs), ':')))
 		return (NULL);
 	i = -1;

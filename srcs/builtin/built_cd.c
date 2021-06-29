@@ -1,6 +1,6 @@
 #include "../../includes/builtin.h"
 
-char	*get_home(t_env *envs)
+char	*get_home(void)
 {
 	char	*home;
 
@@ -21,19 +21,21 @@ char	*check_cd(char **argv)
 	i = 0;
 	while (argv[i])
 		i++;
-	home = get_home(g_data.envs);
+	home = get_home();
 	if (i == 1)
 	{
 		if (home)
-			return (ft_strdup(get_home(g_data.envs)));
+			return (ft_strdup(get_home()));
 	}
 	else if (i == 2)
 	{
 		if (argv[1][0] == '~')
+		{
 			if (home)
 				return (ft_strjoin(home, argv[1] + 1));
 			else
 				return (NULL);
+		}
 		return (ft_strdup(argv[1]));
 	}
 	else
@@ -45,7 +47,6 @@ int	built_cd(char **argv)
 {
 	char	*dst;
 	char	*tmp;
-	int		i;
 
 	if (!(dst = check_cd(argv)))
 		return (EXIT_FAILURE);

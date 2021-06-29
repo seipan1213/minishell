@@ -86,7 +86,7 @@ void		set_cmd_token(t_token *src, t_token **args);
 bool		parse_cmd_rd(t_token **tokens, t_command *cmd);
 bool		parser(t_token **tokens, astNode **node);
 int			launch(char *line, char **envp);
-void		minishell(char **envp);
+void		minishell();
 t_redirect	*init_redirect(void);
 void		set_rd_type(t_redirect *rd, t_token *token);
 void		set_cmd_rd(t_redirect *rd, t_redirect **list);

@@ -21,7 +21,7 @@ SRCFILE = parser/init_parser.c parser/parser.c \
 				utils/utils.c utils/error.c utils/signal.c \
 				minishell.c
 CC    = gcc
-CFLAGS = -I $(shell brew --prefix readline)/include #-Wall -Wextra -Werror
+CFLAGS = -I $(shell brew --prefix readline)/include -Wall -Wextra -Werror
 LDFLAGS = -lreadline -lhistory -L$(shell brew --prefix readline)/lib
 NAME = minishell
 LIBFT = ${LIBFTDIR}libft.a
