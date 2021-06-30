@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_simple_builtin.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/30 16:03:24 by kotatabe          #+#    #+#             */
+/*   Updated: 2021/06/30 16:03:25 by kotatabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/exec.h"
 
 void	backup_cur_fd(t_redirect *rd)
@@ -34,19 +46,7 @@ void	recover_fd(t_redirect *rd)
 	}
 }
 
-	// void		print_rd(t_redirect *redir)
-	// {
-	// 	t_redirect *rd = redir;
-	// 	while (rd)
-	// 	{
-	// 	printf("%-6s: io %2d: rint %-2d  <rdtype %2d>\n",rd->filename->str, rd->fd_io, rd->fd_file, rd->type);
-	// 		rd = rd->next;
-	// 		if (!rd)
-	// 			printf("p: %p\n", rd);
-	// 	}
-	// }
-
-int		exec_simple_buildin(t_command *cmd, char **args)
+int	exec_simple_buildin(t_command *cmd, char **args)
 {
 	int		ret;
 

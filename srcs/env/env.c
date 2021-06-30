@@ -1,21 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/30 16:09:53 by kotatabe          #+#    #+#             */
+/*   Updated: 2021/06/30 16:09:53 by kotatabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/env.h"
 
 t_env	*envs_init(void)
 {
-    extern char **environ;
-		t_env *envs;
-		t_env *env;
-		int	i;
+	extern char	**environ;
+	t_env		*envs;
+	t_env		*env;
+	int			i;
 
-		i = 0;
-		envs = NULL;
-		while (environ[i])
-		{
-			env = create_env(environ[i]);
-			addb_env(&envs, env);
-			i++;
-		}
-    return (envs);
+	i = 0;
+	envs = NULL;
+	while (environ[i])
+	{
+		env = create_env(environ[i]);
+		addb_env(&envs, env);
+		i++;
+	}
+	return (envs);
 }
 
 void	addb_env(t_env **envs, t_env *env)

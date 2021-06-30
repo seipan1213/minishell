@@ -12,7 +12,7 @@
 
 #include "../../includes/lexer.h"
 
-int		check_syntax(t_token *t)
+int	check_syntax(t_token *t)
 {
 	t_ttype	pre_type;
 
@@ -40,7 +40,7 @@ int		check_syntax(t_token *t)
 	return (1);
 }
 
-int		check_avoid(t_token *t)
+int	check_avoid(t_token *t)
 {
 	while (t)
 	{
@@ -51,7 +51,7 @@ int		check_avoid(t_token *t)
 	return (1);
 }
 
-int		check_tokens(t_token *t)
+int	check_tokens(t_token *t)
 {
 	return (check_syntax(t) && check_avoid(t));
 }
