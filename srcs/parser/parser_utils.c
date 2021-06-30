@@ -1,15 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/29 20:58:38 by kotatabe          #+#    #+#             */
+/*   Updated: 2021/06/29 20:58:40 by kotatabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/parser.h"
 #include "../../includes/lexer.h"
 #include "../../includes/exec.h"
 
-
-bool		is_rd(int type)
+bool	is_rd(int type)
 {
 	return ((RDIR <= type && type <= LLLDIR) || type == RINT);
 }
 
-astNode		*new_cmd_node(t_cmd_link *cmd_ptr)
+astNode	*new_cmd_node(t_cmd_link *cmd_ptr)
 {
 	astNode		*new;
 
@@ -28,7 +38,7 @@ astNode		*new_cmd_node(t_cmd_link *cmd_ptr)
 	return (new);
 }
 
-astNode		*new_parent_node(int type, astNode *left, astNode *right)
+astNode	*new_parent_node(int type, astNode *left, astNode *right)
 {
 	astNode		*new;
 
@@ -39,5 +49,5 @@ astNode		*new_parent_node(int type, astNode *left, astNode *right)
 	new->left = left;
 	new->right = right;
 	new->cmd = NULL;
-	return(new);
+	return (new);
 }

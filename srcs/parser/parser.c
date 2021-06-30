@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/29 21:07:47 by kotatabe          #+#    #+#             */
+/*   Updated: 2021/06/30 20:44:43 by kotatabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/parser.h"
 #include "../../includes/lexer.h"
 #include "../../includes/exec.h"
@@ -9,7 +21,8 @@ bool	parse_cmd_rd(t_token **tokens, t_command *cmd)
 	rd = init_redirect();
 	if ((*tokens)->type == RINT)
 	{
-		if ((rd->fd_file = ft_atoi((*tokens)->str)) < 0)
+		rd->fd_file = ft_atoi((*tokens)->str);
+		if (rd->fd_file < 0)
 			return (FALSE);
 		*tokens = (*tokens)->next;
 	}
@@ -44,7 +57,7 @@ bool	parse_cmd(t_token **tokens, astNode **node, t_cmd_link *cmd_ptr)
 		else
 			break ;
 	}
-	return(TRUE);
+	return (TRUE);
 }
 
 bool	parse_job(t_token **tokens, astNode **node, t_cmd_link *cmd_ptr)
@@ -56,7 +69,7 @@ bool	parse_job(t_token **tokens, astNode **node, t_cmd_link *cmd_ptr)
 		return (FALSE);
 	while (*tokens)
 	{
-		if (is_type(tokens, PIPE)) 	//	check "|" or not
+		if (is_type(tokens, PIPE))
 		{
 			*tokens = (*tokens)->next;
 			if (!*tokens)
@@ -81,14 +94,14 @@ bool	parse_cmdline(t_token **tokens, astNode **node)
 		return (FALSE);
 	while (*tokens)
 	{
-		if (is_type(tokens, SCOLON)) //	check ";" or not
+		if (is_type(tokens, SCOLON))
 		{
 			cmd_ptr.ptr = NULL;
 			*tokens = (*tokens)->next;
-			if (!*tokens) // 最後が';'ならスルー
+			if (!*tokens)
 				break ;
-			if (!(parse_job(tokens, &right, &cmd_ptr))) // get right node
-				return(FALSE);
+			if (!(parse_job(tokens, &right, &cmd_ptr)))
+				return (FALSE);
 			*node = new_parent_node(SCOLON, *node, right);
 		}
 		else
@@ -105,58 +118,11 @@ bool	parser(t_token **tokens, astNode **node)
 	for_free = *tokens;
 	if (!tokens || !*tokens)
 		return (0);
-	if ((result = parse_cmdline(tokens, node)) == FALSE)
+	result = parse_cmdline(tokens, node);
+	if (result == FALSE)
 	{
 		free_node(*node);
 	}
 	free_token(for_free);
 	return (result);
 }
-
-// int main(int argc, char **argv, char **envp)
-// {
-// 	t_token		*tokens;
-// 	astNode		*node = NULL;
-// 	t_command	*cmd;
-// 	char		*line;
-// 	// t_list	*semi;
-// 	// t_pipe	*pipe;
-// 	char		**wp;
-
-// 	tokens = NULL;
-// 	// printf("\n======= new_token =======\n");
-// 	get_next_line(0, &line);
-// 	tokens = lexer(line);
-// 	// print_tokens(tokens);
-// 	// ft_putstr_fd("start\n", 1);
-// 	// printf("\n======= parser =======\n");
-// 	parser(&tokens, &node);
-// 	// if (!(parser(&tokens, &node)))
-// 	// 	perror("Failure\n");
-// 	// else
-// 	// 	printf("%sSuccess!!!%s\n", COLOR_GREEN, COLOR_RESET);
-// 	// printf("		%d: \n\n", node->type);
-// 	// printf("	%d:%s		%d:%s \n\n",	node->left->type, \
-// 	// 										node->left->cmd->arg->str, \
-// 	// 										node->right->type, \
-// 	// 										node->right->cmd->arg->str);
-// 	// printf("\n======= exec =======\n");
-
-// 	exec(node);
-// 	// if (!(exec(node)))
-// 	// 	perror("Failure\n");
-// 	// else
-// 	// 	printf("%sSuccess!!!%s\n", COLOR_GREEN, COLOR_RESET);
-
-// 	// printf("		%d: \n\n", node->type);
-// 	// printf("	%d:		%d:%s \n\n",	node->left->type, \
-// 	// 								 	node->right->type, \
-// 	// 									node->right->cmd->arg->str);
-// 	// printf("%d:%s		%d:%s\n",	node->left->left->type, \
-// 	// 								node->left->left->cmd->arg->str, \
-// 	// 								node->left->right->type, \
-// 	// 								node->left->right->cmd->arg->str);
-// 	// del_token(list);
-// 	// system("leaks a.out");
-// 	return(0);
-// }

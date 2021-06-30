@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env_utils_1.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/30 16:09:56 by kotatabe          #+#    #+#             */
+/*   Updated: 2021/06/30 16:09:57 by kotatabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/env.h"
 
 t_env	*search_env(char *key, t_env *env)
 {
-	int ret;
+	int	ret;
 
 	ret = 0;
 	if (!env)
-		return(NULL);
+		return (NULL);
 	while (env != NULL)
 	{
 		if ((ret = ft_strcmp(key, env->name)) == 0)
@@ -18,9 +30,9 @@ t_env	*search_env(char *key, t_env *env)
 	return (NULL);
 }
 
-int		update_env(char *key, char *newVal, t_env *envs)
+int	update_env(char *key, char *newVal, t_env *envs)
 {
-	t_env *newEnv;
+	t_env	*newEnv;
 	char	*tmp;
 	char	*value;
 
@@ -44,7 +56,7 @@ int		update_env(char *key, char *newVal, t_env *envs)
 		free(newEnv->value);
 	if (newVal)
 		newEnv->value = ft_strdup(newVal);
-	return(1);
+	return (1);
 }
 
 t_env	*envlast(t_env *env)
@@ -78,7 +90,7 @@ void	env_delone(t_env **envs, t_env *prev, t_env *delEnv)
 	}
 }
 
-int		del_env(char *delKey, t_env **envs)
+int	del_env(char *delKey, t_env **envs)
 {
 	t_env	*prev;
 	t_env	*delEnv;
@@ -90,10 +102,10 @@ int		del_env(char *delKey, t_env **envs)
 		if (!(ft_strcmp(delKey, delEnv->name)))
 		{
 			env_delone(envs, prev, delEnv);
-			return(1);
+			return (1);
 		}
 		prev = delEnv;
 		delEnv = delEnv->next;
 	}
-	return(0);
+	return (0);
 }

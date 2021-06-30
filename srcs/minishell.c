@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/30 16:02:20 by kotatabe          #+#    #+#             */
+/*   Updated: 2021/06/30 16:02:20 by kotatabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -32,7 +44,7 @@ void	test_minishell(char **argv)
 	exit(g_data.status);
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	init_data();
 	if (argc == 1)

@@ -24,7 +24,7 @@ void	token_lrdct(t_tdata *d, t_token **t)
 	{
 		token = create_token(LLLDIR, ft_strdup("<<<"));
 		addb_token(t, token);
-		d->i+=2;
+		d->i += 2;
 	}
 	else if (!ft_strncmp(d->line + d->i, "<<", 2))
 	{
@@ -65,7 +65,6 @@ void	token_rrdct(t_tdata *d, t_token **t)
 void	token_esc(t_tdata *d, t_token **t)
 {
 	t_token	*token;
-
 
 	token = create_token(ESCAPE, ft_strdup("\\"));
 	addb_token(t, token);

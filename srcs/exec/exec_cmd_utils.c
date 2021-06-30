@@ -1,30 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_cmd_utils.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/30 16:02:50 by kotatabe          #+#    #+#             */
+/*   Updated: 2021/06/30 16:02:50 by kotatabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/exec.h"
 
-int			dup_pipe(t_pipe_status *p_stat, int old_pipe_fd[], int new_pipe_fd[])
+int	dup_pipe(t_pipe_status *p_stat, int old_pipe_fd[], int new_pipe_fd[])
 {
 	if (*p_stat == PIPE_RD_ONLY || *p_stat == PIPE_RD_WR)
 	{
-		if (close(old_pipe_fd[PIPE_IN]) < 0 ||
-				dup2(old_pipe_fd[PIPE_OUT], STDIN_FILENO) < 0 ||
+		if (close(old_pipe_fd[PIPE_IN]) < 0 ||\
+				dup2(old_pipe_fd[PIPE_OUT], STDIN_FILENO) < 0 ||\
 				close(old_pipe_fd[PIPE_OUT]) < 0)
 			return (FALSE);
 	}
 	if (*p_stat == PIPE_WR_ONLY || *p_stat == PIPE_RD_WR)
 	{
-		if (close(new_pipe_fd[PIPE_OUT]) < 0 ||
-				dup2(new_pipe_fd[PIPE_IN], STDOUT_FILENO) < 0 ||
+		if (close(new_pipe_fd[PIPE_OUT]) < 0 ||\
+				dup2(new_pipe_fd[PIPE_IN], STDOUT_FILENO) < 0 ||\
 				close(new_pipe_fd[PIPE_IN]) < 0)
 			return (FALSE);
 	}
 	return (TRUE);
 }
 
-int			pass_pipe(t_pipe_status *p_stat, int old_pipe_fd[], int new_pipe_fd[])
+int	pass_pipe(t_pipe_status *p_stat, \
+					int old_pipe_fd[], int new_pipe_fd[])
 {
 	if (*p_stat == PIPE_RD_ONLY || *p_stat == PIPE_RD_WR)
 	{
-		if (close(old_pipe_fd[PIPE_IN]) < 0 || close(old_pipe_fd[PIPE_OUT]) < 0)
+		if (close(old_pipe_fd[PIPE_IN]) < 0 ||\
+				 close(old_pipe_fd[PIPE_OUT]) < 0)
 			return (FALSE);
 	}
 	if (*p_stat == PIPE_WR_ONLY || *p_stat == PIPE_RD_WR)
@@ -35,7 +48,7 @@ int			pass_pipe(t_pipe_status *p_stat, int old_pipe_fd[], int new_pipe_fd[])
 	return (TRUE);
 }
 
-void		get_next_p_stat(t_command *cmd, t_pipe_status *p_stat)
+void	get_next_p_stat(t_command *cmd, t_pipe_status *p_stat)
 {
 	t_command	*now;
 
@@ -54,7 +67,7 @@ void		get_next_p_stat(t_command *cmd, t_pipe_status *p_stat)
 static void	handler_singal(int status, int is_sig)
 {
 	if (WIFEXITED(status))
-			g_data.status = WEXITSTATUS(status);
+		g_data.status = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
 	{
 		g_data.status = WTERMSIG(status);
@@ -66,7 +79,7 @@ static void	handler_singal(int status, int is_sig)
 		ft_putchar_fd('\n', STDOUT_FILENO);
 }
 
-void		wait_commands(t_command *cmd)
+void	wait_commands(t_command *cmd)
 {
 	int	status;
 	int	is_sig;

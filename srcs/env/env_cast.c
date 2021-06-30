@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env_cast.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/30 16:10:52 by kotatabe          #+#    #+#             */
+/*   Updated: 2021/06/30 16:10:53 by kotatabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/env.h"
 
-int		envs_len(t_env *envs)
+int	envs_len(t_env *envs)
 {
 	int	len;
 
@@ -22,10 +34,10 @@ char	**environ_gen(t_env *envs)
 
 	i = 0;
 	len = envs_len(envs);
-	if (!(c_envs = (char**)malloc(sizeof(char*) * (len + 1))))
+	if (!(c_envs = (char **)malloc(sizeof(char *) * (len + 1))))
 		return (NULL);
 	c_envs[len] = NULL;
-	while(i < len)
+	while (i < len)
 	{
 		if (!envs->value)
 			c_envs[i++] = ft_strdup(envs->name);

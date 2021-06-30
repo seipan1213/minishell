@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_rd_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/30 16:03:19 by kotatabe          #+#    #+#             */
+/*   Updated: 2021/06/30 16:03:20 by kotatabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/exec.h"
 
@@ -20,7 +31,7 @@ int	open_rdfile(t_redirect *rd)
 		return (open(HD_TMPFILE, \
 		O_RDWR | O_CREAT | O_TRUNC, 0664));
 	}
-	return(-1);
+	return (OPEN_ERR);
 }
 
 int	get_rd_fd(t_redirect *rd, int is_child)
@@ -32,12 +43,15 @@ int	get_rd_fd(t_redirect *rd, int is_child)
 	rd_now = rd;
 	while (rd_now)
 	{
-		if ((rd_now->fd_io = open_rdfile(rd_now)) < 0)
+		rd_now->fd_io = open_rdfile(rd_now);
+		if (rd_now->fd_io < 0)
 		{
 			if (is_child)
-				exit_error(strerror(errno), rd_now->filename->str, EXIT_FAILURE);
+				exit_error(strerror(errno), \
+					rd_now->filename->str, EXIT_FAILURE);
 			else
-				return (put_error(strerror(errno), rd_now->filename->str, FALSE));
+				return (put_error(strerror(errno), \
+							rd_now->filename->str, FALSE));
 		}
 		if (rd_now->type == RD_HERE_DOC)
 			get_heredoc(rd);

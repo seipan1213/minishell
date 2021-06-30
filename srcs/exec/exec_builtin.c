@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_builtin.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/30 16:03:15 by kotatabe          #+#    #+#             */
+/*   Updated: 2021/06/30 16:03:16 by kotatabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/exec.h"
 
-int		exec_builtin(char **args)
+int	exec_builtin(char **args)
 {
 	if (ft_strcmp(args[0], "echo") == 0)
 		return (built_echo(args));

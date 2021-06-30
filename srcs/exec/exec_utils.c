@@ -1,10 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/30 16:02:55 by kotatabe          #+#    #+#             */
+/*   Updated: 2021/06/30 16:02:56 by kotatabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/exec.h"
 
-int		is_builtin(char **args)
+int	is_builtin(char **args)
 {
 	int			i;
-	const char	*builtin[] = {"echo", "cd", "pwd", "export", "unset","env", "exit", NULL};
+	const char	*builtin[] = {"echo", "cd", "pwd", \
+								"export", "unset", \
+									"env", "exit", NULL};
 
 	i = 0;
 	while (builtin[i])
@@ -16,16 +29,18 @@ int		is_builtin(char **args)
 	return (0);
 }
 
-int		token_lst_len(t_token *token)
+int	token_lst_len(t_token *token)
 {
 	t_token		*list;
-	char 		*tmp;
-	int			token_len = 0;
+	char		*tmp;
+	int			token_len;
 
+	token_len = 0;
 	list = token;
 	while (list)
 	{
-		if ((tmp = expand(list->str)))
+		tmp = expand(list->str);
+		if (tmp)
 		{
 			free(tmp);
 			token_len++;
@@ -50,7 +65,8 @@ char	**token_to_args(t_token *token)
 	i = 0;
 	while (i < token_len)
 	{
-		if ((arg_tmp = expand(list->str)))
+		arg_tmp = expand(list->str);
+		if (arg_tmp)
 		{
 			args[i] = arg_tmp;
 			i++;
@@ -59,22 +75,3 @@ char	**token_to_args(t_token *token)
 	}
 	return (args);
 }
-
-// int main()
-// {
-// 	char		**wp;
-// 	t_token		*tokens;
-
-// 	tokens = NULL;
-// 	tokens = token_init();
-// 	print_tokens(tokens);
-// 	ft_putstr_fd("start\n", 1);
-// 	wp = token_to_args(tokens);
-// 	printf("%s\n", *wp);
-// 	while (*wp)
-// 	{
-// 		printf("%s\n", *wp);
-// 		wp++;
-// 	}
-// 	return(0);
-// }
