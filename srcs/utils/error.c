@@ -12,7 +12,7 @@
 
 #include "../../includes/utils.h"
 
-int		put_error(char *str, char *cmd, int ret)
+int	put_error(char *str, char *cmd, int ret)
 {
 	ft_putstr_fd(ERR_MSH, STDERR_FILENO);
 	if (cmd)
