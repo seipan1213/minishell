@@ -55,7 +55,7 @@ void	get_next_p_stat(t_command *cmd, t_pipe_status *p_stat)
 static void	handler_singal(int status, int is_sig)
 {
 	if (WIFEXITED(status))
-			g_data.status = WEXITSTATUS(status);
+		g_data.status = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
 	{
 		g_data.status = WTERMSIG(status);

@@ -34,9 +34,11 @@ int	get_rd_fd(t_redirect *rd, int is_child)
 		if ((rd_now->fd_io = open_rdfile(rd_now)) < 0)
 		{
 			if (is_child)
-				exit_error(strerror(errno), rd_now->filename->str, EXIT_FAILURE);
+				exit_error(strerror(errno), \
+					rd_now->filename->str, EXIT_FAILURE);
 			else
-				return (put_error(strerror(errno), rd_now->filename->str, FALSE));
+				return (put_error(strerror(errno), \
+							rd_now->filename->str, FALSE));
 		}
 		if (rd_now->type == RD_HERE_DOC)
 			get_heredoc(rd);

@@ -1,10 +1,11 @@
-
 #include "../../includes/exec.h"
 
 int	is_builtin(char **args)
 {
 	int			i;
-	const char	*builtin[] = {"echo", "cd", "pwd", "export", "unset","env", "exit", NULL};
+	const char	*builtin[] = {"echo", "cd", "pwd", \
+								"export", "unset", \
+									"env", "exit", NULL};
 
 	i = 0;
 	while (builtin[i])
@@ -20,8 +21,9 @@ int	token_lst_len(t_token *token)
 {
 	t_token		*list;
 	char 		*tmp;
-	int			token_len = 0;
+	int			token_len;
 
+	token_len = 0;
 	list = token;
 	while (list)
 	{
