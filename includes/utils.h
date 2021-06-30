@@ -25,6 +25,9 @@ void	set_signal(void (*func)(int));
 int		put_error(char *str, char *cmd, int ret);
 void	exit_error(char *str, char *cmd, int ex_num);
 void	init_data(void);
+void	shlvl_add(t_env *envs);
+void	shlvl_change(t_env *shlvl);
+void	shlvl_init(void);
 char	*strjoin_free(char *front, char *back);
 
 #endif
