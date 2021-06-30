@@ -44,7 +44,7 @@ void	test_minishell(char **argv)
 	exit(g_data.status);
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	init_data();
 	if (argc == 1)
