@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   expand.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/30 16:02:09 by kotatabe          #+#    #+#             */
+/*   Updated: 2021/06/30 16:02:09 by kotatabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/expand.h"
 
 char	*expand_init(int *i, int *j)
@@ -24,7 +36,7 @@ int	add_cnt_stop_env(char *str)
 	i = 0;
 	while (!ft_isspace(str[i]) && str[i] != '\"' && str[i] != '?'\
 				&& str[i] != '=' && !(i != 0 && str[i] == '$') && str[i])
-				i++;
+		i++;
 	if (str[i] == '?' && str[i - 1] == '$')
 		i++;
 	return (i);
@@ -57,27 +69,3 @@ char	*expand(char *str)
 		front = sub_join(front, str, i, j);
 	return (expand_null(str, front));
 }
-
-/* int	main()
-{
-	t_env	*envs;
-	char	*str;
-
-	envs = envs_init();
-	str = ft_strdup("'dasdd'");
-	printf("%s\n\n", expand(str, envs));
-	str = ft_strdup("$SHELL");
-	printf("%s\n\n", expand(str, envs));
-	str = ft_strdup("$USER");
-	printf("%s\n\n", expand(str, envs));
-	str = ft_strdup("'$SHELL'");
-	printf("%s\n\n", expand(str, envs));
-	str = ft_strdup("dasdsa DSAD $SHELL dasda");
-	printf("%s\n\n", expand(str, envs));
-	str = ft_strdup("$SHELL \n$NAME \n$USER ");
-	printf("%s\n\n", expand(str, envs));
-	str = ft_strdup("STRING");
-	printf("%s\n\n", expand(str, envs));
-	str = ft_strdup("$DQ");//expot DQ="\"dq\""
-	printf("%s\n\n", expand(str, envs));
-} */
