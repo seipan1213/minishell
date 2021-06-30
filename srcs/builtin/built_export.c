@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:15:20 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 16:15:21 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/06/30 16:19:24 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ int	built_export(char **argv)
 		while (argv[i])
 		{
 			if (!export_env(argv[i]))
-				ret = put_error("not a valid identifier",\
-									 "export", EXIT_FAILURE);
+				ret = put_error("not a valid identifier", \
+									"export", EXIT_FAILURE);
 			i++;
 		}
 	}
