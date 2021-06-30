@@ -36,7 +36,7 @@ void	token_meta(t_tdata *d, t_token **t)
 
 void	token_squote(t_tdata *d, t_token **t)
 {
-	t_token	*token;
+	t_token		*token;
 	char		*str;
 	char		*tmp;
 
@@ -62,7 +62,7 @@ void	token_squote(t_tdata *d, t_token **t)
 
 void	token_dquote(t_tdata *d, t_token **t)
 {
-	t_token	*token;
+	t_token		*token;
 	char		*str;
 	char		*tmp;
 

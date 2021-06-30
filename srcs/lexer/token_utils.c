@@ -12,9 +12,9 @@
 
 #include "../../includes/lexer.h"
 
-int		is_meta(char c)
+int	is_meta(char c)
 {
-	if (c == '\'' || c == '\"' || c == '<' || c == '>' ||
+	if (c == '\'' || c == '\"' || c == '<' || c == '>' ||\
 		c == '&' || c == '|' || c == '\\' || c == ';')
 		return (1);
 	return (0);
@@ -48,7 +48,9 @@ void	print_tokens(t_token *t)
 {
 	while (t)
 	{
-		printf("STR	=	(%s)	TYPE	=	%d	TOKEN	=	%p	NEXT	=	%p\n", t->str, t->type, t, t->next);
+		printf("STR	=	(%s)	TYPE	=	%d	\
+				TOKEN	=	%p	NEXT	=	%p\n", \
+					t->str, t->type, t, t->next);
 		t = t->next;
 	}
 }

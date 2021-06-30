@@ -12,9 +12,9 @@
 
 #include "../../includes/lexer.h"
 
-t_token *create_token(t_ttype type, char *str)
+t_token	*create_token(t_ttype type, char *str)
 {
-	t_token *token;
+	t_token	*token;
 
 	if (!(token = malloc(sizeof(t_token))))
 		return (NULL);
@@ -41,8 +41,8 @@ void	addb_token(t_token **tokens, t_token *token)
 
 void	set_token(t_token **t, char *line, int len, t_ttype type)
 {
-	char *str;
-	t_token *token;
+	char	*str;
+	t_token	*token;
 
 	if (len <= 0)
 		return ;

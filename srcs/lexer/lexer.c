@@ -12,12 +12,12 @@
 
 #include "../../includes/lexer.h"
 
-int		lexer_str(t_token *t)
+int	lexer_str(t_token *t)
 {
-	t_token	*tmp;
+	t_token		*tmp;
 	char		*str;
 
-	while(t && t->next)
+	while (t && t->next)
 	{
 		while (t->next && t->type == t->next->type && t->type == STR)
 		{
@@ -35,11 +35,11 @@ int		lexer_str(t_token *t)
 	return (1);
 }
 
-void		lexer_space(t_token *t)
+void	lexer_space(t_token *t)
 {
 	t_token	*tmp;
 
-	while(t && t->next)
+	while (t && t->next)
 	{
 		if (t->next->type == SP)
 		{
@@ -53,7 +53,7 @@ void		lexer_space(t_token *t)
 	}
 }
 
-int		lexer_tokens(t_token *t)
+int	lexer_tokens(t_token *t)
 {
 	int	ret;
 
@@ -62,9 +62,9 @@ int		lexer_tokens(t_token *t)
 	return (ret);
 }
 
-t_token		*lexer(char *line)
+t_token	*lexer(char *line)
 {
-	t_token	*t;
+	t_token		*t;
 	int			ret;
 
 	ret = 0;

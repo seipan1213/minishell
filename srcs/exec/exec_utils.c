@@ -20,14 +20,15 @@ int	is_builtin(char **args)
 int	token_lst_len(t_token *token)
 {
 	t_token		*list;
-	char 		*tmp;
+	char		*tmp;
 	int			token_len;
 
 	token_len = 0;
 	list = token;
 	while (list)
 	{
-		if ((tmp = expand(list->str)))
+		tmp = expand(list->str);
+		if (tmp)
 		{
 			free(tmp);
 			token_len++;
@@ -52,7 +53,8 @@ char	**token_to_args(t_token *token)
 	i = 0;
 	while (i < token_len)
 	{
-		if ((arg_tmp = expand(list->str)))
+		arg_tmp = expand(list->str);
+		if (arg_tmp)
 		{
 			args[i] = arg_tmp;
 			i++;
