@@ -1,6 +1,6 @@
 #include "../../includes/exec.h"
 
-int		exec_builtin(char **args)
+int	exec_builtin(char **args)
 {
 	if (ft_strcmp(args[0], "echo") == 0)
 		return (built_echo(args));

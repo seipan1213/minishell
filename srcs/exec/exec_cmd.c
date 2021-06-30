@@ -1,6 +1,7 @@
 #include "../../includes/exec.h"
 
-int		exec_cmdline(t_command *cmd, char **args, t_pipe_status *p_stat, int pipe_fd[])
+int	exec_cmdline(t_command *cmd, char **args, \
+						t_pipe_status *p_stat, int pipe_fd[])
 {
 	pid_t	pid;
 	int		new_pipe_fd[2];
@@ -28,7 +29,7 @@ int		exec_cmdline(t_command *cmd, char **args, t_pipe_status *p_stat, int pipe_f
 	return (TRUE);
 }
 
-int		exec_cmd(t_command *cmd, t_pipe_status *p_stat, int pipe_fd[])
+int	exec_cmd(t_command *cmd, t_pipe_status *p_stat, int pipe_fd[])
 {
 	char	**args;
 
@@ -43,7 +44,7 @@ int		exec_cmd(t_command *cmd, t_pipe_status *p_stat, int pipe_fd[])
 		exec_cmdline(cmd, args, p_stat, pipe_fd);
 	get_next_p_stat(cmd, p_stat);
 	free_split(args);
-	return(TRUE);
+	return (TRUE);
 }
 
 void	exec_pipeline(astNode *node)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exec_path.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/30 15:12:32 by kotatabe          #+#    #+#             */
+/*   Updated: 2021/06/30 15:12:33 by kotatabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/exec.h"
 
 static int	is_cmd(char *str)
@@ -7,9 +19,9 @@ static int	is_cmd(char *str)
 	return (0);
 }
 
-int			is_exec(char *path)
+int	is_exec(char *path)
 {
-	t_stat status;
+	t_stat	status;
 
 	if (stat(path, &status) == -1)
 		return (0);
@@ -24,7 +36,7 @@ int			is_exec(char *path)
 	return (1);
 }
 
-void		free_split(char **split)
+void	free_split(char **split)
 {
 	int	i;
 
@@ -37,7 +49,7 @@ void		free_split(char **split)
 	free(split);
 }
 
-char		*exec_serach(char *argv)
+char	*exec_serach(char *argv)
 {
 	char	**path;
 	char	*res;

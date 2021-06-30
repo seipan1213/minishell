@@ -1,7 +1,7 @@
 
 #include "../../includes/exec.h"
 
-int		is_builtin(char **args)
+int	is_builtin(char **args)
 {
 	int			i;
 	const char	*builtin[] = {"echo", "cd", "pwd", "export", "unset","env", "exit", NULL};
@@ -16,7 +16,7 @@ int		is_builtin(char **args)
 	return (0);
 }
 
-int		token_lst_len(t_token *token)
+int	token_lst_len(t_token *token)
 {
 	t_token		*list;
 	char 		*tmp;
@@ -59,22 +59,3 @@ char	**token_to_args(t_token *token)
 	}
 	return (args);
 }
-
-// int main()
-// {
-// 	char		**wp;
-// 	t_token		*tokens;
-
-// 	tokens = NULL;
-// 	tokens = token_init();
-// 	print_tokens(tokens);
-// 	ft_putstr_fd("start\n", 1);
-// 	wp = token_to_args(tokens);
-// 	printf("%s\n", *wp);
-// 	while (*wp)
-// 	{
-// 		printf("%s\n", *wp);
-// 		wp++;
-// 	}
-// 	return(0);
-// }

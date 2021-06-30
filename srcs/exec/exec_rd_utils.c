@@ -1,4 +1,3 @@
-
 #include "../../includes/exec.h"
 
 int	open_rdfile(t_redirect *rd)
@@ -20,7 +19,7 @@ int	open_rdfile(t_redirect *rd)
 		return (open(HD_TMPFILE, \
 		O_RDWR | O_CREAT | O_TRUNC, 0664));
 	}
-	return(-1);
+	return (OPEN_ERR);
 }
 
 int	get_rd_fd(t_redirect *rd, int is_child)
