@@ -1,0 +1,5 @@
+env | grep TERM=
+echo abcd | wc
+echo abcd | wc | wc
+echo a | echo b | echo c
+env > file | cat file | grep SHELL=

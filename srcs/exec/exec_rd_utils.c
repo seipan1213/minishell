@@ -31,7 +31,8 @@ int	get_rd_fd(t_redirect *rd, int is_child)
 	rd_now = rd;
 	while (rd_now)
 	{
-		if ((rd_now->fd_io = open_rdfile(rd_now)) < 0)
+		rd_now->fd_io = open_rdfile(rd_now);
+		if (rd_now->fd_io < 0)
 		{
 			if (is_child)
 				exit_error(strerror(errno), \

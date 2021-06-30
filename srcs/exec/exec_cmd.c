@@ -11,7 +11,8 @@ int	exec_cmdline(t_command *cmd, char **args, \
 		if (pipe(new_pipe_fd) < 0)
 			return (FALSE);
 	}
-	if ((pid = fork()) < 0)
+	pid = fork();
+	if (pid < 0)
 		return (FALSE);
 	if (pid == 0)
 	{
