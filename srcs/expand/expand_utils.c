@@ -22,7 +22,8 @@ char	*expand_env(char *str)
 	if (str[i] != '$')
 		return (NULL);
 	i += add_cnt_stop_env(str + i);
-	if (!(key = ft_substr(str, 1, i - 1)))
+	key = ft_substr(str, 1, i - 1);
+	if (!key)
 		return (NULL);
 	env = get_env(key, g_data.envs);
 	if (!env)
@@ -56,7 +57,8 @@ char	*sub_join(char *front, char *str, int i, int j)
 {
 	char	*tmp;
 
-	if (!(tmp = ft_substr(str, j, i - j)))
+	tmp = ft_substr(str, j, i - j);
+	if (!tmp)
 		return (NULL);
 	front = front_join(front, tmp);
 	return (front);

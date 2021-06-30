@@ -15,8 +15,8 @@
 t_token	*create_token(t_ttype type, char *str)
 {
 	t_token	*token;
-
-	if (!(token = malloc(sizeof(t_token))))
+	token = malloc(sizeof(t_token));
+	if (!token)
 		return (NULL);
 	token->type = type;
 	token->str = str;
@@ -46,7 +46,8 @@ void	set_token(t_token **t, char *line, int len, t_ttype type)
 
 	if (len <= 0)
 		return ;
-	if (!(str = ft_substr(line, 0, len)))
+	str = ft_substr(line, 0, len);
+	if (!str)
 		exit_error(MALLOCERR, NULL, 1);
 	token = create_token(type, str);
 	addb_token(t, token);
