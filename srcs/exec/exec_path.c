@@ -60,7 +60,8 @@ char	*exec_serach(char *argv)
 		return (ft_strdup(argv));
 	else if ((!(is_cmd(argv)) && !is_exec(argv)))
 		return (NULL);
-	if (!(path = ft_split(get_env("PATH", g_data.envs), ':')))
+	path = ft_split(get_env("PATH", g_data.envs), ':');
+	if (!path)
 		return (NULL);
 	i = -1;
 	while (path[++i])
