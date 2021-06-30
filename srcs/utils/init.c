@@ -64,6 +64,7 @@ void	shlvl_change(t_env *shlvl)
 	int		lv_num;
 
 	lv = NULL;
+	lv_num = 0;
 	if (shlvl->value)
 		lv_num = ft_atoi(shlvl->value) + 1;
 	if (!shlvl->value || !is_strdigit(shlvl->value) || lv_num > 1000)

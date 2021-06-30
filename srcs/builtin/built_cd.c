@@ -1,30 +1,37 @@
 #include "../../includes/builtin.h"
 
+void	put_cd_err(char *key)
+{
+	ft_putstr_fd(ERR_MSH, STDERR_FILENO);
+	ft_putstr_fd("cd: ", STDERR_FILENO);
+	ft_putstr_fd(key, STDERR_FILENO);
+	ft_putendl_fd(" not set", STDERR_FILENO);
+}
+
 char	*special_cd(char **argv)
 {
 	char	*env;
+	char	*key;
 	int		i;
 
 	i = 1;
+	key = NULL;
 	if (argv[1][0] == '~' || (!ft_strncmp(argv[1], "--", 2) && ++i))
-	{
-		if (!(env = get_env("HOME", g_data.envs)))
-		{
-			put_error("HOME not set", "cd", 0);
-			return (NULL);
-		}
-	}
+		key = ft_strdup("HOME");
 	else if (argv[1][0] == '-')
-	{
-		if (!(env = get_env("OLDPWD", g_data.envs)))
-		{
-			put_error("OLDPWD not set", "cd", 0);
-			return (NULL);
-		}
-		ft_putendl_fd(env, STDOUT_FILENO);
-	}
+		key = ft_strdup("OLDPWD");
 	else
 		return (ft_strdup(argv[1]));
+	env = get_env(key, g_data.envs);
+	if (!env)
+	{
+		put_cd_err(key);
+		free(key);
+		return (NULL);
+	}
+	if (!ft_strncmp(key, "OLDPWD", 6))
+		ft_putendl_fd(env, STDOUT_FILENO);
+	free(key);
 	return (ft_strjoin(env, argv[1] + i));
 }
 

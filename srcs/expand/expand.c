@@ -2,13 +2,20 @@
 
 char	*expand_init(int *i, int *j)
 {
+	char	*str;
+
 	*i = -1;
 	*j = 0;
-	return (ft_strdup(""));
+	str = ft_strdup("");
+	if (!str)
+		*i = -100;
+	return (str);
 }
 
 char	*expand_null(char *str, char *front)
 {
+	if (!front)
+		return (NULL);
 	if (front[0] == '\0' && !ft_strchr(str, '\"'))
 	{
 		free(front);
@@ -37,23 +44,23 @@ char	*expand(char *str)
 	char	*front;
 	char	*env;
 
-	if (!(front = expand_init(&i, &j)))
-		return (NULL);
-	while (str[++i])
+	front = expand_init(&i, &j);
+	while (i >= -1 && str[++i])
 	{
 		front = sub_quote(front, str, &i, &j);
 		if (str[i] == '$')
 		{
 			env = expand_env(str + i);
 			i += add_cnt_stop_env(str + i);
-			if (!(front = front_join(front, env)))
+			front = front_join(front, env);
+			if (!front)
 				return (NULL);
 			j = i--;
 		}
 		if (!str[i])
 			break ;
 	}
-	if (i != j)
+	if (i >= -1 && i != j)
 		front = sub_join(front, str, i, j);
 	return (expand_null(str, front));
 }
