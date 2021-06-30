@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   built_export.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:15:20 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 16:19:24 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/06/30 21:44:03 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	export_env(char *str)
 {
 	t_env	*env;
 
-	if (!(env = create_env(str)))
+	if (!(env = str_to_env(str)))
 		return (0);
 	if (!check_identifier(env->name))
 	{

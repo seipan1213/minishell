@@ -23,7 +23,7 @@ t_env	*envs_init(void)
 	envs = NULL;
 	while (environ[i])
 	{
-		env = create_env(environ[i]);
+		env = str_to_env(environ[i]);
 		addb_env(&envs, env);
 		i++;
 	}
@@ -47,7 +47,7 @@ void	addb_env(t_env **envs, t_env *env)
 	}
 }
 
-t_env	*create_env(char *environ)
+t_env	*str_to_env(char *environ)
 {
 	t_env	*env;
 	char	*tmp;

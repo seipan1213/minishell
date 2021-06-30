@@ -17,7 +17,7 @@ typedef struct s_env
 # include "utils.h"
 
 void	addb_env(t_env **envs, t_env *env);
-t_env	*create_env(char *environ);
+t_env	*str_to_env(char *environ);
 t_env	*envs_init(void);
 void 	free_env(t_env *env);
 void 	free_envs(t_env *env);
@@ -32,5 +32,6 @@ void	sort_envs(t_env *envs);
 void	sort_str(char **envs);
 char	*get_env(char *key, t_env *envs);
 t_env	*make_env(char *name, char *value);
+t_env *create_env(char *key, char *newVal);
 
 #endif

@@ -33,3 +33,29 @@ t_env	*make_env(char *name, char *value)
 	env->next = NULL;
 	return (env);
 }
+
+t_env *create_env(char *key, char *newVal)
+{
+	char	*tmp;
+	char	*value;
+	t_env	*env;
+
+	tmp = ft_strdup(key);
+	if (!newVal)
+	{
+		value = NULL;
+		env = make_env(tmp, value);
+		return (env);
+	}
+	value = ft_strdup(newVal);
+	if (!tmp || !value)
+	{
+		if (tmp)
+			free(tmp);
+		if (value)
+			free(value);
+		return (NULL);
+	}
+	env = make_env(tmp, value);
+	return (env);
+}
