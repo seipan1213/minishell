@@ -29,13 +29,11 @@ static int	is_numeric_argument(char *str)
 		str++;
 	while (ft_isdigit(str[size]))
 		size++;
-	if ((m == -1 && size > 19))
+	if ((m == -1 && size > 19) || (m == 1 && size > 19))
 		return (1);
-	if ((m == 1 && size > 19))
-		return (1);
-	if ((m == -1 && ft_strncmp(str, "9223372036854775808", 19) > 0) && size == 19)
-		return (1);
-	if ((m == 1 && ft_strncmp(str, "9223372036854775807", 19) > 0) && size == 19)
+	if (((m == -1 && ft_strncmp(str, "9223372036854775808", 19) > 0) ||
+		(m == 1 && ft_strncmp(str, "9223372036854775807", 19) > 0)) &&
+		size == 19)
 		return (1);
 	return (0);
 }
