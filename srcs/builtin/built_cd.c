@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:14:01 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 19:00:16 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:21:12 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,25 @@ char	*check_cd(char **argv)
 
 int	built_cd(char **argv)
 {
-	char	*oldpwd;
 	char	*dst;
 	char	*tmp;
 
-	if (!(dst = check_cd(argv)))
+	dst = check_cd(argv);
+	if (!dst)
 		return (EXIT_FAILURE);
-	if (!chdir(dst) && (tmp = getcwd(0, 0)))
+	if (!chdir(dst))
 	{
-		if ((oldpwd = get_env("PWD", g_data.envs)))
-			update_env("OLDPWD", oldpwd, g_data.envs);
-		update_env("PWD", tmp, g_data.envs);
-		free(g_data.pwd);
-		g_data.pwd = tmp;
+		tmp = getcwd(0, 0);
+		if (tmp)
+		{
+			if (get_env("PWD", g_data.envs))
+				update_env("OLDPWD", get_env("PWD", g_data.envs), g_data.envs);
+			update_env("PWD", tmp, g_data.envs);
+			free(g_data.pwd);
+			g_data.pwd = tmp;
+		}
+		else
+			put_error(strerror(errno), "cd", 1);
 	}
 	else
 		put_error(strerror(errno), "cd", 1);

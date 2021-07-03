@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 21:00:08 by sehattor          #+#    #+#             */
-/*   Updated: 2020/10/12 19:19:19 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 21:03:08 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	skip_c(int *j, const char *s, char c)
 	return (k);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	int		ary_len;
 	int		i;
@@ -81,16 +81,18 @@ char		**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	ary_len = ary_sum(s, c);
-	if (!(ans = (char**)malloc((ary_len + 1) * sizeof(char*))))
+	ans = (char **)malloc((ary_len + 1) * sizeof(char *));
+	if (!ans)
 		return (NULL);
 	i = 0;
 	j = 0;
 	while (i < ary_len)
 	{
 		k = skip_c(&j, s, c);
-		if (!(ans[i] = (char*)malloc((j - k + 1) * sizeof(char))))
+		ans[i] = (char *)malloc((j - k + 1) * sizeof(char));
+		if (!ans[i])
 			return (memfree(i, ans));
-		ft_stncpy(ans[i++], (char*)(s + k), (j - k));
+		ft_stncpy(ans[i++], (char *)(s + k), (j - k));
 	}
 	ans[i] = NULL;
 	return (ans);

@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 20:00:36 by sehattor          #+#    #+#             */
-/*   Updated: 2020/10/12 19:20:17 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:38:34 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static bool	is_set(char c, char const *set)
 	return (false);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		st;
 	int		gl;
@@ -45,7 +45,8 @@ char		*ft_strtrim(char const *s1, char const *set)
 			gl = i;
 		i++;
 	}
-	if (!(dup = (char*)malloc((gl - st + 2) * sizeof(char))))
+	dup = (char *)malloc((gl - st + 2) * sizeof(char));
+	 if (!dup)
 		return (NULL);
 	i = -1;
 	while (i++ < gl - st)

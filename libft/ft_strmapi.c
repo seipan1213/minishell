@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 19:52:07 by sehattor          #+#    #+#             */
-/*   Updated: 2020/10/12 19:19:42 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:39:26 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	s_len = 0;
 	while (s[s_len] != '\0')
 		s_len++;
-	if (!(ans = (char*)malloc((s_len + 1) * sizeof(char))))
+	ans = (char *)malloc((s_len + 1) * sizeof(char));
+	if (!ans)
 		return (NULL);
 	ans[s_len] = '\0';
 	while (s_len--)
