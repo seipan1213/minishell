@@ -1,15 +1,10 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include <stdio.h>
+# include "const.h"
 # include "env.h"
 
-# define MINISHELL "MINISHELL$ "
-# define ERR_MSH "minishell: "
-# define MALLOCERR "malloc error..."
-# define SYNTAXERR "syntax error..."
-# define QUOTEERR "quote is not close..."
-# define NUMERR "numeric argument required"
+typedef struct s_env t_env;
 
 typedef struct s_minidata
 {

@@ -12,9 +12,7 @@
 
 #ifndef LEXER_H
 # define LEXER_H
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+# include "const.h"
 # include "../libft/libft.h"
 # include "minishell.h"
 # include "utils.h"
@@ -51,10 +49,10 @@ typedef struct s_token
 
 typedef struct s_tdata
 {
-	char			*line;
-	int			i;
-	int			j;
-	int			status;
+	char	*line;
+	int		i;
+	int		j;
+	int		status;
 }			t_tdata;
 
 t_token	*create_token(t_ttype type, char *str);

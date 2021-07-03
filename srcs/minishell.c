@@ -10,20 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdint.h>
-#include <errno.h>
-#include <stdbool.h>
-#include <fcntl.h>
-#include <signal.h>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <readline/readline.h>
-#include <readline/history.h>
-
+#include "../includes/const.h"
 #include "../libft/libft.h"
 #include "../includes/parser.h"
 #include "../includes/exec.h"
@@ -34,7 +21,7 @@
 void	test_minishell(char **argv)
 {
 	t_token		*tokens;
-	astNode		*node;
+	t_astNode		*node;
 
 	tokens = NULL;
 	tokens = lexer(argv[2]);
@@ -47,7 +34,7 @@ void	test_minishell(char **argv)
 void	launch_minishell(char *line)
 {
 	t_token		*tokens;
-	astNode		*node;
+	t_astNode		*node;
 
 	add_history(line);
 	set_signal(SIG_IGN);
