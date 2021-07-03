@@ -34,7 +34,7 @@ t_env	*make_env(char *name, char *value)
 	return (env);
 }
 
-t_env *create_env(char *key, char *newVal)
+t_env	*create_env(char *key, char *newVal)
 {
 	char	*tmp;
 	char	*value;
