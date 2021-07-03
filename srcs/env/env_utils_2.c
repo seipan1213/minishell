@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:11:13 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 18:54:39 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:20:58 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ t_env	*make_env(char *name, char *value)
 {
 	t_env	*env;
 
-	if (!(env = (t_env *)malloc(sizeof(t_env))))
+	env = (t_env *)malloc(sizeof(t_env));
+	if (!env)
 		return (NULL);
 	env->name = name;
 	env->value = value;
