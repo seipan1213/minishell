@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:15:20 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 19:49:20 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:12:36 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static void	print_export(t_env *envs)
 	sort_str(str_envs);
 	while (str_envs[++i])
 	{
-		if ((tmp = ft_strchr(str_envs[i], '=')))
+		tmp = ft_strchr(str_envs[i], '=');
+		if (tmp)
 			*tmp = '\0';
 		printf("declare -x %s", str_envs[i]);
 		if (tmp)
@@ -59,7 +60,8 @@ static int	export_env(char *str)
 {
 	t_env	*env;
 
-	if (!(env = str_to_env(str)))
+	env = str_to_env(str);
+	if (!env)
 		return (0);
 	if (!check_identifier(env->name))
 	{

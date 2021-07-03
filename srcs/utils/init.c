@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:02:04 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 18:59:41 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:13:27 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	init_data(void)
 	del_env("OLDPWD", &g_data.envs);
 	if (!(update_env("OLDPWD", NULL, g_data.envs)))
 		exit_error("init error", NULL, 1);
-	if (!(g_data.pwd = getcwd(0, 0)))
+	g_data.pwd = getcwd(0, 0);
+	if (!g_data.pwd)
 		exit_error("init error", NULL, 1);
 	shlvl_init();
 }
@@ -29,14 +30,17 @@ void	shlvl_add(t_env *envs)
 	char	*value;
 	t_env	*env;
 
-	if (!(name = ft_strdup("SHLVL")))
+	name = ft_strdup("SHLVL");
+	if (!name)
 		exit_error(MALLOCERR, NULL, 1);
-	if (!(value = ft_strdup("1")))
+	value = ft_strdup("1");
+	if (!value)
 	{
 		free(name);
 		exit_error(MALLOCERR, NULL, 1);
 	}
-	if (!(env = make_env(name, value)))
+	env = make_env(name, value);
+	if (!env)
 	{
 		free(name);
 		free(value);
@@ -50,17 +54,20 @@ void	shlvl_puterr(int num)
 	char	*str;
 	char	*tmp;
 
-	if (!(str = ft_itoa(num)))
+	str = ft_itoa(num);
+	if (!str)
 		exit_error(MALLOCERR, NULL, 1);
 	tmp = str;
-	if (!(str = ft_strjoin("shell level (", str)))
+	str = ft_strjoin("shell level (", str);
+	if (!str)
 	{
 		free(str);
 		exit_error(MALLOCERR, NULL, 1);
 	}
 	free(tmp);
 	tmp = str;
-	if (!(str = ft_strjoin(str, ") too high, resetting to 1")))
+	str = ft_strjoin(str, ") too high, resetting to 1");
+	if (!str)
 	{
 		free(str);
 		exit_error(MALLOCERR, NULL, 1);

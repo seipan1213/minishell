@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:09:56 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 17:40:05 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:12:58 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ t_env	*search_env(char *key, t_env *env)
 		return (NULL);
 	while (env != NULL)
 	{
-		if ((ret = ft_strcmp(key, env->name)) == 0)
+		ret = ft_strcmp(key, env->name);
+		if (ret == 0)
 		{
 			return (env);
 		}
