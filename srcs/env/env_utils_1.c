@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:09:56 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 16:09:57 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/06/30 21:31:35 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ t_env	*search_env(char *key, t_env *env)
 		return (NULL);
 	while (env != NULL)
 	{
-		if ((ret = ft_strcmp(key, env->name)) == 0)
+		ret = ft_strcmp(key, env->name);
+		if (ret == 0)
 		{
 			return (env);
 		}

@@ -44,23 +44,25 @@ void	test_minishell(char **argv)
 	exit(g_data.status);
 }
 
-int	main(int argc, char **argv)
+void	launch_minishell(char *line)
 {
-	init_data();
-	if (argc == 1)
-		minishell();
-	else if (argc > 2 && (ft_strcmp(argv[1], "-c") == 0))
-		test_minishell(argv);
+	t_token		*tokens;
+	astNode		*node;
+
+	add_history(line);
+	set_signal(SIG_IGN);
+	tokens = NULL;
+	tokens = lexer(line);
+	node = NULL;
+	parser(&tokens, &node);
+	exec(node);
+	free_node(node);
 }
 
 void	minishell(void)
 {
-	t_token		*tokens;
-	astNode		*node;
 	char		*line;
-	int			ret;
 
-	ret = 0;
 	while (1)
 	{
 		set_signal(SIG_DFL);
@@ -73,16 +75,18 @@ void	minishell(void)
 		}
 		if (line && ft_strlen(line) > 0)
 		{
-			add_history(line);
-			set_signal(SIG_IGN);
-			tokens = NULL;
-			tokens = lexer(line);
-			node = NULL;
-			parser(&tokens, &node);
-			ret = exec(node);
-			free_node(node);
+			launch_minishell(line);
 		}
 		if (line)
 			free(line);
 	}
+}
+
+int	main(int argc, char **argv)
+{
+	init_data();
+	if (argc == 1)
+		minishell();
+	else if (argc > 2 && (ft_strcmp(argv[1], "-c") == 0))
+		test_minishell(argv);
 }
