@@ -14,7 +14,7 @@ typedef struct s_minidata
 	char	*pwd;
 }	t_minidata;
 
-t_minidata		g_data;
-void			minishell(void);
+t_minidata				g_data;
+void		minishell(void);
 
 #endif
