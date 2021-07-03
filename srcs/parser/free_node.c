@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 21:08:23 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/29 21:08:24 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:29:59 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	is_node_type(int type)
 	return (0);
 }
 
-void	free_node(astNode *node)
+void	free_node(t_astNode *node)
 {
 	if (!node)
 		return ;

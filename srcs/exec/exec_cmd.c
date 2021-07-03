@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:02:41 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 16:02:42 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:29:59 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	exec_cmd(t_command *cmd, t_pipe_status *p_stat, int pipe_fd[])
 	return (TRUE);
 }
 
-void	exec_pipeline(astNode *node)
+void	exec_pipeline(t_astNode *node)
 {
 	t_pipe_status	p_stat;
 	t_command		*cmd;

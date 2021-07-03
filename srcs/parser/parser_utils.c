@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 20:58:38 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/29 20:58:40 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:29:59 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ bool	is_rd(int type)
 	return ((RDIR <= type && type <= LLLDIR) || type == RINT);
 }
 
-astNode	*new_cmd_node(t_cmd_link *cmd_ptr)
+t_astNode	*new_cmd_node(t_cmd_link *cmd_ptr)
 {
-	astNode		*new;
+	t_astNode		*new;
 
-	new = (astNode *)malloc(sizeof(astNode));
+	new = (t_astNode *)malloc(sizeof(t_astNode));
 	new->cmd = (t_command *)malloc(sizeof(t_command));
 	new->type = STR;
 	new->left = NULL;
@@ -38,11 +38,11 @@ astNode	*new_cmd_node(t_cmd_link *cmd_ptr)
 	return (new);
 }
 
-astNode	*new_parent_node(int type, astNode *left, astNode *right)
+t_astNode	*new_parent_node(int type, t_astNode *left, t_astNode *right)
 {
-	astNode		*new;
+	t_astNode		*new;
 
-	new = (astNode *)malloc(sizeof(astNode));
+	new = (t_astNode *)malloc(sizeof(t_astNode));
 	if (!new)
 		return (NULL);
 	new->type = type;

@@ -1,6 +1,7 @@
-#ifndef EXPANSION_H
-# define EXPANSION_H
+#ifndef EXPAND_H
+# define EXPAND_H
 
+# include "const.h"
 # include "../libft/libft.h"
 # include "env.h"
 # include "minishell.h"

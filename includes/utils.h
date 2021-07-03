@@ -12,13 +12,12 @@
 
 #ifndef UTILS_H
 # define UTILS_H
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-# include <errno.h>
+
+# include "const.h"
 # include "../libft/libft.h"
 # include "minishell.h"
+
+typedef struct s_env	t_env;
 
 int		is_strdigit(char *str);
 void	set_signal(void (*func)(int));

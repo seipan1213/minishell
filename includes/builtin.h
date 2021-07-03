@@ -1,12 +1,9 @@
 #ifndef BUILTIN_H
 # define BUILTIN_H
 
+# include "const.h"
 # include "../libft/libft.h"
-# include <unistd.h>
-# include <stdio.h>
 # include "utils.h"
-
-# define UNSET_ERR "unset: not enough arguments"
 
 typedef enum e_echo_flag
 {
@@ -21,6 +18,5 @@ int		built_pwd(void);
 int		built_unset(char **argv);
 int		built_cd(char **argv);
 int		check_identifier(char *str);
-
 
 #endif

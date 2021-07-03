@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 21:07:47 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 20:44:43 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/03 22:00:35 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool	parse_cmd_rd(t_token **tokens, t_command *cmd)
 	return (TRUE);
 }
 
-bool	parse_cmd(t_token **tokens, astNode **node, t_cmd_link *cmd_ptr)
+bool	parse_cmd(t_token **tokens, t_astNode **node, t_cmd_link *cmd_ptr)
 {
 	*node = new_cmd_node(cmd_ptr);
 	while (*tokens)
@@ -60,9 +60,9 @@ bool	parse_cmd(t_token **tokens, astNode **node, t_cmd_link *cmd_ptr)
 	return (TRUE);
 }
 
-bool	parse_job(t_token **tokens, astNode **node, t_cmd_link *cmd_ptr)
+bool	parse_job(t_token **tokens, t_astNode **node, t_cmd_link *cmd_ptr)
 {
-	astNode		*right;
+	t_astNode		*right;
 
 	right = NULL;
 	if (!(parse_cmd(tokens, node, cmd_ptr)))
@@ -84,9 +84,9 @@ bool	parse_job(t_token **tokens, astNode **node, t_cmd_link *cmd_ptr)
 	return (TRUE);
 }
 
-bool	parse_cmdline(t_token **tokens, astNode **node)
+bool	parse_cmdline(t_token **tokens, t_astNode **node)
 {
-	astNode		*right;
+	t_astNode	*right;
 	t_cmd_link	cmd_ptr;
 
 	cmd_ptr.ptr = NULL;
@@ -110,7 +110,7 @@ bool	parse_cmdline(t_token **tokens, astNode **node)
 	return (TRUE);
 }
 
-bool	parser(t_token **tokens, astNode **node)
+bool	parser(t_token **tokens, t_astNode **node)
 {
 	int			result;
 	t_token		*for_free;
