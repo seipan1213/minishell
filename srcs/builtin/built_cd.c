@@ -57,7 +57,8 @@ char	*check_cd(char **argv)
 		i++;
 	if (i == 1)
 	{
-		if ((home = get_env("HOME", g_data.envs)))
+		home = get_env("HOME", g_data.envs);
+		if (home)
 			return (ft_strdup(home));
 		else
 			put_error("HOME not set", "cd", 0);
