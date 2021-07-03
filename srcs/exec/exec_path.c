@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 15:12:32 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 15:12:33 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/03 18:47:58 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,27 +49,47 @@ void	free_split(char **split)
 	free(split);
 }
 
+static char	*exec_serach_util(char *path, char *argv)
+{
+	char	*tmp;
+	char	*res;
+
+	tmp = ft_strjoin(path, "/");
+	if (!tmp)
+	{
+		put_error(MALLOCERR, NULL, 1);
+		return (NULL);
+	}
+	res = ft_strjoin(tmp, argv);
+	free(tmp);
+	if (!res)
+	{
+		put_error(MALLOCERR, NULL, 1);
+		return (NULL);
+	}
+	return (res);
+}
+
 char	*exec_serach(char *argv)
 {
 	char	**path;
 	char	*res;
-	char	*tmp;
 	int		i;
 
 	if (!(is_cmd(argv)) && is_exec(argv))
 		return (ft_strdup(argv));
 	else if ((!(is_cmd(argv)) && !is_exec(argv)))
 		return (NULL);
+	if (!get_env("PATH", g_data.envs))
+		return (NULL);
 	path = ft_split(get_env("PATH", g_data.envs), ':');
-	if (!path)
+	if (!path && put_error(MALLOCERR, NULL, 1))
 		return (NULL);
 	i = -1;
 	while (path[++i])
 	{
-		tmp = ft_strjoin(path[i], "/");
-		res = ft_strjoin(tmp, argv);
-		free(tmp);
-		if (is_exec(res))
+		res = exec_serach_util(path[i], argv);
+		if (!res || is_exec(res))
 			break ;
 		free(res);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   built_export.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:15:20 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 21:55:46 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:12:36 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	check_identifier(char *str)
 	int	i;
 
 	i = 0;
+	if (ft_isdigit(str[i]))
+		return (0);
 	while (str[i])
 	{
 		if (!ft_isalnum(str[i]) && str[i] != '_')
@@ -58,7 +60,7 @@ static int	export_env(char *str)
 {
 	t_env	*env;
 
-	env = create_env(str);
+	env = str_to_env(str);
 	if (!env)
 		return (0);
 	if (!check_identifier(env->name))

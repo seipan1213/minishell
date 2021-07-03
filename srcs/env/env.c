@@ -23,7 +23,7 @@ t_env	*envs_init(void)
 	envs = NULL;
 	while (environ[i])
 	{
-		env = create_env(environ[i]);
+		env = str_to_env(environ[i]);
 		addb_env(&envs, env);
 		i++;
 	}
@@ -45,35 +45,6 @@ void	addb_env(t_env **envs, t_env *env)
 			back = back->next;
 		back->next = env;
 	}
-}
-
-t_env	*create_env(char *environ)
-{
-	t_env	*env;
-	char	*tmp;
-
-	if (!(env = (t_env *)malloc(sizeof(t_env))))
-		return (NULL);
-	env->next = NULL;
-	if (!(tmp = ft_strchr(environ + 1, '=')))
-	{
-		if (!(env->name = ft_strdup(environ)))
-			free(env);
-		if (!env->name)
-			return (NULL);
-		env->value = NULL;
-		return (env);
-	}
-	*tmp = '\0';
-	env->name = ft_strdup(environ);
-	if (!(env->value = ft_strdup(tmp + 1)))
-		free(env->name);
-	*tmp = '=';
-	if (!env->name || !env->value)
-		free(env);
-	if (!env->name || !env->value)
-		return (NULL);
-	return (env);
 }
 
 void	free_env(t_env *env)

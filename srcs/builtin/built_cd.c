@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:14:01 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 16:14:01 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/03 19:00:16 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ char	*check_cd(char **argv)
 		i++;
 	if (i == 1)
 	{
-		if ((home = get_env("HOME", g_data.envs)))
+		home = get_env("HOME", g_data.envs);
+		if (home)
 			return (ft_strdup(home));
 		else
 			put_error("HOME not set", "cd", 0);

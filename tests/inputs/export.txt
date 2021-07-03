@@ -1,7 +1,7 @@
-echo $AAA,export AAA=BBB
+echo $AAA; unset $AAA,export AAA=BBB
 export dsa=dsadadsad
 export a=
-export A ; unset A
+export A
 export $dsadas=dsa
 echo $a,export a=/////////
 echo $dsa; unset dsa,export dsa

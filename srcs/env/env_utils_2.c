@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:11:13 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 16:11:13 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/03 18:54:39 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,31 @@ t_env	*make_env(char *name, char *value)
 	env->name = name;
 	env->value = value;
 	env->next = NULL;
+	return (env);
+}
+
+t_env	*create_env(char *key, char *newVal)
+{
+	char	*tmp;
+	char	*value;
+	t_env	*env;
+
+	tmp = ft_strdup(key);
+	if (!newVal)
+	{
+		value = NULL;
+		env = make_env(tmp, value);
+		return (env);
+	}
+	value = ft_strdup(newVal);
+	if (!tmp || !value)
+	{
+		if (tmp)
+			free(tmp);
+		if (value)
+			free(value);
+		return (NULL);
+	}
+	env = make_env(tmp, value);
 	return (env);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:09:56 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 21:31:35 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:12:58 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,16 @@ t_env	*search_env(char *key, t_env *env)
 int	update_env(char *key, char *newVal, t_env *envs)
 {
 	t_env	*newEnv;
-	char	*tmp;
-	char	*value;
 
-	if (!(newEnv = search_env(key, envs)))
+	newEnv = search_env(key, envs);
+	if (!newEnv)
 	{
-		if (newVal && !(value = ft_strdup(newVal)))
-			return (0);
-		else if (!newVal)
-			value = newVal;
-		if ((tmp = ft_strdup(key)) && (newEnv = make_env(tmp, value)))
+		newEnv = create_env(key, newVal);
+		if (newEnv)
 			addb_env(&envs, newEnv);
-		if (tmp && newEnv)
-			return (1);
-		if (tmp)
-			free(tmp);
-		if (value)
-			free(value);
-		return (0);
+		else
+			return (0);
+		return (1);
 	}
 	if (newVal)
 		free(newEnv->value);

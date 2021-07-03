@@ -19,8 +19,6 @@ char	*expand_env(char *str)
 	int		i;
 
 	i = 0;
-	if (str[i] != '$')
-		return (NULL);
 	i += add_cnt_stop_env(str + i);
 	key = ft_substr(str, 1, i - 1);
 	if (!key)
