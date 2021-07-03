@@ -72,22 +72,25 @@ char	*check_cd(char **argv)
 
 int	built_cd(char **argv)
 {
-	char	*oldpwd;
 	char	*dst;
 	char	*tmp;
 
 	dst = check_cd(argv);
 	if (!dst)
 		return (EXIT_FAILURE);
-	tmp = getcwd(0, 0);
-	if (!chdir(dst) && tmp)
+	if (!chdir(dst))
 	{
-		oldpwd = get_env("PWD", g_data.envs);
-		if (oldpwd)
-			update_env("OLDPWD", oldpwd, g_data.envs);
-		update_env("PWD", tmp, g_data.envs);
-		free(g_data.pwd);
-		g_data.pwd = tmp;
+		tmp = getcwd(0, 0);
+		if (tmp)
+		{
+			if (get_env("PWD", g_data.envs))
+				update_env("OLDPWD", get_env("PWD", g_data.envs), g_data.envs);
+			update_env("PWD", tmp, g_data.envs);
+			free(g_data.pwd);
+			g_data.pwd = tmp;
+		}
+		else
+			put_error(strerror(errno), "cd", 1);
 	}
 	else
 		put_error(strerror(errno), "cd", 1);
