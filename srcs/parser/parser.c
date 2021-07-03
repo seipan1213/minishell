@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 21:07:47 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 20:29:59 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/03 22:00:35 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ bool	parse_job(t_token **tokens, t_astNode **node, t_cmd_link *cmd_ptr)
 
 bool	parse_cmdline(t_token **tokens, t_astNode **node)
 {
-	t_astNode		*right;
+	t_astNode	*right;
 	t_cmd_link	cmd_ptr;
 
 	cmd_ptr.ptr = NULL;

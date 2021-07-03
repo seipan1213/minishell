@@ -21,7 +21,7 @@
 void	test_minishell(char **argv)
 {
 	t_token		*tokens;
-	t_astNode		*node;
+	t_astNode	*node;
 
 	tokens = NULL;
 	tokens = lexer(argv[2]);
@@ -34,7 +34,7 @@ void	test_minishell(char **argv)
 void	launch_minishell(char *line)
 {
 	t_token		*tokens;
-	t_astNode		*node;
+	t_astNode	*node;
 
 	add_history(line);
 	set_signal(SIG_IGN);
