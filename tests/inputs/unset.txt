@@ -2,3 +2,4 @@ unset A
 unset BBB, export BBB=AAAaAAA
 unset $sada
 unset 1213
+unset a b c d e f g
