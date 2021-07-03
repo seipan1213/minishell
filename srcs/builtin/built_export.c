@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:15:20 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 19:01:08 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 19:49:20 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	check_identifier(char *str)
 	int	i;
 
 	i = 0;
+	if (ft_isdigit(str[i]))
+		return (0);
 	while (str[i])
 	{
 		if (!ft_isalnum(str[i]) && str[i] != '_')
