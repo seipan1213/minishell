@@ -2,6 +2,6 @@ aaa ; echo A
 echo B; bbb
 aaa;aaa;aa;aa;a;a;aa;aa
 echo C | cc
-pwd | export aasdsada
-export aaa=BBB | echo $aaa
+pwd | export aasdsada; unset export aasdsada
+export aaa=BBB | echo $aaa ;unset aaa
 bbasda | echo D
