@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 15:12:32 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 18:47:58 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 21:28:08 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	is_cmd(char *str)
 
 int	is_exec(char *path)
 {
-	t_stat	status;
+	struct stat	status;
 
 	if (stat(path, &status) == -1)
 		return (0);

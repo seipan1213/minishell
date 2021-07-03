@@ -17,8 +17,6 @@
 # define QUOTE_FALSE -1
 # define OPEN_ERR -1
 
-typedef struct stat t_stat;
-
 typedef struct s_quote
 {
 	int		start;
