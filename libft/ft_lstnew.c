@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 01:28:09 by sehattor          #+#    #+#             */
-/*   Updated: 2020/10/13 23:28:17 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:30:33 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*lst;
 
-	if (!(lst = (t_list*)malloc(sizeof(t_list))))
+	lst = (t_list *)malloc(sizeof(t_list));
+	if (!lst)
 		return (NULL);
 	lst->content = content;
 	lst->next = NULL;

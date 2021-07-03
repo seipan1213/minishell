@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 19:34:44 by sehattor          #+#    #+#             */
-/*   Updated: 2020/10/14 00:42:43 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:34:12 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	l_f(int m, const char *str)
 	return (1);
 }
 
-int			ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	m;
@@ -41,7 +41,7 @@ int			ft_atoi(const char *str)
 	i = 0;
 	m = 1;
 	ans = 0;
-	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\n' ||
+	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\n' || \
 			str[i] == '\r' || str[i] == '\t' || str[i] == '\v')
 		i++;
 	if (str[i] == '-')

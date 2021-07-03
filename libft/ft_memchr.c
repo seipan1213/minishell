@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:01:58 by sehattor          #+#    #+#             */
-/*   Updated: 2020/10/13 00:01:33 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 21:01:03 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	{
 		if (*str++ == (unsigned char)c)
 		{
-			return ((void*)(str - 1));
+			return ((void *)(str - 1));
 		}
 	}
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 20:40:54 by sehattor          #+#    #+#             */
-/*   Updated: 2021/06/27 21:12:42 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:35:46 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*ft_strdup(const char *s1)
 	s1_len = 0;
 	while (s1[s1_len] != '\0')
 		s1_len++;
-	if (!(dup = (char*)malloc(s1_len * sizeof(char) + 1)))
+	dup = (char *)malloc((s1_len + 1) * sizeof(char));
+	if (!dup)
 		return (NULL);
 	dup[s1_len] = '\0';
 	while (s1_len--)

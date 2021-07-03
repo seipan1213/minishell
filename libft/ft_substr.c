@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 21:14:04 by sehattor          #+#    #+#             */
-/*   Updated: 2020/10/11 21:39:17 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:40:26 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		s_len++;
 	if (start > s_len)
 	{
-		if (!(sub = (char*)malloc(sizeof(char))))
+		sub = (char *)malloc(sizeof(char));
+		if (!sub)
 			return (NULL);
 		sub[0] = '\0';
 		return (sub);
 	}
-	if (!(sub = (char*)malloc(len * sizeof(char) + 1)))
+	sub = (char *)malloc(len * sizeof(char) + 1);
+	if (!sub)
 		return (NULL);
 	sub[len] = '\0';
 	while (len--)

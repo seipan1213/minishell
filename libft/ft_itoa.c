@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 23:56:13 by sehattor          #+#    #+#             */
-/*   Updated: 2020/10/12 19:18:46 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:33:25 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,15 @@ static char	*zero_ma(void)
 {
 	char	*ans;
 
-	if (!(ans = (char*)malloc(2 * sizeof(char))))
+	ans = (char *)malloc(2 * sizeof(char));
+	if (!ans)
 		return (NULL);
 	ans[0] = '0';
 	ans[1] = '\0';
 	return (ans);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*ans;
 	long	num;
@@ -51,7 +52,8 @@ char		*ft_itoa(int n)
 	while (num > 0 && ++i)
 		num /= 10;
 	num = ft_abs(n, &m);
-	if (!(ans = (char*)malloc((i + 1 + m) * sizeof(char))))
+	ans = (char *)malloc((i + 1 + m) * sizeof(char));
+	if (!ans)
 		return (NULL);
 	ans[i + m] = '\0';
 	if (m)

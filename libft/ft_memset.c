@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 16:19:44 by sehattor          #+#    #+#             */
-/*   Updated: 2020/10/12 23:47:29 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 21:00:47 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	unsigned char *str;
+	unsigned char	*str;
 
 	str = (unsigned char *)b;
 	while (len--)

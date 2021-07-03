@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 16:19:13 by sehattor          #+#    #+#             */
-/*   Updated: 2020/10/12 23:35:08 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 21:06:20 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_bzero(void *s, size_t len)
 {
 	unsigned char	*str;
 
-	str = (unsigned char*)s;
+	str = (unsigned char *)s;
 	while (len--)
 		*(str + len) = '\0';
 }

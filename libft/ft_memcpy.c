@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 16:30:20 by sehattor          #+#    #+#             */
-/*   Updated: 2020/10/12 23:46:36 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 20:30:55 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	const unsigned char	*str_src;
 	size_t				i;
 
-	str_dst = (unsigned char*)dst;
-	str_src = (const unsigned char*)src;
+	str_dst = (unsigned char *)dst;
+	str_src = (const unsigned char *)src;
 	if (!dst && !src)
 		return (dst);
 	i = 0;
