@@ -6,16 +6,21 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 23:19:23 by sehattor          #+#    #+#             */
-/*   Updated: 2021/07/03 21:05:13 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 21:36:30 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*save_free(char *save)
+static char	*str_free(char *str, int ret)
 {
-	free(save);
-	return (NULL);
+	if (ret < 0)
+	{
+		if (str)
+			free(str);
+		return (NULL);
+	}
+	return (str);
 }
 
 static char	*read_fd(int fd, char *save)
@@ -24,27 +29,26 @@ static char	*read_fd(int fd, char *save)
 	char	*buf;
 	int		ret;
 
-	if (!(buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char))))
+	buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buf)
 		return (NULL);
-	if (!save && !(save = ft_strdup("\0")))
-	{
-		free(buf);
-		return (NULL);
-	}
-	while ((ret = read(fd, buf, BUFFER_SIZE)) > 0)
+	if (!save)
+		save = ft_strdup("");
+	if (!save)
+		return (str_free(buf, 1));
+	ret = read(fd, buf, BUFFER_SIZE);
+	while (ret > 0)
 	{
 		buf[ret] = '\0';
 		tmp = ft_strjoin(save, buf);
-		if (save)
-			free(save);
+		str_free(save, 1);
 		save = tmp;
 		if (!tmp || ft_strchr(save, '\n'))
 			break ;
+		ret = read(fd, buf, BUFFER_SIZE);
 	}
 	free(buf);
-	if (ret < 0)
-		return (save = save_free(save));
-	return (save);
+	return (str_free(save, ret));
 }
 
 static char	*save_line(char *save, char *line, int *ret)
@@ -76,7 +80,7 @@ static char	*get_line(char *line)
 	return (tmp);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char	*save[256];
 	int			ret;
@@ -87,7 +91,8 @@ int		get_next_line(int fd, char **line)
 	*line = NULL;
 	if (save[fd] != NULL)
 	{
-		if (!(*line = ft_strdup(save[fd])))
+		*line = ft_strdup(save[fd]);
+		if (!*line)
 			return (-1);
 		if (ft_strchr(*line, '\n'))
 		{
@@ -96,7 +101,8 @@ int		get_next_line(int fd, char **line)
 			return (ret);
 		}
 	}
-	if (!(*line = read_fd(fd, *line)))
+	*line = read_fd(fd, *line);
+	if (!*line)
 		return (-1);
 	save[fd] = save_line(save[fd], *line, &ret);
 	*line = get_line(*line);
