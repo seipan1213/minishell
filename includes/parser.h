@@ -49,12 +49,12 @@ typedef struct s_command{
 	struct s_command	*next;
 }				t_command;
 
-typedef struct	s_cmd_link
+typedef struct s_cmd_link
 {
 	t_command	*ptr;
 }				t_cmd_link;
 
-typedef struct	s_astNode {
+typedef struct s_astNode {
 	int					type;
 	t_command			*cmd;
 	struct s_astNode	*left;

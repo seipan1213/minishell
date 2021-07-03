@@ -17,7 +17,7 @@
 # define QUOTE_FALSE -1
 # define OPEN_ERR -1
 
-typedef struct stat	t_stat;
+typedef struct stat t_stat;
 
 typedef struct s_quote
 {
@@ -26,7 +26,7 @@ typedef struct s_quote
 	char	quote;
 }				t_quote;
 
-typedef enum s_pipe_status
+typedef enum e_pipe_status
 {
 	NO_PIPE,
 	PIPE_RD_ONLY,

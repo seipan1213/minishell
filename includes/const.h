@@ -1,4 +1,5 @@
 #ifndef CONST_H
+# define CONST_H
 
 # include <stdio.h>
 # include <stdlib.h>
