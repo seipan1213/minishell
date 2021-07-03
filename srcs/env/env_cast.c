@@ -6,12 +6,11 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:10:52 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 17:55:18 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/03 18:53:59 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/env.h"
-
 
 static t_env	*str_to_env_util(t_env *env, char *environ)
 {
