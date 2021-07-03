@@ -89,8 +89,8 @@ exec_cmd()
 prepare_test()
 {
 	STDOUT_DIFF=`diff ${MINISHELL_STDOUT} ${BASH_STDOUT}`
-	STDERR_DIFF="" #`diff ${MINISHELL_STDERR} ${BASH_STDERR}`
-	if [ -n "${STDOUT_DIFF}" -o -n "${STDERR_DIFF}" -o "${MINISHELL_RESULT}" != "${BASH_RESULT}" ]; then
+	STDERR_DIFF=`diff ${MINISHELL_STDERR} ${BASH_STDERR}`
+	if [ -n "${STDOUT_DIFF}" -o "${MINISHELL_RESULT}" != "${BASH_RESULT}" ]; then #-o -n "${STDERR_DIFF}" ]; then
 		printf "${RED}ERROR${RESET}\n"
 		printf "${GREEN}STDOUT DIFF: ${STDOUT_DIFF}${RESET}\n"
 		printf "${RED}STDERR DIFF: ${STDERR_DIFF}${RESET}\n"
