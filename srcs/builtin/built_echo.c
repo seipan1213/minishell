@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   built_echo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:14:13 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 16:14:14 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/04 21:03:46 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	built_echo(char **argv)
 		j = 1;
 		while (argv[i][j] == 'n')
 			j++;
-		if (argv[i][j] == '\0' && ++i)
+		if (j >= 2 && argv[i][j] == '\0' && ++i)
 			flag |= ECHO_OP_N;
 		else
 			break ;
