@@ -7,6 +7,8 @@ echo "DQ"'SQ
 echo first second third
 echo A ; echo B
 echo $AAA, export AAA=bbbbb
+echo -
+echo dasdsa -das -
 echo -n
 echo -n a
 echo -n hello world
