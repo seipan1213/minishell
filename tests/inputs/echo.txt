@@ -7,6 +7,10 @@ echo "DQ"'SQ
 echo first second third
 echo A ; echo B
 echo $AAA, export AAA=bbbbb
+echo $"$USER"
+echo $'$USER'
+echo $"USER"
+echo $'USER'
 echo -
 echo dasdsa -das -
 echo -n
