@@ -51,10 +51,7 @@ void	token_squote(t_tdata *d, t_token **t)
 		free(str);
 	}
 	else
-	{
-		free(str);
-		exit_error(SYNTAXERR, NULL, 2);
-	}
+		tmp = str;
 	token = create_token(STR, tmp);
 	addb_token(t, token);
 	d->j = d->i + 1;
@@ -77,10 +74,7 @@ void	token_dquote(t_tdata *d, t_token **t)
 		free(str);
 	}
 	else
-	{
-		free(str);
-		exit_error(SYNTAXERR, NULL, 2);
-	}
+		tmp = str;
 	token = create_token(STR, tmp);
 	addb_token(t, token);
 	d->j = d->i + 1;

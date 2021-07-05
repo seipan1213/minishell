@@ -28,8 +28,7 @@ char	*expand_env(char *str)
 	{
 		if (!(ft_strncmp(str, "$?", 2)))
 			env = ft_strdup(ft_itoa(g_data.status));
-		else if (ft_isspace(str[1]) || !str[1] || \
-						str[1] == '\"' || str[1] == '$')
+		else if (ft_isspace(str[1]) || !str[1] || str[1] == '$')
 			env = ft_strdup("$");
 		else
 			env = ft_strdup("");

@@ -42,8 +42,16 @@ int	check_syntax(t_token *t)
 
 int	check_avoid(t_token *t)
 {
+	int	len;
+
 	while (t)
 	{
+		if (t->type == STR && (t->str[0] == '\"' || t->str[0] == '\''))
+		{
+			len = ft_strlen(t->str);
+			if (len < 2 || t->str[len - 1] != t->str[0])
+				return (put_error(SYNTAXERR, NULL, 0));
+		}
 		if (t->type == DAND || t->type == DPIPE || t->type == LLLDIR)
 			return (put_error(SYNTAXERR, NULL, 0));
 		t = t->next;
