@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 15:11:29 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 20:29:59 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/09 20:30:04 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	exec_bin(char **args)
 	envs = environ_gen(g_data.envs);
 	if (!envs)
 		exit_error(MALLOCERR, NULL, 1);
-	path = exec_serach(args[0]);
+	path = exec_search(args[0]);
 	if (!path)
 		exit_error("command not found", args[0], 127);
 	execve(path, args, envs);

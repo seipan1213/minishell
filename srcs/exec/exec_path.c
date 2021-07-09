@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 15:12:32 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 21:28:08 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/09 20:35:16 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	free_split(char **split)
 	free(split);
 }
 
-static char	*exec_serach_util(char *path, char *argv)
+static char	*exec_search_util(char *path, char *argv)
 {
 	char	*tmp;
 	char	*res;
@@ -70,7 +70,7 @@ static char	*exec_serach_util(char *path, char *argv)
 	return (res);
 }
 
-char	*exec_serach(char *argv)
+char	*exec_search(char *argv)
 {
 	char	**path;
 	char	*res;
@@ -78,7 +78,7 @@ char	*exec_serach(char *argv)
 
 	if (!(is_cmd(argv)) && is_exec(argv))
 		return (ft_strdup(argv));
-	else if ((!(is_cmd(argv)) && !is_exec(argv)))
+	else if ((!(is_cmd(argv)) && !is_exec(argv)) && *argv == '\0')
 		return (NULL);
 	if (!get_env("PATH", g_data.envs))
 		return (NULL);
@@ -88,7 +88,7 @@ char	*exec_serach(char *argv)
 	i = -1;
 	while (path[++i])
 	{
-		res = exec_serach_util(path[i], argv);
+		res = exec_search_util(path[i], argv);
 		if (!res || is_exec(res))
 			break ;
 		free(res);

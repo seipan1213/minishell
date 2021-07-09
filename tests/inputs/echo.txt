@@ -11,6 +11,8 @@ echo $"$USER"
 echo $'$USER'
 echo $"USER"
 echo $'USER'
+echo "''"
+echo '""'
 echo -
 echo dasdsa -das -
 echo -n
