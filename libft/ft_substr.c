@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 21:14:04 by sehattor          #+#    #+#             */
-/*   Updated: 2021/07/03 20:40:26 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/10 01:30:48 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		sub[0] = '\0';
 		return (sub);
 	}
-	sub = (char *)malloc(len * sizeof(char) + 1);
+	sub = (char *)malloc((len + 1) * sizeof(char));
 	if (!sub)
 		return (NULL);
 	sub[len] = '\0';
