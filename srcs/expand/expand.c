@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:02:09 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 16:02:09 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/10 03:19:04 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*expand(char *str)
 	return (expand_null(str, front));
 }
 
-char *expand_str(char *str)
+char	*expand_str(char *str)
 {
 	int		i;
 	int		j;
