@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_tokens.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 21:08:37 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/29 21:08:49 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/09 19:55:23 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,4 @@ void	free_token(t_token *token)
 		now = tmp;
 	}
 	token = NULL;
-}
-
-void	free_tokens(t_token **tokens)
-{
-	t_token	**tmp_tokens;
-
-	if (!tokens)
-		return ;
-	tmp_tokens = tokens;
-	free_token(*tokens);
-	free(tmp_tokens);
 }
