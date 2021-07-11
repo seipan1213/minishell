@@ -36,7 +36,7 @@ $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LDFLAGS) -o $(NAME)
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT)
+	$(MAKE) -C $(LIBFTDIR)
 
 clean:
 	$(RM) $(OBJS)
