@@ -28,7 +28,7 @@ char	*expand_null(char *str, char *front)
 {
 	if (!front)
 		return (NULL);
-	if (front[0] == '\0' && !ft_strchr(str, '\"'))
+	if (front[0] == '\0' && !ft_strchr(str, '\"') && !ft_strchr(str, '\''))
 	{
 		free(front);
 		return (NULL);

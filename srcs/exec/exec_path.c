@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 15:12:32 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/09 20:35:16 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/11 15:20:22 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ char	*exec_search(char *argv)
 	char	*res;
 	int		i;
 
-	if (!(is_cmd(argv)) && is_exec(argv))
+	if (!is_cmd(argv) && is_exec(argv))
 		return (ft_strdup(argv));
-	else if ((!(is_cmd(argv)) && !is_exec(argv)) && *argv == '\0')
+	else if ((!is_cmd(argv) && !is_exec(argv)) || *argv == '\0')
 		return (NULL);
 	if (!get_env("PATH", g_data.envs))
 		return (NULL);
