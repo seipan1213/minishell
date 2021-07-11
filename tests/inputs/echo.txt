@@ -11,6 +11,11 @@ echo $"$USER"
 echo $'$USER'
 echo $"USER"
 echo $'USER'
+echo "" a''b b
+echo $"das'dsad"dasd'dsada'"$USER"'"'
+echo "$USER"'$USER''"$USERaaaaaaa'SINGRL"DQ"'"'
+echo "''"
+echo '""'
 echo -
 echo dasdsa -das -
 echo -n

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../includes/lexer.h"
+#include "../../includes/parser.h"
 
 int	lexer_str(t_token *t)
 {
@@ -77,6 +78,7 @@ t_token	*lexer(char *line)
 	}
 	if (ret == 0)
 	{
+		free_token(t);
 		g_data.status = 2;
 		return (NULL);
 	}

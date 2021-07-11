@@ -43,6 +43,8 @@ char	*front_join(char *front, char *str)
 {
 	char	*tmp;
 
+	if (!front || !str)
+		return (front);
 	tmp = front;
 	front = ft_strjoin(front, str);
 	free(tmp);
@@ -61,23 +63,49 @@ char	*sub_join(char *front, char *str, int i, int j)
 	return (front);
 }
 
-char	*sub_quote(char *front, char *str, int *i, int *j)
+char	*expand_sub_sp(char *front, char *str, int *i, int *j)
 {
-	while (str[*i] != '\'' && str[*i] != '\"' && str[*i] != '$' && str[*i])
-		(*i)++;
-	if (*i > *j)
-		front = sub_join(front, str, *i, *j);
-	if (str[*i] == '\'' || str[*i] == '\"')
-	{
-		if (str[*i] == '\'' && ++(*i))
-		{
-			while (str[*i] != '\'')
-				(*i)++;
-			front = sub_join(front, str, *i, *j + 1);
-		}
-		*j = (*i) + 1;
-	}
+	char	*tmp;
+	char	*exp;
+	int		tmp_i;
+
+	tmp_i = *i;
+	if (str[(*i) - 1] == '$' && (str[*i] == '\'' || str[*i] == '\"'))
+		tmp_i--;
+	tmp = ft_substr(str, *j, tmp_i - *j);
+	if (!tmp)
+		exit_error(MALLOCERR, NULL, 1);
+	*j = *i;
+	exp = expand_str(tmp);
+	if (!exp)
+		exit_error(MALLOCERR, NULL, 1);
+	free(tmp);
+	front = front_join(front, exp);
+	if (!front)
+		exit_error(MALLOCERR, NULL, 1);
+	return (front);
+}
+
+char	*expand_sub(char *front, char *str, int *i, int *j)
+{
+	char	*tmp;
+	char	*exp;
+
+	tmp = ft_substr(str, *j, *i - *j);
+	if (!tmp)
+		exit_error(MALLOCERR, NULL, 1);
+	*j = *i;
+	if (str[*i] == '\'')
+		exp = tmp;
 	else
-		*j = (*i);
+	{
+		exp = expand_str(tmp);
+		if (!exp)
+			exit_error(MALLOCERR, NULL, 1);
+		free(tmp);
+	}
+	front = front_join(front, exp);
+	if (!front)
+		exit_error(MALLOCERR, NULL, 1);
 	return (front);
 }

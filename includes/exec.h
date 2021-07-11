@@ -48,7 +48,7 @@ void	change_rd_fd(t_redirect *rd);
 int		exec_simple_buildin(t_command *cmd, char **args);
 int		is_exec(char *path);
 void	free_split(char **split);
-char	*exec_serach(char *argv);
+char	*exec_search(char *argv);
 void	dup_fd(int oldfd, int newfd);
 void	get_heredoc(t_redirect *rd);
 int		is_quote(char c);

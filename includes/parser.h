@@ -82,7 +82,6 @@ t_redirect	*init_redirect(void);
 void		set_rd_type(t_redirect *rd, t_token *token);
 void		set_cmd_rd(t_redirect *rd, t_redirect **list);
 void		free_node(t_astNode *node);
-void		free_tokens(t_token **tokens);
 void		free_token(t_token *token);
 
 #endif

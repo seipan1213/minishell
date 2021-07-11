@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:02:41 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 20:29:59 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/09 20:31:02 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	exec_cmd(t_command *cmd, t_pipe_status *p_stat, int pipe_fd[])
 	char	**args;
 
 	args = token_to_args(cmd->arg);
-	if (!*args || !**args)
+	if (!*args)
 		return (FALSE);
 	if (*p_stat == NO_PIPE && is_builtin(args))
 	{

@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:02:09 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 16:02:09 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/10 03:19:04 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*expand_init(int *i, int *j)
 	*j = 0;
 	str = ft_strdup("");
 	if (!str)
-		*i = -100;
+		exit_error(MALLOCERR, NULL, 1);
 	return (str);
 }
 
@@ -28,7 +28,7 @@ char	*expand_null(char *str, char *front)
 {
 	if (!front)
 		return (NULL);
-	if (front[0] == '\0' && !ft_strchr(str, '\"'))
+	if (front[0] == '\0' && !ft_strchr(str, '\"') && !ft_strchr(str, '\''))
 	{
 		free(front);
 		return (NULL);
@@ -55,14 +55,39 @@ char	*expand(char *str)
 	int		i;
 	int		j;
 	char	*front;
+
+	front = expand_init(&i, &j);
+	while (str[++i])
+	{
+		while (str[i] != '\'' && str[i] != '\"' && str[i])
+			i++;
+		if (i > j)
+			front = expand_sub_sp(front, str, &i, &j);
+		if ((str[i] == '\'' || str[i] == '\"') && ++i)
+		{
+			while (str[i] != str[j])
+				i++;
+			j++;
+			front = expand_sub(front, str, &i, &j);
+			j++;
+		}
+	}
+	return (expand_null(str, front));
+}
+
+char	*expand_str(char *str)
+{
+	int		i;
+	int		j;
+	char	*front;
 	char	*env;
 
 	front = expand_init(&i, &j);
 	while (i >= -1 && str[++i])
 	{
-		front = sub_quote(front, str, &i, &j);
 		if (str[i] == '$')
 		{
+			front = sub_join(front, str, i, j);
 			env = expand_env(str + i);
 			i += add_cnt_stop_env(str + i);
 			front = front_join(front, env);
@@ -75,5 +100,5 @@ char	*expand(char *str)
 	}
 	if (i >= -1 && i != j)
 		front = sub_join(front, str, i, j);
-	return (expand_null(str, front));
+	return (front);
 }
