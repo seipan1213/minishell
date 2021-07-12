@@ -49,7 +49,4 @@ re: fclean all
 debug: CFLAGS += -g3 -fsanitize=address
 debug: re
 
-test: re
-	./${NAME}
-
 .PHONY: all clean fclean re
