@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:02:04 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 20:13:27 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/13 20:50:07 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ void	init_data(void)
 {
 	g_data.envs = envs_init();
 	del_env("OLDPWD", &g_data.envs);
-	if (!(update_env("OLDPWD", NULL, g_data.envs)))
+	if (!(update_env("OLDPWD", NULL, &g_data.envs)))
 		exit_error("init error", NULL, 1);
 	g_data.pwd = getcwd(0, 0);
 	if (!g_data.pwd)
+		exit_error("init error", NULL, 1);
+	if (!(update_env("PWD", g_data.pwd, &g_data.envs)))
 		exit_error("init error", NULL, 1);
 	shlvl_init();
 }
