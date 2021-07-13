@@ -88,12 +88,10 @@ int	built_cd(char **argv)
 			update_env("PWD", tmp, g_data.envs);
 			free(g_data.pwd);
 			g_data.pwd = tmp;
+			free(dst);
+			return (put_error(strerror(errno), "cd", EXIT_SUCCESS));
 		}
-		else
-			put_error(strerror(errno), "cd", 1);
 	}
-	else
-		put_error(strerror(errno), "cd", 1);
 	free(dst);
-	return (EXIT_SUCCESS);
+	return (put_error(strerror(errno), "cd", EXIT_FAILURE));
 }
