@@ -28,5 +28,6 @@ void	shlvl_add(t_env *envs);
 void	shlvl_change(t_env *shlvl);
 void	shlvl_init(void);
 char	*strjoin_free(char *front, char *back);
+void	signal_handler(int i);
 
 #endif
