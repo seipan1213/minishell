@@ -84,8 +84,8 @@ int	built_cd(char **argv)
 		if (tmp)
 		{
 			if (get_env("PWD", g_data.envs))
-				update_env("OLDPWD", get_env("PWD", g_data.envs), g_data.envs);
-			update_env("PWD", tmp, g_data.envs);
+				update_env("OLDPWD", get_env("PWD", g_data.envs), &g_data.envs);
+			update_env("PWD", tmp, &g_data.envs);
 			free(g_data.pwd);
 			g_data.pwd = tmp;
 			free(dst);
