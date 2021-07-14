@@ -7,3 +7,9 @@ mkdir test;cd test; rmdir ../test; pwd
 cd -, cd ..
 cd - ; cd - ; cd - ; cd - ; cd -, cd ..
 cd efwqcniw
+cd ../../../././././././././././srcs
+cd test test test test tetst st
+cd $ASDSAD $DsADSAD ../
+cd ../test
+cd --
+cd ~~
