@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:02:41 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/09 20:31:02 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/14 17:47:03 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	exec_cmdline(t_command *cmd, char **args, \
 		set_signal(SIG_DFL);
 		get_rd_fd(cmd->rd, TRUE);
 		dup_pipe(p_stat, pipe_fd, new_pipe_fd);
-		change_rd_fd(cmd->rd);
+		change_rd_fd(cmd->rd, TRUE);
 		if (is_builtin(args))
 			exit(exec_builtin(args));
 		else

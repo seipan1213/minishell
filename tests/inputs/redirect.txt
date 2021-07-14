@@ -4,7 +4,10 @@ cat file, echo aaa < file
 cat file, echo aaa 0< file
 cat file, echo aaa 2> file
 echo aaa < no_such_file 2> file
+cat file, echo aaa < no_such_file 2> file
 cat file, echo a >> file
 echo b >> file ; cat file, echo a > file
-ls, echo a > file1 > file2 > file3 > file4 > file5
+cat file1 file2 file3 file4 file5, echo aaa > file1 > file2 > file3 > file4 > file5
 cat file1; cat file2, echo a > file1 | echo b > file2
+echo a 123456789> file
+echo a 12345> file

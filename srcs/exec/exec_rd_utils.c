@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:03:19 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 16:03:20 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/14 18:05:44 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,12 @@ int	get_rd_fd(t_redirect *rd, int is_child)
 	return (TRUE);
 }
 
-void	dup_fd(int oldfd, int newfd)
-{
-	dup2(oldfd, newfd);
-	close(oldfd);
-}
-
-void	change_rd_fd(t_redirect *rd)
+int	change_rd_fd(t_redirect *rd, int is_child)
 {
 	t_redirect	*rd_now;
 
 	if (!rd)
-		return ;
+		return (TRUE);
 	rd_now = rd;
 	while (rd_now)
 	{
@@ -80,9 +74,17 @@ void	change_rd_fd(t_redirect *rd)
 			close(rd_now->fd_io);
 			rd_now->fd_io = open(HD_TMPFILE, O_RDWR);
 		}
-		dup_fd(rd_now->fd_io, rd_now->fd_file);
+		if (dup2(rd_now->fd_io, rd_now->fd_file) < 0)
+		{
+			if (is_child)
+				exit_error(strerror(errno), NULL, EXIT_FAILURE);
+			else
+				return (put_error(strerror(errno), NULL, FALSE));
+		}
+		close(rd_now->fd_io);
 		if (rd_now->type == RD_HERE_DOC)
 			unlink(HD_TMPFILE);
 		rd_now = rd_now->next;
 	}
+	return (TRUE);
 }
