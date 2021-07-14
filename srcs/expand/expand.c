@@ -71,6 +71,8 @@ char	*expand(char *str)
 			front = expand_sub(front, str, &i, &j);
 			j++;
 		}
+		if (!str[i])
+			break ;
 	}
 	return (expand_null(str, front));
 }
