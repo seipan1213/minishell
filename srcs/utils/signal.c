@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:05:22 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/14 20:45:52 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/14 21:18:02 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	sigint_handler(int i)
 {
-	printf("\n");
+\n");
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	rl_redisplay();
