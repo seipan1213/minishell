@@ -6,3 +6,4 @@ cd $HOME, unset HOME
 mkdir test;cd test; rmdir ../test; pwd
 cd -, cd ..
 cd - ; cd - ; cd - ; cd - ; cd -, cd ..
+cd efwqcniw
