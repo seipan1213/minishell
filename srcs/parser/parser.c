@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 21:07:47 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 22:00:35 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/14 18:01:18 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ bool	parse_cmd_rd(t_token **tokens, t_command *cmd)
 	if ((*tokens)->type == RINT)
 	{
 		rd->fd_file = ft_atoi((*tokens)->str);
-		if (rd->fd_file < 0)
-			return (FALSE);
 		*tokens = (*tokens)->next;
 	}
 	set_rd_type(rd, *tokens);
