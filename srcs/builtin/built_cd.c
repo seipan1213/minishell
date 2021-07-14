@@ -89,7 +89,7 @@ int	built_cd(char **argv)
 			free(g_data.pwd);
 			g_data.pwd = tmp;
 			free(dst);
-			return (put_error(strerror(errno), "cd", EXIT_SUCCESS));
+			return (EXIT_SUCCESS);
 		}
 	}
 	free(dst);
