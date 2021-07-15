@@ -21,6 +21,7 @@ typedef struct s_env	t_env;
 
 int		is_strdigit(char *str);
 void	set_signal(void (*func)(int));
+void	set_prompt_signal(void);
 int		put_error(char *str, char *cmd, int ret);
 void	exit_error(char *str, char *cmd, int ex_num);
 void	init_data(void);
