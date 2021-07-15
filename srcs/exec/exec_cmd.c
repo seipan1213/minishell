@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:02:41 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/15 15:35:11 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/15 15:59:40 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	exec_cmdline(t_command *cmd, char **args, \
 		set_signal(SIG_DFL);
 		get_rd_fd(cmd->rd, TRUE);
 		dup_pipe(p_stat, pipe_fd, new_pipe_fd);
-		change_rd_fd(cmd->rd);
+		change_rd_fd(cmd->rd, TRUE);
 		if (is_builtin(args))
 			exit(exec_builtin(args));
 		else

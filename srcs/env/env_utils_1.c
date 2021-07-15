@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:09:56 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 20:12:58 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/13 20:44:43 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@ t_env	*search_env(char *key, t_env *env)
 	return (NULL);
 }
 
-int	update_env(char *key, char *newVal, t_env *envs)
+int	update_env(char *key, char *newVal, t_env **envs)
 {
 	t_env	*newEnv;
 
-	newEnv = search_env(key, envs);
+	newEnv = search_env(key, *envs);
 	if (!newEnv)
 	{
 		newEnv = create_env(key, newVal);
 		if (newEnv)
-			addb_env(&envs, newEnv);
+			addb_env(envs, newEnv);
 		else
 			return (0);
 		return (1);

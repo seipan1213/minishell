@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:15:20 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 20:12:36 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/13 20:45:07 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	export_env(char *str)
 		free_env(env);
 		return (0);
 	}
-	if (!(update_env(env->name, env->value, g_data.envs)))
+	if (!(update_env(env->name, env->value, &g_data.envs)))
 	{
 		free_env(env);
 		return (0);

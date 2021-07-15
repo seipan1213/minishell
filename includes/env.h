@@ -20,7 +20,7 @@ void	free_env(t_env *env);
 void	free_envs(t_env *env);
 t_env	*envlast(t_env *env);
 t_env	*search_env(char *key, t_env *env);
-int		update_env(char *key, char *newVal, t_env *envs);
+int		update_env(char *key, char *newVal, t_env **envs);
 int		ft_strcmp(const char *s1, const char *s2);
 int		del_env(char *delKey, t_env **env);
 int		envs_len(t_env *envs);
