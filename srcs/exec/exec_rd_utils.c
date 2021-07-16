@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:03:19 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/14 18:05:44 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/15 21:13:06 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,28 @@ int	open_rdfile(t_redirect *rd)
 
 int	get_rd_fd(t_redirect *rd, int is_child)
 {
-	t_redirect	*rd_now;
+	t_redirect	*now;
 
 	if (!rd)
 		return (TRUE);
-	rd_now = rd;
-	while (rd_now)
+	now = rd;
+	while (now)
 	{
-		rd_now->fd_io = open_rdfile(rd_now);
-		if (rd_now->fd_io < 0)
+		now->fd_io = open_rdfile(now);
+		if (now->fd_io < 0)
 		{
 			if (is_child)
-				exit_error(strerror(errno), \
-					rd_now->filename->str, EXIT_FAILURE);
+				exit_error(strerror(errno), now->filename->str, EXIT_FAILURE);
 			else
-				return (put_error(strerror(errno), \
-							rd_now->filename->str, FALSE));
+				return (put_error(strerror(errno), now->filename->str, FALSE));
 		}
-		if (rd_now->type == RD_HERE_DOC)
+		if (now->type == RD_HERE_DOC)
+		{
+			set_signal(SIG_DFL);
 			get_heredoc(rd);
-		rd_now = rd_now->next;
+			set_signal(SIG_IGN);
+		}
+		now = now->next;
 	}
 	return (TRUE);
 }

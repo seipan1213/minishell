@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:05:22 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/15 15:29:00 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/15 21:18:40 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	set_prompt_signal(void)
 		ft_putstr_fd(strerror(errno), STDERR_FILENO);
 		exit(1);
 	}
-	if (signal(SIGQUIT, SIG_DFL) == SIG_ERR)
+	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
 	{
 		ft_putstr_fd(strerror(errno), STDERR_FILENO);
 		exit(1);
