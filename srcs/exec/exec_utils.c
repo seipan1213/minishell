@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:02:55 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 16:02:56 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/16 19:25:12 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,14 @@ int	is_builtin(char **args)
 int	token_lst_len(t_token *token)
 {
 	t_token		*list;
-	char		*tmp;
 	int			token_len;
 
 	token_len = 0;
 	list = token;
 	while (list)
 	{
-		tmp = expand(list->str);
-		if (tmp)
-		{
-			free(tmp);
-			token_len++;
-		}
 		list = list->next;
+		token_len++;
 	}
 	return (token_len);
 }
@@ -63,15 +57,16 @@ char	**token_to_args(t_token *token)
 	args[token_len] = NULL;
 	list = token;
 	i = 0;
-	while (i < token_len)
+	while (list)
 	{
-		arg_tmp = expand(list->str);
-		if (arg_tmp)
-		{
-			args[i] = arg_tmp;
-			i++;
-		}
+		// expand(&list);
 		list = list->next;
+	}
+	while (token)
+	{
+		args[i] = token->str;
+		i++;
+		token = token->next;
 	}
 	return (args);
 }
