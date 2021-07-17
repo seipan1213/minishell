@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:02:55 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/17 20:12:03 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/17 20:32:56 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,5 @@ char	**token_to_args(t_token *token)
 		}
 		token = token->next;
 	}
-	args[i] = NULL;
 	return (args);
 }
