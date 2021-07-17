@@ -11,29 +11,31 @@
 /* ************************************************************************** */
 
 #include "../../includes/expand.h"
+#include "../../includes/lexer.h"
 
-char	*expand_init(int *i, int *j)
+char	*expand_init(t_token **lst, int *i, int *j)
 {
-	char	*str;
+	char	*tmp;
 
+	tmp = (*lst)->str;
+	(*lst)->str = ft_strdup("");
 	*i = -1;
 	*j = 0;
-	str = ft_strdup("");
-	if (!str)
+	if (!(*lst)->str)
 		exit_error(MALLOCERR, NULL, 1);
-	return (str);
+	return (tmp);
 }
 
-char	*expand_null(char *str, char *front)
+void	expand_null(char *str, char **front)
 {
-	if (!front)
-		return (NULL);
-	if (front[0] == '\0' && !ft_strchr(str, '\"') && !ft_strchr(str, '\''))
+	if (!*front)
+		return ;
+	if (*front[0] == '\0' && !ft_strchr(str, '\"') && !ft_strchr(str, '\''))
 	{
-		free(front);
-		return (NULL);
+		free(*front);
+		*front = NULL;
+		return ;
 	}
-	return (front);
 }
 
 int	add_cnt_stop_env(char *str)
@@ -50,57 +52,54 @@ int	add_cnt_stop_env(char *str)
 	return (i);
 }
 
-char	*expand(char *str)
+void	expand(t_token **lst)
 {
 	int		i;
 	int		j;
-	char	*front;
+	char	*str;
 
-	front = expand_init(&i, &j);
+	str = expand_init(lst, &i, &j);
 	while (str[++i])
 	{
 		while (str[i] != '\'' && str[i] != '\"' && str[i])
 			i++;
 		if (i > j)
-			front = expand_sub_sp(front, str, &i, &j);
+			expand_sub_sp(lst, str, &i, &j);
 		if ((str[i] == '\'' || str[i] == '\"') && ++i)
 		{
 			while (str[i] != str[j])
 				i++;
 			j++;
-			front = expand_sub(front, str, &i, &j);
+			expand_sub(lst, str, &i, &j);
 			j++;
 		}
 		if (!str[i])
 			break ;
 	}
-	return (expand_null(str, front));
+	expand_null(str, &(*lst)->str);
 }
 
-char	*expand_str(char *str)
+void	expand_str(t_token **lst, char *str, int flag)
 {
 	int		i;
 	int		j;
-	char	*front;
 	char	*env;
 
-	front = expand_init(&i, &j);
+	i = -1;
+	j = 0;
 	while (i >= -1 && str[++i])
 	{
 		if (str[i] == '$')
 		{
-			front = sub_join(front, str, i, j);
+			(*lst)->str = sub_join((*lst)->str, str, i, j);
 			env = expand_env(str + i);
 			i += add_cnt_stop_env(str + i);
-			front = front_join(front, env);
-			if (!front)
-				return (NULL);
+			expand_div(lst, env, flag);
 			j = i--;
 		}
 		if (!str[i])
 			break ;
 	}
 	if (i >= -1 && i != j)
-		front = sub_join(front, str, i, j);
-	return (front);
+		(*lst)->str = sub_join((*lst)->str, str, i, j);
 }
