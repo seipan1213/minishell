@@ -28,14 +28,13 @@ char	*expand_init(t_token **lst, int *i, int *j)
 
 void	expand_null(char *str, char **front)
 {
-	if (!*front)
-		return ;
-	if (*front[0] == '\0' && !ft_strchr(str, '\"') && !ft_strchr(str, '\''))
+	if (*front && *front[0] == '\0' && \
+		!ft_strchr(str, '\"') && !ft_strchr(str, '\''))
 	{
 		free(*front);
 		*front = NULL;
-		return ;
 	}
+	free(str);
 }
 
 int	add_cnt_stop_env(char *str)
