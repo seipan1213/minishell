@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:02:55 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/16 19:25:12 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/17 20:12:03 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ int	token_lst_len(t_token *token)
 	list = token;
 	while (list)
 	{
+		if (list->str)
+			token_len++;
 		list = list->next;
-		token_len++;
 	}
 	return (token_len);
 }
@@ -49,24 +50,27 @@ char	**token_to_args(t_token *token)
 	t_token		*list;
 	int			token_len;
 	int			i;
-	char		*arg_tmp;
 	char		**args;
 
-	token_len = token_lst_len(token);
-	args = (char **)malloc((token_len + 1) * sizeof(char *));
-	args[token_len] = NULL;
 	list = token;
 	i = 0;
 	while (list)
 	{
-		// expand(&list);
+		expand(&list);
 		list = list->next;
 	}
+	token_len = token_lst_len(token);
+	args = (char **)malloc((token_len + 1) * sizeof(char *));
+	args[token_len] = NULL;
 	while (token)
 	{
-		args[i] = token->str;
-		i++;
+		if (token->str)
+		{
+			args[i] = ft_strdup(token->str);
+			i++;
+		}
 		token = token->next;
 	}
+	args[i] = NULL;
 	return (args);
 }
