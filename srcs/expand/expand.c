@@ -29,7 +29,7 @@ char	*expand_init(t_token **lst, int *i, int *j)
 void	expand_null(char *str, char **front)
 {
 	if (*front && *front[0] == '\0' && \
-		!ft_strchr(str, '\"') && !ft_strchr(str, '\''))
+		str[0] != '\"' && str[0] != '\'')
 	{
 		free(*front);
 		*front = NULL;
