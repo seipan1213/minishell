@@ -18,5 +18,7 @@ int		add_cnt_stop_env(char *str);
 void	expand_str(t_token **lst, char *str, int flag);
 void	expand_sub_sp(t_token **lst, char *str, int *i, int *j);
 void	expand_div(t_token **lst, char *str, int flag);
+void	addnext_token(t_token **lst, t_token *t);
+void	token_next_set(t_token **lst);
 
 #endif

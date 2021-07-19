@@ -34,7 +34,6 @@ void	expand_null(char *str, char **front)
 		free(*front);
 		*front = NULL;
 	}
-	free(str);
 }
 
 int	add_cnt_stop_env(char *str)
@@ -76,6 +75,7 @@ void	expand(t_token **lst)
 			break ;
 	}
 	expand_null(str, &(*lst)->str);
+	free(str);
 }
 
 void	expand_str(t_token **lst, char *str, int flag)
