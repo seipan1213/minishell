@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:02:09 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/19 18:03:13 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/19 18:50:29 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	expand_div(t_token **lst, char *str, int flag)
 		token_next_set(lst);
 	while (t)
 		expand_div_util(lst, &t);
-	if (ft_isspace(str[ft_strlen(str) - 1]))
+	if (*str && ft_isspace(str[ft_strlen(str) - 1]))
 		token_next_set(lst);
 	free(str);
 	if (tmp)
