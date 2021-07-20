@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:03:19 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/20 15:51:25 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/20 16:15:31 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@ int	open_rdfile(t_redirect *rd)
 		return (open(rd->filename->str, O_RDONLY));
 	else if (rd->type == RD_OUTPUT)
 	{
-		return (open(rd->filename->str,
+		return (open(rd->filename->str,\
 					 O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE));
 	}
 	else if (rd->type == RD_APPEND_OUTPUT)
 	{
-		return (open(rd->filename->str,
+		return (open(rd->filename->str,\
 					 O_WRONLY | O_CREAT | O_APPEND, S_IREAD | S_IWRITE));
 	}
 	else if (rd->type == RD_HERE_DOC)
 	{
-		return (open(HD_TMPFILE,
+		return (open(HD_TMPFILE,\
 					 O_RDWR | O_CREAT | O_TRUNC, 0644));
 	}
 	return (OPEN_ERR);
 }
 
-void start_heredoc(t_redirect *rd, int is_child)
+void	start_heredoc(t_redirect *rd, int is_child)
 {
 	pid_t	pid;
 	int		status;
@@ -61,9 +61,9 @@ void start_heredoc(t_redirect *rd, int is_child)
 	set_signal(SIG_IGN);
 }
 
-int get_rd_fd(t_redirect *rd, int is_child)
+int	get_rd_fd(t_redirect *rd, int is_child)
 {
-	t_redirect *now;
+	t_redirect	*now;
 
 	if (!rd)
 		return (EXIT_SUCCESS);
@@ -76,7 +76,8 @@ int get_rd_fd(t_redirect *rd, int is_child)
 			if (is_child)
 				exit_error(strerror(errno), now->filename->str, EXIT_FAILURE);
 			else
-				return (put_error(strerror(errno), now->filename->str, EXIT_FAILURE));
+				return (put_error(strerror(errno),\
+						 now->filename->str, EXIT_FAILURE));
 		}
 		if (now->type == RD_HERE_DOC)
 		{
@@ -89,9 +90,9 @@ int get_rd_fd(t_redirect *rd, int is_child)
 	return (EXIT_SUCCESS);
 }
 
-int change_rd_fd(t_redirect *rd, int is_child)
+int	change_rd_fd(t_redirect *rd, int is_child)
 {
-	t_redirect *rd_now;
+	t_redirect	*rd_now;
 
 	if (!rd)
 		return (TRUE);
