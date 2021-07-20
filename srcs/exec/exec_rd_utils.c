@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:03:19 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/20 16:15:31 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/20 16:18:08 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ int	open_rdfile(t_redirect *rd)
 		return (open(rd->filename->str, O_RDONLY));
 	else if (rd->type == RD_OUTPUT)
 	{
-		return (open(rd->filename->str,\
-					 O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE));
+		return (open(rd->filename->str, \
+					O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE));
 	}
 	else if (rd->type == RD_APPEND_OUTPUT)
 	{
-		return (open(rd->filename->str,\
-					 O_WRONLY | O_CREAT | O_APPEND, S_IREAD | S_IWRITE));
+		return (open(rd->filename->str, \
+					O_WRONLY | O_CREAT | O_APPEND, S_IREAD | S_IWRITE));
 	}
 	else if (rd->type == RD_HERE_DOC)
 	{
-		return (open(HD_TMPFILE,\
-					 O_RDWR | O_CREAT | O_TRUNC, 0644));
+		return (open(HD_TMPFILE, \
+					O_RDWR | O_CREAT | O_TRUNC, 0644));
 	}
 	return (OPEN_ERR);
 }
@@ -76,8 +76,8 @@ int	get_rd_fd(t_redirect *rd, int is_child)
 			if (is_child)
 				exit_error(strerror(errno), now->filename->str, EXIT_FAILURE);
 			else
-				return (put_error(strerror(errno),\
-						 now->filename->str, EXIT_FAILURE));
+				return (put_error(strerror(errno), \
+						now->filename->str, EXIT_FAILURE));
 		}
 		if (now->type == RD_HERE_DOC)
 		{

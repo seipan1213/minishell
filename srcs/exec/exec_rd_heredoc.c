@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 15:13:01 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/20 16:06:44 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/20 16:18:20 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	expand_heredoc(char **line)
 
 void	get_heredoc(t_redirect *rd)
 {
-	int 	q_flag;
+	int		q_flag;
 	char	*line;
 	char	*tmp;
 
