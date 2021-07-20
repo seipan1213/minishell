@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:02:41 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/19 19:35:48 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/20 20:31:35 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	exec_cmd(t_command *cmd, t_pipe_status *p_stat, int pipe_fd[])
 		free_split(args);
 		return (FALSE);
 	}
-		
 	if (*p_stat == NO_PIPE && is_builtin(args))
 	{
 		g_data.status = exec_simple_buildin(cmd, args);
