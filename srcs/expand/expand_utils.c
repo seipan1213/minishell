@@ -44,7 +44,7 @@ char	*front_join(char *front, char *str)
 	char	*tmp;
 
 	if (!front || !str)
-		return (front);
+		return (NULL);
 	tmp = front;
 	front = ft_strjoin(front, str);
 	free(tmp);
@@ -63,10 +63,9 @@ char	*sub_join(char *front, char *str, int i, int j)
 	return (front);
 }
 
-char	*expand_sub_sp(char *front, char *str, int *i, int *j)
+void	expand_sub_sp(t_token **lst, char *str, int *i, int *j)
 {
 	char	*tmp;
-	char	*exp;
 	int		tmp_i;
 
 	tmp_i = *i;
@@ -76,36 +75,27 @@ char	*expand_sub_sp(char *front, char *str, int *i, int *j)
 	if (!tmp)
 		exit_error(MALLOCERR, NULL, 1);
 	*j = *i;
-	exp = expand_str(tmp);
-	if (!exp)
-		exit_error(MALLOCERR, NULL, 1);
+	expand_str(lst, tmp, 1);
 	free(tmp);
-	front = front_join(front, exp);
-	if (!front)
+	if (!(*lst)->str)
 		exit_error(MALLOCERR, NULL, 1);
-	return (front);
 }
 
-char	*expand_sub(char *front, char *str, int *i, int *j)
+void	expand_sub(t_token **lst, char *str, int *i, int *j)
 {
 	char	*tmp;
-	char	*exp;
 
 	tmp = ft_substr(str, *j, *i - *j);
 	if (!tmp)
 		exit_error(MALLOCERR, NULL, 1);
 	*j = *i;
 	if (str[*i] == '\'')
-		exp = tmp;
+		(*lst)->str = front_join((*lst)->str, tmp);
 	else
 	{
-		exp = expand_str(tmp);
-		if (!exp)
-			exit_error(MALLOCERR, NULL, 1);
+		expand_str(lst, tmp, 0);
 		free(tmp);
 	}
-	front = front_join(front, exp);
-	if (!front)
+	if (!(*lst)->str)
 		exit_error(MALLOCERR, NULL, 1);
-	return (front);
 }

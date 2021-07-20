@@ -1,0 +1,15 @@
+export STR="echo     STR"
+$STR
+echo aa$STR"aa"
+export STR="   echo    STR"
+$STR
+echo aa$STR"aa"
+export STR="   echo      STR        "
+$STR
+echo aa$STR"aa"
+echo aa$STR'dasdad'
+echo aa$STRaaa'dasdad'
+echo aa    $STR    "aa"
+echo aa    $STR   'dasdad'
+$STR$STR$STR $STR $STR AAA aaa bbbb $a $STR"aaa"$STR
+unset STR
