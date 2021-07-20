@@ -6,15 +6,15 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 15:13:01 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 15:13:02 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/20 16:00:43 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/exec.h"
 
-int	have_quote(char *deli)
+int have_quote(char *deli)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (deli[i])
@@ -26,13 +26,13 @@ int	have_quote(char *deli)
 	return (FALSE);
 }
 
-void	expand_heredoc(char **line)
+void expand_heredoc(char **line)
 {
-	int		start;
-	int		end;
-	char	*front;
-	char	*back;
-	char	*expand_line;
+	int start;
+	int end;
+	char *front;
+	char *back;
+	char *expand_line;
 
 	start = 0;
 	end = 0;
@@ -54,11 +54,11 @@ void	expand_heredoc(char **line)
 	*line = expand_line;
 }
 
-void	get_heredoc(t_redirect *rd)
+void get_heredoc(t_redirect *rd)
 {
-	int		q_flag;
-	char	*line;
-	char	*tmp;
+	int q_flag;
+	char *line;
+	char *tmp;
 
 	q_flag = 0;
 	if (have_quote(rd->filename->str))
@@ -74,11 +74,10 @@ void	get_heredoc(t_redirect *rd)
 			expand_heredoc(&line);
 		if (ft_strcmp(line, rd->filename->str) != 0)
 		{
-			write(rd->fd_io, line, ft_strlen(line));
-			write(rd->fd_io, "\n", 1);
+			ft_putendl_fd(line, rd->fd_io);
 			free(line);
 		}
 		else
-			return ;
+			return;
 	}
 }

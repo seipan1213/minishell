@@ -6,11 +6,37 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:05:22 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/15 21:18:40 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/20 15:36:57 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
+
+void	sig_hd_handler(int sig_num)
+{
+	ft_putstr_fd("\b\b  \b\b", STDOUT_FILENO);
+	g_data.status = 128 + sig_num;
+	if (signal(SIGINT, SIG_DFL) == SIG_ERR)
+	{
+		ft_putstr_fd(strerror(errno), STDERR_FILENO);
+		exit(1);
+	}
+	kill(0, SIGINT);
+}
+
+void	set_heredoc_sig(void)
+{
+	if (signal(SIGINT, sig_hd_handler) == SIG_ERR)
+	{
+		ft_putstr_fd(strerror(errno), STDERR_FILENO);
+		exit(1);
+	}
+	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
+	{
+		ft_putstr_fd(strerror(errno), STDERR_FILENO);
+		exit(1);
+	}
+}
 
 void	sigint_handler(int signal_num)
 {

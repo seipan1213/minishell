@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:03:24 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/14 18:05:01 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/20 16:00:10 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,15 @@ void	recover_fd(t_redirect *rd)
 
 int	exec_simple_buildin(t_command *cmd, char **args)
 {
-	int		ret;
+	int		status;
 
 	backup_cur_fd(cmd->rd);
-	if (!(get_rd_fd(cmd->rd, FALSE)))
-		return (EXIT_FAILURE);
+	status = get_rd_fd(cmd->rd, FALSE);
+	if (status > 0)
+		return (status);
 	if (!(change_rd_fd(cmd->rd, FALSE)))
 		return (EXIT_FAILURE);
-	ret = exec_builtin(args);
+	status = exec_builtin(args);
 	recover_fd(cmd->rd);
-	return (ret);
+	return (status);
 }
