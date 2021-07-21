@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_rd_heredoc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 15:13:01 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/21 20:49:22 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/21 22:01:41 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	expand_heredoc(char **line)
 			start = end;
 		}
 	}
+	free(*line);
 	*line = expand_line;
 }
 
@@ -78,7 +79,12 @@ void	get_heredoc(t_redirect *rd)
 			free(line);
 		}
 		else
+		{
+			free(line);
 			return ;
+		}
+			
 	}
+	free(line);
 	ft_putstr_fd("  \b\b", STDOUT_FILENO);
 }
