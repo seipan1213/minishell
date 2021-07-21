@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 15:11:29 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/21 16:52:28 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/21 20:55:47 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	exec_cmd_node(t_astNode *node)
 
 int	exec(t_astNode *node)
 {
-		printf("gstatus 1: %d\n", g_data.status);
 	if (!node)
 		return (FALSE);
 	if (node->type == SCOLON)

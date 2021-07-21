@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 15:13:01 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/20 16:18:20 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/21 20:49:22 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,5 @@ void	get_heredoc(t_redirect *rd)
 		else
 			return ;
 	}
+	ft_putstr_fd("  \b\b", STDOUT_FILENO);
 }
