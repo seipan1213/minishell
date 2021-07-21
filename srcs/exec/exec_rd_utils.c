@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:03:19 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/20 16:18:08 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/21 18:14:32 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,18 @@ void	start_heredoc(t_redirect *rd, int is_child)
 	int		status;
 
 	if (is_child)
+	{
+		printf("gstatus: %d\n", g_data.status);
+		set_heredoc_sig();
 		get_heredoc(rd);
+	}
 	else
 	{
 		pid = fork();
 		if (pid == 0)
 		{
 			set_heredoc_sig();
-			set_signal(SIG_DFL);
+			// set_signal(SIG_DFL);
 			get_heredoc(rd);
 			exit(EXIT_SUCCESS);
 		}
@@ -56,9 +60,22 @@ void	start_heredoc(t_redirect *rd, int is_child)
 			ft_putendl_fd(strerror(errno), STDERR_FILENO);
 			exit(errno);
 		}
+		printf("gstatus: %d\n", g_data.status);
 		handler_singal(status, WIFSIGNALED(status));
 	}
 	set_signal(SIG_IGN);
+}
+
+int	if_signal(t_redirect *rd, int is_child)
+{
+	if (is_child)
+		return (0);
+	if (g_data.status == 130)
+	{
+		unlink(HD_TMPFILE); // cat << eof + ctrlD
+		close(rd->fd_io);
+	}
+	return (g_data.status);
 }
 
 int	get_rd_fd(t_redirect *rd, int is_child)
@@ -81,9 +98,10 @@ int	get_rd_fd(t_redirect *rd, int is_child)
 		}
 		if (now->type == RD_HERE_DOC)
 		{
-			start_heredoc(rd, is_child);
+			start_heredoc(now, is_child);
+			printf("status: %d\n", g_data.status);
 			if (g_data.status >= 128)
-				return (g_data.status);
+				return (if_signal(now, is_child));
 		}
 		now = now->next;
 	}

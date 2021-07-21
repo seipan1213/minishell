@@ -52,7 +52,6 @@ void	minishell(void)
 
 	while (1)
 	{
-		unlink(HD_TMPFILE);
 		set_prompt_signal();
 		line = readline(MINISHELL);
 		if (!line)
