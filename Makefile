@@ -17,7 +17,7 @@ SRCFILE = parser/init_parser.c parser/parser.c \
 				builtin/built_cd.c \
 				env/env_cast.c env/env_sort.c env/env_utils_1.c \
 				env/env.c env/env_utils_2.c \
-				expand/expand.c expand/expand_utils.c \
+				expand/expand.c expand/expand_utils.c expand/expand_list.c\
 				utils/utils.c utils/error.c utils/signal.c utils/init.c \
 				minishell.c
 CC    = gcc
