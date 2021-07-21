@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:02:41 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/19 19:35:48 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/21 22:13:45 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	exec_cmd(t_command *cmd, t_pipe_status *p_stat, int pipe_fd[])
 		free_split(args);
 		return (FALSE);
 	}
-		
 	if (*p_stat == NO_PIPE && is_builtin(args))
 	{
 		g_data.status = exec_simple_buildin(cmd, args);

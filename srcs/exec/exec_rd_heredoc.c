@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_rd_heredoc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 15:13:01 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/21 22:01:41 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/21 22:25:13 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,24 @@ void	expand_heredoc(char **line)
 	*line = expand_line;
 }
 
+void	if_quote(t_redirect *rd, int *q_flag)
+{
+	char	*tmp;
+
+	*q_flag = 1;
+	tmp = expand_delimiter(rd->filename->str);
+	free(rd->filename->str);
+	rd->filename->str = tmp;
+}
+
 void	get_heredoc(t_redirect *rd)
 {
 	int		q_flag;
 	char	*line;
-	char	*tmp;
 
 	q_flag = 0;
 	if (have_quote(rd->filename->str))
-	{
-		q_flag = 1;
-		tmp = expand_delimiter(rd->filename->str);
-		free(rd->filename->str);
-		rd->filename->str = tmp;
-	}
+		if_quote(rd, &q_flag);
 	while (write(STDOUT_FILENO, "> ", 2) && get_next_line(0, &line) > 0)
 	{
 		if (*line && !q_flag)
@@ -83,7 +87,6 @@ void	get_heredoc(t_redirect *rd)
 			free(line);
 			return ;
 		}
-			
 	}
 	free(line);
 	ft_putstr_fd("  \b\b", STDOUT_FILENO);
