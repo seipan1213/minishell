@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_hd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 18:43:46 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/21 21:01:43 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/21 21:13:39 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	sigquit_hd_handler(int sig_num)
 {
-	int	i;
-
+	(void)sig_num;
 	ft_putstr_fd("\b\b  \b\b", STDOUT_FILENO);
-	i = sig_num;
 }
 
 void	sigint_hd_handler(int sig_num)
