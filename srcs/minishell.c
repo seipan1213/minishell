@@ -52,7 +52,7 @@ void	minishell(void)
 
 	while (1)
 	{
-		set_signal(SIG_DFL);
+		set_prompt_signal();
 		line = readline(MINISHELL);
 		if (!line)
 		{

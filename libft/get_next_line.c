@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 23:19:23 by sehattor          #+#    #+#             */
-/*   Updated: 2021/07/03 21:36:30 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/21 22:00:56 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	*read_fd(int fd, char *save)
 	{
 		buf[ret] = '\0';
 		tmp = ft_strjoin(save, buf);
-		str_free(save, 1);
+		str_free(save, -1);
 		save = tmp;
 		if (!tmp || ft_strchr(save, '\n'))
 			break ;

@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 15:13:01 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/06/30 15:13:02 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/21 22:25:13 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,34 +51,43 @@ void	expand_heredoc(char **line)
 			start = end;
 		}
 	}
+	free(*line);
 	*line = expand_line;
+}
+
+void	if_quote(t_redirect *rd, int *q_flag)
+{
+	char	*tmp;
+
+	*q_flag = 1;
+	tmp = expand_delimiter(rd->filename->str);
+	free(rd->filename->str);
+	rd->filename->str = tmp;
 }
 
 void	get_heredoc(t_redirect *rd)
 {
 	int		q_flag;
 	char	*line;
-	char	*tmp;
 
 	q_flag = 0;
 	if (have_quote(rd->filename->str))
-	{
-		q_flag = 1;
-		tmp = expand_delimiter(rd->filename->str);
-		free(rd->filename->str);
-		rd->filename->str = tmp;
-	}
+		if_quote(rd, &q_flag);
 	while (write(STDOUT_FILENO, "> ", 2) && get_next_line(0, &line) > 0)
 	{
 		if (*line && !q_flag)
 			expand_heredoc(&line);
 		if (ft_strcmp(line, rd->filename->str) != 0)
 		{
-			write(rd->fd_io, line, ft_strlen(line));
-			write(rd->fd_io, "\n", 1);
+			ft_putendl_fd(line, rd->fd_io);
 			free(line);
 		}
 		else
+		{
+			free(line);
 			return ;
+		}
 	}
+	free(line);
+	ft_putstr_fd("  \b\b", STDOUT_FILENO);
 }

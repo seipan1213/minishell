@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:03:19 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/14 18:05:44 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/21 21:01:49 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,45 +19,89 @@ int	open_rdfile(t_redirect *rd)
 	else if (rd->type == RD_OUTPUT)
 	{
 		return (open(rd->filename->str, \
-		O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE));
+					O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE));
 	}
 	else if (rd->type == RD_APPEND_OUTPUT)
 	{
 		return (open(rd->filename->str, \
-		O_WRONLY | O_CREAT | O_APPEND, S_IREAD | S_IWRITE));
+					O_WRONLY | O_CREAT | O_APPEND, S_IREAD | S_IWRITE));
 	}
 	else if (rd->type == RD_HERE_DOC)
 	{
 		return (open(HD_TMPFILE, \
-		O_RDWR | O_CREAT | O_TRUNC, 0664));
+					O_RDWR | O_CREAT | O_TRUNC, 0644));
 	}
 	return (OPEN_ERR);
 }
 
+void	start_heredoc(t_redirect *rd, int is_child)
+{
+	pid_t	pid;
+	int		status;
+
+	if (is_child)
+	{
+		set_heredoc_sig();
+		get_heredoc(rd);
+	}
+	else
+	{
+		pid = fork();
+		if (pid == 0)
+		{
+			set_heredoc_sig();
+			get_heredoc(rd);
+			exit(EXIT_SUCCESS);
+		}
+		if (waitpid(pid, &status, 0) < 0)
+		{
+			ft_putendl_fd(strerror(errno), STDERR_FILENO);
+			exit(errno);
+		}
+		handler_singal(status, WIFSIGNALED(status));
+	}
+	set_signal(SIG_IGN);
+}
+
+int	if_signal(t_redirect *rd, int is_child)
+{
+	if (is_child)
+		return (0);
+	if (g_data.status == 130)
+	{
+		unlink(HD_TMPFILE);
+		close(rd->fd_io);
+	}
+	return (g_data.status);
+}
+
 int	get_rd_fd(t_redirect *rd, int is_child)
 {
-	t_redirect	*rd_now;
+	t_redirect	*now;
 
 	if (!rd)
-		return (TRUE);
-	rd_now = rd;
-	while (rd_now)
+		return (EXIT_SUCCESS);
+	now = rd;
+	while (now)
 	{
-		rd_now->fd_io = open_rdfile(rd_now);
-		if (rd_now->fd_io < 0)
+		now->fd_io = open_rdfile(now);
+		if (now->fd_io < 0)
 		{
 			if (is_child)
-				exit_error(strerror(errno), \
-					rd_now->filename->str, EXIT_FAILURE);
+				exit_error(strerror(errno), now->filename->str, EXIT_FAILURE);
 			else
 				return (put_error(strerror(errno), \
-							rd_now->filename->str, FALSE));
+						now->filename->str, EXIT_FAILURE));
 		}
-		if (rd_now->type == RD_HERE_DOC)
-			get_heredoc(rd);
-		rd_now = rd_now->next;
+		if (now->type == RD_HERE_DOC)
+		{
+			start_heredoc(now, is_child);
+			if (g_data.status >= 128)
+				return (if_signal(now, is_child));
+		}
+		now = now->next;
 	}
-	return (TRUE);
+	return (EXIT_SUCCESS);
 }
 
 int	change_rd_fd(t_redirect *rd, int is_child)

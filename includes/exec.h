@@ -52,5 +52,7 @@ char	*exec_search(char *argv);
 void	get_heredoc(t_redirect *rd);
 int		is_quote(char c);
 char	*expand_delimiter(char *deli);
+void	handler_singal(int status, int is_sig);
+void	set_heredoc_sig(void);
 
 #endif
