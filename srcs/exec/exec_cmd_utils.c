@@ -94,9 +94,7 @@ void	wait_commands(t_command *cmd)
 			is_cmd = 1;
 			if (waitpid(cmd->pid, &status, 0) < 0)
 			{
-				ft_putstr_fd(strerror(errno), 2);
-				ft_putstr_fd("\n", 2);
-				exit(errno);
+				exit_error(strerror(errno), NULL, errno);
 			}
 			if (WIFSIGNALED(status))
 				is_sig = 1;

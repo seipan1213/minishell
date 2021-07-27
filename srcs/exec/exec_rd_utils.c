@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:03:19 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/21 21:01:49 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/27 18:35:01 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ void	start_heredoc(t_redirect *rd, int is_child)
 		}
 		if (waitpid(pid, &status, 0) < 0)
 		{
-			ft_putendl_fd(strerror(errno), STDERR_FILENO);
-			exit(errno);
+			exit_error(strerror(errno), NULL, errno);
 		}
 		handler_singal(status, WIFSIGNALED(status));
 	}
