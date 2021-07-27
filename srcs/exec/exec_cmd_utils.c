@@ -18,14 +18,14 @@ int	dup_pipe(t_pipe_status *p_stat, int old_pipe_fd[], int new_pipe_fd[])
 	{
 		if (close(old_pipe_fd[PIPE_IN]) < 0 ||\
 				dup2(old_pipe_fd[PIPE_OUT], STDIN_FILENO) < 0 ||\
-				close(old_pipe_fd[PIPE_OUT]) < 0)
+					close(old_pipe_fd[PIPE_OUT]) < 0)
 			exit_error(strerror(errno), NULL, errno);
 	}
 	if (*p_stat == PIPE_WR_ONLY || *p_stat == PIPE_RD_WR)
 	{
 		if (close(new_pipe_fd[PIPE_OUT]) < 0 ||\
 				dup2(new_pipe_fd[PIPE_IN], STDOUT_FILENO) < 0 ||\
-				close(new_pipe_fd[PIPE_IN]) < 0)
+					close(new_pipe_fd[PIPE_IN]) < 0)
 			exit_error(strerror(errno), NULL, errno);
 	}
 	return (TRUE);
