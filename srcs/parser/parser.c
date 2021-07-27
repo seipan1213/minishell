@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 21:07:47 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/14 18:01:18 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/26 19:56:10 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ bool	parser(t_token **tokens, t_astNode **node)
 	result = parse_cmdline(tokens, node);
 	if (result == FALSE)
 	{
-		free_node(*node);
+		free_node(node);
 	}
 	free_token(for_free);
 	return (result);

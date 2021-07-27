@@ -43,7 +43,7 @@ void	launch_minishell(char *line)
 	node = NULL;
 	parser(&tokens, &node);
 	exec(node);
-	free_node(node);
+	free_node(&node);
 }
 
 void	minishell(void)

@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 21:08:23 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/03 20:29:59 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/07/26 19:56:07 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ int	is_node_type(int type)
 	return (0);
 }
 
-void	free_node(t_astNode *node)
+void	free_node(t_astNode **node)
 {
-	if (!node)
+	if (!*node)
 		return ;
-	if (is_node_type(node->type) && node->cmd)
+	if (is_node_type((*node)->type) && (*node)->cmd)
 	{
-		free_cmd(node->cmd);
-		node->cmd = NULL;
+		free_cmd((*node)->cmd);
+		(*node)->cmd = NULL;
 	}
-	free_node(node->left);
-	free_node(node->right);
-	free(node);
-	node = NULL;
+	free_node(&((*node)->left));
+	free_node(&((*node)->right));
+	free(*node);
+	*node = NULL;
 }
