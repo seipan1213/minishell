@@ -18,15 +18,15 @@ int	dup_pipe(t_pipe_status *p_stat, int old_pipe_fd[], int new_pipe_fd[])
 	{
 		if (close(old_pipe_fd[PIPE_IN]) < 0 ||\
 				dup2(old_pipe_fd[PIPE_OUT], STDIN_FILENO) < 0 ||\
-				close(old_pipe_fd[PIPE_OUT]) < 0)
-			return (FALSE);
+					close(old_pipe_fd[PIPE_OUT]) < 0)
+			exit_error(strerror(errno), NULL, errno);
 	}
 	if (*p_stat == PIPE_WR_ONLY || *p_stat == PIPE_RD_WR)
 	{
 		if (close(new_pipe_fd[PIPE_OUT]) < 0 ||\
 				dup2(new_pipe_fd[PIPE_IN], STDOUT_FILENO) < 0 ||\
-				close(new_pipe_fd[PIPE_IN]) < 0)
-			return (FALSE);
+					close(new_pipe_fd[PIPE_IN]) < 0)
+			exit_error(strerror(errno), NULL, errno);
 	}
 	return (TRUE);
 }
@@ -94,9 +94,7 @@ void	wait_commands(t_command *cmd)
 			is_cmd = 1;
 			if (waitpid(cmd->pid, &status, 0) < 0)
 			{
-				ft_putstr_fd(strerror(errno), 2);
-				ft_putstr_fd("\n", 2);
-				exit(errno);
+				exit_error(strerror(errno), NULL, errno);
 			}
 			if (WIFSIGNALED(status))
 				is_sig = 1;
