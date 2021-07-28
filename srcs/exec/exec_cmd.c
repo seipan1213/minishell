@@ -6,11 +6,20 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:02:41 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/20 20:31:35 by sehattor         ###   ########.fr       */
+/*   Updated: 2021/07/28 00:29:00 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/exec.h"
+
+int	clear_pipefd(int pipe_fd[])
+{
+	if (pipe_fd[0] > 2)
+		close(pipe_fd[0]);
+	if (pipe_fd[1] > 2)
+		close(pipe_fd[1]);
+	return (FALSE);
+}
 
 int	exec_cmdline(t_command *cmd, char **args, \
 						t_pipe_status *p_stat, int pipe_fd[])
@@ -25,7 +34,7 @@ int	exec_cmdline(t_command *cmd, char **args, \
 	}
 	pid = fork();
 	if (pid < 0)
-		return (FALSE);
+		return (clear_pipefd(new_pipe_fd));
 	if (pid == 0)
 	{
 		set_signal(SIG_DFL);
@@ -68,7 +77,9 @@ void	exec_pipeline(t_astNode *node)
 	t_pipe_status	p_stat;
 	t_command		*cmd;
 	int				pipe_fd[2];
+	int				err_flag;
 
+	err_flag = 0;
 	p_stat = PIPE_WR_ONLY;
 	while (node->type == PIPE)
 		node = node->left;
@@ -76,7 +87,14 @@ void	exec_pipeline(t_astNode *node)
 	while (cmd)
 	{
 		exec_cmd(cmd, &p_stat, pipe_fd);
+		if (errno == EAGAIN)
+		{
+			err_flag = 1;
+			break ;
+		}
 		cmd = cmd->next;
 	}
+	if (err_flag)
+		put_error(strerror(errno), NULL, 0);
 	wait_commands(node->cmd);
 }
