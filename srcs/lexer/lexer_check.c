@@ -27,8 +27,7 @@ int	check_syntax(t_token *t)
 			|| (is_metatype(pre_type) && is_rdcttype(t->type))
 			|| (is_metatype(t->type) && is_metatype(pre_type))
 			|| (is_rdcttype(t->type) && is_rdcttype(pre_type))
-			|| (is_metatype(t->type) && (int)pre_type == -1)
-			|| t->type == DSCOLON)
+			|| (is_metatype(t->type) && (int)pre_type == -1))
 			return (put_error(SYNTAXERR, NULL, 0));
 		pre_type = t->type;
 		if (t->next)
@@ -53,7 +52,8 @@ int	check_avoid(t_token *t)
 			if (len < 2 || t->str[len - 1] != t->str[0])
 				return (put_error(SYNTAXERR, NULL, 0));
 		}
-		if (t->type == DAND || t->type == DPIPE || t->type == LLLDIR)
+		if (t->type == DAND || t->type == DPIPE || t->type == LLLDIR ||\
+				t->type == AND || t->type == ESCAPE || t->type == DSCOLON)
 			return (put_error(SYNTAXERR, NULL, 0));
 		t = t->next;
 	}
