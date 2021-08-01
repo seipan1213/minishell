@@ -17,3 +17,9 @@ echo a -12345> file
 echo a +12345> file
 echo a -12345< file
 echo a +12345< file
+echo a 2147483647> file
+echo a 2147483648> file
+echo a -2147483648> file
+echo a -2147483649> file
+echo a 21474836470000000> file
+echo a -2147483649000000> file

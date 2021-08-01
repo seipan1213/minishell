@@ -6,7 +6,7 @@
 /*   By: kotatabe <kotatabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 21:07:47 by kotatabe          #+#    #+#             */
-/*   Updated: 2021/07/28 20:51:37 by kotatabe         ###   ########.fr       */
+/*   Updated: 2021/08/01 13:43:18 by kotatabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ bool	parse_cmd_rd(t_token **tokens, t_command *cmd)
 	rd = init_redirect();
 	if ((*tokens)->type == RINT)
 	{
+		if (is_intrange((*tokens)->str))
+			return (put_error(BAD_FD, FD_OUTOFRANGE, FALSE));
 		rd->fd_file = ft_atoi((*tokens)->str);
 		*tokens = (*tokens)->next;
 	}
@@ -119,6 +121,7 @@ bool	parser(t_token **tokens, t_astNode **node)
 	result = parse_cmdline(tokens, node);
 	if (result == FALSE)
 	{
+		g_data.status = EXIT_FAILURE;
 		free_node(*node);
 		*node = NULL;
 	}
