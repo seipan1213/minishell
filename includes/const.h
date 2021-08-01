@@ -23,5 +23,7 @@
 # define NUMERR "numeric argument required"
 # define HD_TMPFILE ".heredoc_tmpfile"
 # define UNSET_ERR "unset: not enough arguments"
+# define FD_OUTOFRANGE "file descriptor out of range"
+# define BAD_FD "Bad file descriptor"
 
 #endif
