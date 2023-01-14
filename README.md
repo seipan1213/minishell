@@ -1,4 +1,4 @@
-# minishell
+# minishell(自作Shell)
 ## Moive
 https://user-images.githubusercontent.com/38822155/171229427-d660ecb1-58c1-436a-964a-33b54a71287b.mp4
 ## Setup
